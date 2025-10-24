@@ -1,0 +1,13 @@
+{
+  "name": "aierxuan-playwright-mcp-task",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "playwright:mcp:server": "@playwright/mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.1",
+    "@playwright/mcp": "^0.0.43"
+  }
+}

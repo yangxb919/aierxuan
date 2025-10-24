@@ -1,0 +1,71 @@
+# AIERXUAN OKLCH Palette
+
+## Light Theme
+
+- **background**: `oklch(1.0000 0 0)` — 页面背景（亮）
+- **foreground**: `oklch(0.3211 0 0)` — 正文/主文字（亮）
+- **card**: `oklch(1.0000 0 0)` — 卡片背景
+- **card-foreground**: `oklch(0.3211 0 0)` — 卡片文字
+- **popover**: `oklch(1.0000 0 0)` — 气泡/弹层背景
+- **popover-foreground**: `oklch(0.3211 0 0)` — 气泡文字
+- **primary**: `oklch(0.6231 0.1880 259.8145)` — 品牌主色 / 主按钮
+- **primary-foreground**: `oklch(1.0000 0 0)` — 主按钮文字
+- **secondary**: `oklch(0.9670 0.0029 264.5419)` — 次级按钮/浅色标签
+- **secondary-foreground**: `oklch(0.4461 0.0263 256.8018)` — 次级按钮文字
+- **accent**: `oklch(0.9514 0.0250 236.8242)` — 强调背景/高亮块
+- **accent-foreground**: `oklch(0.3791 0.1378 265.5222)` — 强调块文字/链接
+- **ring**: `oklch(0.6231 0.1880 259.8145)` — 焦点/边框高亮
+- **muted**: `oklch(0.9846 0.0017 247.8389)` — 分隔/弱化背景
+- **muted-foreground**: `oklch(0.5510 0.0234 264.3637)` — 次要文字
+- **border**: `oklch(0.9276 0.0058 264.5313)` — 边框/输入框边
+- **input**: `oklch(0.9276 0.0058 264.5313)` — 输入框背景/边
+- **destructive**: `oklch(0.6368 0.2078 25.3313)` — 危险/错误
+- **destructive-foreground**: `oklch(1.0000 0 0)` — 危险按钮文字
+- **chart-1**: `oklch(0.6231 0.1880 259.8145)` — 图表色 1
+- **chart-2**: `oklch(0.5461 0.2152 262.8809)` — 图表色 2
+- **chart-3**: `oklch(0.4882 0.2172 264.3763)` — 图表色 3
+- **chart-4**: `oklch(0.4244 0.1809 265.6377)` — 图表色 4
+- **chart-5**: `oklch(0.3791 0.1378 265.5222)` — 图表色 5
+- **sidebar**: `oklch(0.9846 0.0017 247.8389)` — 侧边栏背景
+- **sidebar-foreground**: `oklch(0.3211 0 0)` — 侧边栏文字
+- **sidebar-primary**: `oklch(0.6231 0.1880 259.8145)` — 侧边栏主色
+- **sidebar-primary-foreground**: `oklch(1.0000 0 0)` — 侧边栏主色文字
+- **sidebar-accent**: `oklch(0.9514 0.0250 236.8242)` — 侧边栏强调
+- **sidebar-accent-foreground**: `oklch(0.3791 0.1378 265.5222)` — 侧边栏强调文字
+- **sidebar-border**: `oklch(0.9276 0.0058 264.5313)` — 侧边栏边框
+- **sidebar-ring**: `oklch(0.6231 0.1880 259.8145)` — 侧边栏焦点
+
+## Dark Theme Overrides
+
+- **background**: `oklch(0.2046 0 0)`
+- **foreground**: `oklch(0.9219 0 0)`
+- **card**: `oklch(0.2686 0 0)`
+- **card-foreground**: `oklch(0.9219 0 0)`
+- **popover**: `oklch(0.2686 0 0)`
+- **popover-foreground**: `oklch(0.9219 0 0)`
+- **primary**: `oklch(0.6231 0.1880 259.8145)`
+- **primary-foreground**: `oklch(1.0000 0 0)`
+- **secondary**: `oklch(0.2686 0 0)`
+- **secondary-foreground**: `oklch(0.9219 0 0)`
+- **muted**: `oklch(0.2393 0 0)`
+- **muted-foreground**: `oklch(0.7155 0 0)`
+- **accent**: `oklch(0.3791 0.1378 265.5222)`
+- **accent-foreground**: `oklch(0.8823 0.0571 254.1284)`
+- **destructive**: `oklch(0.6368 0.2078 25.3313)`
+- **destructive-foreground**: `oklch(1.0000 0 0)`
+- **border**: `oklch(0.3715 0 0)`
+- **input**: `oklch(0.3715 0 0)`
+- **ring**: `oklch(0.6231 0.1880 259.8145)`
+- **chart-1**: `oklch(0.7137 0.1434 254.6240)`
+- **chart-2**: `oklch(0.6231 0.1880 259.8145)`
+- **chart-3**: `oklch(0.5461 0.2152 262.8809)`
+- **chart-4**: `oklch(0.4882 0.2172 264.3763)`
+- **chart-5**: `oklch(0.4244 0.1809 265.6377)`
+- **sidebar**: `oklch(0.2046 0 0)`
+- **sidebar-foreground**: `oklch(0.9219 0 0)`
+- **sidebar-primary**: `oklch(0.6231 0.1880 259.8145)`
+- **sidebar-primary-foreground**: `oklch(1.0000 0 0)`
+- **sidebar-accent**: `oklch(0.3791 0.1378 265.5222)`
+- **sidebar-accent-foreground**: `oklch(0.8823 0.0571 254.1284)`
+- **sidebar-border**: `oklch(0.3715 0 0)`
+- **sidebar-ring**: `oklch(0.6231 0.1880 259.8145)`
