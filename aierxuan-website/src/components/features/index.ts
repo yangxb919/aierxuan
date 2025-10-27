@@ -1,0 +1,13 @@
+// Export all feature components for easy importing
+export { HeroSection } from './HeroSection'
+export { IndustrySwitcher } from './IndustrySwitcher'
+export { ProductGrid } from './ProductGrid'
+export { CoreAdvantages } from './CoreAdvantages'
+export { TrustBadges } from './TrustBadges'
+export { IndustrySolutions } from './IndustrySolutions'
+export { CaseStudies } from './CaseStudies'
+export { TechnicalCapabilities } from './TechnicalCapabilities'
+export { LatestNews } from './LatestNews'
+export { FAQSection } from './FAQSection'
+export { FinalCTA } from './FinalCTA'
+
