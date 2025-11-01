@@ -18,6 +18,8 @@ interface CreateProductRequest {
   status: string
   featured: boolean
   sort_order: number
+  moq?: number
+  price?: number
   images: string[]
   translations: ProductTranslation[]
 }
@@ -36,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
     
     const body: CreateProductRequest = await request.json()
-    const { slug, category, status, featured, sort_order, images, translations } = body
+    const { slug, category, status, featured, sort_order, moq, price, images, translations } = body
     
     // Validate input
     if (!slug || !category || !status || !translations || translations.length === 0) {
@@ -88,6 +90,8 @@ export async function POST(request: NextRequest) {
         status,
         featured: featured || false,
         sort_order: sort_order || 0,
+        moq: moq || null,
+        price: price || null,
         images: images || []
       })
       .select()

@@ -6,3 +6,5 @@ export { Input } from './Input'
 export type { InputProps } from './Input'
 
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
+
+export { FloatingCTAButton } from './FloatingCTAButton'

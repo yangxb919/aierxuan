@@ -4,6 +4,7 @@ import "./globals.css";
 import { ConditionalNavbar } from "@/components/layout/ConditionalNavbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContactModal } from "@/components/ui/ContactModal";
+import { FloatingCTAButton } from "@/components/ui/FloatingCTAButton";
 import Script from "next/script";
 
 const inter = Inter({
@@ -16,6 +17,9 @@ export const metadata: Metadata = {
   title: "AIERXUAN - High-Performance Laptops & Mini PCs | OEM/ODM Solutions",
   description: "Leading OEM/ODM manufacturer of high-performance laptops and mini PCs for business. Customizable solutions for education, industrial, medical, and office applications. Global delivery, enterprise-grade quality.",
   keywords: "OEM laptop, ODM laptop, mini PC, business laptop, industrial PC, custom laptop, enterprise computing, AIERXUAN, laptop manufacturer, mini PC OEM",
+  icons: {
+    icon: '/aierxuan_favicon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +29,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T3NJ8X84');`}
+        </Script>
+      </head>
       <body className="font-sans antialiased bg-white text-gray-900">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T3NJ8X84"
+            height="0"
+            width="0"
+            style={{display: 'none', visibility: 'hidden'}}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <div className="min-h-screen flex flex-col">
           <ConditionalNavbar />
           <main className="flex-1">
@@ -36,6 +60,9 @@ export default function RootLayout({
 
         {/* Global Contact Modal */}
         <ContactModal />
+
+        {/* Floating CTA Button */}
+        <FloatingCTAButton />
 
         {/* Google Maps API */}
         <Script

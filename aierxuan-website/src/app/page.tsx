@@ -7,10 +7,9 @@ import { ProductCategories } from '@/components/features/ProductCategories'
 import { HeroSection } from '@/components/features/HeroSection'
 import { CoreAdvantages } from '@/components/features/CoreAdvantages'
 import { TrustBadges } from '@/components/features/TrustBadges'
-import { IndustrySolutions } from '@/components/features/IndustrySolutions'
 import { CaseStudies } from '@/components/features/CaseStudies'
+import { ManufacturingCapability } from '@/components/features/ManufacturingCapability'
 import { TechnicalCapabilities } from '@/components/features/TechnicalCapabilities'
-import { LatestNews } from '@/components/features/LatestNews'
 import { FAQSection } from '@/components/features/FAQSection'
 import { FinalCTA } from '@/components/features/FinalCTA'
 import { Button } from '@/components/ui'
@@ -118,19 +117,13 @@ export default function Home() {
       {/* 5. Trust Badges (Clients & Certifications) - NEW */}
       <TrustBadges />
 
-      {/* 6. Industry Solutions - NEW */}
-      <IndustrySolutions />
-
-      {/* 7. Case Studies - NEW */}
-      <CaseStudies />
+      {/* 6. Manufacturing Capability - REPLACED Case Studies */}
+      <ManufacturingCapability />
 
       {/* 8. Technical Capabilities - NEW */}
       <TechnicalCapabilities />
 
-      {/* 9. Latest News - NEW */}
-      <LatestNews />
-
-      {/* 10. FAQ Section */}
+      {/* 9. FAQ Section */}
       <FAQSection />
 
       {/* 11. Final CTA / RFQ Form - NEW */}

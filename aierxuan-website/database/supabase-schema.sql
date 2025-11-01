@@ -74,6 +74,8 @@ CREATE TABLE products (
     status VARCHAR(20) DEFAULT 'draft' CHECK (status IN ('draft', 'active', 'inactive', 'archived')),
     sort_order INTEGER DEFAULT 0,
     featured BOOLEAN DEFAULT false,
+    moq INTEGER DEFAULT 100,
+    price DECIMAL(10, 2),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );

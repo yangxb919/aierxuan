@@ -29,7 +29,12 @@ const productDetailTexts = {
     productImages: 'Product Images',
     noDescription: 'No description available',
     features: 'Features',
-    overview: 'Overview'
+    overview: 'Overview',
+    moq: 'MOQ',
+    price: 'Price',
+    units: 'units',
+    pricePerUnit: 'per unit',
+    startingFrom: 'Starting from'
   },
   ru: {
     specifications: 'Технические характеристики',
@@ -47,7 +52,12 @@ const productDetailTexts = {
     productImages: 'Изображения продукта',
     noDescription: 'Описание недоступно',
     features: 'Особенности',
-    overview: 'Обзор'
+    overview: 'Обзор',
+    moq: 'MOQ',
+    price: 'Цена',
+    units: 'единиц',
+    pricePerUnit: 'за единицу',
+    startingFrom: 'От'
   },
   ja: {
     specifications: '仕様',
@@ -65,7 +75,12 @@ const productDetailTexts = {
     productImages: '製品画像',
     noDescription: '説明がありません',
     features: '特徴',
-    overview: '概要'
+    overview: '概要',
+    moq: 'MOQ',
+    price: '価格',
+    units: '台',
+    pricePerUnit: '台あたり',
+    startingFrom: '〜'
   },
   fr: {
     specifications: 'Spécifications',
@@ -83,7 +98,12 @@ const productDetailTexts = {
     productImages: 'Images du produit',
     noDescription: 'Aucune description disponible',
     features: 'Caractéristiques',
-    overview: 'Aperçu'
+    overview: 'Aperçu',
+    moq: 'MOQ',
+    price: 'Prix',
+    units: 'unités',
+    pricePerUnit: 'par unité',
+    startingFrom: 'À partir de'
   },
   pt: {
     specifications: 'Especificações',
@@ -101,7 +121,12 @@ const productDetailTexts = {
     productImages: 'Imagens do Produto',
     noDescription: 'Nenhuma descrição disponível',
     features: 'Recursos',
-    overview: 'Visão Geral'
+    overview: 'Visão Geral',
+    moq: 'MOQ',
+    price: 'Preço',
+    units: 'unidades',
+    pricePerUnit: 'por unidade',
+    startingFrom: 'A partir de'
   },
   'zh-CN': {
     specifications: '技术规格',
@@ -118,6 +143,11 @@ const productDetailTexts = {
     tryAgain: '重试',
     productImages: '产品图片',
     noDescription: '暂无描述',
+    moq: '起订量',
+    price: '价格',
+    units: '台',
+    pricePerUnit: '每台',
+    startingFrom: '起'
     features: '特性',
     overview: '概述'
   }
@@ -293,15 +323,44 @@ export default function ProductDetailPage() {
 
               {/* Price and CTA */}
               <div className="bg-blue-50 rounded-lg p-6">
-                <div className="text-center">
-                  <p className="text-lg font-medium text-blue-900 mb-4">
-                    {texts.contactForPrice}
-                  </p>
-                  <Link href={`/contact?product=${encodeURIComponent(translation?.title || product.slug)}`}>
-                    <Button size="lg" className="w-full sm:w-auto">
-                      {texts.requestQuote}
-                    </Button>
-                  </Link>
+                <div className="space-y-4">
+                  {/* MOQ and Price Display */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* MOQ */}
+                    {product.moq && (
+                      <div className="bg-white rounded-lg p-4">
+                        <p className="text-sm text-gray-600 mb-1">{texts.moq}</p>
+                        <p className="text-2xl font-bold text-blue-900">
+                          {product.moq} <span className="text-sm font-normal text-gray-600">{texts.units}</span>
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Price */}
+                    {product.price && (
+                      <div className="bg-white rounded-lg p-4">
+                        <p className="text-sm text-gray-600 mb-1">{texts.price}</p>
+                        <p className="text-2xl font-bold text-blue-900">
+                          ${Number(product.price).toFixed(2)}
+                        </p>
+                        <p className="text-xs text-gray-500">{texts.pricePerUnit}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="text-center">
+                    {!product.price && (
+                      <p className="text-lg font-medium text-blue-900 mb-4">
+                        {texts.contactForPrice}
+                      </p>
+                    )}
+                    <Link href={`/contact?product=${encodeURIComponent(translation?.title || product.slug)}`}>
+                      <Button size="lg" className="w-full sm:w-auto">
+                        {texts.requestQuote}
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
