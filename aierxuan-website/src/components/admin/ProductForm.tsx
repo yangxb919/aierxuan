@@ -23,6 +23,8 @@ interface ProductFormData {
   status: string
   featured: boolean
   sort_order: number
+  moq?: number
+  price?: number
   images: string[]
   translations: ProductTranslation[]
 }
@@ -75,6 +77,8 @@ export default function ProductForm({ initialData, productId, mode }: ProductFor
         status: 'active',
         featured: false,
         sort_order: 0,
+        moq: 100,
+        price: undefined,
         images: [],
         translations: LANGUAGES.map(lang => ({
           ...DEFAULT_TRANSLATION,
@@ -341,6 +345,38 @@ export default function ProductForm({ initialData, productId, mode }: ProductFor
                 />
                 <span className="text-sm font-medium text-gray-700">Featured Product</span>
               </label>
+            </div>
+          </div>
+
+          {/* MOQ and Price */}
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                MOQ (Minimum Order Quantity)
+              </label>
+              <Input
+                type="number"
+                value={formData.moq || ''}
+                onChange={(e) => setFormData({ ...formData, moq: parseInt(e.target.value) || undefined })}
+                placeholder="100"
+                min="1"
+              />
+              <p className="text-xs text-gray-500 mt-1">Minimum units required per order</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Price (USD per unit)
+              </label>
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.price || ''}
+                onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) || undefined })}
+                placeholder="299.99"
+                min="0"
+              />
+              <p className="text-xs text-gray-500 mt-1">Leave empty to show "Contact for Price"</p>
             </div>
           </div>
         </div>

@@ -18,6 +18,8 @@ const categoryContent = {
         icon: '💼',
         image: '/images/category-business-laptop.jpg',
         features: ['Intel Core i9', 'Long Battery Life', 'Enterprise Security'],
+        moq: 'MOQ: 100 units',
+        useCase: 'Perfect for: Bulk corporate orders, educational institutions',
         color: 'blue'
       },
       {
@@ -28,6 +30,8 @@ const categoryContent = {
         icon: '🎮',
         image: '/images/category-gaming-laptop.jpg',
         features: ['RTX Graphics', 'High Refresh Rate', 'Advanced Cooling'],
+        moq: 'MOQ: 100 units',
+        useCase: 'Perfect for: Gaming brands, esports organizations',
         color: 'purple'
       },
       {
@@ -38,6 +42,8 @@ const categoryContent = {
         icon: '🖥️',
         image: '/images/category-mini-pc.jpg',
         features: ['Compact Design', 'Silent Operation', 'Energy Efficient'],
+        moq: 'MOQ: 50 units',
+        useCase: 'Perfect for: Digital signage, kiosks, office workstations',
         color: 'green'
       }
     ]
@@ -54,6 +60,8 @@ const categoryContent = {
         icon: '💼',
         image: '/images/category-business-laptop.jpg',
         features: ['Intel Core i9', 'Долгая работа', 'Корп. безопасность'],
+        moq: 'MOQ: 100 единиц',
+        useCase: 'Идеально для: Корпоративных заказов, образовательных учреждений',
         color: 'blue'
       },
       {
@@ -64,6 +72,8 @@ const categoryContent = {
         icon: '🎮',
         image: '/images/category-gaming-laptop.jpg',
         features: ['RTX графика', 'Высокая частота', 'Продвинутое охлаждение'],
+        moq: 'MOQ: 100 единиц',
+        useCase: 'Идеально для: Игровых брендов, киберспортивных организаций',
         color: 'purple'
       },
       {
@@ -74,6 +84,8 @@ const categoryContent = {
         icon: '🖥️',
         image: '/images/category-mini-pc.jpg',
         features: ['Компактный дизайн', 'Тихая работа', 'Энергоэффективность'],
+        moq: 'MOQ: 50 единиц',
+        useCase: 'Идеально для: Цифровых вывесок, киосков, офисных рабочих станций',
         color: 'green'
       }
     ]
@@ -198,6 +210,8 @@ const categoryContent = {
         icon: '💼',
         image: '/images/category-business-laptop.jpg',
         features: ['Intel Core i9', '长续航', '企业级安全'],
+        moq: '起订量: 100台',
+        useCase: '适用于: 企业批量采购、教育机构',
         color: 'blue'
       },
       {
@@ -208,6 +222,8 @@ const categoryContent = {
         icon: '🎮',
         image: '/images/category-gaming-laptop.jpg',
         features: ['RTX显卡', '高刷新率', '先进散热'],
+        moq: '起订量: 100台',
+        useCase: '适用于: 游戏品牌、电竞组织',
         color: 'purple'
       },
       {
@@ -218,6 +234,8 @@ const categoryContent = {
         icon: '🖥️',
         image: '/images/category-mini-pc.jpg',
         features: ['紧凑设计', '静音运行', '节能高效'],
+        moq: '起订量: 50台',
+        useCase: '适用于: 数字标牌、自助终端、办公工作站',
         color: 'green'
       }
     ]
@@ -297,7 +315,7 @@ export function ProductCategories() {
                   </p>
 
                   {/* Features */}
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-2 mb-4">
                     {category.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-sm text-gray-700">
                         <svg className={`w-4 h-4 mr-2 ${colors.text}`} fill="currentColor" viewBox="0 0 20 20">
@@ -308,14 +326,30 @@ export function ProductCategories() {
                     ))}
                   </div>
 
+                  {/* MOQ Badge */}
+                  {(category as any).moq && (
+                    <div className="mb-3">
+                      <span className={`inline-block px-3 py-1 ${colors.bg} ${colors.text} text-sm font-semibold rounded-full`}>
+                        {(category as any).moq}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Use Case */}
+                  {(category as any).useCase && (
+                    <p className="text-xs text-gray-500 mb-4 italic">
+                      {(category as any).useCase}
+                    </p>
+                  )}
+
                   {/* CTA Button */}
                   <div className={`${colors.button} px-6 py-3 rounded-lg text-center font-semibold group-hover:scale-105 transition-transform duration-300`}>
-                    {language === 'zh-CN' ? '查看产品' : 
-                     language === 'ru' ? 'Смотреть продукты' :
-                     language === 'ja' ? '製品を見る' :
-                     language === 'fr' ? 'Voir les produits' :
-                     language === 'pt' ? 'Ver produtos' :
-                     'View Products'}
+                    {language === 'zh-CN' ? '获取报价' :
+                     language === 'ru' ? 'Запросить цену' :
+                     language === 'ja' ? '見積もりを依頼' :
+                     language === 'fr' ? 'Demander un devis' :
+                     language === 'pt' ? 'Solicitar cotação' :
+                     'Request Quote'}
                   </div>
 
                   {/* Hover Effect Arrow */}

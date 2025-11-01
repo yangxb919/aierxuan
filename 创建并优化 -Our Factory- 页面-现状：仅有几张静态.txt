@@ -1,0 +1,39 @@
+创建并优化 "Our Factory" 页面
+
+现状：仅有几张静态图片，信息量不足。
+
+优化建议：
+
+图库升级：增加高清图片，展示：生产线全景、SMT贴片机、老化测试房、质检环节特写、静电防护措施、仓库环境。
+
+添加图文说明：在每张图片下添加简短说明，如“Automated Assembly Line for Consistent Quality", "72-Hour Burn-in Testing for Every Unit”。
+
+嵌入视频：将你拍摄的1-2分钟工厂导览/质检视频嵌入页面顶部。
+
+创建 "Certifications & Quality" 专属页面
+
+现状：证书信息缺失或分散。
+
+优化建议：
+
+在主导航栏添加此页面。
+
+将所有的认证证书（CE, FCC, RoHS, ISO 9001等）高清扫描，整齐排列展示。
+
+详细列出你的质量控制流程，使用流程图或分点说明，例如：
+
+Step 1: Components Sourcing & Inspection
+
+Step 2: In-Line Assembly Monitoring
+
+Step 3: Initial Boot & Function Test
+
+Step 4: 48-Hour High/Low-Temperature Burn-in
+
+Step 5: Final Cosmetic Check & Packaging
+
+网站页脚优化
+
+现状：信息空白。
+
+优化建议：在页脚醒目地展示所有认证的图标（CE, FCC, RoHS等），并链接到新的 "Certifications & Quality" 页面。这是建立初步信任的“小细节，大作用”。

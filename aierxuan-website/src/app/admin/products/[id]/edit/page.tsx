@@ -13,6 +13,8 @@ interface Product {
   status: string
   featured: boolean
   sort_order: number
+  moq?: number
+  price?: number
   created_at: string
   updated_at: string
   translations: {
@@ -76,6 +78,8 @@ export default async function AdminProductEditPage({
     status: product.status,
     featured: product.featured,
     sort_order: product.sort_order,
+    moq: product.moq,
+    price: product.price,
     images: product.images || [],
     translations: product.translations
   }
