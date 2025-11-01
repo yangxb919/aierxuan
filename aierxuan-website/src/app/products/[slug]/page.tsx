@@ -147,7 +147,7 @@ const productDetailTexts = {
     price: '价格',
     units: '台',
     pricePerUnit: '每台',
-    startingFrom: '起'
+    startingFrom: '起',
     features: '特性',
     overview: '概述'
   }
