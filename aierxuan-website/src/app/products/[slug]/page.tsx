@@ -391,8 +391,8 @@ export default function ProductDetailPage() {
                       return rows.length ? (
                         rows.map((r) => (
                           <div key={r.label} className="flex justify-between gap-4 py-1 border-b border-gray-100 last:border-0">
-                            <span className="text-gray-700 font-medium">{r.label}</span>
-                            <span className="text-gray-600 text-right flex-1">{r.value}</span>
+                            <span className="text-gray-900 font-semibold">{r.label}</span>
+                            <span className="text-gray-800 text-right flex-1">{r.value}</span>
                           </div>
                         ))
                       ) : (
@@ -411,10 +411,10 @@ export default function ProductDetailPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="bg-gray-50 rounded px-3 py-2">✅ OEM/ODM Service</div>
-                    <div className="bg-gray-50 rounded px-3 py-2">🌍 Global Shipping</div>
-                    <div className="bg-gray-50 rounded px-3 py-2">🕑 24/7 Support</div>
-                    <div className="bg-gray-50 rounded px-3 py-2">🏷️ Custom Branding</div>
+                    <div className="bg-gray-50 rounded px-3 py-2 text-gray-900 font-medium">✅ OEM/ODM Service</div>
+                    <div className="bg-gray-50 rounded px-3 py-2 text-gray-900 font-medium">🌍 Global Shipping</div>
+                    <div className="bg-gray-50 rounded px-3 py-2 text-gray-900 font-medium">🕑 24/7 Support</div>
+                    <div className="bg-gray-50 rounded px-3 py-2 text-gray-900 font-medium">🏷️ Custom Branding</div>
                   </div>
                 </CardContent>
               </Card>
@@ -449,7 +449,7 @@ export default function ProductDetailPage() {
             <div className="p-6">
               {activeTab === 'description' && (
                 <div className="prose prose-sm max-w-none">
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  <p className="text-gray-900 leading-relaxed whitespace-pre-line font-normal">
                     {translation?.long_desc || texts.noDescription}
                   </p>
                 </div>
@@ -459,8 +459,8 @@ export default function ProductDetailPage() {
                 <div className="divide-y divide-gray-100">
                   {Object.entries((translation?.key_specs || {}) as Record<string, any>).map(([k, v]) => (
                     <div key={k} className="grid grid-cols-3 gap-4 py-3">
-                      <div className="col-span-1 text-gray-700 font-medium">{k}</div>
-                      <div className="col-span-2 text-gray-600">{String(v)}</div>
+                      <div className="col-span-1 text-gray-900 font-semibold">{k}</div>
+                      <div className="col-span-2 text-gray-800">{String(v)}</div>
                     </div>
                   ))}
                   {Object.keys(translation?.key_specs || {}).length === 0 && (
