@@ -31,42 +31,42 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'factoryOverview',
       label: texts.photos.factoryOverview,
       desc: texts.photos.factoryOverviewDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/c26a73637aa05ed4596d14db26bea8dc.jpg',
+      url: '/images/factory/factory-1.jpg',
       alt: 'AIERXUAN Factory Exterior'
     },
     {
       key: 'assemblyLine',
       label: texts.photos.assemblyLine,
       desc: texts.photos.assemblyLineDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/67598d9d8e0544e6c3db48bb897125c6.jpg',
+      url: '/images/factory/factory-2.jpg',
       alt: 'Laptop Assembly Line'
     },
     {
       key: 'testingLab',
       label: texts.photos.testingLab,
       desc: texts.photos.testingLabDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/dce38009c6f3fdec26431e8bddc0d611.jpg',
+      url: '/images/factory/factory-3.jpg',
       alt: 'Quality Testing Laboratory'
     },
     {
       key: 'warehouse',
       label: texts.photos.warehouse,
       desc: texts.photos.warehouseDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/79fe4ad6042fc2232bbb558f312002d7.jpg',
+      url: '/images/factory/factory-4.jpg',
       alt: 'Warehouse & Logistics'
     },
     {
       key: 'rdCenter',
       label: texts.photos.rdCenter,
       desc: texts.photos.rdCenterDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/3d327fd4d96bb5c7fffa1352c71845f8.jpg',
+      url: '/images/factory/factory-5.jpg',
       alt: 'R&D Center'
     },
     {
       key: 'qualityControl',
       label: texts.photos.qualityControl,
       desc: texts.photos.qualityControlDesc,
-      url: 'https://file.302.ai/gpt/imgs/20251029/d2d1f7b2fc0b26ceb51f05ee04403fae.jpg',
+      url: '/images/factory/factory-6.jpg',
       alt: 'Quality Control Station'
     }
   ]
