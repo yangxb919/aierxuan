@@ -30,8 +30,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        {/* 预加载关键图片 - 优化LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-banner.webp"
+          type="image/webp"
+          // @ts-ignore - fetchpriority is valid but not in types yet
+          fetchpriority="high"
+        />
+
+        {/* 预连接关键域名 - 减少DNS查询时间 */}
+        <link rel="preconnect" href="https://dudvgnkvukujhqatolqm.supabase.co" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Google Tag Manager - 延迟加载 */}
+        <Script id="google-tag-manager" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

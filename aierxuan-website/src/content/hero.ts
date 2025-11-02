@@ -26,7 +26,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: 'Professional Laptop & Mini PC Manufacturer',
         subtitle: 'OEM/ODM Solutions for Global Partners',
         description: '✓ Flexible MOQ from 100 Units  ✓ Fast 7-15 Days Delivery  ✓ Full Customization Available  ✓ Intel Partner | CE/FCC Certified',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: 'View Products',
@@ -39,7 +39,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: 'Профессиональный Производитель Ноутбуков и Мини-ПК',
         subtitle: 'OEM/ODM Решения для Глобальных Партнеров',
         description: '✓ Гибкий MOQ от 100 Единиц  ✓ Быстрая Доставка 7-15 Дней  ✓ Полная Кастомизация  ✓ Партнер Intel | Сертификаты CE/FCC',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: 'Посмотреть продукты',
@@ -52,7 +52,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: 'プロフェッショナルノートPC・ミニPC製造メーカー',
         subtitle: 'グローバルパートナー向けOEM/ODMソリューション',
         description: '✓ 100台からの柔軟なMOQ  ✓ 7-15日の迅速配送  ✓ 完全カスタマイズ対応  ✓ Intelパートナー | CE/FCC認証',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: '製品を見る',
@@ -65,7 +65,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: 'Fabricant Professionnel d\'Ordinateurs Portables et Mini PC',
         subtitle: 'Solutions OEM/ODM pour Partenaires Mondiaux',
         description: '✓ MOQ Flexible à partir de 100 Unités  ✓ Livraison Rapide 7-15 Jours  ✓ Personnalisation Complète  ✓ Partenaire Intel | Certifié CE/FCC',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: 'Voir les produits',
@@ -78,7 +78,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: 'Fabricante Profissional de Laptops e Mini PCs',
         subtitle: 'Soluções OEM/ODM para Parceiros Globais',
         description: '✓ MOQ Flexível a partir de 100 Unidades  ✓ Entrega Rápida 7-15 Dias  ✓ Personalização Completa  ✓ Parceiro Intel | Certificado CE/FCC',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: 'Ver Produtos',
@@ -91,7 +91,7 @@ export const heroContent: Record<string, HeroContent> = {
         title: '专业笔记本电脑和迷你主机制造商',
         subtitle: '为全球合作伙伴提供OEM/ODM解决方案',
         description: '✓ 灵活起订量100台起  ✓ 快速交付7-15天  ✓ 全面定制服务  ✓ Intel合作伙伴 | CE/FCC认证',
-        image: '/images/hero-banner.jpg'
+        image: '/images/hero-banner.webp'
       }
     ],
     cta: '查看产品',
