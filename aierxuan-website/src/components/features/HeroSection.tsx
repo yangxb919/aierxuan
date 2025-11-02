@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui'
 import { useLanguage } from '@/store/useAppStore'
 import { heroContent, type HeroSlide } from '@/content/hero'
@@ -61,29 +62,33 @@ export function HeroSection() {
 
   return (
     <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden h-screen min-h-[700px] pt-16">
-      {/* Background Image with Transition */}
-      <div
-        className="absolute inset-0 transition-all duration-1000 ease-in-out"
-        style={{
-          backgroundImage: `url(${currentSlide.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay',
-          transform: isAutoPlaying ? 'scale(1.02)' : 'scale(1)',
-          transition: 'transform 10000ms ease-out, opacity 1000ms ease-in-out'
-        }}
-      />
+      {/* Background Image with Next.js Image - Optimized for LCP */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-banner.webp"
+          alt="AIERXUAN Professional Laptop & Mini PC Manufacturer"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover transition-transform duration-[10000ms] ease-out"
+          style={{
+            objectPosition: 'center',
+            transform: isAutoPlaying ? 'scale(1.02)' : 'scale(1)',
+          }}
+        />
+      </div>
 
       {/* Light Blue Overlay/Mask */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-blue-800/15 to-blue-700/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-blue-800/15 to-blue-700/10 z-10"></div>
 
       {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-10" style={{
+      <div className="absolute inset-0 opacity-10 z-10" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
 
       {/* Content */}
-      <div className="relative h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col items-center justify-center h-full text-center space-y-12">
           {/* Main Title with Transition */}
           <div className="space-y-4 transition-all duration-700 ease-out">

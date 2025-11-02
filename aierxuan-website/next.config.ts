@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 图片优化
+  // 图片优化 - 增强性能配置
   images: {
     remotePatterns: [
       {
@@ -13,7 +13,10 @@ const nextConfig: NextConfig = {
         hostname: '*.supabase.co',
       },
     ],
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/avif', 'image/webp'], // AVIF优先（更小体积）
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920], // 响应式图片尺寸
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // 小图标尺寸
+    minimumCacheTTL: 31536000, // 1年缓存（秒）
   },
 
   // 环境变量
@@ -34,7 +37,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // 安全头
+  // 安全头和缓存策略
   async headers() {
     return [
       {
@@ -51,6 +54,16 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+      // 图片缓存策略 - 1年不可变缓存
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
