@@ -12,11 +12,11 @@ interface StorySectionProps {
 
 export function StorySection({ texts }: StorySectionProps) {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-8">
           {/* Title - Increased from 32px to 40px */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight">
             {texts.title}
           </h2>
 
@@ -28,7 +28,7 @@ export function StorySection({ texts }: StorySectionProps) {
           )}
 
           {/* Paragraphs */}
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-lg text-slate-700 leading-relaxed">
             <p className="text-left sm:text-center">
               {texts.paragraph1}
             </p>

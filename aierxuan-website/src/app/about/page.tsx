@@ -1,7 +1,7 @@
 'use client'
 
 import { useLanguage } from '@/store/useAppStore'
-import { HeroSection, StorySection, CTASection, FactorySection, QualitySection, MilestonesSection } from '@/components/about'
+import { HeroSection, StorySection, CTASection, FactorySection, QualitySection, MilestonesSection, AwardsExhibitionsSection } from '@/components/about'
 
 // About page translations for all 6 languages
 const aboutPageTexts = {
@@ -60,7 +60,16 @@ const aboutPageTexts = {
         step7: 'Pre-Shipment Verification'
       }
     },
-
+    // Exhibitions & Awards Section
+    events: {
+      title: 'Global Exhibitions & Intel Partnership',
+      subtitle: 'Building trust face-to-face and earning recognition from industry leaders',
+      exhibitionsTitle: 'International Trade Shows',
+      exhibitionsDesc: 'We meet partners worldwide to showcase new products, understand market needs, and build long-term cooperation.',
+      intelTitle: 'Intel Partnership & Awards',
+      intelDesc: 'Recognized at Intel China Channel events. Our close collaboration ensures cutting-edge performance and stable supply.'
+    },
+    
     // Milestones Section
     milestones: {
       title: 'By The Numbers',
@@ -107,17 +116,17 @@ const aboutPageTexts = {
       videoTitle: 'Видео-тур по заводу',
       photos: {
         factoryOverview: 'Обзор завода',
-        factoryOverviewDesc: 'Современное производство 15 000㎡',
+        factoryOverviewDesc: 'Современное производство площадью 15 000㎡',
         assemblyLine: 'Сборочная линия',
-        assemblyLineDesc: '6 автоматизированных производственных линий',
+        assemblyLineDesc: '6 автоматизированных линий',
         testingLab: 'Испытательная лаборатория',
-        testingLabDesc: '72-часовое тестирование на выгорание',
+        testingLabDesc: '72-часовые стресс‑тесты',
         warehouse: 'Склад и логистика',
-        warehouseDesc: 'Быстрая глобальная доставка',
+        warehouseDesc: 'Быстрая глобальная отгрузка',
         rdCenter: 'Центр R&D',
-        rdCenterDesc: 'Специализированная инженерная команда',
+        rdCenterDesc: 'Выделенная инженерная команда',
         qualityControl: 'Контроль качества',
-        qualityControlDesc: 'Многоэтапный процесс проверки'
+        qualityControlDesc: 'Многоэтапная инспекция'
       }
     },
     quality: {
@@ -134,6 +143,14 @@ const aboutPageTexts = {
         step6: 'Контроль качества упаковки',
         step7: 'Предотгрузочная проверка'
       }
+    },
+    events: {
+      title: 'Международные выставки и партнёрство с Intel',
+      subtitle: 'Мы укрепляем доверие лично и получаем признание лидеров отрасли',
+      exhibitionsTitle: 'Международные выставки',
+      exhibitionsDesc: 'Мы встречаемся с партнёрами по всему миру, показываем новые продукты и выстраиваем долгосрочное сотрудничество.',
+      intelTitle: 'Партнёрство и награды Intel',
+      intelDesc: 'Отмечены на мероприятиях Intel China Channel. Совместная работа обеспечивает передовую производительность и стабильные поставки.'
     },
     milestones: {
       title: 'В цифрах',
@@ -178,11 +195,17 @@ const aboutPageTexts = {
       videoTitle: '🎥 工場見学ビデオ',
       photos: {
         factoryOverview: '工場概要',
+        factoryOverviewDesc: '15,000㎡のモダンな施設',
         assemblyLine: '組立ライン',
+        assemblyLineDesc: '自動化された6本の生産ライン',
         testingLab: '試験室',
+        testingLabDesc: '72時間のバーンインテスト',
         warehouse: '倉庫・物流',
+        warehouseDesc: '迅速なグローバル出荷',
         rdCenter: 'R&Dセンター',
-        qualityControl: '品質管理'
+        rdCenterDesc: '専任のエンジニアチーム',
+        qualityControl: '品質管理',
+        qualityControlDesc: '多段階の検査プロセス'
       }
     },
     quality: {
@@ -199,6 +222,14 @@ const aboutPageTexts = {
         step6: '梱包品質チェック',
         step7: '出荷前検証'
       }
+    },
+    events: {
+      title: 'グローバル展示会とIntelパートナーシップ',
+      subtitle: '現場で信頼を築き、業界リーダーからの評価を獲得',
+      exhibitionsTitle: '国際見本市',
+      exhibitionsDesc: '世界各地でパートナーと交流し、新製品を紹介し、長期的な協力関係を構築しています。',
+      intelTitle: 'Intelとの協業と受賞',
+      intelDesc: 'Intel China Channelのイベントで表彰。密接な連携により最新性能と安定供給を実現しています。'
     },
     milestones: {
       title: '数字で見る実績',
@@ -243,11 +274,17 @@ const aboutPageTexts = {
       videoTitle: '🎥 Visite vidéo de l\'usine',
       photos: {
         factoryOverview: 'Vue d\'ensemble de l\'usine',
+        factoryOverviewDesc: 'Site moderne de 15 000㎡',
         assemblyLine: 'Chaîne d\'assemblage',
+        assemblyLineDesc: '6 lignes de production automatisées',
         testingLab: 'Laboratoire de test',
+        testingLabDesc: 'Test d\'endurance 72h',
         warehouse: 'Entrepôt et logistique',
+        warehouseDesc: 'Expédition mondiale rapide',
         rdCenter: 'Centre R&D',
-        qualityControl: 'Contrôle qualité'
+        rdCenterDesc: 'Équipe d\'ingénierie dédiée',
+        qualityControl: 'Contrôle qualité',
+        qualityControlDesc: 'Processus d\'inspection multi-étapes'
       }
     },
     quality: {
@@ -264,6 +301,14 @@ const aboutPageTexts = {
         step6: 'Contrôle qualité de l\'emballage',
         step7: 'Vérification avant expédition'
       }
+    },
+    events: {
+      title: 'Salons internationaux et partenariat Intel',
+      subtitle: 'Construire la confiance sur le terrain et obtenir la reconnaissance des leaders du secteur',
+      exhibitionsTitle: 'Salons internationaux',
+      exhibitionsDesc: 'Nous rencontrons des partenaires dans le monde entier pour présenter nos produits et établir des coopérations durables.',
+      intelTitle: 'Partenariat et distinctions Intel',
+      intelDesc: 'Récompensés lors des événements Intel China Channel. Notre collaboration assure des performances de pointe et un approvisionnement stable.'
     },
     milestones: {
       title: 'En chiffres',
@@ -308,11 +353,17 @@ const aboutPageTexts = {
       videoTitle: '🎥 Vídeo tour da fábrica',
       photos: {
         factoryOverview: 'Visão geral da fábrica',
+        factoryOverviewDesc: 'Instalação moderna de 15.000㎡',
         assemblyLine: 'Linha de montagem',
+        assemblyLineDesc: '6 linhas automatizadas',
         testingLab: 'Laboratório de testes',
+        testingLabDesc: 'Teste de queima de 72h',
         warehouse: 'Armazém e logística',
+        warehouseDesc: 'Envio global rápido',
         rdCenter: 'Centro de P&D',
-        qualityControl: 'Controle de qualidade'
+        rdCenterDesc: 'Equipe de engenharia dedicada',
+        qualityControl: 'Controle de qualidade',
+        qualityControlDesc: 'Inspeção em múltiplas etapas'
       }
     },
     quality: {
@@ -329,6 +380,14 @@ const aboutPageTexts = {
         step6: 'Verificação de qualidade de embalagem',
         step7: 'Verificação pré-envio'
       }
+    },
+    events: {
+      title: 'Feiras globais e parceria com a Intel',
+      subtitle: 'Construindo confiança pessoalmente e recebendo reconhecimento dos líderes do setor',
+      exhibitionsTitle: 'Feiras internacionais',
+      exhibitionsDesc: 'Encontramos parceiros em todo o mundo para apresentar novos produtos e construir cooperação de longo prazo.',
+      intelTitle: 'Parceria e prêmios Intel',
+      intelDesc: 'Reconhecidos em eventos da Intel China Channel. A colaboração próxima garante desempenho de ponta e fornecimento estável.'
     },
     milestones: {
       title: 'Em números',
@@ -373,11 +432,17 @@ const aboutPageTexts = {
       videoTitle: '🎥 工厂参观视频',
       photos: {
         factoryOverview: '工厂概览',
+        factoryOverviewDesc: '15,000㎡ 现代化厂房',
         assemblyLine: '组装生产线',
+        assemblyLineDesc: '6 条自动化生产线',
         testingLab: '测试实验室',
+        testingLabDesc: '72 小时老化测试',
         warehouse: '仓库物流',
+        warehouseDesc: '全球快速发货',
         rdCenter: '研发中心',
-        qualityControl: '质量控制'
+        rdCenterDesc: '专业工程师团队',
+        qualityControl: '质量控制',
+        qualityControlDesc: '多环节检验流程'
       }
     },
     quality: {
@@ -394,6 +459,14 @@ const aboutPageTexts = {
         step6: '包装质量检查',
         step7: '出货前验证'
       }
+    },
+    events: {
+      title: '全球参展与 Intel 合作荣誉',
+      subtitle: '走到客户身边建立信任，并获得行业领导者的认可',
+      exhibitionsTitle: '国际展会现场',
+      exhibitionsDesc: '我们在全球多个展会与合作伙伴面对面交流，展示新品、洞察市场需求，建立长期合作。',
+      intelTitle: 'Intel 合作与颁奖',
+      intelDesc: '多次在 Intel 中国区渠道峰会上获得认可。紧密合作保证前沿性能与稳定供货。'
     },
     milestones: {
       title: '数据说话',
@@ -437,6 +510,9 @@ export default function AboutPage() {
 
       {/* Module 4: Quality Assurance */}
       <QualitySection texts={texts.quality} />
+
+      {/* Module 5: Exhibitions & Intel Awards */}
+      <AwardsExhibitionsSection texts={texts.events} />
 
       {/* Module 5: Milestones */}
       <MilestonesSection texts={texts.milestones} />

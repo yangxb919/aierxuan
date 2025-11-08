@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui'
 import Link from 'next/link'
-import Image from 'next/image'
 
 interface HeroSectionProps {
   texts: {
@@ -17,11 +16,11 @@ interface HeroSectionProps {
 export function HeroSection({ texts }: HeroSectionProps) {
   return (
     <section className="relative text-white overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #1F4E78 0%, #2E5C8A 100%)'
+      background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%)'
     }}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      {/* Modern Grid Pattern */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Crect x='0' y='0' width='2' height='40'/%3E%3Crect x='0' y='0' width='40' height='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -62,29 +61,29 @@ export function HeroSection({ texts }: HeroSectionProps) {
             </div>
 
             {/* Subtitle - Increased from 16px to 20px */}
-            <p className="text-xl sm:text-2xl lg:text-3xl text-blue-100 font-medium">
+            <p className="text-xl sm:text-2xl lg:text-3xl text-slate-200 font-medium">
               {texts.subtitle}
             </p>
 
             {/* Description - Increased from 16px to 18px */}
-            <p className="text-lg sm:text-xl text-blue-200 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl">
               {texts.description}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/contact">
-                <Button 
+                <Button
                   size="lg"
-                  className="bg-[#FF6B35] hover:bg-[#ff5722] text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#F97316] hover:bg-[#EA580C] text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto font-semibold px-8"
                 >
                   {texts.contactSales}
                 </Button>
               </Link>
-              <Button 
+              <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-[#1F4E78] transition-all duration-300 w-full sm:w-auto"
+                className="border-2 border-slate-300 text-white hover:bg-white hover:text-slate-900 transition-all duration-300 w-full sm:w-auto font-semibold px-8"
               >
                 {texts.downloadCatalog}
               </Button>
@@ -95,21 +94,21 @@ export function HeroSection({ texts }: HeroSectionProps) {
           <div className="lg:col-span-2">
             <div className="grid grid-cols-1 gap-6">
               {/* Card 1: Years of Experience */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="text-5xl font-bold text-white mb-2">10+</div>
-                <div className="text-lg text-blue-100">Years of Experience</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                <div className="text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">10+</div>
+                <div className="text-lg text-slate-200">Years of Experience</div>
               </div>
 
               {/* Card 2: Units Shipped */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="text-5xl font-bold text-white mb-2">500K+</div>
-                <div className="text-lg text-blue-100">Units Shipped Globally</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                <div className="text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">500K+</div>
+                <div className="text-lg text-slate-200">Units Shipped Globally</div>
               </div>
 
               {/* Card 3: Countries Served */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="text-5xl font-bold text-white mb-2">50+</div>
-                <div className="text-lg text-blue-100">Countries Served</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                <div className="text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">50+</div>
+                <div className="text-lg text-slate-200">Countries Served</div>
               </div>
             </div>
           </div>

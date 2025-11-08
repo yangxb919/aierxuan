@@ -12,7 +12,7 @@ const translations = {
       {
         title: 'Modern Factory',
         description: 'State-of-the-art manufacturing facility with automated production lines',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: 'Units/Month Capacity' },
@@ -22,7 +22,7 @@ const translations = {
       {
         title: 'Production Line',
         description: 'Advanced automated assembly and testing systems ensuring consistent quality',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: 'Production Lines' },
@@ -32,7 +32,7 @@ const translations = {
       {
         title: 'Quality Control',
         description: 'Comprehensive testing and inspection at every production stage',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: 'Product Testing' },
@@ -42,7 +42,7 @@ const translations = {
       {
         title: 'Warehouse & Logistics',
         description: 'Efficient inventory management and global shipping capabilities',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48h', label: 'Fast Delivery' },
@@ -65,7 +65,7 @@ const translations = {
       {
         title: 'Современный завод',
         description: 'Современное производственное предприятие с автоматизированными линиями',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: 'Единиц/месяц' },
@@ -75,7 +75,7 @@ const translations = {
       {
         title: 'Производственная линия',
         description: 'Передовые автоматизированные системы сборки и тестирования',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: 'Производственных линий' },
@@ -85,7 +85,7 @@ const translations = {
       {
         title: 'Контроль качества',
         description: 'Комплексное тестирование и проверка на каждом этапе производства',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: 'Тестирование продукции' },
@@ -95,7 +95,7 @@ const translations = {
       {
         title: 'Склад и логистика',
         description: 'Эффективное управление запасами и возможности глобальной доставки',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48ч', label: 'Быстрая доставка' },
@@ -118,7 +118,7 @@ const translations = {
       {
         title: '最新工場',
         description: '自動化された生産ラインを備えた最先端の製造施設',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: '月間生産能力' },
@@ -128,7 +128,7 @@ const translations = {
       {
         title: '生産ライン',
         description: '一貫した品質を保証する高度な自動組立・試験システム',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: '生産ライン' },
@@ -138,7 +138,7 @@ const translations = {
       {
         title: '品質管理',
         description: 'すべての生産段階での包括的なテストと検査',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: '製品テスト' },
@@ -148,7 +148,7 @@ const translations = {
       {
         title: '倉庫・物流',
         description: '効率的な在庫管理とグローバル配送能力',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48時間', label: '迅速配送' },
@@ -171,7 +171,7 @@ const translations = {
       {
         title: 'Usine moderne',
         description: 'Installation de fabrication de pointe avec lignes de production automatisées',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: 'Unités/mois' },
@@ -181,7 +181,7 @@ const translations = {
       {
         title: 'Ligne de production',
         description: 'Systèmes d\'assemblage et de test automatisés avancés',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: 'Lignes de production' },
@@ -191,7 +191,7 @@ const translations = {
       {
         title: 'Contrôle qualité',
         description: 'Tests et inspections complets à chaque étape de production',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: 'Tests produits' },
@@ -201,7 +201,7 @@ const translations = {
       {
         title: 'Entrepôt et logistique',
         description: 'Gestion efficace des stocks et capacités d\'expédition mondiale',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48h', label: 'Livraison rapide' },
@@ -224,7 +224,7 @@ const translations = {
       {
         title: 'Fábrica moderna',
         description: 'Instalação de fabricação de ponta com linhas de produção automatizadas',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: 'Unidades/mês' },
@@ -234,7 +234,7 @@ const translations = {
       {
         title: 'Linha de produção',
         description: 'Sistemas avançados de montagem e teste automatizados',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: 'Linhas de produção' },
@@ -244,7 +244,7 @@ const translations = {
       {
         title: 'Controle de qualidade',
         description: 'Testes e inspeções abrangentes em cada estágio de produção',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: 'Testes de produtos' },
@@ -254,7 +254,7 @@ const translations = {
       {
         title: 'Armazém e logística',
         description: 'Gestão eficiente de estoque e capacidades de envio global',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48h', label: 'Entrega rápida' },
@@ -277,7 +277,7 @@ const translations = {
       {
         title: '现代化工厂',
         description: '配备自动化生产线的先进制造设施',
-        image: '/images/manufacturing/manufacturing-1.jpg',
+        image: '/images/manufacturing/manufacturing-1.webp',
         icon: '🏭',
         stats: [
           { value: '50,000+', label: '月产能（台）' },
@@ -287,7 +287,7 @@ const translations = {
       {
         title: '生产线',
         description: '先进的自动化组装和测试系统，确保稳定的产品质量',
-        image: '/images/manufacturing/manufacturing-2.jpg',
+        image: '/images/manufacturing/manufacturing-2.webp',
         icon: '⚙️',
         stats: [
           { value: '15+', label: '条生产线' },
@@ -297,7 +297,7 @@ const translations = {
       {
         title: '质量控制',
         description: '每个生产环节都进行全面的测试和检验',
-        image: '/images/manufacturing/manufacturing-3.jpg',
+        image: '/images/manufacturing/manufacturing-3.webp',
         icon: '🔬',
         stats: [
           { value: '100%', label: '产品测试覆盖率' },
@@ -307,7 +307,7 @@ const translations = {
       {
         title: '仓储物流',
         description: '高效的库存管理和全球配送能力',
-        image: '/images/manufacturing/manufacturing-4.jpg',
+        image: '/images/manufacturing/manufacturing-4.webp',
         icon: '📦',
         stats: [
           { value: '24-48小时', label: '快速发货' },

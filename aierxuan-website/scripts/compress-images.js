@@ -17,6 +17,7 @@ const config = {
 
 // 需要压缩的图片列表
 const imagesToCompress = [
+  // Hero banners (已完成)
   {
     input: 'public/images/hero-banner.jpg',
     output: 'public/images/hero-banner.webp',
@@ -31,6 +32,58 @@ const imagesToCompress = [
     input: 'public/images/blog-hero-banner.jpg',
     output: 'public/images/blog-hero-banner.webp',
     priority: 'medium'
+  },
+  // Manufacturing images (新增)
+  {
+    input: 'public/images/manufacturing/manufacturing-1.jpg',
+    output: 'public/images/manufacturing/manufacturing-1.webp',
+    priority: 'medium'
+  },
+  {
+    input: 'public/images/manufacturing/manufacturing-2.jpg',
+    output: 'public/images/manufacturing/manufacturing-2.webp',
+    priority: 'medium'
+  },
+  {
+    input: 'public/images/manufacturing/manufacturing-3.jpg',
+    output: 'public/images/manufacturing/manufacturing-3.webp',
+    priority: 'medium'
+  },
+  {
+    input: 'public/images/manufacturing/manufacturing-4.jpg',
+    output: 'public/images/manufacturing/manufacturing-4.webp',
+    priority: 'medium'
+  },
+  // Factory images (新增)
+  {
+    input: 'public/images/factory/factory-1.jpg',
+    output: 'public/images/factory/factory-1.webp',
+    priority: 'low'
+  },
+  {
+    input: 'public/images/factory/factory-2.jpg',
+    output: 'public/images/factory/factory-2.webp',
+    priority: 'low'
+  },
+  {
+    input: 'public/images/factory/factory-3.jpg',
+    output: 'public/images/factory/factory-3.webp',
+    priority: 'low'
+  },
+  {
+    input: 'public/images/factory/factory-4.jpg',
+    output: 'public/images/factory/factory-4.webp',
+    priority: 'low'
+  },
+  {
+    input: 'public/images/factory/factory-5.jpg',
+    output: 'public/images/factory/factory-5.webp',
+    priority: 'low'
+  },
+  {
+    input: 'public/images/factory/factory-6.jpg',
+    output: 'public/images/factory/factory-6.webp',
+    priority: 'low'
   },
 ];
 
