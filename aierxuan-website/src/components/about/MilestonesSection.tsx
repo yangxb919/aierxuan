@@ -50,14 +50,14 @@ export function MilestonesSection({ texts }: MilestonesSectionProps) {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
             {texts.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             {texts.subtitle}
           </p>
         </div>
@@ -73,14 +73,14 @@ export function MilestonesSection({ texts }: MilestonesSectionProps) {
               <div className="text-5xl mb-4 group-hover:animate-bounce">
                 {milestone.icon}
               </div>
-              
+
               {/* Value */}
-              <div className="text-4xl sm:text-5xl font-bold text-[#1F4E78] mb-2 group-hover:text-[#2E5C8A] transition-colors duration-300">
+              <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                 {milestone.value}
               </div>
-              
+
               {/* Label */}
-              <div className="text-sm sm:text-base text-gray-600 font-medium">
+              <div className="text-sm sm:text-base text-slate-600 font-medium">
                 {milestone.label}
               </div>
             </div>
@@ -88,7 +88,7 @@ export function MilestonesSection({ texts }: MilestonesSectionProps) {
         </div>
 
         {/* Bottom Divider */}
-        <div className="mt-16 border-t border-gray-200"></div>
+        <div className="mt-16 border-t border-slate-200"></div>
       </div>
     </section>
   )
