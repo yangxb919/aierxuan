@@ -64,6 +64,14 @@ export default function AdminLoginPage() {
         body: JSON.stringify(formData),
       })
 
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error('Non-JSON response received:', await response.text())
+        setError('Server error: Invalid response format. Please check the console for details.')
+        return
+      }
+
       const data = await response.json()
 
       if (response.ok && data.success) {
@@ -74,7 +82,11 @@ export default function AdminLoginPage() {
       }
     } catch (error) {
       console.error('Login error:', error)
-      setError('Network error. Please try again.')
+      if (error instanceof SyntaxError) {
+        setError('Server returned invalid data. Please check the console for details.')
+      } else {
+        setError('Network error. Please try again.')
+      }
     } finally {
       setLoading(false)
     }

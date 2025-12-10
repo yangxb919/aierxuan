@@ -43,7 +43,7 @@ export default function ProductListActions({ productId, slug }: ProductListActio
   return (
     <div className="flex items-center space-x-3">
       <Link
-        href={`/products/${slug}`}
+        href={`/en/products/${slug}`}
         target="_blank"
         className="text-sm text-blue-600 hover:text-blue-800 font-medium"
       >

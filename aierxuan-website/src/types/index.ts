@@ -14,7 +14,7 @@ export type FAQ = Tables<'faq'>
 export type FAQTranslation = Tables<'faq_translations'>
 export type AdminUser = Tables<'admin_users'>
 export type AdminSession = Tables<'admin_sessions'>
-export type RFQ = Tables<'rfqs'>
+export type RFQ = Tables<'rfq_requests'>
 export type SiteSetting = Tables<'site_settings'>
 export type AuditEvent = Tables<'audit_events'>
 export type I18nLocale = Tables<'i18n_locales'>
@@ -26,7 +26,7 @@ export type BlogPostInsert = Inserts<'blog_posts'>
 export type BlogPostTranslationInsert = Inserts<'blog_post_translations'>
 export type FAQInsert = Inserts<'faq'>
 export type FAQTranslationInsert = Inserts<'faq_translations'>
-export type RFQInsert = Inserts<'rfqs'>
+export type RFQInsert = Inserts<'rfq_requests'>
 
 // Update types
 export type ProductUpdate = Updates<'products'>
@@ -35,12 +35,14 @@ export type BlogPostUpdate = Updates<'blog_posts'>
 export type BlogPostTranslationUpdate = Updates<'blog_post_translations'>
 export type FAQUpdate = Updates<'faq'>
 export type FAQTranslationUpdate = Updates<'faq_translations'>
-export type RFQUpdate = Updates<'rfqs'>
+export type RFQUpdate = Updates<'rfq_requests'>
 
 // Combined types for frontend use
 export interface ProductWithTranslations extends Product {
   translations: ProductTranslation[]
   currentTranslation?: ProductTranslation
+  moq?: string
+  price?: number
 }
 
 export interface BlogPostWithTranslations extends BlogPost {

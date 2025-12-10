@@ -39,16 +39,24 @@ export default function RFQStatusUpdater({ rfqId, currentStatus }: RFQStatusUpda
         },
         body: JSON.stringify({ status: newStatus }),
       })
-      
+
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error('Non-JSON response received:', await response.text())
+        setError('Server error: Invalid response format. Please check the console for details.')
+        return
+      }
+
       const data = await response.json()
-      
+
       if (response.ok && data.success) {
         setStatus(newStatus)
         setSuccess(true)
-        
+
         // Refresh the page data
         router.refresh()
-        
+
         // Clear success message after 3 seconds
         setTimeout(() => setSuccess(false), 3000)
       } else {
@@ -56,7 +64,11 @@ export default function RFQStatusUpdater({ rfqId, currentStatus }: RFQStatusUpda
       }
     } catch (error) {
       console.error('Error updating status:', error)
-      setError('Network error. Please try again.')
+      if (error instanceof SyntaxError) {
+        setError('Server returned invalid data. Please check the console for details.')
+      } else {
+        setError('Network error. Please try again.')
+      }
     } finally {
       setLoading(false)
     }

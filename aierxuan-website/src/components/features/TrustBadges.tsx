@@ -1,53 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useLanguage } from '@/store/useAppStore'
-
-// Translations
-const translations = {
-  en: {
-    title: 'Trusted by Global Clients',
-    subtitle: 'Certified Quality & Industry Recognition',
-    clients: 'Our Clients',
-    certifications: 'Certifications',
-    partners: 'Technology Partners'
-  },
-  ru: {
-    title: 'Доверие глобальных клиентов',
-    subtitle: 'Сертифицированное качество и признание в отрасли',
-    clients: 'Наши клиенты',
-    certifications: 'Сертификаты',
-    partners: 'Технологические партнеры'
-  },
-  ja: {
-    title: 'グローバルクライアントからの信頼',
-    subtitle: '認定品質と業界での評価',
-    clients: '私たちのクライアント',
-    certifications: '認証',
-    partners: 'テクノロジーパートナー'
-  },
-  fr: {
-    title: 'Approuvé par des clients mondiaux',
-    subtitle: 'Qualité certifiée et reconnaissance de l\'industrie',
-    clients: 'Nos clients',
-    certifications: 'Certifications',
-    partners: 'Partenaires technologiques'
-  },
-  pt: {
-    title: 'Confiado por clientes globais',
-    subtitle: 'Qualidade certificada e reconhecimento da indústria',
-    clients: 'Nossos clientes',
-    certifications: 'Certificações',
-    partners: 'Parceiros de tecnologia'
-  },
-  'zh-CN': {
-    title: '全球客户信赖',
-    subtitle: '认证质量 · 行业认可',
-    clients: '我们的客户',
-    certifications: '资质认证',
-    partners: '技术合作伙伴'
-  }
-}
+import { type Dictionary } from '@/get-dictionary'
+import { type Locale } from '@/i18n-config'
 
 // Client logos with actual images
 const clientLogos = [
@@ -229,11 +184,10 @@ function ClientCarousel({ logos }: { logos: typeof clientLogos }) {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex % totalItems
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 w-8 shadow-lg'
-                : 'bg-gray-300 hover:bg-gray-400 w-2'
-            }`}
+            className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex % totalItems
+              ? 'bg-gradient-to-r from-blue-600 to-purple-600 w-8 shadow-lg'
+              : 'bg-gray-300 hover:bg-gray-400 w-2'
+              }`}
             aria-label={`Go to logo ${index + 1}`}
           />
         ))}
@@ -275,9 +229,22 @@ function ClientCarousel({ logos }: { logos: typeof clientLogos }) {
   )
 }
 
-export function TrustBadges() {
-  const language = useLanguage()
-  const t = translations[language] || translations.en
+interface TrustBadgesProps {
+  dictionary: Dictionary
+  lang: Locale
+}
+
+export function TrustBadges({ dictionary, lang }: TrustBadgesProps) {
+  const t = dictionary.home.trustBadges
+
+  // Merge dictionary certification descriptions with local images
+  const certificationsWithTrans = certifications.map((cert) => {
+    const transItem = t.certificationItems?.find(item => item.name === cert.name)
+    return {
+      ...cert,
+      description: transItem?.description || cert.description
+    }
+  })
 
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
@@ -306,7 +273,7 @@ export function TrustBadges() {
             {t.certifications}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {certifications.map((cert, index) => (
+            {certificationsWithTrans.map((cert, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300 border-2 border-green-200 hover:border-green-400 group"
@@ -371,20 +338,20 @@ export function TrustBadges() {
         <div className="mt-16 bg-white rounded-2xl shadow-lg p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
-              <div className="text-gray-600">Global Clients</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{t.stats.clients.value}</div>
+              <div className="text-gray-600">{t.stats.clients.label}</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
-              <div className="text-gray-600">Countries Served</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{t.stats.countries.value}</div>
+              <div className="text-gray-600">{t.stats.countries.label}</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">10+</div>
-              <div className="text-gray-600">Years Experience</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{t.stats.experience.value}</div>
+              <div className="text-gray-600">{t.stats.experience.label}</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">99.8%</div>
-              <div className="text-gray-600">Customer Satisfaction</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{t.stats.satisfaction.value}</div>
+              <div className="text-gray-600">{t.stats.satisfaction.label}</div>
             </div>
           </div>
         </div>

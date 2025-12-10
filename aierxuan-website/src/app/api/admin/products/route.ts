@@ -10,6 +10,12 @@ interface ProductTranslation {
   key_specs: Record<string, string>
   seo_title: string
   seo_desc: string
+  quality_tests?: any[]
+  oem_services?: any[]
+  faqs?: any[]
+  durability_images?: string[]
+  oem_images?: string[]
+  features?: Record<string, any> | null
 }
 
 interface CreateProductRequest {
@@ -20,11 +26,12 @@ interface CreateProductRequest {
   sort_order: number
   moq?: number
   price?: number
+  datasheet_url?: string
   images: string[]
   translations: ProductTranslation[]
 }
 
-const VALID_STATUSES = ['active', 'inactive', 'discontinued']
+const VALID_STATUSES = ['active', 'inactive', 'discontinued', 'draft']
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
     
     const body: CreateProductRequest = await request.json()
-    const { slug, category, status, featured, sort_order, moq, price, images, translations } = body
+    const { slug, category, status, featured, sort_order, moq, price, datasheet_url, images, translations } = body
     
     // Validate input
     if (!slug || !category || !status || !translations || translations.length === 0) {
@@ -92,6 +99,7 @@ export async function POST(request: NextRequest) {
         sort_order: sort_order || 0,
         moq: moq || null,
         price: price || null,
+        datasheet_url: datasheet_url || null,
         images: images || []
       })
       .select()
@@ -108,16 +116,31 @@ export async function POST(request: NextRequest) {
     // Create translations
     const translationsToInsert = translations
       .filter(t => t.title || t.long_desc) // Only insert translations with content
-      .map(t => ({
-        product_id: product.id,
-        locale: t.locale,
-        title: t.title,
-        short_desc: t.short_desc || '',
-        long_desc: t.long_desc,
-        key_specs: t.key_specs || {},
-        seo_title: t.seo_title || '',
-        seo_desc: t.seo_desc || ''
-      }))
+      .map(t => {
+        // Only include fields that exist in the database schema
+        const translation: any = {
+          product_id: product.id,
+          locale: t.locale,
+          title: t.title,
+          short_desc: t.short_desc || '',
+          long_desc: t.long_desc,
+          key_specs: t.key_specs || {},
+          seo_title: t.seo_title || '',
+          seo_desc: t.seo_desc || '',
+          quality_tests: t.quality_tests || [],
+          oem_services: t.oem_services || [],
+          faqs: t.faqs || []
+        }
+
+        // Remove undefined fields to avoid database errors
+        Object.keys(translation).forEach(key => {
+          if (translation[key] === undefined) {
+            delete translation[key]
+          }
+        })
+
+        return translation
+      })
     
     if (translationsToInsert.length > 0) {
       const { error: translationsError } = await supabase

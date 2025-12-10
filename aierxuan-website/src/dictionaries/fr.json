@@ -1,0 +1,579 @@
+{
+    "navigation": {
+        "home": "Accueil",
+        "products": "Produits",
+        "about": "À propos",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "common": {
+        "getQuote": "Obtenir un devis",
+        "viewAll": "Voir tous les produits",
+        "learnMore": "En savoir plus sur nous",
+        "requestQuote": "Demander un devis",
+        "viewProducts": "Voir les produits"
+    },
+    "home": {
+        "hero": {
+            "slides": [
+                {
+                    "title": "Fabricant Professionnel d'Ordinateurs Portables et Mini PC",
+                    "subtitle": "Solutions OEM/ODM pour Partenaires Mondiaux",
+                    "description": "✓ MOQ Flexible à partir de 100 Unités  ✓ Livraison Rapide 7-15 Jours  ✓ Personnalisation Complète  ✓ Partenaire Intel | Certifié CE/FCC"
+                }
+            ]
+        },
+        "featuredProducts": {
+            "title": "Produits en vedette",
+            "subtitle": "Découvrez nos dernières solutions d'automatisation industrielle"
+        },
+        "about": {
+            "title": "À propos d'AIERXUAN",
+            "description": "Fournisseur leader de solutions d'automatisation industrielle, spécialisé dans les équipements de haute qualité et les technologies innovantes pour la fabrication moderne."
+        },
+        "categories": {
+            "title": "Catégories de produits",
+            "subtitle": "Explorez notre gamme complète de solutions informatiques",
+            "items": {
+                "business": {
+                    "name": "Ordinateur portable professionnel",
+                    "description": "Ordinateurs portables professionnels conçus pour la productivité et la fiabilité",
+                    "features": [
+                        "Intel Core i9",
+                        "Longue autonomie",
+                        "Sécurité entreprise"
+                    ],
+                    "moq": "MOQ: 100 unités",
+                    "useCase": "Parfait pour: Commandes groupées d'entreprise, établissements d'enseignement"
+                },
+                "gaming": {
+                    "name": "Ordinateur portable gaming",
+                    "description": "Ordinateurs portables gaming haute performance avec graphismes de pointe",
+                    "features": [
+                        "Graphiques RTX",
+                        "Taux de rafraîchissement élevé",
+                        "Refroidissement avancé"
+                    ],
+                    "moq": "MOQ: 100 unités",
+                    "useCase": "Parfait pour: Marques de jeux, organisations d'esports"
+                },
+                "mini": {
+                    "name": "Mini PC",
+                    "description": "Mini PC compacts et puissants pour un calcul efficace",
+                    "features": [
+                        "Design compact",
+                        "Fonctionnement silencieux",
+                        "Économe en énergie"
+                    ],
+                    "moq": "MOQ: 50 unités",
+                    "useCase": "Parfait pour: Affichage numérique, kiosques, postes de travail de bureau"
+                }
+            }
+        },
+        "technicalCapabilities": {
+            "title": "Excellence technique",
+            "subtitle": "Nos capacités de R&D et d'assurance qualité",
+            "downloadWhitepaper": "Télécharger le livre blanc technique",
+            "capabilities": [
+                {
+                    "title": "R&D avancée",
+                    "icon": "🔬",
+                    "description": "Équipe dédiée de recherche et développement avec plus de 10 ans d'expérience en conception et optimisation matérielle",
+                    "features": [
+                        "Conception matérielle interne",
+                        "Développement de firmware",
+                        "Optimisation des performances",
+                        "Innovation continue"
+                    ]
+                },
+                {
+                    "title": "Gestion thermique",
+                    "icon": "❄️",
+                    "description": "Solutions de refroidissement de pointe garantissant des performances optimales et une longévité même sous charges lourdes",
+                    "features": [
+                        "Conception avancée de caloduc",
+                        "Options de refroidissement sans ventilateur",
+                        "Tests de simulation thermique",
+                        "Support de large plage de température"
+                    ]
+                },
+                {
+                    "title": "Contrôle qualité",
+                    "icon": "✅",
+                    "description": "Processus rigoureux de tests multi-étapes et d'assurance qualité pour garantir fiabilité et performance",
+                    "features": [
+                        "Plus de 1000 heures de tests de rodage",
+                        "Tests de stress complets",
+                        "Processus certifiés ISO 9001",
+                        "Objectif de fabrication zéro défaut"
+                    ]
+                },
+                {
+                    "title": "Tests de compatibilité",
+                    "icon": "🔄",
+                    "description": "Validation extensive de compatibilité avec les principaux systèmes d'exploitation, logiciels et périphériques",
+                    "features": [
+                        "Certification Windows/Linux",
+                        "Optimisation des pilotes",
+                        "Compatibilité périphérique",
+                        "Tests d'intégration logicielle"
+                    ]
+                }
+            ],
+            "process": {
+                "title": "Notre processus de développement",
+                "steps": [
+                    {
+                        "number": "01",
+                        "title": "Analyse des exigences",
+                        "description": "Comprendre les besoins et spécifications du client"
+                    },
+                    {
+                        "number": "02",
+                        "title": "Conception et prototypage",
+                        "description": "Créer des conceptions matérielles optimisées"
+                    },
+                    {
+                        "number": "03",
+                        "title": "Tests et validation",
+                        "description": "Tests rigoureux de qualité et de performance"
+                    },
+                    {
+                        "number": "04",
+                        "title": "Production et livraison",
+                        "description": "Fabrication et logistique mondiale"
+                    }
+                ]
+            }
+        },
+        "finalCTA": {
+            "title": "Prêt à commencer?",
+            "subtitle": "Obtenez un devis personnalisé pour vos besoins professionnels",
+            "description": "Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les 2 heures avec un devis détaillé.",
+            "form": {
+                "name": "Nom (facultatif)",
+                "namePlaceholder": "Jean Dupont",
+                "email": "Adresse e-mail",
+                "emailPlaceholder": "jean@entreprise.com",
+                "country": "Pays (facultatif)",
+                "countryPlaceholder": "Sélectionnez votre pays",
+                "productInterest": "Produit d'intérêt (facultatif)",
+                "productInterestPlaceholder": "Quels produits vous intéressent?",
+                "message": "Message (facultatif)",
+                "messagePlaceholder": "Parlez-nous de vos besoins de projet, quantité, délais, etc.",
+                "submit": "Soumettre la demande",
+                "submitting": "Envoi en cours..."
+            },
+            "validation": {
+                "emailRequired": "L'e-mail est requis",
+                "emailInvalid": "Veuillez entrer un e-mail valide"
+            },
+            "success": "Merci! Nous vous contactons bientôt.",
+            "error": "Échec de l'envoi. Veuillez réessayer.",
+            "responseTime": "⚡ Nous répondons généralement dans les 2 heures",
+            "privacyNote": "Vos informations seront gardées confidentielles et utilisées uniquement pour répondre à votre demande.",
+            "productCategories": [
+                "PC industriel à panneau",
+                "Mini PC",
+                "Système embarqué",
+                "Écran tactile",
+                "Passerelle IoT",
+                "Autre"
+            ],
+            "features": [
+                {
+                    "icon": "⚡",
+                    "text": "Réponse rapide dans les 2 heures"
+                },
+                {
+                    "icon": "💰",
+                    "text": "Prix compétitifs"
+                },
+                {
+                    "icon": "🎨",
+                    "text": "Options de personnalisation complètes"
+                },
+                {
+                    "icon": "🌍",
+                    "text": "Expédition mondiale disponible"
+                }
+            ]
+        }
+    },
+    "about": {
+        "hero": {
+            "mainTitle": "Fabricant professionnel d'ordinateurs portables AI et PC de jeu",
+            "subtitle": "10+ ans d'expérience | Partenaire Intel | Services OEM/ODM | Livraison mondiale",
+            "description": "AIERXUAN est un fabricant d'ordinateurs portables de confiance basé à Shenzhen, Chine. Nous nous spécialisons dans les commandes en gros et la personnalisation OEM/ODM pour les partenaires mondiaux.",
+            "contactSales": "Contacter l'équipe commerciale",
+            "downloadCatalog": "Télécharger le catalogue produits"
+        },
+        "story": {
+            "title": "À propos d'AIERXUAN",
+            "subtitle": "Fabricant professionnel d'ordinateurs portables depuis 2014",
+            "paragraph1": "Fondée en 2014 à Shenzhen, AIERXUAN se spécialise dans les ordinateurs portables haute performance et les mini PC pour les partenaires mondiaux. En tant que partenaire Intel China Channel depuis 2019, nous avons livré plus de 500 000 unités à des clients dans plus de 50 pays.",
+            "paragraph2": "Notre installation de 15 000㎡ combine une fabrication avancée avec un contrôle qualité strict. Nous offrons un MOQ flexible, une personnalisation OEM/ODM complète et un service réactif pour aider votre entreprise à croître."
+        },
+        "factory": {
+            "title": "Capacité de fabrication",
+            "subtitle": "Installations de pointe avec des lignes de production avancées et des systèmes de contrôle qualité",
+            "videoTitle": "Visite vidéo de l'usine",
+            "photos": {
+                "factoryOverview": "Vue d'ensemble de l'usine",
+                "factoryOverviewDesc": "Site moderne de 15 000㎡",
+                "assemblyLine": "Chaîne d'assemblage",
+                "assemblyLineDesc": "6 lignes de production automatisées",
+                "testingLab": "Laboratoire de test",
+                "testingLabDesc": "Test d'endurance 72h",
+                "warehouse": "Entrepôt et logistique",
+                "warehouseDesc": "Expédition mondiale rapide",
+                "rdCenter": "Centre R&D",
+                "rdCenterDesc": "Équipe d'ingénierie dédiée",
+                "qualityControl": "Contrôle qualité",
+                "qualityControlDesc": "Processus d'inspection multi-étapes"
+            }
+        },
+        "quality": {
+            "title": "Assurance qualité",
+            "subtitle": "Un processus rigoureux de contrôle qualité en 7 étapes garantit que chaque produit répond aux normes les plus élevées",
+            "processTitle": "Processus de contrôle qualité en 7 étapes",
+            "certificatesTitle": "Certifications",
+            "steps": {
+                "step1": "Inspection des matériaux entrants",
+                "step2": "Vérification de l'assemblage des composants",
+                "step3": "Test de mise sous tension",
+                "step4": "Test de rodage de 72 heures",
+                "step5": "Inspection qualité finale",
+                "step6": "Contrôle qualité de l'emballage",
+                "step7": "Vérification avant expédition"
+            }
+        },
+        "events": {
+            "title": "Salons internationaux et partenariat Intel",
+            "subtitle": "Construire la confiance sur le terrain et obtenir la reconnaissance des leaders du secteur",
+            "exhibitionsTitle": "Salons internationaux",
+            "exhibitionsDesc": "Nous rencontrons des partenaires dans le monde entier pour présenter nos produits et établir des coopérations durables.",
+            "intelTitle": "Partenariat et distinctions Intel",
+            "intelDesc": "Récompensés lors des événements Intel China Channel. Notre collaboration assure des performances de pointe et un approvisionnement stable."
+        },
+        "milestones": {
+            "title": "En chiffres",
+            "subtitle": "Approuvé par des entreprises du monde entier pour la qualité et la fiabilité",
+            "milestones": {
+                "years": {
+                    "value": "10+",
+                    "label": "Années d'expérience"
+                },
+                "units": {
+                    "value": "500K+",
+                    "label": "Unités expédiées"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Pays desservis"
+                },
+                "factory": {
+                    "value": "15,000㎡",
+                    "label": "Surface d'usine"
+                },
+                "testing": {
+                    "value": "72h",
+                    "label": "Test de rodage"
+                },
+                "satisfaction": {
+                    "value": "98%",
+                    "label": "Taux de satisfaction"
+                }
+            }
+        },
+        "cta": {
+            "title": "Prêt à devenir partenaire?",
+            "subtitle": "Obtenez un devis personnalisé ou demandez un échantillon gratuit aujourd'hui",
+            "contactSales": "Contacter l'équipe commerciale",
+            "downloadCatalog": "Télécharger le catalogue",
+            "whatsapp": "WhatsApp",
+            "email": "Email",
+            "phone": "Téléphone",
+            "responseTime": "Temps de réponse"
+        }
+    },
+    "products": {
+        "page": {
+            "title": "Nos Produits",
+            "subtitle": "Découvrez notre gamme complète de solutions d'automatisation industrielle",
+            "description": "Parcourez nos produits soigneusement sélectionnés conçus pour répondre à vos besoins d'automatisation industrielle. Chaque produit est conçu pour la fiabilité, les performances et l'efficacité.",
+            "allProducts": "Tous les produits",
+            "featuredProducts": "Produits en vedette",
+            "categories": "Catégories",
+            "business": "Ordinateur portable professionnel",
+            "gaming": "Ordinateur portable gaming",
+            "mini": "Mini PC",
+            "all": "Tous"
+        },
+        "grid": {
+            "noDescription": "Aucune description disponible",
+            "sku": "Référence",
+            "contactForPrice": "Contactez pour le prix",
+            "viewDetails": "Voir les détails",
+            "quote": "Devis",
+            "noProducts": "Aucun produit trouvé",
+            "errorMessage": "Échec du chargement des produits",
+            "tryAgain": "Réessayer",
+            "productImage": "Image du produit"
+        },
+        "advantages": {
+            "premium": "Premium",
+            "cooling": "Refroidissement Silencieux",
+            "manufacturing": "Foxconn"
+        },
+        "detail": {
+            "specifications": "Spécifications",
+            "requestQuote": "Demander un devis",
+            "contactForPrice": "Contactez pour le prix",
+            "category": "Catégorie",
+            "sku": "Référence",
+            "status": "Statut",
+            "active": "Actif",
+            "inactive": "Inactif",
+            "backToProducts": "Retour aux produits",
+            "productNotFound": "Produit non trouvé",
+            "loadingError": "Échec du chargement du produit",
+            "tryAgain": "Réessayer",
+            "productImages": "Images du produit",
+            "noDescription": "Aucune description disponible",
+            "features": "Caractéristiques",
+            "overview": "Aperçu",
+            "moq": "MOQ",
+            "price": "Prix",
+            "units": "unités",
+            "pricePerUnit": "par unité",
+            "startingFrom": "À partir de"
+        }
+    },
+    "footer": {
+        "company": {
+            "title": "AIERXUAN",
+            "description": "Fournisseur leader de solutions d'automatisation industrielle, spécialisé dans les équipements de haute qualité et les technologies innovantes pour la fabrication moderne."
+        },
+        "links": {
+            "products": {
+                "title": "Produits",
+                "items": [
+                    {
+                        "name": "Équipement industriel",
+                        "href": "/products/industrial"
+                    },
+                    {
+                        "name": "Systèmes d'automatisation",
+                        "href": "/products/automation"
+                    },
+                    {
+                        "name": "Solutions de contrôle",
+                        "href": "/products/control"
+                    },
+                    {
+                        "name": "Capteurs et instruments",
+                        "href": "/products/sensors"
+                    }
+                ]
+            },
+            "company": {
+                "title": "Entreprise",
+                "items": [
+                    {
+                        "name": "À propos de nous",
+                        "href": "/about"
+                    },
+                    {
+                        "name": "Notre équipe",
+                        "href": "/about/team"
+                    },
+                    {
+                        "name": "Carrières",
+                        "href": "/careers"
+                    },
+                    {
+                        "name": "Actualités",
+                        "href": "/news"
+                    }
+                ]
+            },
+            "support": {
+                "title": "Support",
+                "items": [
+                    {
+                        "name": "Nous contacter",
+                        "href": "/contact"
+                    },
+                    {
+                        "name": "Support technique",
+                        "href": "/support"
+                    },
+                    {
+                        "name": "Documentation",
+                        "href": "/docs"
+                    },
+                    {
+                        "name": "FAQ",
+                        "href": "/faq"
+                    }
+                ]
+            }
+        },
+        "contact": {
+            "title": "Informations de contact",
+            "email": "admin@aierxuanlaptop.com",
+            "phone": "4008-8228-058",
+            "address": "District Longgang, Shenzhen, Chine"
+        },
+        "copyright": "© 2024 AIERXUAN. Tous droits réservés."
+    },
+    "contact": {
+        "title": "Contactez-nous",
+        "subtitle": "Contactez notre équipe pour des solutions d'automatisation industrielle personnalisées",
+        "description": "Prêt à transformer vos processus de fabrication ? Nos experts sont là pour vous aider à trouver la solution d'automatisation industrielle parfaite pour vos besoins.",
+        "contactInfo": "Informations de contact",
+        "address": "Adresse",
+        "addressValue": "District industriel, Ville, Pays",
+        "phone": "Téléphone",
+        "phoneValue": "+86 123 456 7890",
+        "email": "E-mail",
+        "emailValue": "info@aierxuan.com",
+        "businessHours": "Heures d'ouverture",
+        "businessHoursValue": "Lundi - Vendredi: 9h00 - 18h00 (GMT+8)",
+        "responseTime": "Temps de réponse",
+        "responseTimeValue": "Nous répondons généralement dans les 24 heures",
+        "whyChooseUs": "Pourquoi choisir AIERXUAN ?",
+        "reasons": [
+            "Plus de 10 ans d'expérience en automatisation industrielle",
+            "Gamme de produits complète pour tous vos besoins",
+            "Support technique expert et consultation",
+            "Service client 24/7 et support après-vente",
+            "Prix compétitifs et conditions de paiement flexibles",
+            "Expédition mondiale et support local"
+        ]
+    },
+    "rfq": {
+        "title": "Demander un devis",
+        "subtitle": "Obtenez un devis personnalisé pour vos besoins en automatisation industrielle",
+        "name": "Nom complet",
+        "namePlaceholder": "Entrez votre nom complet",
+        "email": "Adresse e-mail",
+        "emailPlaceholder": "Entrez votre adresse e-mail",
+        "company": "Nom de l'entreprise",
+        "companyPlaceholder": "Entrez le nom de votre entreprise",
+        "phone": "Numéro de téléphone",
+        "phonePlaceholder": "Entrez votre numéro de téléphone (optionnel)",
+        "productInterest": "Produit d'intérêt",
+        "productPlaceholder": "Quel produit vous intéresse ?",
+        "message": "Message",
+        "messagePlaceholder": "Parlez-nous de vos exigences, quantité nécessaire, délais, etc.",
+        "quantity": "Quantité nécessaire",
+        "quantityPlaceholder": "Combien d'unités avez-vous besoin ?",
+        "country": "Pays",
+        "countryPlaceholder": "Entrez votre pays",
+        "industry": "Industrie",
+        "industryPlaceholder": "Dans quelle industrie êtes-vous ?",
+        "urgency": "Urgence",
+        "urgencyNormal": "Normal (1-2 semaines)",
+        "urgencyUrgent": "Urgent (Dans la semaine)",
+        "urgencyFlexible": "Flexible (Pas pressé)",
+        "budgetRange": "Gamme de budget",
+        "budgetPlaceholder": "Votre budget approximatif (optionnel)",
+        "submitButton": "Soumettre la demande",
+        "submitting": "Soumission...",
+        "successMessage": "Merci ! Votre demande a été soumise avec succès.",
+        "errorMessage": "Désolé, il y a eu une erreur lors de la soumission de votre demande. Veuillez réessayer.",
+        "requiredField": "Ce champ est requis",
+        "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+        "minLength": "Doit contenir au moins {min} caractères",
+        "maxLength": "Doit contenir au maximum {max} caractères"
+    },
+    "blog": {
+        "title": "Blog et actualités",
+        "subtitle": "Dernières mises à jour, insights et actualités de l'industrie d'AIERXUAN",
+        "heroDescription": "Restez informé des derniers développements en automatisation industrielle, mises à jour produits et actualités de l'entreprise.",
+        "allCategories": "Toutes les catégories",
+        "news": "Actualités",
+        "products": "Produits",
+        "industry": "Industrie",
+        "technology": "Technologie",
+        "readMore": "Lire la suite",
+        "publishedOn": "Publié le",
+        "by": "par",
+        "author": "Équipe AIERXUAN",
+        "loading": "Chargement des articles...",
+        "noArticles": "Aucun article trouvé",
+        "loadingError": "Échec du chargement des articles",
+        "tryAgain": "Réessayer",
+        "loadMore": "Charger plus d'articles",
+        "showingResults": "Affichage de {count} sur {total} articles"
+    },
+    "blogDetail": {
+        "backToBlog": "Retour au blog",
+        "publishedOn": "Publié le",
+        "by": "par",
+        "author": "Équipe AIERXUAN",
+        "readingTime": "min de lecture",
+        "shareArticle": "Partager cet article",
+        "relatedArticles": "Articles connexes",
+        "ctaTitle": "Intéressé par nos solutions?",
+        "ctaDescription": "Contactez-nous pour en savoir plus sur nos produits et services d'automatisation industrielle.",
+        "contactUs": "Nous contacter",
+        "viewProducts": "Voir les produits",
+        "loading": "Chargement de l'article...",
+        "notFound": "Article non trouvé",
+        "notFoundDescription": "L'article que vous recherchez n'existe pas ou a été supprimé.",
+        "loadingError": "Échec du chargement de l'article",
+        "tryAgain": "Réessayer",
+        "previousArticle": "Article précédent",
+        "nextArticle": "Article suivant",
+        "tableOfContents": "Table des matières",
+        "readMore": "Lire la suite"
+    },
+    "thankYou": {
+        "title": "Merci !",
+        "subtitle": "Votre demande a été soumise avec succès",
+        "message": "Nous avons reçu votre demande et notre équipe va l'examiner sous peu. Vous pouvez vous attendre à recevoir de nos nouvelles dans les 24 heures pendant les jours ouvrables.",
+        "whatHappensNext": "Que se passe-t-il ensuite ?",
+        "steps": [
+            {
+                "title": "Examen et analyse",
+                "description": "Notre équipe technique examinera vos exigences et analysera les meilleures solutions pour vos besoins."
+            },
+            {
+                "title": "Devis personnalisé",
+                "description": "Nous préparerons un devis détaillé avec les prix, les spécifications et les délais de livraison."
+            },
+            {
+                "title": "Contact de suivi",
+                "description": "Notre représentant commercial vous contactera pour discuter de la proposition et répondre à vos questions."
+            }
+        ],
+        "backToHome": "Retour à l'accueil",
+        "browseProducts": "Parcourir les produits",
+        "contactInfo": "Besoin d'une assistance immédiate ?",
+        "phone": "Appelez-nous : +86 123 456 7890",
+        "email": "Écrivez-nous : admin@aierxuanlaptop.com",
+        "businessHours": "Heures d'ouverture : Lundi - Vendredi, 9h00 - 18h00 (GMT+8)",
+        "socialMedia": "Suivez-nous pour les mises à jour",
+        "additionalResources": "Ressources supplémentaires",
+        "resources": [
+            {
+                "title": "Catalogue de produits",
+                "href": "/products",
+                "description": "Parcourez notre gamme complète de produits"
+            },
+            {
+                "title": "Support technique",
+                "href": "/support",
+                "description": "Obtenez une assistance technique"
+            },
+            {
+                "title": "À propos de nous",
+                "href": "/about",
+                "description": "En savoir plus sur notre entreprise"
+            }
+        ]
+    }
+}

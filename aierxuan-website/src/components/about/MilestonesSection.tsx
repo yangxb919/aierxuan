@@ -1,5 +1,7 @@
 'use client'
 
+import { Trophy, Package, Globe, Factory, Zap, Star } from 'lucide-react'
+
 interface MilestonesSectionProps {
   texts: {
     title: string
@@ -20,41 +22,41 @@ export function MilestonesSection({ texts }: MilestonesSectionProps) {
     {
       value: texts.milestones.years.value,
       label: texts.milestones.years.label,
-      icon: '🏆'
+      icon: Trophy
     },
     {
       value: texts.milestones.units.value,
       label: texts.milestones.units.label,
-      icon: '📦'
+      icon: Package
     },
     {
       value: texts.milestones.countries.value,
       label: texts.milestones.countries.label,
-      icon: '🌍'
+      icon: Globe
     },
     {
       value: texts.milestones.factory.value,
       label: texts.milestones.factory.label,
-      icon: '🏭'
+      icon: Factory
     },
     {
       value: texts.milestones.testing.value,
       label: texts.milestones.testing.label,
-      icon: '⚡'
+      icon: Zap
     },
     {
       value: texts.milestones.satisfaction.value,
       label: texts.milestones.satisfaction.label,
-      icon: '⭐'
+      icon: Star
     }
   ]
 
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
             {texts.title}
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -64,33 +66,32 @@ export function MilestonesSection({ texts }: MilestonesSectionProps) {
 
         {/* Milestones Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {milestones.map((milestone, index) => (
-            <div
-              key={index}
-              className="text-center group hover:transform hover:scale-105 transition-all duration-300"
-            >
-              {/* Icon */}
-              <div className="text-5xl mb-4 group-hover:animate-bounce">
-                {milestone.icon}
-              </div>
+          {milestones.map((milestone, index) => {
+            const Icon = milestone.icon;
+            return (
+              <div
+                key={index}
+                className="group relative bg-slate-50 rounded-2xl p-6 text-center hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-slate-100"
+              >
+                {/* Icon */}
+                <div className="w-12 h-12 mx-auto mb-6 bg-white rounded-xl flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:bg-blue-50 transition-colors shadow-sm">
+                  <Icon className="w-6 h-6" />
+                </div>
 
-              {/* Value */}
-              <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                {milestone.value}
-              </div>
+                {/* Value */}
+                <div className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  {milestone.value}
+                </div>
 
-              {/* Label */}
-              <div className="text-sm sm:text-base text-slate-600 font-medium">
-                {milestone.label}
+                {/* Label */}
+                <div className="text-sm font-medium text-slate-500 group-hover:text-slate-700">
+                  {milestone.label}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
-        {/* Bottom Divider */}
-        <div className="mt-16 border-t border-slate-200"></div>
       </div>
     </section>
   )
 }
-

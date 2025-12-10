@@ -10,9 +10,10 @@ interface Heading {
 
 interface TableOfContentsProps {
   content: string
+  title: string
 }
 
-export default function TableOfContents({ content }: TableOfContentsProps) {
+export default function TableOfContents({ content, title }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState<string>('')
 
@@ -30,7 +31,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
         .toLowerCase()
         .replace(/[^\w\s-]/g, '')
         .replace(/\s+/g, '-')
-      
+
       extractedHeadings.push({ id, text, level })
     }
 
@@ -90,7 +91,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
         <h3 className="text-lg font-bold text-gray-900">
-          Table of Contents
+          {title}
         </h3>
       </div>
       <ul className="space-y-3">
@@ -101,11 +102,10 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
           >
             <button
               onClick={() => handleClick(heading.id)}
-              className={`text-left w-full text-sm leading-relaxed transition-colors ${
-                activeId === heading.id
+              className={`text-left w-full text-sm leading-relaxed transition-colors ${activeId === heading.id
                   ? 'text-blue-600 font-semibold'
                   : 'text-gray-700 hover:text-blue-600'
-              }`}
+                }`}
             >
               {heading.text}
             </button>

@@ -2,53 +2,25 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui'
-import { useLanguage, useAppStore } from '@/store/useAppStore'
 import { Bars3Icon, XMarkIcon, GlobeAltIcon } from '@heroicons/react/24/outline'
+import { i18n, type Locale } from '@/i18n-config'
 
-const navigation = {
-  en: [
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-    { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  ru: [
-    { name: 'Главная', href: '/' },
-    { name: 'Продукты', href: '/products' },
-    { name: 'О нас', href: '/about' },
-    { name: 'Блог', href: '/blog' },
-    { name: 'Контакты', href: '/contact' },
-  ],
-  ja: [
-    { name: 'ホーム', href: '/' },
-    { name: '製品', href: '/products' },
-    { name: '会社概要', href: '/about' },
-    { name: 'ブログ', href: '/blog' },
-    { name: 'お問い合わせ', href: '/contact' },
-  ],
-  fr: [
-    { name: 'Accueil', href: '/' },
-    { name: 'Produits', href: '/products' },
-    { name: 'À propos', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  pt: [
-    { name: 'Início', href: '/' },
-    { name: 'Produtos', href: '/products' },
-    { name: 'Sobre', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contato', href: '/contact' },
-  ],
-  'zh-CN': [
-    { name: '首页', href: '/' },
-    { name: '产品', href: '/products' },
-    { name: '关于我们', href: '/about' },
-    { name: '博客', href: '/blog' },
-    { name: '联系我们', href: '/contact' },
-  ]
+interface NavbarProps {
+  dictionary: {
+    navigation: {
+      home: string
+      products: string
+      about: string
+      blog: string
+      contact: string
+    }
+    common: {
+      getQuote: string
+    }
+  }
+  lang: Locale
 }
 
 const languageOptions = [
@@ -60,18 +32,27 @@ const languageOptions = [
   { code: 'zh-CN', name: '中文', flag: '🇨🇳' },
 ] as const
 
-export function Navbar() {
+export function Navbar({ dictionary, lang }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
-  const language = useLanguage()
-  const { setLanguage } = useAppStore()
-  const navItems = navigation[language] || navigation.en // Fallback to English if language not found
+  const pathname = usePathname()
 
-  const currentLanguage = languageOptions.find(lang => lang.code === language) || languageOptions[0]
+  const navItems = [
+    { name: dictionary.navigation.home, href: `/${lang}` },
+    { name: dictionary.navigation.products, href: `/${lang}/products` },
+    { name: dictionary.navigation.about, href: `/${lang}/about` },
+    { name: dictionary.navigation.blog, href: `/${lang}/blog` },
+    { name: dictionary.navigation.contact, href: `/${lang}/contact` },
+  ]
 
-  const handleLanguageChange = (langCode: LanguageCode) => {
-    setLanguage(langCode)
-    setLanguageMenuOpen(false)
+  const currentLanguage = languageOptions.find(l => l.code === lang) || languageOptions[0]
+
+  // Helper to get the path for a different language
+  const getRedirectedPathName = (locale: string) => {
+    if (!pathname) return '/'
+    const segments = pathname.split('/')
+    segments[1] = locale
+    return segments.join('/')
   }
 
   return (
@@ -80,7 +61,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
+            <Link href={`/${lang}`} className="flex items-center">
               <div className="flex-shrink-0">
                 <span className="text-2xl font-bold text-blue-600">AIERXUAN</span>
               </div>
@@ -117,17 +98,17 @@ export function Navbar() {
               {languageMenuOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
                   <div className="py-1">
-                    {languageOptions.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleLanguageChange(lang.code as LanguageCode)}
-                        className={`flex items-center space-x-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100 ${
-                          language === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
-                        }`}
+                    {languageOptions.map((option) => (
+                      <Link
+                        key={option.code}
+                        href={getRedirectedPathName(option.code)}
+                        onClick={() => setLanguageMenuOpen(false)}
+                        className={`flex items-center space-x-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100 ${lang === option.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                          }`}
                       >
-                        <span>{lang.flag}</span>
-                        <span>{lang.name}</span>
-                      </button>
+                        <span>{option.flag}</span>
+                        <span>{option.name}</span>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -135,14 +116,9 @@ export function Navbar() {
             </div>
 
             {/* CTA Button */}
-            <Link href="/contact">
+            <Link href={`/${lang}/contact`}>
               <Button size="sm">
-                {language === 'en' ? 'Get Quote' :
-                 language === 'ru' ? 'Получить предложение' :
-                 language === 'ja' ? '見積もりを取得' :
-                 language === 'fr' ? 'Obtenir un devis' :
-                 language === 'pt' ? 'Obter cotação' :
-                 '获取报价'}
+                {dictionary.common.getQuote}
               </Button>
             </Link>
           </div>
@@ -178,41 +154,33 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              
+
               {/* Mobile Language Options */}
               <div className="px-3 py-2">
                 <div className="text-sm font-medium text-gray-500 mb-2">Language / 语言</div>
                 <div className="grid grid-cols-2 gap-2">
-                  {languageOptions.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        handleLanguageChange(lang.code as LanguageCode)
-                        setMobileMenuOpen(false)
-                      }}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm transition-colors ${
-                        language === lang.code
+                  {languageOptions.map((option) => (
+                    <Link
+                      key={option.code}
+                      href={getRedirectedPathName(option.code)}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm transition-colors ${lang === option.code
                           ? 'bg-blue-100 text-blue-600'
                           : 'text-gray-700 hover:bg-gray-100'
-                      }`}
+                        }`}
                     >
-                      <span>{lang.flag}</span>
-                      <span>{lang.name}</span>
-                    </button>
+                      <span>{option.flag}</span>
+                      <span>{option.name}</span>
+                    </Link>
                   ))}
                 </div>
               </div>
 
               {/* Mobile CTA Button */}
               <div className="px-3 py-2">
-                <Link href="/contact" className="block">
+                <Link href={`/${lang}/contact`} className="block">
                   <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>
-                    {language === 'en' ? 'Get Quote' :
-                     language === 'ru' ? 'Получить предложение' :
-                     language === 'ja' ? '見積もりを取得' :
-                     language === 'fr' ? 'Obtenir un devis' :
-                     language === 'pt' ? 'Obter cotação' :
-                     '获取报价'}
+                    {dictionary.common.getQuote}
                   </Button>
                 </Link>
               </div>

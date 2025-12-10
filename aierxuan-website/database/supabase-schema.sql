@@ -76,6 +76,7 @@ CREATE TABLE products (
     featured BOOLEAN DEFAULT false,
     moq INTEGER DEFAULT 100,
     price DECIMAL(10, 2),
+    datasheet_url TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -99,6 +100,9 @@ CREATE TABLE product_translations (
     short_desc TEXT,
     long_desc TEXT,
     key_specs JSONB DEFAULT '{}',
+    quality_tests JSONB DEFAULT '[]',
+    oem_services JSONB DEFAULT '[]',
+    faqs JSONB DEFAULT '[]',
     seo_title VARCHAR(255),
     seo_desc TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),

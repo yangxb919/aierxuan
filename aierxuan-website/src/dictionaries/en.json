@@ -1,0 +1,742 @@
+{
+    "navigation": {
+        "home": "Home",
+        "products": "Products",
+        "about": "About",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "common": {
+        "getQuote": "Get Quote",
+        "viewAll": "View All Products",
+        "learnMore": "Learn More About Us",
+        "requestQuote": "Request Quote",
+        "viewProducts": "View Products"
+    },
+    "home": {
+        "hero": {
+            "slides": [
+                {
+                    "title": "Professional Laptop & Mini PC Manufacturer",
+                    "subtitle": "OEM/ODM Solutions for Global Partners",
+                    "description": "✓ Flexible MOQ from 100 Units  ✓ Fast 7-15 Days Delivery  ✓ Full Customization Available  ✓ Intel Partner | CE/FCC Certified"
+                }
+            ]
+        },
+        "featuredProducts": {
+            "title": "Featured Products",
+            "subtitle": "Discover our latest industrial automation solutions"
+        },
+        "about": {
+            "title": "About AIERXUAN",
+            "description": "Leading provider of industrial automation solutions, specializing in high-quality equipment and innovative technologies for modern manufacturing."
+        },
+        "categories": {
+            "title": "Product Categories",
+            "subtitle": "Explore our comprehensive range of computing solutions",
+            "items": {
+                "business": {
+                    "name": "Business Laptop",
+                    "description": "Professional laptops designed for business productivity and reliability",
+                    "features": [
+                        "Intel Core i9",
+                        "Long Battery Life",
+                        "Enterprise Security"
+                    ],
+                    "moq": "MOQ: 100 units",
+                    "useCase": "Perfect for: Bulk corporate orders, educational institutions"
+                },
+                "gaming": {
+                    "name": "Gaming Laptop",
+                    "description": "High-performance gaming laptops with cutting-edge graphics",
+                    "features": [
+                        "RTX Graphics",
+                        "High Refresh Rate",
+                        "Advanced Cooling"
+                    ],
+                    "moq": "MOQ: 100 units",
+                    "useCase": "Perfect for: Gaming brands, esports organizations"
+                },
+                "mini": {
+                    "name": "Mini PC",
+                    "description": "Compact and powerful mini PCs for space-efficient computing",
+                    "features": [
+                        "Compact Design",
+                        "Silent Operation",
+                        "Energy Efficient"
+                    ],
+                    "moq": "MOQ: 50 units",
+                    "useCase": "Perfect for: Digital signage, kiosks, office workstations"
+                }
+            }
+        },
+        "coreAdvantages": {
+            "title": "Why Global Partners Choose AIERXUAN",
+            "subtitle": "Proven advantages for B2B success",
+            "items": [
+                {
+                    "title": "Flexible MOQ",
+                    "description": "From 1 sample unit to 10,000+ bulk orders. Perfect for market testing and large-scale deployment.",
+                    "stats": "MOQ from 100 units",
+                    "details": [
+                        "Sample orders: 1-10 units",
+                        "Small batch: 100-500 units",
+                        "Bulk orders: 1,000-10,000+ units",
+                        "No hidden fees or surcharges"
+                    ]
+                },
+                {
+                    "title": "Fast Turnaround",
+                    "description": "Industry-leading production speed with consistent quality. Rush orders supported for urgent needs.",
+                    "stats": "7-15 days delivery",
+                    "details": [
+                        "Standard lead time: 7-15 days",
+                        "Rush orders: 3-5 days available",
+                        "On-time delivery rate: 98%+",
+                        "Real-time production tracking"
+                    ]
+                },
+                {
+                    "title": "Full Customization",
+                    "description": "Complete OEM/ODM services including logo printing, packaging design, software pre-installation, and hardware configuration.",
+                    "stats": "100% customizable",
+                    "details": [
+                        "Logo printing & engraving",
+                        "Custom packaging design",
+                        "Software pre-installation",
+                        "Hardware configuration options"
+                    ]
+                }
+            ]
+        },
+        "trustBadges": {
+            "title": "Trusted by Global Clients",
+            "subtitle": "Certified Quality & Industry Recognition",
+            "clients": "Our Clients",
+            "certifications": "Certifications",
+            "partners": "Technology Partners",
+            "stats": {
+                "clients": {
+                    "value": "500+",
+                    "label": "Global Clients"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Countries Served"
+                },
+                "experience": {
+                    "value": "10+",
+                    "label": "Years Experience"
+                },
+                "satisfaction": {
+                    "value": "99.8%",
+                    "label": "Customer Satisfaction"
+                }
+            },
+            "certificationItems": [
+                {
+                    "name": "CE",
+                    "description": "European Conformity"
+                },
+                {
+                    "name": "FCC",
+                    "description": "Federal Communications Commission"
+                },
+                {
+                    "name": "RoHS",
+                    "description": "Restriction of Hazardous Substances"
+                },
+                {
+                    "name": "UL",
+                    "description": "Underwriters Laboratories"
+                },
+                {
+                    "name": "ISO 9001",
+                    "description": "Quality Management"
+                },
+                {
+                    "name": "ISO 14001",
+                    "description": "Environmental Management"
+                }
+            ]
+        },
+        "manufacturingCapability": {
+            "title": "Our Manufacturing Capability",
+            "subtitle": "State-of-the-art facilities and quality control",
+            "description": "With advanced manufacturing facilities and strict quality control processes, we ensure every product meets the highest standards.",
+            "items": [
+                {
+                    "title": "Modern Factory",
+                    "description": "State-of-the-art manufacturing facility with automated production lines",
+                    "stats": [
+                        {
+                            "value": "50,000+",
+                            "label": "Units/Month Capacity"
+                        },
+                        {
+                            "value": "10,000㎡",
+                            "label": "Production Floor"
+                        }
+                    ]
+                },
+                {
+                    "title": "Production Line",
+                    "description": "Advanced automated assembly and testing systems ensuring consistent quality",
+                    "stats": [
+                        {
+                            "value": "15+",
+                            "label": "Production Lines"
+                        },
+                        {
+                            "value": "98%",
+                            "label": "Automation Rate"
+                        }
+                    ]
+                },
+                {
+                    "title": "Quality Control",
+                    "description": "Comprehensive testing and inspection at every production stage",
+                    "stats": [
+                        {
+                            "value": "100%",
+                            "label": "Product Testing"
+                        },
+                        {
+                            "value": "ISO 9001",
+                            "label": "Certified"
+                        }
+                    ]
+                },
+                {
+                    "title": "Warehouse & Logistics",
+                    "description": "Efficient inventory management and global shipping capabilities",
+                    "stats": [
+                        {
+                            "value": "24-48h",
+                            "label": "Fast Delivery"
+                        },
+                        {
+                            "value": "100+",
+                            "label": "Countries Served"
+                        }
+                    ]
+                }
+            ],
+            "features": [
+                "Advanced manufacturing equipment",
+                "Strict quality control system",
+                "Experienced technical team",
+                "Global logistics network"
+            ]
+        },
+        "technicalCapabilities": {
+            "title": "Technical Excellence",
+            "subtitle": "Our R&D capabilities and quality assurance",
+            "downloadWhitepaper": "Download Technical Whitepaper",
+            "capabilities": [
+                {
+                    "title": "Advanced R&D",
+                    "icon": "🔬",
+                    "image": "/images/advanced-manufacturing-facility.jpg",
+                    "description": "Dedicated research and development team with 10+ years of experience in hardware design and optimization",
+                    "features": [
+                        "In-house hardware design",
+                        "Firmware development",
+                        "Performance optimization",
+                        "Continuous innovation"
+                    ]
+                },
+                {
+                    "title": "Thermal Management",
+                    "icon": "❄️",
+                    "image": "/images/technical-thermal-management.jpg",
+                    "description": "Industry-leading cooling solutions ensuring optimal performance and longevity even under heavy workloads",
+                    "features": [
+                        "Advanced heat pipe design",
+                        "Fanless cooling options",
+                        "Thermal simulation testing",
+                        "Wide temperature range support"
+                    ]
+                },
+                {
+                    "title": "Quality Control",
+                    "icon": "✅",
+                    "image": "/images/technical-quality-control.jpg",
+                    "description": "Rigorous multi-stage testing and quality assurance processes to guarantee reliability and performance",
+                    "features": [
+                        "1000+ hours burn-in testing",
+                        "Comprehensive stress testing",
+                        "ISO 9001 certified processes",
+                        "Zero-defect manufacturing goal"
+                    ]
+                },
+                {
+                    "title": "Compatibility Testing",
+                    "icon": "🔄",
+                    "image": "/images/technical-compatibility-testing.jpg",
+                    "description": "Extensive compatibility validation with major operating systems, software, and peripheral devices",
+                    "features": [
+                        "Windows/Linux certification",
+                        "Driver optimization",
+                        "Peripheral compatibility",
+                        "Software integration testing"
+                    ]
+                }
+            ],
+            "process": {
+                "title": "Our Development Process",
+                "steps": [
+                    {
+                        "number": "01",
+                        "title": "Requirements Analysis",
+                        "description": "Understanding customer needs and specifications"
+                    },
+                    {
+                        "number": "02",
+                        "title": "Design & Prototyping",
+                        "description": "Creating optimized hardware designs"
+                    },
+                    {
+                        "number": "03",
+                        "title": "Testing & Validation",
+                        "description": "Rigorous quality and performance testing"
+                    },
+                    {
+                        "number": "04",
+                        "title": "Production & Delivery",
+                        "description": "Manufacturing and global logistics"
+                    }
+                ]
+            }
+        },
+        "finalCTA": {
+            "title": "Ready to Get Started?",
+            "subtitle": "Get a customized quote for your business needs",
+            "description": "Fill out the form below and our team will get back to you within 2 hours with a detailed quotation.",
+            "form": {
+                "name": "Name (Optional)",
+                "namePlaceholder": "John Doe",
+                "email": "Email Address",
+                "emailPlaceholder": "john@company.com",
+                "country": "Country (Optional)",
+                "countryPlaceholder": "Select your country",
+                "productInterest": "Product Interest (Optional)",
+                "productInterestPlaceholder": "Which products are you interested in?",
+                "message": "Message (Optional)",
+                "messagePlaceholder": "Tell us about your project requirements, quantity, timeline, etc.",
+                "submit": "Submit Request",
+                "submitting": "Submitting..."
+            },
+            "validation": {
+                "emailRequired": "Email is required",
+                "emailInvalid": "Please enter a valid email"
+            },
+            "success": "Thank you! We will contact you soon.",
+            "error": "Failed to submit. Please try again.",
+            "responseTime": "⚡ We typically respond within 2 hours",
+            "privacyNote": "Your information will be kept confidential and used only to respond to your inquiry.",
+            "productCategories": [
+                "Industrial Panel PC",
+                "Mini PC",
+                "Embedded System",
+                "Touch Display",
+                "IoT Gateway",
+                "Other"
+            ],
+            "features": [
+                {
+                    "icon": "⚡",
+                    "text": "Fast Response within 2 hours"
+                },
+                {
+                    "icon": "💰",
+                    "text": "Competitive Pricing"
+                },
+                {
+                    "icon": "🎨",
+                    "text": "Full Customization Options"
+                },
+                {
+                    "icon": "🌍",
+                    "text": "Global Shipping Available"
+                }
+            ]
+        }
+    },
+    "about": {
+        "hero": {
+            "mainTitle": "Professional AI Laptop & Gaming PC Manufacturer",
+            "subtitle": "10+ Years Experience | Intel Partner | OEM/ODM Services | Global Delivery",
+            "description": "AIERXUAN is a professional laptop manufacturer based in Shenzhen. We specialize in OEM/ODM solutions for global partners since 2014.",
+            "contactSales": "Contact Sales Team",
+            "downloadCatalog": "Download Product Catalog"
+        },
+        "story": {
+            "title": "About AIERXUAN",
+            "subtitle": "Professional Laptop Manufacturer Since 2014",
+            "paragraph1": "Founded in 2014, AIERXUAN specializes in high-performance laptops and mini PCs for B2B clients worldwide. As an Intel China Channel Partner since 2019, we've shipped 500,000+ units to customers in 50+ countries.",
+            "paragraph2": "Our 15,000㎡ facility combines advanced manufacturing with strict quality control. We offer flexible MOQ from 1 sample to bulk orders, full OEM/ODM customization, and fast 7-15 day delivery."
+        },
+        "factory": {
+            "title": "Manufacturing Capability",
+            "subtitle": "15,000㎡ facility with 6 production lines and 200+ team members",
+            "videoTitle": "Factory Tour Video",
+            "photos": {
+                "factoryOverview": "Factory Overview",
+                "factoryOverviewDesc": "15,000㎡ modern facility",
+                "assemblyLine": "Assembly Line",
+                "assemblyLineDesc": "6 automated production lines",
+                "testingLab": "Testing Laboratory",
+                "testingLabDesc": "72-hour burn-in testing",
+                "warehouse": "Warehouse & Logistics",
+                "warehouseDesc": "Fast global shipping",
+                "rdCenter": "R&D Center",
+                "rdCenterDesc": "Dedicated engineering team",
+                "qualityControl": "Quality Control",
+                "qualityControlDesc": "Multi-stage inspection process"
+            }
+        },
+        "quality": {
+            "title": "Quality Assurance",
+            "subtitle": "Rigorous 7-step quality control process ensures every product meets the highest standards",
+            "processTitle": "7-Step Quality Control Process",
+            "certificatesTitle": "Certifications",
+            "steps": {
+                "step1": "Incoming Material Inspection",
+                "step2": "Component Assembly Check",
+                "step3": "Power-On Testing",
+                "step4": "72-Hour Burn-In Test",
+                "step5": "Final Quality Inspection",
+                "step6": "Packaging Quality Check",
+                "step7": "Pre-Shipment Verification"
+            }
+        },
+        "events": {
+            "title": "Global Exhibitions & Intel Partnership",
+            "subtitle": "Building trust face-to-face and earning recognition from industry leaders",
+            "exhibitionsTitle": "International Trade Shows",
+            "exhibitionsDesc": "We meet partners worldwide to showcase new products, understand market needs, and build long-term cooperation.",
+            "intelTitle": "Intel Partnership & Awards",
+            "intelDesc": "Recognized at Intel China Channel events. Our close collaboration ensures cutting-edge performance and stable supply."
+        },
+        "milestones": {
+            "title": "By The Numbers",
+            "subtitle": "Trusted by businesses worldwide for quality and reliability",
+            "milestones": {
+                "years": {
+                    "value": "10+",
+                    "label": "Years Experience"
+                },
+                "units": {
+                    "value": "500K+",
+                    "label": "Units Shipped"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Countries Served"
+                },
+                "factory": {
+                    "value": "15,000㎡",
+                    "label": "Factory Space"
+                },
+                "testing": {
+                    "value": "72h",
+                    "label": "Burn-in Testing"
+                },
+                "satisfaction": {
+                    "value": "98%",
+                    "label": "Satisfaction Rate"
+                }
+            }
+        },
+        "cta": {
+            "title": "Ready to Partner With Us?",
+            "subtitle": "Get a custom quote within 24 hours",
+            "contactSales": "Contact Sales Team",
+            "downloadCatalog": "Download Catalog",
+            "whatsapp": "WhatsApp",
+            "email": "Email",
+            "phone": "Phone",
+            "responseTime": "Response Time"
+        }
+    },
+    "products": {
+        "page": {
+            "title": "Our Products",
+            "subtitle": "Discover our complete range of industrial automation solutions",
+            "description": "Browse through our carefully selected products designed to meet your industrial automation needs. Each product is engineered for reliability, performance, and efficiency.",
+            "allProducts": "All Products",
+            "featuredProducts": "Featured Products",
+            "categories": "Categories",
+            "business": "Business Laptops",
+            "gaming": "Gaming Laptops",
+            "mini": "Mini PCs",
+            "all": "All"
+        },
+        "grid": {
+            "noDescription": "No description available",
+            "sku": "SKU",
+            "contactForPrice": "Contact for Price",
+            "viewDetails": "View Details",
+            "quote": "Quote",
+            "noProducts": "No products found",
+            "errorMessage": "Failed to load products",
+            "tryAgain": "Try Again",
+            "productImage": "Product Image"
+        },
+        "advantages": {
+            "premium": "Premium",
+            "cooling": "Silent Cooling",
+            "manufacturing": "Foxconn"
+        },
+        "detail": {
+            "specifications": "Specifications",
+            "requestQuote": "Request Quote",
+            "contactForPrice": "Contact for Price",
+            "category": "Category",
+            "sku": "SKU",
+            "status": "Status",
+            "active": "Active",
+            "inactive": "Inactive",
+            "backToProducts": "Back to Products",
+            "productNotFound": "Product not found",
+            "loadingError": "Failed to load product",
+            "tryAgain": "Try Again",
+            "productImages": "Product Images",
+            "noDescription": "No description available",
+            "features": "Features",
+            "overview": "Overview",
+            "moq": "MOQ",
+            "price": "Price",
+            "units": "units",
+            "pricePerUnit": "per unit",
+            "startingFrom": "Starting from"
+        }
+    },
+    "footer": {
+        "company": {
+            "title": "AIERXUAN",
+            "description": "Professional OEM/ODM manufacturer of custom computing solutions. Specializing in laptops, mini PCs, and industrial computing equipment for businesses worldwide."
+        },
+        "links": {
+            "products": {
+                "title": "Products",
+                "items": [
+                    {
+                        "name": "Industrial Equipment",
+                        "href": "/products/industrial"
+                    },
+                    {
+                        "name": "Automation Systems",
+                        "href": "/products/automation"
+                    },
+                    {
+                        "name": "Control Solutions",
+                        "href": "/products/control"
+                    },
+                    {
+                        "name": "Sensors & Instruments",
+                        "href": "/products/sensors"
+                    }
+                ]
+            },
+            "company": {
+                "title": "Company",
+                "items": [
+                    {
+                        "name": "About Us",
+                        "href": "/about"
+                    },
+                    {
+                        "name": "Our Team",
+                        "href": "/about/team"
+                    },
+                    {
+                        "name": "Careers",
+                        "href": "/careers"
+                    },
+                    {
+                        "name": "News",
+                        "href": "/news"
+                    }
+                ]
+            },
+            "support": {
+                "title": "Support",
+                "items": [
+                    {
+                        "name": "Contact Us",
+                        "href": "/contact"
+                    },
+                    {
+                        "name": "Technical Support",
+                        "href": "/support"
+                    },
+                    {
+                        "name": "Documentation",
+                        "href": "/docs"
+                    },
+                    {
+                        "name": "FAQ",
+                        "href": "/faq"
+                    }
+                ]
+            }
+        },
+        "contact": {
+            "title": "Contact Info",
+            "email": "admin@aierxuanlaptop.com",
+            "phone": "4008-8228-058",
+            "address": "Longgang District, Shenzhen, China"
+        },
+        "copyright": "© 2024 AIERXUAN. All rights reserved."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Get in touch with our team for personalized industrial automation solutions",
+        "description": "Ready to transform your manufacturing processes? Our experts are here to help you find the perfect industrial automation solution for your needs.",
+        "contactInfo": "Contact Information",
+        "address": "Address",
+        "addressValue": "Industrial District, City, Country",
+        "phone": "Phone",
+        "phoneValue": "+86 123 456 7890",
+        "email": "Email",
+        "emailValue": "admin@aierxuanlaptop.com",
+        "businessHours": "Business Hours",
+        "businessHoursValue": "Monday - Friday: 9:00 AM - 6:00 PM (GMT+8)",
+        "responseTime": "Response Time",
+        "responseTimeValue": "We typically respond within 24 hours",
+        "whyChooseUs": "Why Choose AIERXUAN?",
+        "reasons": [
+            "Over 10 years of experience in industrial automation",
+            "Comprehensive product range for all your needs",
+            "Expert technical support and consultation",
+            "24/7 customer service and after-sales support",
+            "Competitive pricing and flexible payment terms",
+            "Global shipping and local support"
+        ]
+    },
+    "rfq": {
+        "title": "Request a Quote",
+        "subtitle": "Get a personalized quote for your industrial automation needs",
+        "name": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "email": "Email Address",
+        "emailPlaceholder": "Enter your email address",
+        "company": "Company Name",
+        "companyPlaceholder": "Enter your company name",
+        "phone": "Phone Number",
+        "phonePlaceholder": "Enter your phone number (optional)",
+        "productInterest": "Product of Interest",
+        "productPlaceholder": "Which product are you interested in?",
+        "message": "Message",
+        "messagePlaceholder": "Tell us about your requirements, quantity needed, timeline, etc.",
+        "quantity": "Quantity Needed",
+        "quantityPlaceholder": "How many units do you need?",
+        "country": "Country",
+        "countryPlaceholder": "Enter your country",
+        "industry": "Industry",
+        "industryPlaceholder": "What industry are you in?",
+        "urgency": "Urgency",
+        "urgencyNormal": "Normal (1-2 weeks)",
+        "urgencyUrgent": "Urgent (Within 1 week)",
+        "urgencyFlexible": "Flexible (No rush)",
+        "budgetRange": "Budget Range",
+        "budgetPlaceholder": "Your approximate budget (optional)",
+        "submitButton": "Submit Request",
+        "submitting": "Submitting...",
+        "successMessage": "Thank you! Your request has been submitted successfully.",
+        "errorMessage": "Sorry, there was an error submitting your request. Please try again.",
+        "requiredField": "This field is required",
+        "invalidEmail": "Please enter a valid email address",
+        "minLength": "Must be at least {min} characters",
+        "maxLength": "Must be no more than {max} characters"
+    },
+    "blog": {
+        "title": "Blog & News",
+        "subtitle": "Latest updates, insights, and industry news from AIERXUAN",
+        "heroDescription": "Stay informed about the latest developments in industrial automation, product updates, and company news.",
+        "allCategories": "All Categories",
+        "news": "News",
+        "products": "Products",
+        "industry": "Industry",
+        "technology": "Technology",
+        "readMore": "Read More",
+        "publishedOn": "Published on",
+        "by": "by",
+        "author": "AIERXUAN Team",
+        "loading": "Loading articles...",
+        "noArticles": "No articles found",
+        "loadingError": "Failed to load articles",
+        "tryAgain": "Try Again",
+        "loadMore": "Load More Articles",
+        "showingResults": "Showing {count} of {total} articles"
+    },
+    "blogDetail": {
+        "backToBlog": "Back to Blog",
+        "publishedOn": "Published on",
+        "by": "by",
+        "author": "AIERXUAN Team",
+        "readingTime": "min read",
+        "shareArticle": "Share this article",
+        "relatedArticles": "Related Articles",
+        "ctaTitle": "Interested in Our Solutions?",
+        "ctaDescription": "Contact us to learn more about our industrial automation products and services.",
+        "contactUs": "Contact Us",
+        "viewProducts": "View Products",
+        "loading": "Loading article...",
+        "notFound": "Article not found",
+        "notFoundDescription": "The article you are looking for does not exist or has been removed.",
+        "loadingError": "Failed to load article",
+        "tryAgain": "Try Again",
+        "previousArticle": "Previous Article",
+        "nextArticle": "Next Article",
+        "tableOfContents": "Table of Contents",
+        "readMore": "Read More"
+    },
+    "thankYou": {
+        "title": "Thank You!",
+        "subtitle": "Your request has been submitted successfully",
+        "message": "We have received your inquiry and our team will review it shortly. You can expect to hear from us within 24 hours during business days.",
+        "whatHappensNext": "What happens next?",
+        "steps": [
+            {
+                "title": "Review & Analysis",
+                "description": "Our technical team will review your requirements and analyze the best solutions for your needs."
+            },
+            {
+                "title": "Personalized Quote",
+                "description": "We will prepare a detailed quote with pricing, specifications, and delivery timeline."
+            },
+            {
+                "title": "Follow-up Contact",
+                "description": "Our sales representative will contact you to discuss the proposal and answer any questions."
+            }
+        ],
+        "backToHome": "Back to Home",
+        "browseProducts": "Browse Products",
+        "contactInfo": "Need immediate assistance?",
+        "phone": "Call us: +86 123 456 7890",
+        "email": "Email us: admin@aierxuanlaptop.com",
+        "businessHours": "Business Hours: Monday - Friday, 9:00 AM - 6:00 PM (GMT+8)",
+        "socialMedia": "Follow us for updates",
+        "additionalResources": "Additional Resources",
+        "resources": [
+            {
+                "title": "Product Catalog",
+                "href": "/products",
+                "description": "Browse our complete product range"
+            },
+            {
+                "title": "Technical Support",
+                "href": "/support",
+                "description": "Get technical assistance"
+            },
+            {
+                "title": "About Us",
+                "href": "/about",
+                "description": "Learn more about our company"
+            }
+        ]
+    }
+}

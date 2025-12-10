@@ -24,7 +24,7 @@ interface Product {
 
 async function getProducts(): Promise<Product[]> {
   const supabase = createSupabaseAdminClient()
-  
+
   const { data, error } = await supabase
     .from('products')
     .select(`
@@ -37,34 +37,47 @@ async function getProducts(): Promise<Product[]> {
       sort_order,
       created_at,
       updated_at,
-      product_translations!inner (
+      product_translations (
         locale,
         title,
         short_desc
       )
     `)
-    .eq('product_translations.locale', 'en')
     .order('sort_order', { ascending: true })
-  
+
   if (error) {
     console.error('Error fetching products:', error)
     return []
   }
-  
-  return data.map(product => ({
-    ...product,
-    translations: product.product_translations || []
-  })) as Product[]
+
+  // Map products and prioritize translations (en > zh-CN > first available)
+  return data.map(product => {
+    const translations = product.product_translations || []
+    // Try to get English translation first, fallback to Chinese, then any translation
+    const preferredTranslation =
+      translations.find(t => t.locale === 'en') ||
+      translations.find(t => t.locale === 'zh-CN') ||
+      translations[0]
+
+    return {
+      ...product,
+      translations: preferredTranslation ? [preferredTranslation] : []
+    }
+  }) as Product[]
 }
 
 function getStatusBadgeColor(status: string): string {
   switch (status) {
     case 'active':
       return 'bg-green-100 text-green-800'
+    case 'draft':
+      return 'bg-yellow-100 text-yellow-800'
     case 'inactive':
       return 'bg-gray-100 text-gray-800'
     case 'discontinued':
       return 'bg-red-100 text-red-800'
+    case 'archived':
+      return 'bg-purple-100 text-purple-800'
     default:
       return 'bg-gray-100 text-gray-800'
   }
@@ -74,10 +87,14 @@ function getStatusLabel(status: string): string {
   switch (status) {
     case 'active':
       return 'Active'
+    case 'draft':
+      return 'Draft'
     case 'inactive':
       return 'Inactive'
     case 'discontinued':
       return 'Discontinued'
+    case 'archived':
+      return 'Archived'
     default:
       return status
   }
@@ -180,11 +197,11 @@ export default async function AdminProductsPage() {
         {/* Products Content */}
         <main className="p-6">
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
@@ -209,6 +226,18 @@ export default async function AdminProductsPage() {
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">{products.filter(p => p.status === 'draft').length}</h3>
+              <p className="text-sm text-gray-500 mt-1">Draft</p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
                 </div>
@@ -235,11 +264,14 @@ export default async function AdminProductsPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm text-gray-500">Filter by status:</span>
-                <button className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors">
+                <button className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors">
                   All ({products.length})
                 </button>
                 <button className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">
                   Active ({products.filter(p => p.status === 'active').length})
+                </button>
+                <button className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">
+                  Draft ({products.filter(p => p.status === 'draft').length})
                 </button>
                 <button className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">
                   Featured ({products.filter(p => p.featured).length})
