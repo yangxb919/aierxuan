@@ -117,6 +117,17 @@ const getIconComponent = (name?: string, fallback = ShieldCheck) => {
   return iconMap[key] || fallback
 }
 
+// Ensure image path is absolute to avoid locale prefix being prepended
+function ensureAbsolutePath(path: string): string {
+  if (!path) return '/placeholder-product.svg'
+  // If already absolute URL (http/https) or starts with /, return as-is
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('/')) {
+    return path
+  }
+  // Add leading slash for relative paths
+  return '/' + path
+}
+
 interface ProductDetailClientProps {
     product: ProductWithTranslations
     lang: LanguageCode
@@ -153,7 +164,9 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
 
   const translation = getTranslation(product, lang)
   const productTitle = translation?.title || translation?.name || product.slug
-  const images = (product.images as string[] | null) || []
+  const rawImages = (product.images as string[] | null) || []
+  // Ensure all image paths are absolute to avoid locale prefix issues
+  const images = rawImages.map(img => ensureAbsolutePath(img))
   const primaryImage = images[0] || '/placeholder-product.svg'
 
   // Handle key_specs as either array or object format
@@ -173,16 +186,20 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
   const oemServices = parseArray<OemService>((translation as any)?.oem_services)
   const faqs = parseArray<FaqItem>((translation as any)?.faqs)
   const extractGalleryImages = (source: any, key: 'durability_images' | 'oem_images') => {
-    if (Array.isArray(source?.[key])) return source[key].filter(Boolean)
-    const features = source?.features
-    if (features && typeof features === 'object' && !Array.isArray(features)) {
-      const fromFeatures = (features as any)[key]
-      if (Array.isArray(fromFeatures)) return fromFeatures.filter(Boolean)
+    let result: string[] = []
+    if (Array.isArray(source?.[key])) result = source[key].filter(Boolean)
+    else {
+      const features = source?.features
+      if (features && typeof features === 'object' && !Array.isArray(features)) {
+        const fromFeatures = (features as any)[key]
+        if (Array.isArray(fromFeatures)) result = fromFeatures.filter(Boolean)
+      }
+      if (result.length === 0 && galleryMetaEntry && Array.isArray((galleryMetaEntry as any)[key])) {
+        result = (galleryMetaEntry as any)[key].filter(Boolean)
+      }
     }
-    if (galleryMetaEntry && Array.isArray((galleryMetaEntry as any)[key])) {
-      return (galleryMetaEntry as any)[key].filter(Boolean)
-    }
-    return []
+    // Ensure all paths are absolute
+    return result.map(img => ensureAbsolutePath(img))
   }
   const durabilityImages = extractGalleryImages(translation, 'durability_images')
   const oemImages = extractGalleryImages(translation, 'oem_images')
