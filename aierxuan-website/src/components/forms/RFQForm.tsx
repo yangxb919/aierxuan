@@ -2,236 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useForm } from 'react-hook-form'
+import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button, Input, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
 import { createSupabaseClient } from '@/lib/supabase'
-import { useLanguage } from '@/store/useAppStore'
 import type { LanguageCode } from '@/types'
-
-// RFQ form translations
-const rfqFormTexts = {
-  en: {
-    title: 'Request a Quote',
-    subtitle: 'Get a personalized quote for your industrial automation needs',
-    name: 'Full Name',
-    namePlaceholder: 'Enter your full name',
-    email: 'Email Address',
-    emailPlaceholder: 'Enter your email address',
-    company: 'Company Name',
-    companyPlaceholder: 'Enter your company name',
-    phone: 'Phone Number',
-    phonePlaceholder: 'Enter your phone number (optional)',
-    productInterest: 'Product of Interest',
-    productPlaceholder: 'Which product are you interested in?',
-    message: 'Message',
-    messagePlaceholder: 'Tell us about your requirements, quantity needed, timeline, etc.',
-    quantity: 'Quantity Needed',
-    quantityPlaceholder: 'How many units do you need?',
-    country: 'Country',
-    countryPlaceholder: 'Enter your country',
-    industry: 'Industry',
-    industryPlaceholder: 'What industry are you in?',
-    urgency: 'Urgency',
-    urgencyNormal: 'Normal (1-2 weeks)',
-    urgencyUrgent: 'Urgent (Within 1 week)',
-    urgencyFlexible: 'Flexible (No rush)',
-    budgetRange: 'Budget Range',
-    budgetPlaceholder: 'Your approximate budget (optional)',
-    submitButton: 'Submit Request',
-    submitting: 'Submitting...',
-    successMessage: 'Thank you! Your request has been submitted successfully.',
-    errorMessage: 'Sorry, there was an error submitting your request. Please try again.',
-    requiredField: 'This field is required',
-    invalidEmail: 'Please enter a valid email address',
-    minLength: 'Must be at least {min} characters',
-    maxLength: 'Must be no more than {max} characters'
-  },
-  ru: {
-    title: 'Запросить предложение',
-    subtitle: 'Получите персональное предложение для ваших потребностей в промышленной автоматизации',
-    name: 'Полное имя',
-    namePlaceholder: 'Введите ваше полное имя',
-    email: 'Адрес электронной почты',
-    emailPlaceholder: 'Введите ваш адрес электронной почты',
-    company: 'Название компании',
-    companyPlaceholder: 'Введите название вашей компании',
-    phone: 'Номер телефона',
-    phonePlaceholder: 'Введите ваш номер телефона (необязательно)',
-    productInterest: 'Интересующий продукт',
-    productPlaceholder: 'Какой продукт вас интересует?',
-    message: 'Сообщение',
-    messagePlaceholder: 'Расскажите нам о ваших требованиях, необходимом количестве, сроках и т.д.',
-    quantity: 'Необходимое количество',
-    quantityPlaceholder: 'Сколько единиц вам нужно?',
-    country: 'Страна',
-    countryPlaceholder: 'Введите вашу страну',
-    industry: 'Отрасль',
-    industryPlaceholder: 'В какой отрасли вы работаете?',
-    urgency: 'Срочность',
-    urgencyNormal: 'Обычная (1-2 недели)',
-    urgencyUrgent: 'Срочно (В течение 1 недели)',
-    urgencyFlexible: 'Гибкая (Не спешим)',
-    budgetRange: 'Бюджетный диапазон',
-    budgetPlaceholder: 'Ваш приблизительный бюджет (необязательно)',
-    submitButton: 'Отправить запрос',
-    submitting: 'Отправка...',
-    successMessage: 'Спасибо! Ваш запрос был успешно отправлен.',
-    errorMessage: 'Извините, произошла ошибка при отправке вашего запроса. Пожалуйста, попробуйте еще раз.',
-    requiredField: 'Это поле обязательно',
-    invalidEmail: 'Пожалуйста, введите действительный адрес электронной почты',
-    minLength: 'Должно быть не менее {min} символов',
-    maxLength: 'Должно быть не более {max} символов'
-  },
-  ja: {
-    title: '見積もりを依頼',
-    subtitle: '産業オートメーションのニーズに合わせたパーソナライズされた見積もりを取得',
-    name: '氏名',
-    namePlaceholder: 'お名前を入力してください',
-    email: 'メールアドレス',
-    emailPlaceholder: 'メールアドレスを入力してください',
-    company: '会社名',
-    companyPlaceholder: '会社名を入力してください',
-    phone: '電話番号',
-    phonePlaceholder: '電話番号を入力してください（任意）',
-    productInterest: '興味のある製品',
-    productPlaceholder: 'どの製品に興味がありますか？',
-    message: 'メッセージ',
-    messagePlaceholder: 'ご要件、必要数量、タイムラインなどをお聞かせください',
-    quantity: '必要数量',
-    quantityPlaceholder: '何台必要ですか？',
-    country: '国',
-    countryPlaceholder: 'お住まいの国を入力してください',
-    industry: '業界',
-    industryPlaceholder: 'どの業界にお勤めですか？',
-    urgency: '緊急度',
-    urgencyNormal: '通常（1-2週間）',
-    urgencyUrgent: '緊急（1週間以内）',
-    urgencyFlexible: '柔軟（急ぎません）',
-    budgetRange: '予算範囲',
-    budgetPlaceholder: 'おおよその予算（任意）',
-    submitButton: 'リクエストを送信',
-    submitting: '送信中...',
-    successMessage: 'ありがとうございます！リクエストが正常に送信されました。',
-    errorMessage: '申し訳ございませんが、リクエストの送信中にエラーが発生しました。もう一度お試しください。',
-    requiredField: 'この項目は必須です',
-    invalidEmail: '有効なメールアドレスを入力してください',
-    minLength: '{min}文字以上である必要があります',
-    maxLength: '{max}文字以下である必要があります'
-  },
-  fr: {
-    title: 'Demander un devis',
-    subtitle: 'Obtenez un devis personnalisé pour vos besoins en automatisation industrielle',
-    name: 'Nom complet',
-    namePlaceholder: 'Entrez votre nom complet',
-    email: 'Adresse e-mail',
-    emailPlaceholder: 'Entrez votre adresse e-mail',
-    company: 'Nom de l\'entreprise',
-    companyPlaceholder: 'Entrez le nom de votre entreprise',
-    phone: 'Numéro de téléphone',
-    phonePlaceholder: 'Entrez votre numéro de téléphone (optionnel)',
-    productInterest: 'Produit d\'intérêt',
-    productPlaceholder: 'Quel produit vous intéresse ?',
-    message: 'Message',
-    messagePlaceholder: 'Parlez-nous de vos exigences, quantité nécessaire, délais, etc.',
-    quantity: 'Quantité nécessaire',
-    quantityPlaceholder: 'Combien d\'unités avez-vous besoin ?',
-    country: 'Pays',
-    countryPlaceholder: 'Entrez votre pays',
-    industry: 'Industrie',
-    industryPlaceholder: 'Dans quelle industrie êtes-vous ?',
-    urgency: 'Urgence',
-    urgencyNormal: 'Normal (1-2 semaines)',
-    urgencyUrgent: 'Urgent (Dans la semaine)',
-    urgencyFlexible: 'Flexible (Pas pressé)',
-    budgetRange: 'Gamme de budget',
-    budgetPlaceholder: 'Votre budget approximatif (optionnel)',
-    submitButton: 'Soumettre la demande',
-    submitting: 'Soumission...',
-    successMessage: 'Merci ! Votre demande a été soumise avec succès.',
-    errorMessage: 'Désolé, il y a eu une erreur lors de la soumission de votre demande. Veuillez réessayer.',
-    requiredField: 'Ce champ est requis',
-    invalidEmail: 'Veuillez entrer une adresse e-mail valide',
-    minLength: 'Doit contenir au moins {min} caractères',
-    maxLength: 'Doit contenir au maximum {max} caractères'
-  },
-  pt: {
-    title: 'Solicitar Cotação',
-    subtitle: 'Obtenha uma cotação personalizada para suas necessidades de automação industrial',
-    name: 'Nome Completo',
-    namePlaceholder: 'Digite seu nome completo',
-    email: 'Endereço de E-mail',
-    emailPlaceholder: 'Digite seu endereço de e-mail',
-    company: 'Nome da Empresa',
-    companyPlaceholder: 'Digite o nome da sua empresa',
-    phone: 'Número de Telefone',
-    phonePlaceholder: 'Digite seu número de telefone (opcional)',
-    productInterest: 'Produto de Interesse',
-    productPlaceholder: 'Qual produto você tem interesse?',
-    message: 'Mensagem',
-    messagePlaceholder: 'Conte-nos sobre seus requisitos, quantidade necessária, cronograma, etc.',
-    quantity: 'Quantidade Necessária',
-    quantityPlaceholder: 'Quantas unidades você precisa?',
-    country: 'País',
-    countryPlaceholder: 'Digite seu país',
-    industry: 'Indústria',
-    industryPlaceholder: 'Em que indústria você atua?',
-    urgency: 'Urgência',
-    urgencyNormal: 'Normal (1-2 semanas)',
-    urgencyUrgent: 'Urgente (Dentro de 1 semana)',
-    urgencyFlexible: 'Flexível (Sem pressa)',
-    budgetRange: 'Faixa de Orçamento',
-    budgetPlaceholder: 'Seu orçamento aproximado (opcional)',
-    submitButton: 'Enviar Solicitação',
-    submitting: 'Enviando...',
-    successMessage: 'Obrigado! Sua solicitação foi enviada com sucesso.',
-    errorMessage: 'Desculpe, houve um erro ao enviar sua solicitação. Tente novamente.',
-    requiredField: 'Este campo é obrigatório',
-    invalidEmail: 'Por favor, digite um endereço de e-mail válido',
-    minLength: 'Deve ter pelo menos {min} caracteres',
-    maxLength: 'Deve ter no máximo {max} caracteres'
-  },
-  'zh-CN': {
-    title: '询价',
-    subtitle: '为您的工业自动化需求获取个性化报价',
-    name: '姓名',
-    namePlaceholder: '请输入您的姓名',
-    email: '邮箱地址',
-    emailPlaceholder: '请输入您的邮箱地址',
-    company: '公司名称',
-    companyPlaceholder: '请输入您的公司名称',
-    phone: '电话号码',
-    phonePlaceholder: '请输入您的电话号码（可选）',
-    productInterest: '感兴趣的产品',
-    productPlaceholder: '您对哪个产品感兴趣？',
-    message: '留言',
-    messagePlaceholder: '请告诉我们您的需求、所需数量、时间安排等',
-    quantity: '所需数量',
-    quantityPlaceholder: '您需要多少台？',
-    country: '国家',
-    countryPlaceholder: '请输入您的国家',
-    industry: '行业',
-    industryPlaceholder: '您从事什么行业？',
-    urgency: '紧急程度',
-    urgencyNormal: '正常（1-2周）',
-    urgencyUrgent: '紧急（1周内）',
-    urgencyFlexible: '灵活（不急）',
-    budgetRange: '预算范围',
-    budgetPlaceholder: '您的大概预算（可选）',
-    submitButton: '提交询价',
-    submitting: '提交中...',
-    successMessage: '谢谢！您的询价已成功提交。',
-    errorMessage: '抱歉，提交询价时出现错误。请重试。',
-    requiredField: '此字段为必填项',
-    invalidEmail: '请输入有效的邮箱地址',
-    minLength: '至少需要{min}个字符',
-    maxLength: '最多{max}个字符'
-  }
-}
+import type { Dictionary } from '@/get-dictionary'
 
 // Form validation schema
-const createRFQSchema = (texts: typeof rfqFormTexts.en) => z.object({
+const createRFQSchema = (texts: any) => z.object({
   name: z.string()
     .min(2, texts.minLength.replace('{min}', '2'))
     .max(100, texts.maxLength.replace('{max}', '100')),
@@ -260,16 +40,17 @@ interface RFQFormProps {
   productSlug?: string
   onSuccess?: () => void
   className?: string
+  lang: LanguageCode
+  dictionary: Dictionary['rfq']
 }
 
-export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps) {
+export function RFQForm({ productSlug, onSuccess, className = '', lang, dictionary }: RFQFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const language = useLanguage()
   const router = useRouter()
   const searchParams = useSearchParams()
   const supabase = createSupabaseClient()
-  const texts = rfqFormTexts[language] || rfqFormTexts.en
+  const texts = dictionary
 
   const schema = createRFQSchema(texts)
 
@@ -280,18 +61,29 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
     reset,
     setValue
   } = useForm<RFQFormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as any,
     defaultValues: {
       productInterest: productSlug || '',
-      urgency: 'normal'
+      urgency: 'normal',
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+      phone: '',
+      quantity: '',
+      country: '',
+      industry: '',
+      budgetRange: ''
     }
   })
 
   // Pre-fill form from URL parameters
   useEffect(() => {
-    const productFromUrl = searchParams.get('product')
-    if (productFromUrl && !productSlug) {
-      setValue('productInterest', productFromUrl)
+    if (searchParams) {
+      const productFromUrl = searchParams.get('product')
+      if (productFromUrl && !productSlug) {
+        setValue('productInterest', productFromUrl)
+      }
     }
   }, [searchParams, productSlug, setValue])
 
@@ -305,18 +97,27 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
         ip_address: null, // Will be handled by server
         user_agent: navigator.userAgent,
         referrer: document.referrer || null,
-        language_code: language
+        language_code: lang
       }
 
       // Submit to Supabase
       // Important: use returning: 'minimal' so anon insert doesn't require SELECT permission
       const { error } = await supabase
-        .from('rfqs')
+        .from('rfq_requests') // Updated table name
         .insert({
-          ...data,
-          ...clientInfo,
-          quantity: data.quantity ? parseInt(data.quantity) : null
-        }, { returning: 'minimal' })
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          phone: data.phone,
+          product_interest: data.productInterest,
+          message: data.message,
+          quantity: data.quantity ? parseInt(data.quantity) : null,
+          country: data.country,
+          industry: data.industry,
+          urgency: data.urgency,
+          budget_range: data.budgetRange,
+          ...clientInfo
+        }, { returning: 'minimal' } as any) // Cast to any to avoid type error with returning
 
       if (error) {
         throw error
@@ -324,14 +125,14 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
 
       setSubmitStatus('success')
       reset()
-      
+
       // Call success callback or redirect
       if (onSuccess) {
         onSuccess()
       } else {
         // Redirect to thank you page after a short delay
         setTimeout(() => {
-          router.push('/thank-you')
+          router.push(`/${lang}/thank-you`)
         }, 2000)
       }
     } catch (error) {
@@ -352,7 +153,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
           {texts.subtitle}
         </p>
       </CardHeader>
-      
+
       <CardContent>
         {submitStatus === 'success' && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -383,7 +184,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
                 error={errors.name?.message}
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {texts.email} *
@@ -408,7 +209,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
                 error={errors.company?.message}
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {texts.phone}
@@ -460,7 +261,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
                 error={errors.quantity?.message}
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {texts.country}
@@ -471,7 +272,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
                 error={errors.country?.message}
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {texts.industry}
@@ -498,7 +299,7 @@ export function RFQForm({ productSlug, onSuccess, className = '' }: RFQFormProps
                 <option value="flexible">{texts.urgencyFlexible}</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {texts.budgetRange}

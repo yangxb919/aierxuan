@@ -1,0 +1,579 @@
+{
+    "navigation": {
+        "home": "ホーム",
+        "products": "製品",
+        "about": "会社概要",
+        "blog": "ブログ",
+        "contact": "お問い合わせ"
+    },
+    "common": {
+        "getQuote": "見積もりを取得",
+        "viewAll": "すべての製品を見る",
+        "learnMore": "詳細を見る",
+        "requestQuote": "見積もりを依頼",
+        "viewProducts": "製品を見る"
+    },
+    "home": {
+        "hero": {
+            "slides": [
+                {
+                    "title": "プロフェッショナルノートPC・ミニPC製造メーカー",
+                    "subtitle": "グローバルパートナー向けOEM/ODMソリューション",
+                    "description": "✓ 100台からの柔軟なMOQ  ✓ 7-15日の迅速配送  ✓ 完全カスタマイズ対応  ✓ Intelパートナー | CE/FCC認証"
+                }
+            ]
+        },
+        "featuredProducts": {
+            "title": "注目の製品",
+            "subtitle": "最新の産業オートメーションソリューションをご覧ください"
+        },
+        "about": {
+            "title": "AIERXUANについて",
+            "description": "現代の製造業向けの高品質機器と革新的技術を専門とする産業オートメーションソリューションの主要プロバイダー。"
+        },
+        "categories": {
+            "title": "製品カテゴリー",
+            "subtitle": "包括的なコンピューティングソリューションをご覧ください",
+            "items": {
+                "business": {
+                    "name": "ビジネスノートPC",
+                    "description": "ビジネスの生産性と信頼性のために設計されたプロフェッショナルノートPC",
+                    "features": [
+                        "Intel Core i9",
+                        "長時間バッテリー",
+                        "エンタープライズセキュリティ"
+                    ],
+                    "moq": "MOQ: 100台",
+                    "useCase": "最適: 法人一括注文、教育機関"
+                },
+                "gaming": {
+                    "name": "ゲーミングノートPC",
+                    "description": "最先端のグラフィックスを搭載した高性能ゲーミングノートPC",
+                    "features": [
+                        "RTXグラフィックス",
+                        "高リフレッシュレート",
+                        "高度な冷却"
+                    ],
+                    "moq": "MOQ: 100台",
+                    "useCase": "最適: ゲーミングブランド、eスポーツ組織"
+                },
+                "mini": {
+                    "name": "ミニPC",
+                    "description": "スペース効率の良いコンパクトで強力なミニPC",
+                    "features": [
+                        "コンパクト設計",
+                        "静音動作",
+                        "省エネ"
+                    ],
+                    "moq": "MOQ: 50台",
+                    "useCase": "最適: デジタルサイネージ、キオスク、オフィスワークステーション"
+                }
+            }
+        },
+        "technicalCapabilities": {
+            "title": "技術的卓越性",
+            "subtitle": "私たちのR&D能力と品質保証",
+            "downloadWhitepaper": "技術ホワイトペーパーをダウンロード",
+            "capabilities": [
+                {
+                    "title": "高度なR&D",
+                    "icon": "🔬",
+                    "description": "ハードウェア設計と最適化において10年以上の経験を持つ専任の研究開発チーム",
+                    "features": [
+                        "社内ハードウェア設計",
+                        "ファームウェア開発",
+                        "パフォーマンス最適化",
+                        "継続的なイノベーション"
+                    ]
+                },
+                {
+                    "title": "熱管理",
+                    "icon": "❄️",
+                    "description": "業界をリードする冷却ソリューションにより、高負荷下でも最適なパフォーマンスと長寿命を保証",
+                    "features": [
+                        "高度なヒートパイプ設計",
+                        "ファンレス冷却オプション",
+                        "熱シミュレーションテスト",
+                        "広い温度範囲サポート"
+                    ]
+                },
+                {
+                    "title": "品質管理",
+                    "icon": "✅",
+                    "description": "信頼性とパフォーマンスを保証するための厳格な多段階テストと品質保証プロセス",
+                    "features": [
+                        "1000時間以上のバーンインテスト",
+                        "包括的なストレステスト",
+                        "ISO 9001認証プロセス",
+                        "ゼロ欠陥製造目標"
+                    ]
+                },
+                {
+                    "title": "互換性テスト",
+                    "icon": "🔄",
+                    "description": "主要なオペレーティングシステム、ソフトウェア、周辺機器との広範な互換性検証",
+                    "features": [
+                        "Windows/Linux認証",
+                        "ドライバー最適化",
+                        "周辺機器互換性",
+                        "ソフトウェア統合テスト"
+                    ]
+                }
+            ],
+            "process": {
+                "title": "私たちの開発プロセス",
+                "steps": [
+                    {
+                        "number": "01",
+                        "title": "要件分析",
+                        "description": "顧客のニーズと仕様の理解"
+                    },
+                    {
+                        "number": "02",
+                        "title": "設計とプロトタイピング",
+                        "description": "最適化されたハードウェア設計の作成"
+                    },
+                    {
+                        "number": "03",
+                        "title": "テストと検証",
+                        "description": "厳格な品質とパフォーマンステスト"
+                    },
+                    {
+                        "number": "04",
+                        "title": "生産と配送",
+                        "description": "製造とグローバル物流"
+                    }
+                ]
+            }
+        },
+        "finalCTA": {
+            "title": "始める準備はできましたか？",
+            "subtitle": "ビジネスニーズに合わせたカスタマイズされた見積もりを取得",
+            "description": "以下のフォームに記入してください。2時間以内に詳細な見積もりをお送りします。",
+            "form": {
+                "name": "名前（オプション）",
+                "namePlaceholder": "山田太郎",
+                "email": "メールアドレス",
+                "emailPlaceholder": "yamada@company.com",
+                "country": "国（オプション）",
+                "countryPlaceholder": "国を選択してください",
+                "productInterest": "興味のある製品（オプション）",
+                "productInterestPlaceholder": "どの製品に興味がありますか？",
+                "message": "メッセージ（オプション）",
+                "messagePlaceholder": "プロジェクトの要件、数量、タイムラインなどをお知らせください。",
+                "submit": "リクエストを送信",
+                "submitting": "送信中..."
+            },
+            "validation": {
+                "emailRequired": "メールは必須です",
+                "emailInvalid": "有効なメールアドレスを入力してください"
+            },
+            "success": "ありがとうございます！すぐにご連絡いたします。",
+            "error": "送信に失敗しました。もう一度お試しください。",
+            "responseTime": "⚡ 通常2時間以内に返信いたします",
+            "privacyNote": "お客様の情報は機密として扱われ、お問い合わせへの返信のみに使用されます。",
+            "productCategories": [
+                "産業用パネルPC",
+                "ミニPC",
+                "組込みシステム",
+                "タッチディスプレイ",
+                "IoTゲートウェイ",
+                "その他"
+            ],
+            "features": [
+                {
+                    "icon": "⚡",
+                    "text": "2時間以内の迅速な対応"
+                },
+                {
+                    "icon": "💰",
+                    "text": "競争力のある価格"
+                },
+                {
+                    "icon": "🎨",
+                    "text": "完全なカスタマイズオプション"
+                },
+                {
+                    "icon": "🌍",
+                    "text": "世界中への配送可能"
+                }
+            ]
+        }
+    },
+    "about": {
+        "hero": {
+            "mainTitle": "プロフェッショナルAIラップトップ＆ゲーミングPCメーカー",
+            "subtitle": "10年以上の経験 | Intelパートナー | OEM/ODMサービス | グローバル配送",
+            "description": "AIERXUANは中国深センに拠点を置く信頼できるラップトップメーカーです。グローバルパートナー向けの大量注文とOEM/ODMカスタマイズを専門としています。",
+            "contactSales": "営業チームに連絡",
+            "downloadCatalog": "製品カタログをダウンロード"
+        },
+        "story": {
+            "title": "AIERXUANについて",
+            "subtitle": "2014年以来のプロフェッショナルラップトップメーカー",
+            "paragraph1": "2014年在深圳成立，AIERXUAN专注于为全球合作伙伴提供高性能笔记本电脑和迷你PC。作为2019年以来的Intel中国区渠道合作伙伴，我们已向50多个国家的客户交付超过50万台设备。",
+            "paragraph2": "我们15,000㎡的工厂结合了先进的制造工艺和严格的质量控制。我们提供灵活的MOQ、完整的OEM/ODM定制以及快速响应的服务，助力您的业务增长。"
+        },
+        "factory": {
+            "title": "製造能力",
+            "subtitle": "最先端の設備と高度な生産ラインおよび品質管理システム",
+            "videoTitle": "工場見学ビデオ",
+            "photos": {
+                "factoryOverview": "工場概要",
+                "factoryOverviewDesc": "15,000㎡のモダンな施設",
+                "assemblyLine": "組立ライン",
+                "assemblyLineDesc": "自動化された6本の生産ライン",
+                "testingLab": "試験室",
+                "testingLabDesc": "72時間のバーンインテスト",
+                "warehouse": "倉庫・物流",
+                "warehouseDesc": "迅速なグローバル出荷",
+                "rdCenter": "R&Dセンター",
+                "rdCenterDesc": "専任のエンジニアチーム",
+                "qualityControl": "品質管理",
+                "qualityControlDesc": "多段階の検査プロセス"
+            }
+        },
+        "quality": {
+            "title": "品質保証",
+            "subtitle": "厳格な7段階の品質管理プロセスにより、すべての製品が最高基準を満たすことを保証",
+            "processTitle": "7段階品質管理プロセス",
+            "certificatesTitle": "認証",
+            "steps": {
+                "step1": "入荷材料検査",
+                "step2": "部品組立チェック",
+                "step3": "電源投入テスト",
+                "step4": "72時間バーンインテスト",
+                "step5": "最終品質検査",
+                "step6": "梱包品質チェック",
+                "step7": "出荷前検証"
+            }
+        },
+        "events": {
+            "title": "グローバル展示会とIntelパートナーシップ",
+            "subtitle": "現場で信頼を築き、業界リーダーからの評価を獲得",
+            "exhibitionsTitle": "国際見本市",
+            "exhibitionsDesc": "世界各地でパートナーと交流し、新製品を紹介し、長期的な協力関係を構築しています。",
+            "intelTitle": "Intelとの協業と受賞",
+            "intelDesc": "Intel China Channelのイベントで表彰。密接な連携により最新性能と安定供給を実現しています。"
+        },
+        "milestones": {
+            "title": "数字で見る実績",
+            "subtitle": "世界中の企業から信頼される品質と信頼性",
+            "milestones": {
+                "years": {
+                    "value": "10+",
+                    "label": "年の経験"
+                },
+                "units": {
+                    "value": "50万+",
+                    "label": "出荷台数"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "サービス提供国"
+                },
+                "factory": {
+                    "value": "15,000㎡",
+                    "label": "工場面積"
+                },
+                "testing": {
+                    "value": "72時間",
+                    "label": "バーンインテスト"
+                },
+                "satisfaction": {
+                    "value": "98%",
+                    "label": "満足度"
+                }
+            }
+        },
+        "cta": {
+            "title": "パートナーシップの準備はできていますか？",
+            "subtitle": "カスタム見積もりを取得するか、今すぐ無料サンプルをリクエストしてください",
+            "contactSales": "営業チームに連絡",
+            "downloadCatalog": "カタログをダウンロード",
+            "whatsapp": "WhatsApp",
+            "email": "メール",
+            "phone": "電話",
+            "responseTime": "応答時間"
+        }
+    },
+    "products": {
+        "page": {
+            "title": "製品一覧",
+            "subtitle": "産業オートメーションソリューションの完全なラインナップをご覧ください",
+            "description": "産業オートメーションのニーズに応えるために厳選された製品をご覧ください。各製品は信頼性、性能、効率性を重視して設計されています。",
+            "allProducts": "すべての製品",
+            "featuredProducts": "注目の製品",
+            "categories": "カテゴリー",
+            "business": "ビジネスノートPC",
+            "gaming": "ゲーミングノートPC",
+            "mini": "ミニPC",
+            "all": "すべて"
+        },
+        "grid": {
+            "noDescription": "説明がありません",
+            "sku": "品番",
+            "contactForPrice": "価格についてお問い合わせ",
+            "viewDetails": "詳細を見る",
+            "quote": "見積もり",
+            "noProducts": "製品が見つかりません",
+            "errorMessage": "製品の読み込みに失敗しました",
+            "tryAgain": "再試行",
+            "productImage": "製品画像"
+        },
+        "advantages": {
+            "premium": "プレミアム",
+            "cooling": "静音冷却",
+            "manufacturing": "Foxconn"
+        },
+        "detail": {
+            "specifications": "仕様",
+            "requestQuote": "見積もりを依頼",
+            "contactForPrice": "価格についてお問い合わせ",
+            "category": "カテゴリー",
+            "sku": "品番",
+            "status": "ステータス",
+            "active": "アクティブ",
+            "inactive": "非アクティブ",
+            "backToProducts": "製品一覧に戻る",
+            "productNotFound": "製品が見つかりません",
+            "loadingError": "製品の読み込みに失敗しました",
+            "tryAgain": "再試行",
+            "productImages": "製品画像",
+            "noDescription": "説明がありません",
+            "features": "特徴",
+            "overview": "概要",
+            "moq": "MOQ",
+            "price": "価格",
+            "units": "台",
+            "pricePerUnit": "台あたり",
+            "startingFrom": "〜"
+        }
+    },
+    "footer": {
+        "company": {
+            "title": "AIERXUAN",
+            "description": "現代の製造業向けの高品質機器と革新的技術を専門とする産業オートメーションソリューションの主要プロバイダー。"
+        },
+        "links": {
+            "products": {
+                "title": "製品",
+                "items": [
+                    {
+                        "name": "産業機器",
+                        "href": "/products/industrial"
+                    },
+                    {
+                        "name": "オートメーションシステム",
+                        "href": "/products/automation"
+                    },
+                    {
+                        "name": "制御ソリューション",
+                        "href": "/products/control"
+                    },
+                    {
+                        "name": "センサー・計器",
+                        "href": "/products/sensors"
+                    }
+                ]
+            },
+            "company": {
+                "title": "会社",
+                "items": [
+                    {
+                        "name": "会社概要",
+                        "href": "/about"
+                    },
+                    {
+                        "name": "チーム",
+                        "href": "/about/team"
+                    },
+                    {
+                        "name": "採用情報",
+                        "href": "/careers"
+                    },
+                    {
+                        "name": "ニュース",
+                        "href": "/news"
+                    }
+                ]
+            },
+            "support": {
+                "title": "サポート",
+                "items": [
+                    {
+                        "name": "お問い合わせ",
+                        "href": "/contact"
+                    },
+                    {
+                        "name": "テクニカルサポート",
+                        "href": "/support"
+                    },
+                    {
+                        "name": "ドキュメント",
+                        "href": "/docs"
+                    },
+                    {
+                        "name": "FAQ",
+                        "href": "/faq"
+                    }
+                ]
+            }
+        },
+        "contact": {
+            "title": "連絡先情報",
+            "email": "admin@aierxuanlaptop.com",
+            "phone": "4008-8228-058",
+            "address": "深セン市龍崗区、中国"
+        },
+        "copyright": "© 2024 AIERXUAN. 全著作権所有。"
+    },
+    "contact": {
+        "title": "お問い合わせ",
+        "subtitle": "パーソナライズされた産業オートメーションソリューションについて、チームにお問い合わせください",
+        "description": "製造プロセスの変革の準備はできていますか？私たちの専門家が、お客様のニーズに最適な産業オートメーションソリューションを見つけるお手伝いをします。",
+        "contactInfo": "連絡先情報",
+        "address": "住所",
+        "addressValue": "工業地区、市、国",
+        "phone": "電話",
+        "phoneValue": "+86 123 456 7890",
+        "email": "メール",
+        "emailValue": "info@aierxuan.com",
+        "businessHours": "営業時間",
+        "businessHoursValue": "月曜日 - 金曜日: 9:00 AM - 6:00 PM (GMT+8)",
+        "responseTime": "応答時間",
+        "responseTimeValue": "通常24時間以内に返信いたします",
+        "whyChooseUs": "なぜAIERXUANを選ぶのか？",
+        "reasons": [
+            "産業オートメーションにおける10年以上の経験",
+            "すべてのニーズに対応する包括的な製品ラインナップ",
+            "専門的な技術サポートとコンサルテーション",
+            "24時間365日のカスタマーサービスとアフターサポート",
+            "競争力のある価格と柔軟な支払い条件",
+            "グローバル配送と現地サポート"
+        ]
+    },
+    "rfq": {
+        "title": "見積もりを依頼",
+        "subtitle": "産業オートメーションのニーズに合わせたパーソナライズされた見積もりを取得",
+        "name": "氏名",
+        "namePlaceholder": "お名前を入力してください",
+        "email": "メールアドレス",
+        "emailPlaceholder": "メールアドレスを入力してください",
+        "company": "会社名",
+        "companyPlaceholder": "会社名を入力してください",
+        "phone": "電話番号",
+        "phonePlaceholder": "電話番号を入力してください（任意）",
+        "productInterest": "興味のある製品",
+        "productPlaceholder": "どの製品に興味がありますか？",
+        "message": "メッセージ",
+        "messagePlaceholder": "ご要件、必要数量、タイムラインなどをお聞かせください",
+        "quantity": "必要数量",
+        "quantityPlaceholder": "何台必要ですか？",
+        "country": "国",
+        "countryPlaceholder": "お住まいの国を入力してください",
+        "industry": "業界",
+        "industryPlaceholder": "どの業界にお勤めですか？",
+        "urgency": "緊急度",
+        "urgencyNormal": "通常（1-2週間）",
+        "urgencyUrgent": "緊急（1週間以内）",
+        "urgencyFlexible": "柔軟（急ぎません）",
+        "budgetRange": "予算範囲",
+        "budgetPlaceholder": "おおよその予算（任意）",
+        "submitButton": "リクエストを送信",
+        "submitting": "送信中...",
+        "successMessage": "ありがとうございます！リクエストが正常に送信されました。",
+        "errorMessage": "申し訳ございませんが、リクエストの送信中にエラーが発生しました。もう一度お試しください。",
+        "requiredField": "この項目は必須です",
+        "invalidEmail": "有効なメールアドレスを入力してください",
+        "minLength": "{min}文字以上である必要があります",
+        "maxLength": "{max}文字以下である必要があります"
+    },
+    "blog": {
+        "title": "ブログ・ニュース",
+        "subtitle": "AIERXUANからの最新アップデート、洞察、業界ニュース",
+        "heroDescription": "産業オートメーションの最新動向、製品アップデート、企業ニュースについて最新情報をお届けします。",
+        "allCategories": "すべてのカテゴリ",
+        "news": "ニュース",
+        "products": "製品",
+        "industry": "業界",
+        "technology": "テクノロジー",
+        "readMore": "続きを読む",
+        "publishedOn": "公開日",
+        "by": "著者",
+        "author": "AIERXUANチーム",
+        "loading": "記事を読み込み中...",
+        "noArticles": "記事が見つかりません",
+        "loadingError": "記事の読み込みに失敗しました",
+        "tryAgain": "再試行",
+        "loadMore": "さらに記事を読み込む",
+        "showingResults": "{total}件中{count}件を表示"
+    },
+    "blogDetail": {
+        "backToBlog": "ブログに戻る",
+        "publishedOn": "公開日",
+        "by": "著者",
+        "author": "AIERXUANチーム",
+        "readingTime": "分で読める",
+        "shareArticle": "この記事をシェア",
+        "relatedArticles": "関連記事",
+        "ctaTitle": "私たちのソリューションに興味がありますか？",
+        "ctaDescription": "産業オートメーション製品とサービスについて詳しく知るために、お気軽にお問い合わせください。",
+        "contactUs": "お問い合わせ",
+        "viewProducts": "製品を見る",
+        "loading": "記事を読み込み中...",
+        "notFound": "記事が見つかりません",
+        "notFoundDescription": "お探しの記事は存在しないか、削除されました。",
+        "loadingError": "記事の読み込みに失敗しました",
+        "tryAgain": "再試行",
+        "previousArticle": "前の記事",
+        "nextArticle": "次の記事",
+        "tableOfContents": "目次",
+        "readMore": "続きを読む"
+    },
+    "thankYou": {
+        "title": "ありがとうございます！",
+        "subtitle": "お客様のリクエストが正常に送信されました",
+        "message": "お問い合わせを受け取りました。チームが間もなく確認いたします。営業日の24時間以内にご連絡いたします。",
+        "whatHappensNext": "次に何が起こりますか？",
+        "steps": [
+            {
+                "title": "レビューと分析",
+                "description": "技術チームがお客様の要件を確認し、ニーズに最適なソリューションを分析します。"
+            },
+            {
+                "title": "パーソナライズされた見積もり",
+                "description": "価格、仕様、納期を含む詳細な見積もりを準備いたします。"
+            },
+            {
+                "title": "フォローアップ連絡",
+                "description": "営業担当者がお客様に連絡し、提案について話し合い、ご質問にお答えします。"
+            }
+        ],
+        "backToHome": "ホームに戻る",
+        "browseProducts": "製品を見る",
+        "contactInfo": "緊急のサポートが必要ですか？",
+        "phone": "お電話: +86 123 456 7890",
+        "email": "メール: admin@aierxuanlaptop.com",
+        "businessHours": "営業時間: 月曜日 - 金曜日, 9:00 AM - 6:00 PM (GMT+8)",
+        "socialMedia": "最新情報をフォロー",
+        "additionalResources": "追加リソース",
+        "resources": [
+            {
+                "title": "製品カタログ",
+                "href": "/products",
+                "description": "完全な製品ラインナップをご覧ください"
+            },
+            {
+                "title": "テクニカルサポート",
+                "href": "/support",
+                "description": "技術的なサポートを受ける"
+            },
+            {
+                "title": "会社概要",
+                "href": "/about",
+                "description": "当社についてもっと知る"
+            }
+        ]
+    }
+}

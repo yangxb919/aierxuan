@@ -1,245 +1,32 @@
 'use client'
 
 import Link from 'next/link'
-import { useLanguage } from '@/store/useAppStore'
 import { CATEGORY_SLUGS } from '@/lib/categories'
 
-// Category translations
-const categoryContent = {
-  en: {
-    title: 'Product Categories',
-    subtitle: 'Explore our comprehensive range of computing solutions',
-    categories: [
-      {
-        id: 'business',
-        name: 'Business Laptop',
-        slug: CATEGORY_SLUGS.business,
-        description: 'Professional laptops designed for business productivity and reliability',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', 'Long Battery Life', 'Enterprise Security'],
-        moq: 'MOQ: 100 units',
-        useCase: 'Perfect for: Bulk corporate orders, educational institutions',
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: 'Gaming Laptop',
-        slug: CATEGORY_SLUGS.gaming,
-        description: 'High-performance gaming laptops with cutting-edge graphics',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['RTX Graphics', 'High Refresh Rate', 'Advanced Cooling'],
-        moq: 'MOQ: 100 units',
-        useCase: 'Perfect for: Gaming brands, esports organizations',
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: 'Mini PC',
-        slug: CATEGORY_SLUGS.mini,
-        description: 'Compact and powerful mini PCs for space-efficient computing',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['Compact Design', 'Silent Operation', 'Energy Efficient'],
-        moq: 'MOQ: 50 units',
-        useCase: 'Perfect for: Digital signage, kiosks, office workstations',
-        color: 'green'
+interface ProductCategoriesProps {
+  dictionary: {
+    categories: {
+      title: string
+      subtitle: string
+      items: {
+        business: CategoryItem
+        gaming: CategoryItem
+        mini: CategoryItem
       }
-    ]
-  },
-  ru: {
-    title: 'Категории продуктов',
-    subtitle: 'Изучите наш полный ассортимент компьютерных решений',
-    categories: [
-      {
-        id: 'business',
-        name: 'Бизнес-ноутбук',
-        slug: CATEGORY_SLUGS.business,
-        description: 'Профессиональные ноутбуки для бизнеса и надежности',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', 'Долгая работа', 'Корп. безопасность'],
-        moq: 'MOQ: 100 единиц',
-        useCase: 'Идеально для: Корпоративных заказов, образовательных учреждений',
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: 'Игровой ноутбук',
-        slug: CATEGORY_SLUGS.gaming,
-        description: 'Высокопроизводительные игровые ноутбуки с передовой графикой',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['RTX графика', 'Высокая частота', 'Продвинутое охлаждение'],
-        moq: 'MOQ: 100 единиц',
-        useCase: 'Идеально для: Игровых брендов, киберспортивных организаций',
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: 'Мини ПК',
-        slug: CATEGORY_SLUGS.mini,
-        description: 'Компактные и мощные мини-ПК для эффективных вычислений',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['Компактный дизайн', 'Тихая работа', 'Энергоэффективность'],
-        moq: 'MOQ: 50 единиц',
-        useCase: 'Идеально для: Цифровых вывесок, киосков, офисных рабочих станций',
-        color: 'green'
-      }
-    ]
-  },
-  ja: {
-    title: '製品カテゴリー',
-    subtitle: '包括的なコンピューティングソリューションをご覧ください',
-    categories: [
-      {
-        id: 'business',
-        name: 'ビジネスノートPC',
-        slug: CATEGORY_SLUGS.business,
-        description: 'ビジネスの生産性と信頼性のために設計されたプロフェッショナルノートPC',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', '長時間バッテリー', 'エンタープライズセキュリティ'],
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: 'ゲーミングノートPC',
-        slug: CATEGORY_SLUGS.gaming,
-        description: '最先端のグラフィックスを搭載した高性能ゲーミングノートPC',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['RTXグラフィックス', '高リフレッシュレート', '高度な冷却'],
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: 'ミニPC',
-        slug: CATEGORY_SLUGS.mini,
-        description: 'スペース効率の良いコンパクトで強力なミニPC',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['コンパクト設計', '静音動作', '省エネ'],
-        color: 'green'
-      }
-    ]
-  },
-  fr: {
-    title: 'Catégories de produits',
-    subtitle: 'Explorez notre gamme complète de solutions informatiques',
-    categories: [
-      {
-        id: 'business',
-        name: 'Ordinateur portable professionnel',
-        slug: CATEGORY_SLUGS.business,
-        description: 'Ordinateurs portables professionnels conçus pour la productivité et la fiabilité',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', 'Longue autonomie', 'Sécurité entreprise'],
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: 'Ordinateur portable gaming',
-        slug: CATEGORY_SLUGS.gaming,
-        description: 'Ordinateurs portables gaming haute performance avec graphismes de pointe',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['Graphiques RTX', 'Taux de rafraîchissement élevé', 'Refroidissement avancé'],
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: 'Mini PC',
-        slug: CATEGORY_SLUGS.mini,
-        description: 'Mini PC compacts et puissants pour un calcul efficace',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['Design compact', 'Fonctionnement silencieux', 'Économe en énergie'],
-        color: 'green'
-      }
-    ]
-  },
-  pt: {
-    title: 'Categorias de produtos',
-    subtitle: 'Explore nossa gama completa de soluções de computação',
-    categories: [
-      {
-        id: 'business',
-        name: 'Laptop empresarial',
-        slug: CATEGORY_SLUGS.business,
-        description: 'Laptops profissionais projetados para produtividade e confiabilidade empresarial',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', 'Bateria de longa duração', 'Segurança empresarial'],
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: 'Laptop gamer',
-        slug: CATEGORY_SLUGS.gaming,
-        description: 'Laptops gamer de alto desempenho com gráficos de ponta',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['Gráficos RTX', 'Alta taxa de atualização', 'Resfriamento avançado'],
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: 'Mini PC',
-        slug: CATEGORY_SLUGS.mini,
-        description: 'Mini PCs compactos e poderosos para computação eficiente',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['Design compacto', 'Operação silenciosa', 'Eficiência energética'],
-        color: 'green'
-      }
-    ]
-  },
-  'zh-CN': {
-    title: '产品类目',
-    subtitle: '探索我们全面的计算解决方案',
-    categories: [
-      {
-        id: 'business',
-        name: '商务本',
-        slug: CATEGORY_SLUGS.business,
-        description: '专为商务生产力和可靠性设计的专业笔记本',
-        icon: '💼',
-        image: '/images/category-business-laptop.jpg',
-        features: ['Intel Core i9', '长续航', '企业级安全'],
-        moq: '起订量: 100台',
-        useCase: '适用于: 企业批量采购、教育机构',
-        color: 'blue'
-      },
-      {
-        id: 'gaming',
-        name: '游戏本',
-        slug: CATEGORY_SLUGS.gaming,
-        description: '配备尖端显卡的高性能游戏笔记本',
-        icon: '🎮',
-        image: '/images/category-gaming-laptop.jpg',
-        features: ['RTX显卡', '高刷新率', '先进散热'],
-        moq: '起订量: 100台',
-        useCase: '适用于: 游戏品牌、电竞组织',
-        color: 'purple'
-      },
-      {
-        id: 'mini',
-        name: '迷你主机',
-        slug: CATEGORY_SLUGS.mini,
-        description: '紧凑而强大的迷你主机，节省空间的计算解决方案',
-        icon: '🖥️',
-        image: '/images/category-mini-pc.jpg',
-        features: ['紧凑设计', '静音运行', '节能高效'],
-        moq: '起订量: 50台',
-        useCase: '适用于: 数字标牌、自助终端、办公工作站',
-        color: 'green'
-      }
-    ]
+    }
+    common: {
+      requestQuote: string
+    }
   }
+  lang: string
+}
+
+interface CategoryItem {
+  name: string
+  description: string
+  features: string[]
+  moq: string
+  useCase: string
 }
 
 // Color schemes for each category
@@ -267,9 +54,45 @@ const colorSchemes = {
   }
 }
 
-export function ProductCategories() {
-  const language = useLanguage()
-  const content = categoryContent[language] || categoryContent.en
+export function ProductCategories({ dictionary, lang }: ProductCategoriesProps) {
+  const content = dictionary.categories
+
+  // Reconstruct the array structure expected by the render loop
+  // We map the dictionary items back to the structure with metadata (images, icons, colors)
+  // This metadata should ideally be in the dictionary too or kept separate if it's not translatable.
+  // For now, we keep non-translatable data here and merge with translations.
+
+  const categoryMetadata = [
+    {
+      id: 'business',
+      slug: CATEGORY_SLUGS.business,
+      icon: '💼',
+      image: '/images/category-business-laptop.jpg',
+      color: 'blue'
+    },
+    {
+      id: 'gaming',
+      slug: CATEGORY_SLUGS.gaming,
+      icon: '🎮',
+      image: '/images/category-gaming-laptop.jpg',
+      color: 'purple'
+    },
+    {
+      id: 'mini',
+      slug: CATEGORY_SLUGS.mini,
+      icon: '🖥️',
+      image: '/images/category-mini-pc.jpg',
+      color: 'green'
+    }
+  ]
+
+  const categories = categoryMetadata.map(meta => {
+    const translation = content.items[meta.id as keyof typeof content.items]
+    return {
+      ...meta,
+      ...translation
+    }
+  })
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
@@ -286,20 +109,20 @@ export function ProductCategories() {
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {content.categories.map((category) => {
+          {categories.map((category) => {
             const colors = colorSchemes[category.color as keyof typeof colorSchemes]
-            
+
             return (
               <Link
                 key={category.id}
-                href={`/products?category=${encodeURIComponent(category.slug)}`}
+                href={`/${lang}/products?category=${encodeURIComponent(category.slug)}`}
                 className="group"
               >
                 <div className={`relative bg-gradient-to-br ${colors.bg} rounded-2xl p-8 border-2 ${colors.border} hover:shadow-2xl transition-all duration-300 h-full flex flex-col`}>
                   {/* Category Image */}
                   <div className="relative h-40 mb-6 overflow-hidden rounded-xl">
                     <div className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                         style={{backgroundImage: `url(${category.image})`}}>
+                      style={{ backgroundImage: `url(${category.image})` }}>
                       <div className="absolute inset-0 bg-black/20"></div>
                     </div>
                   </div>
@@ -327,29 +150,24 @@ export function ProductCategories() {
                   </div>
 
                   {/* MOQ Badge */}
-                  {(category as any).moq && (
+                  {category.moq && (
                     <div className="mb-3">
                       <span className={`inline-block px-3 py-1 ${colors.bg} ${colors.text} text-sm font-semibold rounded-full`}>
-                        {(category as any).moq}
+                        {category.moq}
                       </span>
                     </div>
                   )}
 
                   {/* Use Case */}
-                  {(category as any).useCase && (
+                  {category.useCase && (
                     <p className="text-xs text-gray-500 mb-4 italic">
-                      {(category as any).useCase}
+                      {category.useCase}
                     </p>
                   )}
 
                   {/* CTA Button */}
                   <div className={`${colors.button} px-6 py-3 rounded-lg text-center font-semibold group-hover:scale-105 transition-transform duration-300`}>
-                    {language === 'zh-CN' ? '获取报价' :
-                     language === 'ru' ? 'Запросить цену' :
-                     language === 'ja' ? '見積もりを依頼' :
-                     language === 'fr' ? 'Demander un devis' :
-                     language === 'pt' ? 'Solicitar cotação' :
-                     'Request Quote'}
+                    {dictionary.common.requestQuote}
                   </div>
 
                   {/* Hover Effect Arrow */}

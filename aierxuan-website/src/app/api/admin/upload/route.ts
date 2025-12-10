@@ -1,9 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import { existsSync } from 'fs'
+import { createSupabaseAdminClient } from '@/lib/supabase'
+
+async function ensureAdminAuth() {
+  const cookieStore = await cookies()
+  const sessionToken = cookieStore.get('admin_session')?.value
+  if (!sessionToken) {
+    return { ok: false as const, error: 'Unauthorized: no admin session' }
+  }
+  const supabase = createSupabaseAdminClient()
+  const { data, error } = await supabase.rpc('validate_admin_session', { token: sessionToken })
+  if (error || !data || data.length === 0) {
+    return { ok: false as const, error: 'Unauthorized: invalid or expired session' }
+  }
+  return { ok: true as const }
+}
 
 export async function POST(request: NextRequest) {
+  // 上传必须是登录后的管理员才能操作
+  const auth = await ensureAdminAuth()
+  if (!auth.ok) {
+    return NextResponse.json({ success: false, error: auth.error }, { status: 401 })
+  }
+
   try {
     const formData = await request.formData()
     const file = formData.get('file') as File
@@ -69,4 +91,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-

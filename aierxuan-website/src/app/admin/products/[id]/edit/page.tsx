@@ -15,16 +15,24 @@ interface Product {
   sort_order: number
   moq?: number
   price?: number
+  datasheet_url?: string
   created_at: string
   updated_at: string
   translations: {
     locale: string
+    language_code?: string
     title: string
     short_desc: string
     long_desc: string
     key_specs: Record<string, string>
     seo_title: string
     seo_desc: string
+    quality_tests?: any
+    oem_services?: any
+    faqs?: any
+    durability_images?: any
+    oem_images?: any
+    features?: any
   }[]
 }
 
@@ -53,7 +61,16 @@ async function getProduct(id: string): Promise<Product | null> {
   
   return {
     ...product,
-    translations: translations || []
+    translations: (translations || []).map((t) => ({
+      ...t,
+      locale: (t as any).locale || t.language_code || 'en',
+      quality_tests: Array.isArray(t.quality_tests) ? t.quality_tests : [],
+      oem_services: Array.isArray(t.oem_services) ? t.oem_services : [],
+      faqs: Array.isArray(t.faqs) ? t.faqs : [],
+      durability_images: Array.isArray((t as any).durability_images) ? (t as any).durability_images : Array.isArray((t as any).features?.durability_images) ? (t as any).features.durability_images : [],
+      oem_images: Array.isArray((t as any).oem_images) ? (t as any).oem_images : Array.isArray((t as any).features?.oem_images) ? (t as any).features.oem_images : [],
+      features: (t as any).features || {}
+    }))
   }
 }
 
@@ -80,6 +97,7 @@ export default async function AdminProductEditPage({
     sort_order: product.sort_order,
     moq: product.moq,
     price: product.price,
+    datasheet_url: product.datasheet_url || '',
     images: product.images || [],
     translations: product.translations
   }
@@ -97,7 +115,7 @@ export default async function AdminProductEditPage({
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href={`/products/${product.slug}`} target="_blank">
+              <Link href={`/en/products/${product.slug}`} target="_blank">
                 <Button variant="outline">
                   View Product →
                 </Button>

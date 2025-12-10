@@ -3,17 +3,30 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui'
-import { useLanguage } from '@/store/useAppStore'
-import { heroContent, type HeroSlide } from '@/content/hero'
 import { useContactForm } from '@/hooks/useContactForm'
 
-export function HeroSection() {
-  const language = useLanguage()
+interface HeroSectionProps {
+  dictionary: {
+    hero: {
+      slides: Array<{
+        title: string
+        subtitle: string
+        description: string
+      }>
+    }
+    common: {
+      requestQuote: string
+      viewProducts: string
+    }
+  }
+}
+
+export function HeroSection({ dictionary }: HeroSectionProps) {
   const { openContactModal } = useContactForm()
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  const content = heroContent[language] || heroContent.en
+  const content = dictionary.hero
   const currentSlide = content.slides[currentSlideIndex]
 
   // Auto-play functionality
@@ -111,13 +124,13 @@ export function HeroSection() {
               onClick={openContactModal}
               className="btn-primary-hover bg-blue-600 text-white hover:bg-blue-700 px-12 py-6 text-lg font-semibold rounded-lg h-auto"
             >
-              {content.contact}
+              {dictionary.common.requestQuote}
             </Button>
             <a
               href="#products"
               className="btn-secondary-hover border-2 border-white text-white hover:bg-white hover:text-blue-600 px-12 py-6 text-lg font-semibold rounded-lg inline-flex items-center justify-center"
             >
-              {content.cta}
+              {dictionary.common.viewProducts}
             </a>
           </div>
         </div>
@@ -129,11 +142,10 @@ export function HeroSection() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`carousel-indicator ${
-              index === currentSlideIndex
-                ? 'w-12 h-3 bg-white/80 rounded-full'
-                : 'w-3 h-3 bg-white/40 rounded-full hover:bg-white/60'
-            }`}
+            className={`carousel-indicator ${index === currentSlideIndex
+              ? 'w-12 h-3 bg-white/80 rounded-full'
+              : 'w-3 h-3 bg-white/40 rounded-full hover:bg-white/60'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

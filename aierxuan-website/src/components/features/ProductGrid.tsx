@@ -2,110 +2,51 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle, Button } from '@/components/ui'
+import { Card, CardContent, Button } from '@/components/ui'
 import { createSupabaseClient } from '@/lib/supabase'
-import { useLanguage } from '@/store/useAppStore'
 import { getTranslation } from '@/lib/utils'
 import { useContactForm } from '@/hooks/useContactForm'
 import type { ProductWithTranslations, LanguageCode } from '@/types'
 import { getCategoryLabel, getCategoryType } from '@/lib/categories'
-
-// Product grid translations
-const productGridTexts = {
-  en: {
-    noDescription: 'No description available',
-    sku: 'SKU',
-    contactForPrice: 'Contact for Price',
-    viewDetails: 'View Details',
-    quote: 'Quote',
-    noProducts: 'No products found',
-    errorMessage: 'Failed to load products',
-    tryAgain: 'Try Again',
-    productImage: 'Product Image'
-  },
-  ru: {
-    noDescription: 'Описание недоступно',
-    sku: 'Артикул',
-    contactForPrice: 'Уточнить цену',
-    viewDetails: 'Подробнее',
-    quote: 'Запрос',
-    noProducts: 'Продукты не найдены',
-    errorMessage: 'Не удалось загрузить продукты',
-    tryAgain: 'Попробовать снова',
-    productImage: 'Изображение продукта'
-  },
-  ja: {
-    noDescription: '説明がありません',
-    sku: '品番',
-    contactForPrice: '価格についてお問い合わせ',
-    viewDetails: '詳細を見る',
-    quote: '見積もり',
-    noProducts: '製品が見つかりません',
-    errorMessage: '製品の読み込みに失敗しました',
-    tryAgain: '再試行',
-    productImage: '製品画像'
-  },
-  fr: {
-    noDescription: 'Aucune description disponible',
-    sku: 'Référence',
-    contactForPrice: 'Contactez pour le prix',
-    viewDetails: 'Voir les détails',
-    quote: 'Devis',
-    noProducts: 'Aucun produit trouvé',
-    errorMessage: 'Échec du chargement des produits',
-    tryAgain: 'Réessayer',
-    productImage: 'Image du produit'
-  },
-  pt: {
-    noDescription: 'Nenhuma descrição disponível',
-    sku: 'Código',
-    contactForPrice: 'Entre em contato para preço',
-    viewDetails: 'Ver Detalhes',
-    quote: 'Cotação',
-    noProducts: 'Nenhum produto encontrado',
-    errorMessage: 'Falha ao carregar produtos',
-    tryAgain: 'Tentar Novamente',
-    productImage: 'Imagem do Produto'
-  },
-  'zh-CN': {
-    noDescription: '暂无描述',
-    sku: '产品编号',
-    contactForPrice: '联系询价',
-    viewDetails: '查看详情',
-    quote: '询价',
-    noProducts: '未找到产品',
-    errorMessage: '加载产品失败',
-    tryAgain: '重试',
-    productImage: '产品图片'
-  }
-}
+import { ArrowRight, MessageSquare } from 'lucide-react'
 
 interface ProductGridProps {
   featured?: boolean
   limit?: number
   category?: string
+  lang: LanguageCode
+  dictionary: {
+    grid: {
+      noDescription: string
+      sku: string
+      contactForPrice: string
+      viewDetails: string
+      quote: string
+      noProducts: string
+      errorMessage: string
+      tryAgain: string
+      productImage: string
+    }
+    advantages: {
+      premium: string
+      cooling: string
+      manufacturing: string
+    }
+  }
 }
 
-export function ProductGrid({ featured = false, limit, category }: ProductGridProps) {
+export function ProductGrid({ featured = false, limit, category, lang, dictionary }: ProductGridProps) {
   const [products, setProducts] = useState<ProductWithTranslations[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const language = useLanguage()
   const supabase = createSupabaseClient()
-  const texts = productGridTexts[language] || productGridTexts.en
+  const texts = dictionary.grid
 
   useEffect(() => {
     async function fetchProducts() {
       try {
         setLoading(true)
         setError(null)
-
-        console.log('🔍 ProductGrid - Fetching with params:', {
-          category,
-          featured,
-          limit,
-          timestamp: new Date().toISOString()
-        })
 
         let query = supabase
           .from('products')
@@ -116,36 +57,26 @@ export function ProductGrid({ featured = false, limit, category }: ProductGridPr
           .eq('status', 'active')
 
         if (featured) {
-          console.log('✅ Applying featured filter')
           query = query.eq('featured', true)
         }
 
         if (category) {
-          console.log('✅ Applying category filter:', category)
           query = query.eq('category', category)
-        } else {
-          console.log('⚠️ No category filter applied')
         }
 
         if (limit) {
-          console.log('✅ Applying limit:', limit)
           query = query.limit(limit)
         }
 
         query = query.order('sort_order', { ascending: true })
           .order('created_at', { ascending: false })
 
-        console.log('🚀 Executing query...')
         const { data, error: fetchError } = await query
 
         if (fetchError) {
           throw fetchError
         }
 
-        console.log('📦 Fetched products:', data?.length, 'items')
-        if (data && data.length > 0) {
-          console.log('📋 Product categories:', data.map(p => `${p.slug}: ${p.category}`).join(', '))
-        }
         setProducts(data || [])
       } catch (err) {
         console.error('Error fetching products:', err)
@@ -156,7 +87,7 @@ export function ProductGrid({ featured = false, limit, category }: ProductGridPr
     }
 
     fetchProducts()
-  }, [featured, limit, category, supabase])
+  }, [featured, limit, category, supabase, texts.errorMessage])
 
   if (loading) {
     return <ProductGridSkeleton />
@@ -182,9 +113,14 @@ export function ProductGrid({ featured = false, limit, category }: ProductGridPr
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} language={language} texts={texts} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          lang={lang}
+          dictionary={dictionary}
+        />
       ))}
     </div>
   )
@@ -192,160 +128,106 @@ export function ProductGrid({ featured = false, limit, category }: ProductGridPr
 
 interface ProductCardProps {
   product: ProductWithTranslations
-  language: LanguageCode
-  texts: typeof productGridTexts.en
+  lang: LanguageCode
+  dictionary: ProductGridProps['dictionary']
 }
 
-function ProductCard({ product, language, texts }: ProductCardProps) {
-  const translation = getTranslation(product, language, 'locale')
+function ProductCard({ product, lang, dictionary }: ProductCardProps) {
+  const translation = getTranslation(product, lang, 'locale')
   const { openContactModal } = useContactForm()
+  const texts = dictionary.grid
   const images = product.images as string[] | null
+
   // Prefer uploaded product image, otherwise choose by normalized category type
   let primaryImage = (images && images.length > 0 ? images[0] : '') as string
   if (!primaryImage) {
     primaryImage = '/images/business-laptop-series.jpg'
   }
   if (!images || images.length === 0) {
-  const catType = getCategoryType(product.category)
+    const catType = getCategoryType(product.category)
     if (catType === 'gaming') primaryImage = '/images/business-laptop-series.jpg'
     else if (catType === 'mini') primaryImage = '/images/mini-pc-workstation.jpg'
     else if (catType === 'business') primaryImage = '/images/business-laptop-series.jpg'
   }
 
-  // Core advantages tags for all products
-  const getAdvantageLabel = (key: string) => {
-    const labels = {
-      premium: {
-        'zh-CN': '高端制造',
-        'en': 'Premium',
-        'ru': 'Премиум',
-        'ja': 'プレミアム',
-        'fr': 'Premium',
-        'pt': 'Premium'
-      },
-      cooling: {
-        'zh-CN': '静音水冷',
-        'en': 'Silent Cooling',
-        'ru': 'Тихое охлаждение',
-        'ja': '静音冷却',
-        'fr': 'Refroidissement Silencieux',
-        'pt': 'Silent Cooling'
-      },
-      manufacturing: {
-        'zh-CN': '富士康制造',
-        'en': 'Foxconn',
-        'ru': 'Foxconn',
-        'ja': 'Foxconn',
-        'fr': 'Foxconn',
-        'pt': 'Foxconn'
-      }
-    }
-    return labels[key as keyof typeof labels]?.[language] || labels[key as keyof typeof labels]?.['en'] || key
-  }
-
-  const coreAdvantages = [
-    { key: 'premium', label: getAdvantageLabel('premium'), icon: '🏆', primary: true },
-    { key: 'performance', label: '245W', icon: '🔥', primary: false },
-    { key: 'cooling', label: getAdvantageLabel('cooling'), icon: '❄️', primary: false },
-    { key: 'manufacturing', label: getAdvantageLabel('manufacturing'), icon: '🏭', primary: false }
-  ]
-
   return (
-    <Card className="group hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="p-0">
-        <div className="aspect-square bg-gray-100 rounded-t-lg overflow-hidden">
-          <img
-            src={primaryImage}
-            alt={translation?.title || product.slug || texts.productImage}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement
-              target.src = '/placeholder-product.svg'
-            }}
-          />
-        </div>
-      </CardHeader>
+    <div className="group flex flex-col h-full">
+      {/* Image Container */}
+      <Link href={`/${lang}/products/${product.slug}`} className="block overflow-hidden rounded-2xl bg-gray-100 mb-6 relative aspect-[4/3]">
+        <img
+          src={primaryImage}
+          alt={translation?.title || product.slug || texts.productImage}
+          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.src = '/placeholder-product.svg'
+          }}
+        />
+        {/* Overlay on hover for quick access - optional, but adds a premium feel */}
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        
+        {product.category && (
+          <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-gray-900 rounded-full shadow-sm">
+            {getCategoryLabel(product.category as any, lang)}
+          </span>
+        )}
+      </Link>
 
-      <CardContent className="p-6">
-        <CardTitle className="text-lg mb-2 line-clamp-2">
-          {translation?.title || product.slug}
-        </CardTitle>
-
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-          {translation?.short_desc || translation?.long_desc || texts.noDescription}
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-500">
+      {/* Content */}
+      <div className="flex flex-col flex-1">
+        <div className="mb-auto">
+          <Link href={`/${lang}/products/${product.slug}`} className="block">
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-1">
+              {translation?.title || product.slug}
+            </h3>
+          </Link>
+          
+          <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-4">
+            {translation?.short_desc || translation?.long_desc || texts.noDescription}
+          </p>
+          
+          <div className="flex items-center text-xs font-mono text-gray-400 mb-6">
             {texts.sku}: {product.slug}
           </div>
-          <div className="text-sm font-medium text-blue-600">
-            {texts.contactForPrice}
-          </div>
         </div>
 
-        {/* Core Advantages Tags */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {coreAdvantages.map((advantage) => (
-            <span
-              key={advantage.key}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full font-medium ${
-                advantage.primary
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors'
-              }`}
-            >
-              <span className="text-xs">{advantage.icon}</span>
-              {advantage.label}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-4 flex gap-2">
-          <Link href={`/products/${product.slug}`} className="flex-1">
-            <Button size="sm" className="w-full btn-card-hover">
-              {texts.viewDetails}
-            </Button>
+        {/* Actions */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-2">
+          <Link 
+            href={`/${lang}/products/${product.slug}`}
+            className="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link"
+          >
+            {texts.viewDetails}
+            <ArrowRight className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform" />
           </Link>
-          <Button variant="outline" size="sm" onClick={openContactModal} className="btn-outline-hover">
-            {texts.quote}
-          </Button>
-        </div>
 
-        {product.category && (
-          <div className="mt-3">
-            <span className="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
-              {getCategoryLabel(product.category as any, language)}
-            </span>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+          <button 
+            onClick={openContactModal}
+            className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+          >
+            <MessageSquare className="w-4 h-4 mr-1.5" />
+            {texts.quote}
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
 function ProductGridSkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
       {[...Array(6)].map((_, i) => (
-        <Card key={i} className="animate-pulse">
-          <CardHeader className="p-0">
-            <div className="aspect-square bg-gray-200 rounded-t-lg"></div>
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="h-6 bg-gray-200 rounded mb-2"></div>
-            <div className="h-4 bg-gray-200 rounded mb-1"></div>
-            <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div className="flex justify-between mb-4">
-              <div className="h-4 bg-gray-200 rounded w-16"></div>
-              <div className="h-4 bg-gray-200 rounded w-20"></div>
-            </div>
-            <div className="flex gap-2">
-              <div className="h-8 bg-gray-200 rounded flex-1"></div>
-              <div className="h-8 bg-gray-200 rounded w-16"></div>
-            </div>
-          </CardContent>
-        </Card>
+        <div key={i} className="flex flex-col">
+          <div className="aspect-[4/3] bg-gray-100 rounded-2xl animate-pulse mb-6"></div>
+          <div className="h-6 bg-gray-100 rounded w-3/4 mb-3 animate-pulse"></div>
+          <div className="h-4 bg-gray-50 rounded w-full mb-2 animate-pulse"></div>
+          <div className="h-4 bg-gray-50 rounded w-2/3 mb-6 animate-pulse"></div>
+          <div className="pt-4 border-t border-gray-50 flex justify-between">
+            <div className="h-5 bg-gray-100 rounded w-24 animate-pulse"></div>
+            <div className="h-5 bg-gray-100 rounded w-20 animate-pulse"></div>
+          </div>
+        </div>
       ))}
     </div>
   )

@@ -1,3 +1,14 @@
+/**
+ * This file contains manual modifications.
+ * If you run `supabase gen types`, this file will be overwritten.
+ * Please ensure any manual changes are preserved or migrated to a separate types file.
+ */
+/**
+ * NOTE:
+ * This file includes manual edits on top of the Supabase CLI generated output.
+ * Regenerating the file with `supabase gen types` will overwrite these tweaks,
+ * so re-apply any custom changes after running the generator.
+ */
 export type Json =
   | string
   | number
@@ -344,12 +355,15 @@ export interface Database {
           created_at: string | null
           description: string
           features: Json | null
+          faqs: Json | null
           id: string
           language_code: string
           meta_description: string | null
           meta_keywords: string | null
           name: string
+          oem_services: Json | null
           product_id: string
+          quality_tests: Json | null
           short_description: string | null
           specifications: Json | null
           updated_at: string | null
@@ -358,12 +372,15 @@ export interface Database {
           created_at?: string | null
           description: string
           features?: Json | null
+          faqs?: Json | null
           id?: string
           language_code: string
           meta_description?: string | null
           meta_keywords?: string | null
           name: string
+          oem_services?: Json | null
           product_id: string
+          quality_tests?: Json | null
           short_description?: string | null
           specifications?: Json | null
           updated_at?: string | null
@@ -372,12 +389,15 @@ export interface Database {
           created_at?: string | null
           description?: string
           features?: Json | null
+          faqs?: Json | null
           id?: string
           language_code?: string
           meta_description?: string | null
           meta_keywords?: string | null
           name?: string
+          oem_services?: Json | null
           product_id?: string
+          quality_tests?: Json | null
           short_description?: string | null
           specifications?: Json | null
           updated_at?: string | null
@@ -403,9 +423,12 @@ export interface Database {
         Row: {
           category: string | null
           created_at: string | null
+          datasheet_url: string | null
           featured: boolean | null
           id: string
           images: Json | null
+          moq: number | null
+          price: number | null
           slug: string
           sort_order: number | null
           status: string | null
@@ -414,9 +437,12 @@ export interface Database {
         Insert: {
           category?: string | null
           created_at?: string | null
+          datasheet_url?: string | null
           featured?: boolean | null
           id?: string
           images?: Json | null
+          moq?: number | null
+          price?: number | null
           slug: string
           sort_order?: number | null
           status?: string | null
@@ -425,9 +451,12 @@ export interface Database {
         Update: {
           category?: string | null
           created_at?: string | null
+          datasheet_url?: string | null
           featured?: boolean | null
           id?: string
           images?: Json | null
+          moq?: number | null
+          price?: number | null
           slug?: string
           sort_order?: number | null
           status?: string | null
