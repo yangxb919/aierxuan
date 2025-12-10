@@ -29,10 +29,8 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // 暂时禁用ESLint和TypeScript检查以加快构建
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // 暂时禁用TypeScript检查以加快构建
+  // 注意：Next.js 16 不再支持 eslint 配置在 next.config 中
   typescript: {
     ignoreBuildErrors: true,
   },
