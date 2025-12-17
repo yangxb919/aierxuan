@@ -87,7 +87,7 @@ export function FinalCTA({ lang, texts }: FinalCTAProps) {
     <section
       className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white relative overflow-hidden"
       style={{
-        backgroundImage: 'url(/images/final-cta-background.jpg)',
+        backgroundImage: 'url(/images/final-cta-background.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay'

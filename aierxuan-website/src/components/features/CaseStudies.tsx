@@ -19,7 +19,7 @@ const translations = {
         client: 'Global Medical Center',
         industry: 'Healthcare',
         icon: '🏥',
-        image: '/images/case-study-healthcare.jpg',
+        image: '/images/case-study-healthcare.webp',
         challenge: 'Hospital equipment required low-power consumption and long-term stable operation for 24/7 patient monitoring systems',
         solution: 'Customized industrial-grade mini PCs with optimized cooling system, medical certifications, and antimicrobial coating',
         results: [
@@ -33,7 +33,7 @@ const translations = {
         client: 'Smart Education Institute',
         industry: 'Education',
         icon: '🎓',
-        image: '/images/case-study-education.jpg',
+        image: '/images/case-study-education.webp',
         challenge: 'Educational institution needed 500+ units of reliable, manageable laptops for computer labs and distance learning programs',
         solution: 'Deployed education-grade laptops with centralized management software, extended warranty, and on-site technical support',
         results: [
@@ -47,7 +47,7 @@ const translations = {
         client: 'Manufacturing Solutions Inc.',
         industry: 'Industrial',
         icon: '🏭',
-        image: '/images/case-study-manufacturing.jpg',
+        image: '/images/case-study-manufacturing.webp',
         challenge: 'Factory floor required rugged computing systems capable of withstanding dust, vibration, and extreme temperatures',
         solution: 'Fanless industrial mini PCs with IP65 rating, wide temperature range (-20°C to 60°C), and shock-resistant design',
         results: [

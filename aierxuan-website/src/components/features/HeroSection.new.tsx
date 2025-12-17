@@ -12,7 +12,7 @@ export function HeroSection() {
     <section
       className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden h-screen min-h-[700px]"
       style={{
-        backgroundImage: 'url(/images/aierxuan-oem-manufacturing-hero.jpg)',
+        backgroundImage: 'url(/images/aierxuan-oem-manufacturing-hero.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',

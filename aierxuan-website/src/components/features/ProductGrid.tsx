@@ -5,21 +5,11 @@ import Link from 'next/link'
 import { Card, CardContent, Button } from '@/components/ui'
 import { createSupabaseClient } from '@/lib/supabase'
 import { getTranslation } from '@/lib/utils'
+import { normalizeAssetUrl } from '@/lib/assetUtils'
 import { useContactForm } from '@/hooks/useContactForm'
 import type { ProductWithTranslations, LanguageCode } from '@/types'
 import { getCategoryLabel, getCategoryType } from '@/lib/categories'
 import { ArrowRight, MessageSquare } from 'lucide-react'
-
-// Ensure image path is absolute to avoid locale prefix being prepended
-function ensureAbsolutePath(path: string): string {
-  if (!path) return '/placeholder-product.svg'
-  // If already absolute URL (http/https) or starts with /, return as-is
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('/')) {
-    return path
-  }
-  // Add leading slash for relative paths
-  return '/' + path
-}
 
 interface ProductGridProps {
   featured?: boolean
@@ -152,16 +142,16 @@ function ProductCard({ product, lang, dictionary }: ProductCardProps) {
   // Prefer uploaded product image, otherwise choose by normalized category type
   let primaryImage = (images && images.length > 0 ? images[0] : '') as string
   if (!primaryImage) {
-    primaryImage = '/images/business-laptop-series.jpg'
+    primaryImage = '/images/business-laptop-series.webp'
   }
   if (!images || images.length === 0) {
     const catType = getCategoryType(product.category)
-    if (catType === 'gaming') primaryImage = '/images/business-laptop-series.jpg'
-    else if (catType === 'mini') primaryImage = '/images/mini-pc-workstation.jpg'
-    else if (catType === 'business') primaryImage = '/images/business-laptop-series.jpg'
+    if (catType === 'gaming') primaryImage = '/images/business-laptop-series.webp'
+    else if (catType === 'mini') primaryImage = '/images/mini-pc-workstation.webp'
+    else if (catType === 'business') primaryImage = '/images/business-laptop-series.webp'
   }
-  // Ensure image path is absolute to avoid locale prefix issues
-  primaryImage = ensureAbsolutePath(primaryImage)
+  // Normalize path to root to avoid locale prefixes on uploads
+  primaryImage = normalizeAssetUrl(primaryImage)
 
   return (
     <div className="group flex flex-col h-full">

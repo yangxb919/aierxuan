@@ -23,7 +23,7 @@ export default async function ContactPage({
       <section
         className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/contact-hero-banner.jpg)',
+          backgroundImage: 'url(/images/contact-hero-banner.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundBlendMode: 'overlay'

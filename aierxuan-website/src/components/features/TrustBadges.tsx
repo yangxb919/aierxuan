@@ -6,31 +6,31 @@ import { type Locale } from '@/i18n-config'
 
 // Client logos with actual images
 const clientLogos = [
-  { name: 'Tech Corp', image: '/images/client-logo-tech-corp.jpg' },
-  { name: 'Global Systems', image: '/images/client-logo-global-systems.jpg' },
-  { name: 'Innovation Ltd', image: '/images/client-logo-innovation-ltd.jpg' },
-  { name: 'Digital Solutions', image: '/images/client-logo-digital-solutions.jpg' },
-  { name: 'Smart Industries', image: '/images/client-logo-smart-industries.jpg' },
-  { name: 'Future Tech', image: '/images/client-logo-future-tech.jpg' },
-  { name: 'Enterprise Co', image: '/images/client-logo-enterprise-co.jpg' },
-  { name: 'Advanced Systems', image: '/images/client-logo-advanced-systems.jpg' },
-  { name: 'NextGen Tech', image: '/images/client-logo-nextgen-tech.jpg' },
-  { name: 'MegaCorp Industries', image: '/images/client-logo-megacorp-industries.jpg' },
-  { name: 'Quantum Systems', image: '/images/client-logo-quantum-systems.jpg' },
-  { name: 'Alpha Technologies', image: '/images/client-logo-alpha-technologies.jpg' },
-  { name: 'Beta Solutions', image: '/images/client-logo-beta-solutions.jpg' },
-  { name: 'Gamma Innovations', image: '/images/client-logo-gamma-innovations.jpg' },
-  { name: 'Delta Digital', image: '/images/client-logo-delta-digital.jpg' }
+  { name: 'Tech Corp', image: '/images/client-logo-tech-corp.webp' },
+  { name: 'Global Systems', image: '/images/client-logo-global-systems.webp' },
+  { name: 'Innovation Ltd', image: '/images/client-logo-innovation-ltd.webp' },
+  { name: 'Digital Solutions', image: '/images/client-logo-digital-solutions.webp' },
+  { name: 'Smart Industries', image: '/images/client-logo-smart-industries.webp' },
+  { name: 'Future Tech', image: '/images/client-logo-future-tech.webp' },
+  { name: 'Enterprise Co', image: '/images/client-logo-enterprise-co.webp' },
+  { name: 'Advanced Systems', image: '/images/client-logo-advanced-systems.webp' },
+  { name: 'NextGen Tech', image: '/images/client-logo-nextgen-tech.webp' },
+  { name: 'MegaCorp Industries', image: '/images/client-logo-megacorp-industries.webp' },
+  { name: 'Quantum Systems', image: '/images/client-logo-quantum-systems.webp' },
+  { name: 'Alpha Technologies', image: '/images/client-logo-alpha-technologies.webp' },
+  { name: 'Beta Solutions', image: '/images/client-logo-beta-solutions.webp' },
+  { name: 'Gamma Innovations', image: '/images/client-logo-gamma-innovations.webp' },
+  { name: 'Delta Digital', image: '/images/client-logo-delta-digital.webp' }
 ]
 
 // Certifications with actual images
 const certifications = [
-  { name: 'CE', description: 'European Conformity', image: '/images/certification-ce-european-conformity.jpg' },
-  { name: 'FCC', description: 'Federal Communications Commission', image: '/images/certification-fcc-federal-communications.jpg' },
-  { name: 'RoHS', description: 'Restriction of Hazardous Substances', image: '/images/certification-rohs-hazardous-substances.jpg' },
-  { name: 'UL', description: 'Underwriters Laboratories', image: '/images/certification-ul-underwriters-laboratories.jpg' },
-  { name: 'ISO 9001', description: 'Quality Management', image: '/images/certification-iso-9001-quality-management.jpg' },
-  { name: 'ISO 14001', description: 'Environmental Management', image: '/images/certification-iso-14001-environmental-management.jpg' }
+  { name: 'CE', description: 'European Conformity', image: '/images/certification-ce-european-conformity.webp' },
+  { name: 'FCC', description: 'Federal Communications Commission', image: '/images/certification-fcc-federal-communications.webp' },
+  { name: 'RoHS', description: 'Restriction of Hazardous Substances', image: '/images/certification-rohs-hazardous-substances.webp' },
+  { name: 'UL', description: 'Underwriters Laboratories', image: '/images/certification-ul-underwriters-laboratories.webp' },
+  { name: 'ISO 9001', description: 'Quality Management', image: '/images/certification-iso-9001-quality-management.webp' },
+  { name: 'ISO 14001', description: 'Environmental Management', image: '/images/certification-iso-14001-environmental-management.webp' }
 ]
 
 // Technology partners with actual logos

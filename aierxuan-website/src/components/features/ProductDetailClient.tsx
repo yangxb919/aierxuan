@@ -7,6 +7,7 @@ import ReactMarkdown, { type Components } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Button } from '@/components/ui'
 import { getTranslation } from '@/lib/utils'
+import { normalizeAssetUrl } from '@/lib/assetUtils'
 import { getCategoryLabel } from '@/lib/categories'
 import type { ProductWithTranslations, LanguageCode } from '@/types'
 import {
@@ -117,17 +118,6 @@ const getIconComponent = (name?: string, fallback = ShieldCheck) => {
   return iconMap[key] || fallback
 }
 
-// Ensure image path is absolute to avoid locale prefix being prepended
-function ensureAbsolutePath(path: string): string {
-  if (!path) return '/placeholder-product.svg'
-  // If already absolute URL (http/https) or starts with /, return as-is
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('/')) {
-    return path
-  }
-  // Add leading slash for relative paths
-  return '/' + path
-}
-
 interface ProductDetailClientProps {
     product: ProductWithTranslations
     lang: LanguageCode
@@ -165,8 +155,8 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
   const translation = getTranslation(product, lang)
   const productTitle = translation?.title || translation?.name || product.slug
   const rawImages = (product.images as string[] | null) || []
-  // Ensure all image paths are absolute to avoid locale prefix issues
-  const images = rawImages.map(img => ensureAbsolutePath(img))
+  // Normalize all image paths so locale prefixes are stripped
+  const images = rawImages.map(img => normalizeAssetUrl(img))
   const primaryImage = images[0] || '/placeholder-product.svg'
 
   // Handle key_specs as either array or object format
@@ -199,7 +189,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
       }
     }
     // Ensure all paths are absolute
-    return result.map(img => ensureAbsolutePath(img))
+    return result.map(img => normalizeAssetUrl(img))
   }
   const durabilityImages = extractGalleryImages(translation, 'durability_images')
   const oemImages = extractGalleryImages(translation, 'oem_images')
@@ -243,11 +233,18 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
   const datasheetUrl = product.datasheet_url || ''
   const priceDisplay = typeof product.price === 'number' ? product.price.toFixed(2) : null
 
+  // Keep selected image stable; only set default when none is selected or it's no longer in the list
   useEffect(() => {
-    if (images.length > 0) {
-      setSelectedImage(images[0])
-        }
-    }, [images])
+    if (images.length === 0) {
+      setSelectedImage(null)
+      return
+    }
+
+    setSelectedImage((prev) => {
+      if (prev && images.includes(prev)) return prev
+      return images[0]
+    })
+  }, [images])
 
     const getSpec = (...candidates: string[]) => {
         for (const k of candidates) {

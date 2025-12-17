@@ -67,21 +67,21 @@ export function ProductCategories({ dictionary, lang }: ProductCategoriesProps) 
       id: 'business',
       slug: CATEGORY_SLUGS.business,
       icon: '💼',
-      image: '/images/category-business-laptop.jpg',
+      image: '/images/category-business-laptop.webp',
       color: 'blue'
     },
     {
       id: 'gaming',
       slug: CATEGORY_SLUGS.gaming,
       icon: '🎮',
-      image: '/images/category-gaming-laptop.jpg',
+      image: '/images/category-gaming-laptop.webp',
       color: 'purple'
     },
     {
       id: 'mini',
       slug: CATEGORY_SLUGS.mini,
       icon: '🖥️',
-      image: '/images/category-mini-pc.jpg',
+      image: '/images/category-mini-pc.webp',
       color: 'green'
     }
   ]
