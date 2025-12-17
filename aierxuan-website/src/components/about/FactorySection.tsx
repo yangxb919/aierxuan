@@ -26,7 +26,7 @@ interface FactorySectionProps {
 
 export function FactorySection({ texts }: FactorySectionProps) {
   // YouTube video ID - can be changed later
-  const youtubeVideoId = 'reX_Rmg9_jk'
+  const youtubeVideoId = 'DB-9Lj-G1Z8'
   
   const photoData = [
     {
