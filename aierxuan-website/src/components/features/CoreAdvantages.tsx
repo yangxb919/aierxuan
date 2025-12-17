@@ -15,9 +15,9 @@ export function CoreAdvantages({ dictionary, lang }: CoreAdvantagesProps) {
     ...item,
     icon: ['📦', '⚡', '🎨'][index],
     image: [
-      '/images/exceptional-performance-hardware.jpg',
-      '/images/quality-certification-lab.jpg',
-      '/images/oem-customization-service.jpg'
+      '/images/exceptional-performance-hardware.webp',
+      '/images/quality-certification-lab.webp',
+      '/images/oem-customization-service.webp'
     ][index]
   }))
 

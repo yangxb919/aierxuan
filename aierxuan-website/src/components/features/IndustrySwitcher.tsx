@@ -10,11 +10,11 @@ type IndustryType = 'education' | 'industrial' | 'medical' | 'office' | 'retail'
 
 // Industry images mapping
 const industryImages: Record<IndustryType, string> = {
-  education: '/images/industries/industry-education-classroom-laptops.png',
-  industrial: '/images/industries/industry-manufacturing-mini-pc-automation.png',
-  medical: '/images/industries/industry-healthcare-medical-workstation.png',
-  office: '/images/industries/industry-office-business-workspace.png',
-  retail: '/images/industries/industry-retail-pos-system.png'
+  education: '/images/industries/industry-education-classroom-laptops.webp',
+  industrial: '/images/industries/industry-manufacturing-mini-pc-automation.webp',
+  medical: '/images/industries/industry-healthcare-medical-workstation.webp',
+  office: '/images/industries/industry-office-business-workspace.webp',
+  retail: '/images/industries/industry-retail-pos-system.webp'
 }
 
 // Translations

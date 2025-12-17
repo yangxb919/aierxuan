@@ -4,6 +4,8 @@ import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import { existsSync } from 'fs'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const sharp = require('sharp')
 
 async function ensureAdminAuth() {
   const cookieStore = await cookies()
@@ -69,19 +71,28 @@ export async function POST(request: NextRequest) {
       await mkdir(uploadDir, { recursive: true })
     }
 
-    // Convert file to buffer and save
+    // Convert file to buffer and compress with sharp
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
-    const filepath = join(uploadDir, filename)
-    await writeFile(filepath, buffer)
+
+    // Compress and convert to WebP
+    const compressedBuffer = await sharp(buffer)
+      .resize(1920, null, { withoutEnlargement: true })
+      .webp({ quality: 80 })
+      .toBuffer()
+
+    // Save as WebP
+    const webpFilename = `${timestamp}-${randomString}.webp`
+    const filepath = join(uploadDir, webpFilename)
+    await writeFile(filepath, compressedBuffer)
 
     // Return the public URL
-    const url = `/uploads/${uploadSubDir}/${filename}`
+    const url = `/uploads/${uploadSubDir}/${webpFilename}`
 
     return NextResponse.json({
       success: true,
       url,
-      filename
+      filename: webpFilename
     })
   } catch (error) {
     console.error('Upload error:', error)

@@ -15,17 +15,17 @@ interface AwardsExhibitionsProps {
 
 export function AwardsExhibitionsSection({ texts }: AwardsExhibitionsProps) {
   const exhibitions = [
-    { src: '/images/events/exhibitions-1.jpg', alt: 'Trade show photo with customers at booth' },
-    { src: '/images/events/exhibitions-2.jpg', alt: 'Team showcasing AIERXUAN laptops with partners' },
-    { src: '/images/events/exhibitions-3.jpg', alt: 'Trade fair customer photo' },
-    { src: '/images/events/exhibitions-4.jpg', alt: 'Booth meeting discussing product details' }
+    { src: '/images/events/exhibitions-1.webp', alt: 'Trade show photo with customers at booth' },
+    { src: '/images/events/exhibitions-2.webp', alt: 'Team showcasing AIERXUAN laptops with partners' },
+    { src: '/images/events/exhibitions-3.webp', alt: 'Trade fair customer photo' },
+    { src: '/images/events/exhibitions-4.webp', alt: 'Booth meeting discussing product details' }
   ]
 
   const intelAwards = [
-    { src: '/images/events/intel-1.jpg', alt: 'Intel processor and AIERXUAN branding display' },
-    { src: '/images/events/intel-2.jpg', alt: 'Award ceremony photo with company name on screen' },
-    { src: '/images/events/intel-3.jpg', alt: 'Intel conference stage award moment' },
-    { src: '/images/events/intel-4.jpg', alt: 'Intel summit wide shot with winners on stage' }
+    { src: '/images/events/intel-1.webp', alt: 'Intel processor and AIERXUAN branding display' },
+    { src: '/images/events/intel-2.webp', alt: 'Award ceremony photo with company name on screen' },
+    { src: '/images/events/intel-3.webp', alt: 'Intel conference stage award moment' },
+    { src: '/images/events/intel-4.webp', alt: 'Intel summit wide shot with winners on stage' }
   ]
 
   const Block = ({ title, desc, items, icon: Icon }: { title: string; desc: string; items: { src: string; alt: string }[], icon: any }) => (
