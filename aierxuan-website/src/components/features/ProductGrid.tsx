@@ -10,6 +10,7 @@ import { useContactForm } from '@/hooks/useContactForm'
 import type { ProductWithTranslations, LanguageCode } from '@/types'
 import { getCategoryLabel, getCategoryType } from '@/lib/categories'
 import { ArrowRight, MessageSquare } from 'lucide-react'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface ProductGridProps {
   featured?: boolean
@@ -157,14 +158,13 @@ function ProductCard({ product, lang, dictionary }: ProductCardProps) {
     <div className="group flex flex-col h-full">
       {/* Image Container */}
       <Link href={`/${lang}/products/${product.slug}`} className="block overflow-hidden rounded-2xl bg-gray-100 mb-6 relative aspect-[4/3]">
-        <img
+        <OptimizedImage
           src={primaryImage}
           alt={translation?.title || product.slug || texts.productImage}
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement
-            target.src = '/placeholder-product.svg'
-          }}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+          fallback="/placeholder-product.svg"
         />
         {/* Overlay on hover for quick access - optional, but adds a premium feel */}
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -1,6 +1,7 @@
 'use client'
 
 import { Play, Factory, Settings, Microscope, Package, Box, ShieldCheck } from 'lucide-react'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface FactorySectionProps {
   texts: {
@@ -33,7 +34,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'factoryOverview',
       label: texts.photos.factoryOverview,
       desc: texts.photos.factoryOverviewDesc,
-      url: '/images/factory/factory-1.webp?v=2',
+      url: '/images/factory/factory-1.webp',
       alt: 'AIERXUAN Factory Exterior',
       icon: Factory
     },
@@ -41,7 +42,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'assemblyLine',
       label: texts.photos.assemblyLine,
       desc: texts.photos.assemblyLineDesc,
-      url: '/images/factory/factory-2.webp?v=2',
+      url: '/images/factory/factory-2.webp',
       alt: 'Laptop Assembly Line',
       icon: Settings
     },
@@ -49,7 +50,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'testingLab',
       label: texts.photos.testingLab,
       desc: texts.photos.testingLabDesc,
-      url: '/images/factory/factory-3.webp?v=2',
+      url: '/images/factory/factory-3.webp',
       alt: 'Quality Testing Laboratory',
       icon: Microscope
     },
@@ -57,7 +58,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'warehouse',
       label: texts.photos.warehouse,
       desc: texts.photos.warehouseDesc,
-      url: '/images/factory/factory-4.webp?v=2',
+      url: '/images/factory/factory-4.webp',
       alt: 'Warehouse & Logistics',
       icon: Box
     },
@@ -65,7 +66,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'rdCenter',
       label: texts.photos.rdCenter,
       desc: texts.photos.rdCenterDesc,
-      url: '/images/factory/factory-5.webp?v=2',
+      url: '/images/factory/factory-5.webp',
       alt: 'R&D Center',
       icon: Package
     },
@@ -73,7 +74,7 @@ export function FactorySection({ texts }: FactorySectionProps) {
       key: 'qualityControl',
       label: texts.photos.qualityControl,
       desc: texts.photos.qualityControlDesc,
-      url: '/images/factory/factory-6.webp?v=2',
+      url: '/images/factory/factory-6.webp',
       alt: 'Quality Control Station',
       icon: ShieldCheck
     }
@@ -119,10 +120,11 @@ export function FactorySection({ texts }: FactorySectionProps) {
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col"
               >
                 <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={photo.url}
                     alt={photo.alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

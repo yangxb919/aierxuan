@@ -8,6 +8,9 @@ import { FinalCTA } from '@/components/features/FinalCTA'
 import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 
+// ISR: 每小时重新生成
+export const revalidate = 3600
+
 export default async function Home({
   params,
 }: {

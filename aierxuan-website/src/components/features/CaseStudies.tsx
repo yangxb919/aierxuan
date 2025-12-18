@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLanguage } from '@/store/useAppStore'
 import { Button } from '@/components/ui'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 // Translations
 const translations = {
@@ -343,11 +344,12 @@ export function CaseStudies() {
             >
               {/* Case Study Image */}
               {study.image && (
-                <div className="mb-6 overflow-hidden rounded-lg">
-                  <img
+                <div className="mb-6 overflow-hidden rounded-lg relative h-64">
+                  <OptimizedImage
                     src={study.image}
                     alt={`${study.client} case study`}
-                    className="w-full h-64 object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               )}

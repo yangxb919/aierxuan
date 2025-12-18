@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import { type Dictionary } from '@/get-dictionary'
 
 interface TechnicalCapabilitiesProps {
@@ -33,11 +34,12 @@ export function TechnicalCapabilities({ texts }: TechnicalCapabilitiesProps) {
             >
               {/* Image or Icon */}
               {(capability as any).image ? (
-                <div className="mb-6 overflow-hidden rounded-lg">
-                  <img
+                <div className="mb-6 overflow-hidden rounded-lg relative h-48">
+                  <OptimizedImage
                     src={(capability as any).image}
                     alt={capability.title}
-                    className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               ) : (
