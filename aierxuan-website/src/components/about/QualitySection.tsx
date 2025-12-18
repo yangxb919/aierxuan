@@ -1,6 +1,7 @@
 'use client'
 
 import { ClipboardList, Wrench, Zap, Flame, Target, PackageCheck, CheckCircle2, ShieldCheck } from 'lucide-react'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface QualitySectionProps {
   texts: {
@@ -126,10 +127,11 @@ export function QualitySection({ texts }: QualitySectionProps) {
                          <div className="absolute inset-0 flex items-center justify-center text-slate-300">
                             <ShieldCheck className="w-12 h-12" />
                          </div>
-                        <img
+                        <OptimizedImage
                           src={cert.image}
                           alt={cert.name}
-                          className="w-full h-full object-cover relative z-10"
+                          fill
+                          className="object-cover relative z-10"
                         />
                       </div>
                       <h4 className="text-center font-bold text-slate-900 group-hover:text-blue-600 transition-colors">

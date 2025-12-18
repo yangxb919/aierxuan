@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { type Dictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 
@@ -93,7 +94,11 @@ function ClientCarousel({ logos }: { logos: typeof clientLogos }) {
               <img
                 src={client.image}
                 alt={`${client.name} logo`}
+                width={180}
+                height={64}
                 className="w-full h-auto object-contain max-h-16 transition-all duration-500 group-hover:scale-125 drop-shadow-sm"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -162,7 +167,11 @@ function ClientCarousel({ logos }: { logos: typeof clientLogos }) {
                 <img
                   src={client.image}
                   alt={`${client.name} logo`}
+                  width={180}
+                  height={64}
                   className="w-full h-auto object-contain max-h-16 transition-all duration-500 group-hover:scale-125 drop-shadow-sm"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
@@ -284,6 +293,10 @@ export function TrustBadges({ dictionary, lang }: TrustBadgesProps) {
                     src={cert.image}
                     alt={`${cert.name} certification`}
                     className="w-full h-full object-contain"
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
                       target.style.display = 'none'
@@ -319,7 +332,11 @@ export function TrustBadges({ dictionary, lang }: TrustBadgesProps) {
                 <img
                   src={partner.image}
                   alt={`${partner.name} logo`}
+                  width={180}
+                  height={80}
                   className="w-full h-auto object-contain max-h-20 transition-transform duration-300 group-hover:scale-125 drop-shadow-md"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
@@ -359,4 +376,3 @@ export function TrustBadges({ dictionary, lang }: TrustBadgesProps) {
     </section>
   )
 }
-

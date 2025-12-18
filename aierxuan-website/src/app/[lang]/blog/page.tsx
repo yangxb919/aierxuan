@@ -5,6 +5,9 @@ import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import type { BlogPost, BlogPostTranslation } from '@/types'
 
+// ISR: 每小时重新生成
+export const revalidate = 3600
+
 // Initialize Supabase client for server-side fetching
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!

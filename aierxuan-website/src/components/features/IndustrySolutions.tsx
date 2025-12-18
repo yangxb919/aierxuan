@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLanguage } from '@/store/useAppStore'
 import { Button } from '@/components/ui'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 // Translations
 const translations = {
@@ -327,11 +328,12 @@ export function IndustrySolutions() {
               >
                 {/* Image or Header */}
                 {solution.image ? (
-                  <div className="mb-6 overflow-hidden rounded-lg group">
-                    <img
+                  <div className="mb-6 overflow-hidden rounded-lg group relative h-48">
+                    <OptimizedImage
                       src={solution.image}
                       alt={solution.industry}
-                      className="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 ) : (

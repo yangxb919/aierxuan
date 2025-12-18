@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/store/useAppStore'
 import { createSupabaseClient } from '@/lib/supabase'
 import { Button } from '@/components/ui'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 // Translations
 const translations = {
@@ -205,10 +206,11 @@ export function LatestNews() {
                 {/* Featured Image */}
                 <div className="relative h-48 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden">
                   {post.cover_image ? (
-                    <img
+                    <OptimizedImage
                       src={post.cover_image}
                       alt={title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">

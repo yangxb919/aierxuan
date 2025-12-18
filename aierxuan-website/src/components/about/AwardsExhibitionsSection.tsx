@@ -1,6 +1,7 @@
 'use client'
 
 import { Trophy, Presentation } from 'lucide-react'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface AwardsExhibitionsProps {
   texts: {
@@ -45,10 +46,11 @@ export function AwardsExhibitionsSection({ texts }: AwardsExhibitionsProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {items.map((img, idx) => (
           <div key={idx} className="group relative overflow-hidden rounded-2xl bg-slate-100 aspect-[4/3]">
-            <img 
-               src={img.src} 
-               alt={img.alt} 
-               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+            <OptimizedImage
+               src={img.src}
+               alt={img.alt}
+               fill
+               className="object-cover group-hover:scale-110 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>

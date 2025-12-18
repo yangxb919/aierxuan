@@ -5,6 +5,9 @@ import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import type { ProductWithTranslations } from '@/types'
 
+// ISR: 每30分钟重新生成
+export const revalidate = 1800
+
 export default async function ProductDetailPage({
   params
 }: {

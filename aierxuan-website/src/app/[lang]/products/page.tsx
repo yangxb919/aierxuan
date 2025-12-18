@@ -2,6 +2,9 @@ import { getDictionary } from '@/get-dictionary'
 import { ProductsClient } from '@/components/features/ProductsClient'
 import { Locale } from '@/i18n-config'
 
+// ISR: 每30分钟重新生成
+export const revalidate = 1800
+
 export default async function ProductsPage({
   params,
   searchParams

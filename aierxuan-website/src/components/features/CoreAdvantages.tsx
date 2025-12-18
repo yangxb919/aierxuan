@@ -2,6 +2,7 @@
 
 import { type Dictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface CoreAdvantagesProps {
   dictionary: Dictionary
@@ -43,11 +44,12 @@ export function CoreAdvantages({ dictionary, lang }: CoreAdvantagesProps) {
             >
               {/* Image or Icon */}
               {advantage.image ? (
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <img
+                <div className="mb-4 overflow-hidden rounded-lg relative h-32">
+                  <OptimizedImage
                     src={advantage.image}
                     alt={advantage.title}
-                    className="w-full h-32 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               ) : (
