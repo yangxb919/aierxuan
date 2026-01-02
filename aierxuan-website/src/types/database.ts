@@ -30,7 +30,7 @@ export interface Database {
           session_token: string
           updated_at: string | null
           user_agent: string | null
-          user_id: string
+          admin_user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -41,7 +41,7 @@ export interface Database {
           session_token: string
           updated_at?: string | null
           user_agent?: string | null
-          user_id: string
+          admin_user_id: string
         }
         Update: {
           created_at?: string | null
@@ -52,12 +52,12 @@ export interface Database {
           session_token?: string
           updated_at?: string | null
           user_agent?: string | null
-          user_id?: string
+          admin_user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "admin_sessions_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "admin_sessions_admin_user_id_fkey"
+            columns: ["admin_user_id"]
             isOneToOne: false
             referencedRelation: "admin_users"
             referencedColumns: ["id"]
@@ -149,48 +149,45 @@ export interface Database {
       }
       blog_post_translations: {
         Row: {
-          content: string
+          body_md: string
           created_at: string | null
           excerpt: string | null
           id: string
-          language_code: string
-          meta_description: string | null
-          meta_keywords: string | null
+          locale: string
           post_id: string
-          slug: string
+          seo_desc: string | null
+          seo_title: string | null
           title: string
           updated_at: string | null
         }
         Insert: {
-          content: string
+          body_md: string
           created_at?: string | null
           excerpt?: string | null
           id?: string
-          language_code: string
-          meta_description?: string | null
-          meta_keywords?: string | null
+          locale: string
           post_id: string
-          slug: string
+          seo_desc?: string | null
+          seo_title?: string | null
           title: string
           updated_at?: string | null
         }
         Update: {
-          content?: string
+          body_md?: string
           created_at?: string | null
           excerpt?: string | null
           id?: string
-          language_code?: string
-          meta_description?: string | null
-          meta_keywords?: string | null
+          locale?: string
           post_id?: string
-          slug?: string
+          seo_desc?: string | null
+          seo_title?: string | null
           title?: string
           updated_at?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "blog_post_translations_language_code_fkey"
-            columns: ["language_code"]
+            foreignKeyName: "blog_post_translations_locale_fkey"
+            columns: ["locale"]
             isOneToOne: false
             referencedRelation: "i18n_locales"
             referencedColumns: ["code"]
@@ -464,82 +461,89 @@ export interface Database {
         }
         Relationships: []
       }
-      rfq_requests: {
+      rfqs: {
         Row: {
-          assignee: string | null
-          company_name: string | null
-          contact_method: string | null
+          admin_notes: string | null
+          assigned_to: string | null
+          budget_range: string | null
+          company: string | null
+          contacted_at: string | null
+          country: string | null
           created_at: string | null
           email: string
+          follow_up_date: string | null
           id: string
           industry: string | null
-          internal_notes: string | null
           ip_address: unknown | null
-          message: string
+          language_code: string | null
+          message: string | null
           name: string
           phone: string | null
           priority: string | null
-          processed_at: string | null
           product_interest: string | null
-          quantity_needed: string | null
+          quantity: string | null
           referrer: string | null
+          source: string | null
           status: string | null
           updated_at: string | null
+          urgency: string | null
           user_agent: string | null
         }
         Insert: {
-          assignee?: string | null
-          company_name?: string | null
-          contact_method?: string | null
+          admin_notes?: string | null
+          assigned_to?: string | null
+          budget_range?: string | null
+          company?: string | null
+          contacted_at?: string | null
+          country?: string | null
           created_at?: string | null
           email: string
+          follow_up_date?: string | null
           id?: string
           industry?: string | null
-          internal_notes?: string | null
           ip_address?: unknown | null
-          message: string
+          language_code?: string | null
+          message?: string | null
           name: string
           phone?: string | null
           priority?: string | null
-          processed_at?: string | null
           product_interest?: string | null
-          quantity_needed?: string | null
+          quantity?: string | null
           referrer?: string | null
+          source?: string | null
           status?: string | null
           updated_at?: string | null
+          urgency?: string | null
           user_agent?: string | null
         }
         Update: {
-          assignee?: string | null
-          company_name?: string | null
-          contact_method?: string | null
+          admin_notes?: string | null
+          assigned_to?: string | null
+          budget_range?: string | null
+          company?: string | null
+          contacted_at?: string | null
+          country?: string | null
           created_at?: string | null
           email?: string
+          follow_up_date?: string | null
           id?: string
           industry?: string | null
-          internal_notes?: string | null
           ip_address?: unknown | null
-          message?: string
+          language_code?: string | null
+          message?: string | null
           name?: string
           phone?: string | null
           priority?: string | null
-          processed_at?: string | null
           product_interest?: string | null
-          quantity_needed?: string | null
+          quantity?: string | null
           referrer?: string | null
+          source?: string | null
           status?: string | null
           updated_at?: string | null
+          urgency?: string | null
           user_agent?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "rfq_requests_assignee_fkey"
-            columns: ["assignee"]
-            isOneToOne: false
-            referencedRelation: "admin_users"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
       site_settings: {
         Row: {

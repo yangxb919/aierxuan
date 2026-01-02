@@ -44,5 +44,5 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }
 
     const localeDictionary = await (dictionaries[locale]?.() ?? dictionaries.en())
-    return deepMerge(defaultDictionary, localeDictionary)
+    return deepMerge(defaultDictionary, localeDictionary as Partial<Dictionary>)
 }

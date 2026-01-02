@@ -127,8 +127,8 @@
 1. **登录Admin系统**:
    ```
    访问: http://localhost:3000/admin/login
-   Email: admin@aierxuan.com
-   Password: admin123
+   Email: admin@example.com
+   Password: <CHANGE_PASSWORD>
    ```
 
 2. **查看RFQ列表**:

@@ -13,6 +13,9 @@ interface QualityTest {
   unit?: string
   status?: string
   icon?: string
+  __gallery_meta?: boolean
+  durability_images?: string[]
+  oem_images?: string[]
 }
 
 interface OemService {
@@ -538,7 +541,7 @@ export default function ProductForm({ initialData, productId, mode }: ProductFor
     field: GalleryField,
     title: string,
     hint: string,
-    inputRef: RefObject<HTMLInputElement>
+    inputRef: RefObject<HTMLInputElement | null>
   ) => {
     const images = field === 'durability_images'
       ? currentTranslation.durability_images || []

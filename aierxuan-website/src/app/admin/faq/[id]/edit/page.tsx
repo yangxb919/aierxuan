@@ -7,11 +7,11 @@ import { notFound } from 'next/navigation'
 
 interface FAQ {
   id: string
-  category: string
-  sort_order: number
-  is_active: boolean
-  created_at: string
-  updated_at: string
+  category: string | null
+  sort_order: number | null
+  is_active: boolean | null
+  created_at: string | null
+  updated_at: string | null
   translations: {
     locale: string
     question: string
@@ -44,7 +44,7 @@ async function getFAQ(id: string): Promise<FAQ | null> {
   
   return {
     ...faq,
-    translations: translations || []
+    translations: (translations as any[]) || []
   }
 }
 
@@ -62,12 +62,16 @@ export default async function AdminFAQEditPage({
     notFound()
   }
   
-  // Prepare form data
+  // Prepare form data - convert language_code to locale for form
   const formData = {
-    category: faq.category,
-    sort_order: faq.sort_order,
-    is_active: faq.is_active,
-    translations: faq.translations
+    category: faq.category || '',
+    sort_order: faq.sort_order ?? 0,
+    is_active: faq.is_active ?? true,
+    translations: faq.translations.map(t => ({
+      locale: t.locale,
+      question: t.question,
+      answer: t.answer
+    }))
   }
   
   return (

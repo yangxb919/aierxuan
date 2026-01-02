@@ -70,11 +70,16 @@ export function ContactModal() {
     setSubmitStatus('idle')
 
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 2000))
-
-      // Here you would normally send the data to your backend
-      console.log('Form submitted:', formData)
+      // Send email notification
+      await fetch('/api/send-rfq-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'contact',
+          pageUrl: window.location.href
+        })
+      })
 
       setSubmitStatus('success')
       // Reset form

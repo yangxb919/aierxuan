@@ -53,7 +53,7 @@ node scripts/test-rfq-rls-complete.js
 
 ### Test Admin Login
 1. Visit: http://localhost:3001/admin
-2. Login: `admin@aierxuan.com` / `admin123`
+2. Login: `admin@example.com` / `<CHANGE_PASSWORD>`
 3. Should see dashboard with statistics
 
 ### Test Product Page
@@ -122,8 +122,8 @@ cat .env.local | grep SUPABASE
 
 ```
 Admin:
-  Email: admin@aierxuan.com
-  Password: admin123
+  Email: admin@example.com
+  Password: <CHANGE_PASSWORD>
 ```
 
 ## 📊 Expected Results

@@ -2,11 +2,12 @@
 
 import { Button } from '@/components/ui'
 import { useLanguage } from '@/store/useAppStore'
-import { useContent } from '@/content'
+import { useContent, heroContent, type HeroContent } from '@/content'
 
 export function HeroSection() {
   const language = useLanguage()
-  const t = useContent(require('@/content/hero').heroContent, language)
+  const t = useContent<HeroContent>(heroContent, language)
+  const slide = t.slides[0]
 
   return (
     <section
@@ -39,16 +40,16 @@ export function HeroSection() {
           {/* Main Title - Two lines, centered */}
           <div className="space-y-4 animate-[fadeInUp_1s_ease-out]">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-relaxed">
-              {t.title}
+              {slide.title}
             </h1>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-relaxed">
-              {t.subtitle}
+              {slide.subtitle}
             </h2>
           </div>
 
           {/* Description - Fade in from bottom */}
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-4xl animate-[fadeInUp_1s_ease-out_0.3s_both]">
-            {t.description}
+            {slide.description}
           </p>
 
           {/* CTA Button - Fade in from bottom with delay */}

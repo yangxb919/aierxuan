@@ -64,7 +64,7 @@ export const createTypedSupabaseClient = () => {
     adminSessions: () => client.from('admin_sessions'),
     
     // RFQ
-    rfqRequests: () => client.from('rfq_requests'),
+    rfqRequests: () => client.from('rfqs'),
     
     // Settings
     siteSettings: () => client.from('site_settings'),

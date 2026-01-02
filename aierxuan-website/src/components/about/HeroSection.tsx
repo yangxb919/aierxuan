@@ -1,8 +1,5 @@
-'use client'
-
-import { Button } from '@/components/ui'
 import Link from 'next/link'
-import { ShieldCheck, Award, Globe, Box, Calendar } from 'lucide-react'
+import { ShieldCheck, Globe, Box, Calendar } from 'lucide-react'
 
 interface HeroSectionProps {
   texts: {
@@ -16,92 +13,105 @@ interface HeroSectionProps {
 
 export function HeroSection({ texts }: HeroSectionProps) {
   return (
-    <section className="relative text-white overflow-hidden bg-slate-900">
-      {/* Background Gradient & Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 opacity-90" />
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`,
-        backgroundSize: '32px 32px'
-      }}></div>
+    <section className="relative isolate overflow-hidden text-white">
+      {/* Background (no image): gradient mesh */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#04050a] via-[#070b18] to-[#04050a]" />
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage:
+            'radial-gradient(900px 520px at 18% 0%, rgba(59,130,246,0.22), transparent 60%), radial-gradient(820px 520px at 92% 24%, rgba(34,211,238,0.16), transparent 62%), radial-gradient(820px 520px at 40% 110%, rgba(99,102,241,0.10), transparent 62%)',
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.12] mix-blend-overlay"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+        }}
+      />
+      <div className="pointer-events-none absolute -top-24 right-[-140px] h-[520px] w-[520px] rounded-full bg-blue-600/25 blur-[160px]" />
+      <div className="pointer-events-none absolute -bottom-32 left-[-160px] h-[560px] w-[560px] rounded-full bg-cyan-500/15 blur-[180px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-10">
-            <div className="space-y-6">
-              {/* Badge/Certifications */}
-              <div className="flex flex-wrap gap-3">
-                {['Intel Partner', 'CE Certified', 'FCC Certified', 'ISO 9001'].map((cert) => (
-                  <div key={cert} className="flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-500/20 text-blue-200 text-sm font-medium">
-                    <ShieldCheck className="w-4 h-4" />
-                    <span>{cert}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Main Title */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white">
-                {texts.mainTitle}
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-2xl text-blue-200 font-medium">
-                {texts.subtitle}
-              </p>
-
-              {/* Description */}
-              <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
-                {texts.description}
-              </p>
+      <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-28 sm:px-8 lg:px-12 lg:pb-28 lg:pt-32">
+        <div className="grid items-center gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 backdrop-blur">
+              <ShieldCheck className="h-4 w-4 text-cyan-200" />
+              <span className="text-xs font-semibold tracking-[0.18em] text-white/85 uppercase">
+                Intel Partner · CE/FCC · ISO 9001
+              </span>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-500 text-white border-0 shadow-lg hover:shadow-blue-500/25 transition-all duration-300 w-full sm:w-auto font-semibold px-8 h-12 text-base"
-                >
-                  {texts.contactSales}
-                </Button>
+            <h1 className="mt-7 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl">
+              {texts.mainTitle}
+            </h1>
+            <p className="mt-6 text-2xl font-medium text-cyan-200 sm:text-3xl">{texts.subtitle}</p>
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+              {texts.description}
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex h-14 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-500 px-8 text-base font-semibold text-white shadow-[0_18px_60px_rgba(59,130,246,0.35)] transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:w-auto"
+              >
+                {texts.contactSales}
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-slate-700 text-slate-300 hover:bg-white hover:text-slate-900 hover:border-white transition-all duration-300 w-full sm:w-auto font-semibold px-8 h-12 text-base bg-transparent"
+              <button
+                type="button"
+                className="inline-flex h-14 w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 text-base font-semibold text-white/90 backdrop-blur transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:w-auto"
               >
                 {texts.downloadCatalog}
-              </Button>
+              </button>
             </div>
           </div>
 
-          {/* Right Side - Data Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:pl-12">
-            {/* Card 1 */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-colors duration-300 sm:col-span-2">
-              <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mb-4 text-blue-400">
-                <Calendar className="w-6 h-6" />
-              </div>
-              <div className="text-5xl font-bold text-white mb-2">10+</div>
-              <div className="text-slate-400 font-medium">Years of Experience in OEM/ODM</div>
-            </div>
+          <div className="lg:col-span-5">
+            <div className="relative overflow-hidden rounded-3xl border border-white/12 bg-white/[0.06] p-7 shadow-[0_30px_110px_rgba(0,0,0,0.55)] backdrop-blur">
+              <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-400/10 blur-3xl" />
 
-            {/* Card 2 */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-              <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mb-4 text-blue-400">
-                <Box className="w-6 h-6" />
+              <div className="flex items-center justify-between gap-4">
+                <div className="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase">At a glance</div>
+                <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/70">
+                  Manufacturing · QA · Delivery
+                </div>
               </div>
-              <div className="text-4xl font-bold text-white mb-2">500K+</div>
-              <div className="text-slate-400 text-sm font-medium">Units Shipped Globally</div>
-            </div>
 
-            {/* Card 3 */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-              <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mb-4 text-blue-400">
-                <Globe className="w-6 h-6" />
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                <div className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-colors hover:bg-black/30">
+                  <div className="flex items-center gap-3 text-white/75">
+                    <Calendar className="h-5 w-5 text-cyan-200" />
+                    <div className="text-xs font-semibold tracking-[0.18em] uppercase">Experience</div>
+                  </div>
+                  <div className="mt-3 text-4xl font-bold text-white">10+</div>
+                  <div className="mt-1 text-sm text-white/60">Years in OEM/ODM computing</div>
+                </div>
+
+                <div className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-colors hover:bg-black/30">
+                  <div className="flex items-center gap-3 text-white/75">
+                    <Box className="h-5 w-5 text-cyan-200" />
+                    <div className="text-xs font-semibold tracking-[0.18em] uppercase">Scale</div>
+                  </div>
+                  <div className="mt-3 text-4xl font-bold text-white">500K+</div>
+                  <div className="mt-1 text-sm text-white/60">Units shipped worldwide</div>
+                </div>
+
+                <div className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-colors hover:bg-black/30">
+                  <div className="flex items-center gap-3 text-white/75">
+                    <Globe className="h-5 w-5 text-cyan-200" />
+                    <div className="text-xs font-semibold tracking-[0.18em] uppercase">Reach</div>
+                  </div>
+                  <div className="mt-3 text-4xl font-bold text-white">50+</div>
+                  <div className="mt-1 text-sm text-white/60">Countries served</div>
+                </div>
               </div>
-              <div className="text-4xl font-bold text-white mb-2">50+</div>
-              <div className="text-slate-400 text-sm font-medium">Countries Served</div>
+
+              <div className="mt-6 border-t border-white/10 pt-6 text-sm text-white/65">
+                From prototyping to mass production—built for reliability, compliance, and on-time delivery.
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,5 @@
-'use client'
-
+import Image from 'next/image'
 import { Play, Factory, Settings, Microscope, Package, Box, ShieldCheck } from 'lucide-react'
-import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface FactorySectionProps {
   texts: {
@@ -26,7 +24,7 @@ interface FactorySectionProps {
 }
 
 export function FactorySection({ texts }: FactorySectionProps) {
-  // YouTube video ID - can be changed later
+  // YouTube video ID
   const youtubeVideoId = 'DB-9Lj-G1Z8'
   
   const photoData = [
@@ -81,21 +79,25 @@ export function FactorySection({ texts }: FactorySectionProps) {
   ]
 
   return (
-    <section className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-sm font-medium mb-6">
+            Production Capacity
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
             {texts.title}
           </h2>
-          <p className="text-xl text-slate-600 leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             {texts.subtitle}
           </p>
         </div>
 
         {/* Factory Tour Video */}
-        <div className="mb-24">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl bg-slate-900 aspect-video w-full ring-1 ring-slate-900/5">
+        <div className="mb-24 relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500" />
+          <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-video w-full ring-1 ring-white/10 shadow-2xl">
             <iframe
               className="absolute inset-0 w-full h-full"
               src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`}
@@ -104,8 +106,10 @@ export function FactorySection({ texts }: FactorySectionProps) {
               allowFullScreen
             />
           </div>
-          <div className="flex items-center gap-3 mt-6 text-slate-500 justify-center">
-             <Play className="w-4 h-4" />
+          <div className="flex items-center gap-3 mt-6 text-gray-400 justify-center">
+             <div className="w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center">
+                <Play className="w-4 h-4 text-blue-400" />
+             </div>
              <span className="text-sm font-medium tracking-wide uppercase">{texts.videoTitle}</span>
           </div>
         </div>
@@ -117,28 +121,29 @@ export function FactorySection({ texts }: FactorySectionProps) {
              return (
               <div
                 key={photo.key}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col"
+                className="group bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 flex flex-col"
               >
-                <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
-                  <OptimizedImage
+                <div className="relative aspect-[4/3] bg-slate-800 overflow-hidden">
+                  <Image
                     src={photo.url}
                     alt={photo.alt}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <h4 className="text-lg font-bold text-slate-900">
-                      {photo.label}
-                    </h4>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                  
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-slate-900/80 backdrop-blur border border-white/10 flex items-center justify-center text-blue-400">
+                     <Icon className="w-5 h-5" />
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <h4 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    {photo.label}
+                  </h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">
                     {photo.desc}
                   </p>
                 </div>

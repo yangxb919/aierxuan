@@ -8,17 +8,17 @@ import { notFound } from 'next/navigation'
 interface BlogPost {
   id: string
   slug: string
-  status: string
+  status: string | null
   published_at: string | null
   cover_image: string | null
-  created_at: string
-  updated_at: string
+  created_at: string | null
+  updated_at: string | null
   translations: {
     locale: string
     title: string
-    excerpt: string
+    excerpt: string | null
     body_md: string
-    seo_desc: string
+    seo_desc: string | null
   }[]
 }
 
@@ -68,15 +68,15 @@ export default async function AdminBlogEditPage({
   // Prepare form data - convert database field names to form field names
   const formData = {
     slug: post.slug,
-    status: post.status,
+    status: post.status || 'draft',
     published_at: post.published_at,
     cover_image: post.cover_image,
     translations: post.translations.map(t => ({
       locale: t.locale,
       title: t.title,
-      excerpt: t.excerpt,
-      body: t.body_md,  // Convert body_md to body
-      meta_description: t.seo_desc  // Convert seo_desc to meta_description
+      excerpt: t.excerpt || '',
+      body: t.body_md,
+      meta_description: t.seo_desc || ''
     }))
   }
   

@@ -36,7 +36,7 @@ All critical security and functionality issues have been identified, fixed, and 
 
 | Step | Test | Result | Details |
 |------|------|--------|---------|
-| 1 | Admin Login | ✅ PASS | Successfully logged in as admin@aierxuan.com |
+| 1 | Admin Login | ✅ PASS | Successfully logged in as admin@example.com |
 | 2 | Get User Info | ✅ PASS | Retrieved user info with correct role |
 | 3 | Access Dashboard | ✅ PASS | Dashboard accessible (200 OK) |
 | 4 | Logout | ✅ PASS | Logout successful |

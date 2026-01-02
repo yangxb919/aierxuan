@@ -116,8 +116,8 @@ const supabase = createClient(
 1. [ ] 访问 http://localhost:3001/admin
 2. [ ] 应该自动跳转到 `/admin/login`
 3. [ ] 填写登录信息：
-   - Email: `admin@aierxuan.com`
-   - Password: `admin123`
+   - Email: `admin@example.com`
+   - Password: `<CHANGE_PASSWORD>`
 4. [ ] 点击 "Sign in"
 5. [ ] **预期结果**:
    - ✅ 登录成功

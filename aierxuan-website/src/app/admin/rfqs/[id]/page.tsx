@@ -4,25 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui'
 import { notFound } from 'next/navigation'
 import RFQStatusUpdater from '@/components/admin/RFQStatusUpdater'
-
-interface RFQ {
-  id: string
-  name: string
-  company: string | null
-  email: string
-  phone: string | null
-  country: string | null
-  product_interest: string | null
-  quantity: number | null
-  message: string | null
-  status: string
-  budget_range: string | null
-  urgency: string | null
-  industry: string | null
-  priority: string | null
-  created_at: string
-  updated_at: string
-}
+import type { RFQ } from '@/types'
 
 async function getRFQ(id: string): Promise<RFQ | null> {
   const supabase = createSupabaseAdminClient()
@@ -136,10 +118,10 @@ export default async function AdminRFQDetailPage({
                   <label className="text-sm font-medium text-gray-500">Contact Person</label>
                   <p className="mt-1 text-sm text-gray-900">{rfq.name}</p>
                 </div>
-                {rfq.company && (
+                {((rfq as any).company || (rfq as any).company_name) && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">Company Name</label>
-                    <p className="mt-1 text-sm text-gray-900">{rfq.company}</p>
+                    <p className="mt-1 text-sm text-gray-900">{(rfq as any).company || (rfq as any).company_name}</p>
                   </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -162,20 +144,12 @@ export default async function AdminRFQDetailPage({
                     </div>
                   )}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {rfq.country && (
-                    <div>
-                      <label className="text-sm font-medium text-gray-500">Country</label>
-                      <p className="mt-1 text-sm text-gray-900">{rfq.country}</p>
-                    </div>
-                  )}
-                  {rfq.industry && (
-                    <div>
-                      <label className="text-sm font-medium text-gray-500">Industry</label>
-                      <p className="mt-1 text-sm text-gray-900">{rfq.industry}</p>
-                    </div>
-                  )}
-                </div>
+                {rfq.industry && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Industry</label>
+                    <p className="mt-1 text-sm text-gray-900">{rfq.industry}</p>
+                  </div>
+                )}
               </div>
             </div>
             
@@ -192,25 +166,13 @@ export default async function AdminRFQDetailPage({
                   </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {rfq.quantity && (
+                  {((rfq as any).quantity || (rfq as any).quantity_needed) && (
                     <div>
                       <label className="text-sm font-medium text-gray-500">Quantity</label>
-                      <p className="mt-1 text-sm text-gray-900">{rfq.quantity}</p>
-                    </div>
-                  )}
-                  {rfq.urgency && (
-                    <div>
-                      <label className="text-sm font-medium text-gray-500">Urgency</label>
-                      <p className="mt-1 text-sm text-gray-900 capitalize">{rfq.urgency}</p>
+                      <p className="mt-1 text-sm text-gray-900">{(rfq as any).quantity || (rfq as any).quantity_needed}</p>
                     </div>
                   )}
                 </div>
-                {rfq.budget_range && (
-                  <div>
-                    <label className="text-sm font-medium text-gray-500">Budget Range</label>
-                    <p className="mt-1 text-sm text-gray-900">{rfq.budget_range}</p>
-                  </div>
-                )}
               </div>
             </div>
             
@@ -236,11 +198,11 @@ export default async function AdminRFQDetailPage({
               </div>
               <div className="px-6 py-4">
                 <div className="mb-4">
-                  <span className={`px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getStatusBadgeColor(rfq.status)}`}>
-                    {getStatusLabel(rfq.status)}
+                  <span className={`px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getStatusBadgeColor(rfq.status || 'new')}`}>
+                    {getStatusLabel(rfq.status || 'new')}
                   </span>
                 </div>
-                <RFQStatusUpdater rfqId={rfq.id} currentStatus={rfq.status} />
+                <RFQStatusUpdater rfqId={rfq.id} currentStatus={rfq.status || 'new'} />
               </div>
             </div>
             
@@ -250,14 +212,18 @@ export default async function AdminRFQDetailPage({
                 <h2 className="text-lg font-semibold text-gray-900">Metadata</h2>
               </div>
               <div className="px-6 py-4 space-y-3">
-                <div>
-                  <label className="text-sm font-medium text-gray-500">Created</label>
-                  <p className="mt-1 text-sm text-gray-900">{formatDate(rfq.created_at)}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-500">Last Updated</label>
-                  <p className="mt-1 text-sm text-gray-900">{formatDate(rfq.updated_at)}</p>
-                </div>
+                {rfq.created_at && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Created</label>
+                    <p className="mt-1 text-sm text-gray-900">{formatDate(rfq.created_at)}</p>
+                  </div>
+                )}
+                {rfq.updated_at && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Last Updated</label>
+                    <p className="mt-1 text-sm text-gray-900">{formatDate(rfq.updated_at)}</p>
+                  </div>
+                )}
                 {rfq.priority && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">Priority</label>
@@ -274,7 +240,7 @@ export default async function AdminRFQDetailPage({
               </div>
               <div className="px-6 py-4 space-y-2">
                 <a
-                  href={`mailto:${rfq.email}?subject=Re: Your RFQ${rfq.company ? ` - ${rfq.company}` : ''}`}
+                  href={`mailto:${rfq.email}?subject=Re: Your RFQ${((rfq as any).company || (rfq as any).company_name) ? ` - ${((rfq as any).company || (rfq as any).company_name)}` : ''}`}
                   className="block w-full"
                 >
                   <Button variant="outline" className="w-full">

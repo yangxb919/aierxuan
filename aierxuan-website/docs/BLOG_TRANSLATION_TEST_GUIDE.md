@@ -31,8 +31,8 @@
 
 1. 访问: http://localhost:3001/admin
 2. 登录信息:
-   - Email: `admin@aierxuan.com`
-   - Password: `admin123`
+   - Email: `admin@example.com`
+   - Password: `<CHANGE_PASSWORD>`
 3. 应该看到Dashboard
 
 ### 步骤2: 创建新Blog文章

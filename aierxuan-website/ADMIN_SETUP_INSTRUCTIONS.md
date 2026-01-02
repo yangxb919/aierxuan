@@ -77,8 +77,8 @@ node scripts/test-full-login-flow.js
 
 1. 访问：http://localhost:3000/admin/login
 2. 使用以下凭据登录：
-   - **Email**: admin@aierxuan.com
-   - **Password**: admin123
+   - **Email**: admin@example.com
+   - **Password**: <CHANGE_PASSWORD>
 3. 登录成功后应该跳转到Admin仪表盘
 
 ---
@@ -86,13 +86,13 @@ node scripts/test-full-login-flow.js
 ## 🎯 登录凭据
 
 ### Admin账户（完全权限）
-- **Email**: admin@aierxuan.com
-- **Password**: admin123
+- **Email**: admin@example.com
+- **Password**: <CHANGE_PASSWORD>
 - **Role**: admin
 
 ### Editor账户（编辑权限）
-- **Email**: editor@aierxuan.com
-- **Password**: editor123
+- **Email**: editor@example.com
+- **Password**: <CHANGE_PASSWORD>
 - **Role**: editor
 
 ⚠️ **重要**：这些是开发环境的默认密码，在生产环境中必须更改！
@@ -108,14 +108,14 @@ node scripts/test-full-login-flow.js
 
 1️⃣  Step 1: Login with admin credentials
 ✅ Login successful!
-   User: admin@aierxuan.com
+   User: admin@example.com
    Role: admin
    Session ID: [UUID]
    Cookie: admin_session=[TOKEN]
 
 2️⃣  Step 2: Get current user info
 ✅ User info retrieved!
-   Email: admin@aierxuan.com
+   Email: admin@example.com
    Role: admin
    Name: Admin User
 

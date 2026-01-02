@@ -1,0 +1,5 @@
+export { HeroSectionNew } from './HeroSectionNew'
+export { ProductShowcase } from './ProductShowcase'
+export { StatsSection } from './StatsSection'
+export { CapabilitiesSection } from './CapabilitiesSection'
+export { FinalCTASection } from './FinalCTASection'

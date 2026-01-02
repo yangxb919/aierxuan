@@ -2,6 +2,39 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+// Declare google namespace for TypeScript
+declare global {
+  interface Window {
+    google?: {
+      maps: typeof google.maps;
+    };
+  }
+}
+
+declare namespace google.maps {
+  class Map {
+    constructor(element: HTMLElement, options: MapOptions);
+  }
+  class Marker {
+    constructor(options: MarkerOptions);
+  }
+  interface MapOptions {
+    center: { lat: number; lng: number };
+    zoom: number;
+    styles?: any[];
+  }
+  interface MarkerOptions {
+    position: { lat: number; lng: number };
+    map: Map;
+    title?: string;
+    animation?: number;
+  }
+  const Animation: {
+    DROP: number;
+    BOUNCE: number;
+  };
+}
+
 interface GoogleMapProps {
   className?: string;
   center?: { lat: number; lng: number };

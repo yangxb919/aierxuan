@@ -4,8 +4,20 @@ import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import { existsSync } from 'fs'
 import { createSupabaseAdminClient } from '@/lib/supabase'
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+import { hashSessionToken } from '@/lib/auth-security'
+
 const sharp = require('sharp')
+
+function resolveAppRootDir() {
+  const cwd = process.cwd()
+  const candidates = [cwd, join(cwd, 'aierxuan-website')]
+  for (const candidate of candidates) {
+    if (existsSync(join(candidate, 'next.config.ts')) && existsSync(join(candidate, 'src', 'app'))) {
+      return candidate
+    }
+  }
+  return cwd
+}
 
 async function ensureAdminAuth() {
   const cookieStore = await cookies()
@@ -14,7 +26,8 @@ async function ensureAdminAuth() {
     return { ok: false as const, error: 'Unauthorized: no admin session' }
   }
   const supabase = createSupabaseAdminClient()
-  const { data, error } = await supabase.rpc('validate_admin_session', { token: sessionToken })
+  const hashedToken = hashSessionToken(sessionToken)
+  const { data, error } = await (supabase.rpc as any)('validate_admin_session', { token: hashedToken }) as { data: any[] | null, error: any }
   if (error || !data || data.length === 0) {
     return { ok: false as const, error: 'Unauthorized: invalid or expired session' }
   }
@@ -61,14 +74,17 @@ export async function POST(request: NextRequest) {
     // Generate unique filename
     const timestamp = Date.now()
     const randomString = Math.random().toString(36).substring(2, 15)
-    const extension = file.name.split('.').pop()
-    const filename = `${timestamp}-${randomString}.${extension}`
 
     // Determine upload directory based on type
     const uploadSubDir = type === 'product' ? 'products' : 'blog'
-    const uploadDir = join(process.cwd(), 'public', 'uploads', uploadSubDir)
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true })
+    const appPublicDir = join(resolveAppRootDir(), 'public')
+    const cwdPublicDir = join(process.cwd(), 'public')
+    const publicDirs = appPublicDir === cwdPublicDir ? [appPublicDir] : [appPublicDir, cwdPublicDir]
+    const uploadDirs = publicDirs.map((dir) => join(dir, 'uploads', uploadSubDir))
+    for (const dir of uploadDirs) {
+      if (!existsSync(dir)) {
+        await mkdir(dir, { recursive: true })
+      }
     }
 
     // Convert file to buffer and compress with sharp
@@ -83,8 +99,7 @@ export async function POST(request: NextRequest) {
 
     // Save as WebP
     const webpFilename = `${timestamp}-${randomString}.webp`
-    const filepath = join(uploadDir, webpFilename)
-    await writeFile(filepath, compressedBuffer)
+    await Promise.all(uploadDirs.map((dir) => writeFile(join(dir, webpFilename), compressedBuffer)))
 
     // Return the public URL
     const url = `/uploads/${uploadSubDir}/${webpFilename}`

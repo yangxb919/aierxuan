@@ -442,12 +442,12 @@ INSERT INTO site_settings (key, value, description, is_public) VALUES
 ('contact_email', '"info@aierxuan.com"', '联系邮箱', true),
 ('contact_phone', '"+86-400-123-4567"', '联系电话', true),
 ('company_address', '"中国上海市浦东新区张江高科技园区"', '公司地址', true),
-('rfq_notification_emails', '["admin@aierxuan.com", "sales@aierxuan.com"]', 'RFQ通知邮箱列表', false),
+('rfq_notification_emails', '["admin@example.com", "sales@aierxuan.com"]', 'RFQ通知邮箱列表', false),
 ('max_rfqs_per_day', '50', '每日最大RFQ数量限制', false);
 
 -- 创建默认管理员用户（需要后续通过Supabase Auth或手动创建）
 -- 注意：实际部署时需要使用安全的密码哈希
 -- INSERT INTO admin_users (email, password_hash, role, first_name, last_name) VALUES
--- ('admin@aierxuan.com', '$2b$12$hashed_password_here', 'admin', 'Admin', 'User');
+-- ('admin@example.com', '$2b$12$hashed_password_here', 'admin', 'Admin', 'User');
 
 COMMIT;

@@ -69,12 +69,12 @@ interface BlogPost {
   id: string
   slug: string
   cover_image: string | null
-  published_at: string
+  published_at: string | null
   translations: Array<{
     language_code?: string
     locale?: string
     title: string
-    excerpt: string
+    excerpt: string | null
   }>
 }
 
@@ -235,7 +235,7 @@ export function LatestNews() {
                 <div className="p-6">
                   {/* Date */}
                   <div className="text-sm text-gray-500 mb-3">
-                    {formatDate(post.published_at)}
+                    {post.published_at ? formatDate(post.published_at) : ''}
                   </div>
 
                   {/* Title */}

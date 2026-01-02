@@ -5,6 +5,7 @@ import { Button } from '@/components/ui'
 
 interface ImageUploadProps {
   value: string | null
+   
   onChange: (url: string | null) => void
   label?: string
   aspectRatio?: string
@@ -18,6 +19,7 @@ export default function ImageUpload({
 }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [previewFailed, setPreviewFailed] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,14 +54,12 @@ export default function ImageUpload({
       const data = await response.json()
 
       if (data.success) {
-        console.log('Upload successful, URL:', data.url)
+        setPreviewFailed(false)
         onChange(data.url)
       } else {
-        console.error('Upload failed:', data.error)
         setError(data.error || 'Failed to upload image')
       }
-    } catch (error) {
-      console.error('Upload error:', error)
+    } catch {
       setError('Failed to upload image')
     } finally {
       setUploading(false)
@@ -71,6 +71,7 @@ export default function ImageUpload({
 
   const handleRemove = () => {
     onChange(null)
+    setPreviewFailed(false)
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
@@ -88,18 +89,23 @@ export default function ImageUpload({
             className="relative overflow-hidden rounded-lg border-2 border-gray-300"
             style={{ aspectRatio }}
           >
-            <img
-              src={value}
-              alt="Cover"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                console.error('Image failed to load:', value);
-                e.currentTarget.style.display = 'none';
-              }}
-              onLoad={() => {
-                console.log('Image loaded successfully:', value);
-              }}
-            />
+            {!previewFailed ? (
+              <img
+                key={value}
+                src={value}
+                alt="Cover"
+                className="w-full h-full object-cover"
+                onError={() => {
+                  setPreviewFailed(true)
+                  setError('Cover image failed to load. Please re-upload.')
+                }}
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-100 flex flex-col items-center justify-center text-gray-500">
+                <p className="text-sm font-medium">Preview not available</p>
+                <p className="text-xs mt-1 break-all px-6 text-center">{value}</p>
+              </div>
+            )}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-200 flex items-center justify-center pointer-events-none">
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 pointer-events-auto">
                 <Button

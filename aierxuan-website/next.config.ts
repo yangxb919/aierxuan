@@ -6,6 +6,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  // Fix Turbopack workspace-root inference when multiple lockfiles exist
+  turbopack: {
+    root: __dirname,
+  },
   // 启用压缩
   compress: true,
 
@@ -47,10 +51,9 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // 暂时禁用TypeScript检查以加快构建
-  // 注意：Next.js 16 不再支持 eslint 配置在 next.config 中
+  // TypeScript 严格检查已启用
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 
   // 安全头和缓存策略

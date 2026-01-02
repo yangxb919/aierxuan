@@ -137,7 +137,7 @@ export async function PATCH(
     const translationsToInsert = translations
       .filter(t => t.title || t.long_desc) // Only insert translations with content
       .map(t => {
-        // Only include fields that exist in the database schema
+        // Map form fields to database column names (production schema uses locale/title/short_desc/long_desc)
         const translation: any = {
           product_id: id,
           locale: t.locale,

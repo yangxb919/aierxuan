@@ -178,7 +178,7 @@ npm run dev
 ### 3. Login Again
 ```
 URL: http://localhost:3000/admin/login
-Email: admin@aierxuan.com
+Email: admin@example.com
 Password: [your password]
 ```
 

@@ -170,7 +170,7 @@ npm run dev
 ### 2. Login to Admin Panel
 ```
 URL: http://localhost:3000/admin/login
-Email: admin@aierxuan.com
+Email: admin@example.com
 Password: [your password]
 ```
 

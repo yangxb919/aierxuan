@@ -274,7 +274,7 @@ function hello() {
 
 For technical issues or questions:
 - Check the [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
-- Contact: admin@aierxuan.com
+- Contact: admin@example.com
 
 ---
 

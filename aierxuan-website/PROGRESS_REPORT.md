@@ -187,7 +187,7 @@ GRANT EXECUTE ON FUNCTION validate_admin_session(VARCHAR) TO authenticated;
 
 **执行后测试登录**：
 1. 访问 http://localhost:3000/admin/login
-2. 使用凭据：admin@aierxuan.com / admin123
+2. 使用凭据：admin@example.com / <CHANGE_PASSWORD>
 3. 应该成功登录并跳转到仪表盘
 
 ### 2. 测试RFQ管理功能
@@ -248,13 +248,13 @@ GRANT EXECUTE ON FUNCTION validate_admin_session(VARCHAR) TO authenticated;
 
 ```
 Admin账户（完全权限）：
-Email: admin@aierxuan.com
-Password: admin123
+Email: admin@example.com
+Password: <CHANGE_PASSWORD>
 Role: admin
 
 Editor账户（编辑权限）：
-Email: editor@aierxuan.com
-Password: editor123
+Email: editor@example.com
+Password: <CHANGE_PASSWORD>
 Role: editor
 ```
 
