@@ -19,7 +19,7 @@ export function maskMarkdown(text: string) {
   const codeBlocks: string[] = []
   const inlineCodes: string[] = []
 
-  let masked = text
+  const masked = text
     // Triple backtick code blocks
     .replace(/```[\s\S]*?```/g, (m) => {
       const id = codeBlocks.push(m) - 1

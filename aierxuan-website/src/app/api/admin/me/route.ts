@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { cookies } from 'next/headers'
+import { hashSessionToken } from '@/lib/auth-security'
+
+interface ValidateSessionResult {
+  admin_user_id: string
+  email: string
+  role: string
+  first_name: string | null
+  last_name: string | null
+  is_active: boolean
+  session_id: string
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -16,9 +27,12 @@ export async function GET(request: NextRequest) {
 
     const supabase = createSupabaseAdminClient()
 
+    // Hash the token before validating
+    const hashedToken = hashSessionToken(sessionToken)
+
     // Validate session and get user info
-    const { data: sessionData, error: sessionError } = await supabase
-      .rpc('validate_admin_session', { token: sessionToken })
+    const { data: sessionData, error: sessionError } = await (supabase
+      .rpc as any)('validate_admin_session', { token: hashedToken }) as { data: ValidateSessionResult[] | null, error: any }
 
     if (sessionError || !sessionData || sessionData.length === 0) {
       // Session is invalid, clear the cookie

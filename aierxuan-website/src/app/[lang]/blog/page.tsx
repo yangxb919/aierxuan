@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import Image from 'next/image'
 import { createClient } from '@supabase/supabase-js'
 import { BlogListClient } from '@/components/features/BlogListClient'
 import { getDictionary } from '@/get-dictionary'
@@ -7,11 +8,6 @@ import type { BlogPost, BlogPostTranslation } from '@/types'
 
 // ISR: 每小时重新生成
 export const revalidate = 3600
-
-// Initialize Supabase client for server-side fetching
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 interface BlogPostWithTranslations extends BlogPost {
   translations: BlogPostTranslation[]
@@ -33,8 +29,54 @@ export default async function BlogPage({
   const dictionary = await getDictionary(lang)
   const texts = dictionary.blog
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0f] text-white">
+        <section className="relative text-white overflow-hidden">
+          <Image
+            src="/images/blog-hero-banner.webp"
+            alt="Blog"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
+                {texts.title}
+              </h1>
+              <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
+                {texts.subtitle}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 text-center">
+              <div className="text-red-400 mb-3 font-semibold">Blog data unavailable</div>
+              <div className="text-gray-300 text-sm">
+                Missing `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+              </div>
+              <div className="text-gray-500 text-xs mt-3">
+                After editing `.env.local`, restart `next dev` and hard refresh the browser.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    )
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
   // Fetch initial posts server-side
-  let query = supabase
+  const query = supabase
     .from('blog_posts')
     .select(`
       *,
@@ -44,7 +86,48 @@ export default async function BlogPage({
     .order('published_at', { ascending: false })
     .range(0, POSTS_PER_PAGE - 1)
 
-  const { data, count } = await query
+  const { data, count, error } = await query
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0f] text-white">
+        <section className="relative text-white overflow-hidden">
+          <Image
+            src="/images/blog-hero-banner.webp"
+            alt="Blog"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
+                {texts.title}
+              </h1>
+              <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
+                {texts.subtitle}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 text-center">
+              <div className="text-red-400 mb-3 font-semibold">Blog data unavailable</div>
+              <div className="text-gray-300 text-sm">
+                {error.message}
+              </div>
+              <div className="text-gray-500 text-xs mt-3">
+                If you recently rotated Supabase keys, restart `next dev` and hard refresh.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    )
+  }
 
   // Transform data to ensure translations array exists
   const initialPosts = (data || []).map((post: any) => ({
@@ -55,34 +138,42 @@ export default async function BlogPage({
   const initialTotal = count || 0
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0a0f]">
       {/* Hero Section */}
-      <section
-        className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden"
-        style={{
-          backgroundImage: 'url(/images/blog-hero-banner.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay'
-        }}
-      >
-        {/* Light blue overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-blue-800/15 to-blue-700/10"></div>
+      <section className="relative text-white overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/blog-hero-banner.webp"
+          alt="Blog"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
 
-        {/* Subtle pattern overlay */}
+        {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `
+            linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
         }}></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 py-24 lg:py-32">
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-15 bg-blue-600" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10 bg-violet-600" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl drop-shadow-lg">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
               {texts.title}
             </h1>
-            <p className="mt-6 text-xl text-blue-100 max-w-3xl mx-auto drop-shadow-md">
+            <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
               {texts.subtitle}
             </p>
-            <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto drop-shadow-md">
+            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
               {texts.heroDescription}
             </p>
           </div>

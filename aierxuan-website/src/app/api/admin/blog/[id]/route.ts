@@ -65,7 +65,7 @@ export async function PATCH(
     }
     
     // Normalize slug server-side to avoid invalid URL characters
-    let finalSlug = slugify(slug || enTranslation.title)
+    const finalSlug = slugify(slug || enTranslation.title)
     if (!finalSlug) {
       return NextResponse.json(
         { error: 'Invalid slug generated from title. Please edit the title or slug.' },
@@ -134,7 +134,7 @@ export async function PATCH(
         title: t.title,
         excerpt: t.excerpt || '',
         body_md: t.body,
-        seo_title: t.title,
+        seo_title: t.title || '',
         seo_desc: t.meta_description || ''
       }))
     

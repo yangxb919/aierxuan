@@ -19,23 +19,22 @@ interface FAQ {
 
 async function getFAQs(): Promise<FAQ[]> {
   const supabase = createSupabaseAdminClient()
-  
-  const { data, error } = await supabase
+
+  // NOTE: The production DB uses `faq_translations.locale`.
+  // Fetch all translations and pick the preferred one in code to avoid schema drift issues.
+  const { data, error } = await (supabase as any)
     .from('faq')
-    .select(`
+    .select(
+      `
       id,
       category,
       sort_order,
       is_active,
       created_at,
       updated_at,
-      faq_translations!inner (
-        locale,
-        question,
-        answer
-      )
-    `)
-    .eq('faq_translations.locale', 'en')
+      translations:faq_translations(*)
+    `
+    )
     .order('sort_order', { ascending: true })
   
   if (error) {
@@ -43,10 +42,18 @@ async function getFAQs(): Promise<FAQ[]> {
     return []
   }
   
-  return data.map(faq => ({
-    ...faq,
-    translations: faq.faq_translations || []
-  })) as FAQ[]
+  return (data || []).map((faq: any) => {
+    const translations: any[] = faq.translations || []
+    const preferred =
+      translations.find(t => t.locale === 'en') ||
+      translations.find(t => t.locale === 'zh-CN') ||
+      translations[0]
+
+    return {
+      ...faq,
+      translations: preferred ? [preferred] : []
+    }
+  }) as FAQ[]
 }
 
 export default async function AdminFAQPage() {

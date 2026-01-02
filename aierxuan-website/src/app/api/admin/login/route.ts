@@ -3,6 +3,13 @@ import { createSupabaseAdminClient } from '@/lib/supabase'
 import { cookies } from 'next/headers'
 import bcrypt from 'bcryptjs'
 import { randomBytes } from 'crypto'
+import {
+  checkRateLimit,
+  recordFailedAttempt,
+  clearFailedAttempts,
+  hashSessionToken,
+  getRateLimitKey
+} from '@/lib/auth-security'
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,6 +32,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Get client IP for rate limiting
+    const clientIP = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+                    request.headers.get('x-real-ip') ||
+                    '127.0.0.1'
+
+    // Check rate limit
+    const rateLimitKey = getRateLimitKey(clientIP, email)
+    const rateLimit = checkRateLimit(rateLimitKey)
+
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: 'Too many login attempts. Please try again later.',
+          lockedUntil: rateLimit.lockedUntil?.toISOString()
+        },
+        { status: 429 }
+      )
+    }
+
     const supabase = createSupabaseAdminClient()
 
     // Get admin user by email
@@ -36,38 +62,48 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (userError || !adminUser) {
+      recordFailedAttempt(rateLimitKey)
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        { error: 'Invalid credentials', remainingAttempts: rateLimit.remainingAttempts - 1 },
         { status: 401 }
       )
     }
 
     // Verify password
+    if (!adminUser.password_hash) {
+      recordFailedAttempt(rateLimitKey)
+      return NextResponse.json(
+        { error: 'Invalid credentials', remainingAttempts: rateLimit.remainingAttempts - 1 },
+        { status: 401 }
+      )
+    }
     const isValidPassword = await bcrypt.compare(password, adminUser.password_hash)
     if (!isValidPassword) {
+      recordFailedAttempt(rateLimitKey)
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        { error: 'Invalid credentials', remainingAttempts: rateLimit.remainingAttempts - 1 },
         { status: 401 }
       )
     }
 
+    // Clear failed attempts on successful login
+    clearFailedAttempts(rateLimitKey)
+
     // Generate session token
     const sessionToken = randomBytes(32).toString('hex')
+    const hashedToken = hashSessionToken(sessionToken) // Hash for storage
     const expiresAt = new Date()
     expiresAt.setDate(expiresAt.getDate() + 7) // 7 days from now
 
-    // Get client IP and User Agent
-    const clientIP = request.headers.get('x-forwarded-for') || 
-                    request.headers.get('x-real-ip') || 
-                    '127.0.0.1'
+    // Get User Agent
     const userAgent = request.headers.get('user-agent') || 'Unknown'
 
-    // Create session record
+    // Create session record with hashed token
     const { data: session, error: sessionError } = await supabase
       .from('admin_sessions')
       .insert({
         admin_user_id: adminUser.id,
-        session_token: sessionToken,
+        session_token: hashedToken, // Store hashed token
         expires_at: expiresAt.toISOString(),
         ip_address: clientIP,
         user_agent: userAgent
@@ -82,12 +118,6 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
-
-    // Update last login time
-    await supabase
-      .from('admin_users')
-      .update({ last_login_at: new Date().toISOString() })
-      .eq('id', adminUser.id)
 
     // Set HTTP-only cookie
     const cookieStore = await cookies()

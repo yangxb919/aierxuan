@@ -103,7 +103,7 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
       // Submit to Supabase
       // Important: use returning: 'minimal' so anon insert doesn't require SELECT permission
       const { error } = await supabase
-        .from('rfq_requests') // Updated table name
+        .from('rfqs')
         .insert({
           name: data.name,
           email: data.email,
@@ -111,7 +111,7 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
           phone: data.phone,
           product_interest: data.productInterest,
           message: data.message,
-          quantity: data.quantity ? parseInt(data.quantity) : null,
+          quantity: data.quantity || null,
           country: data.country,
           industry: data.industry,
           urgency: data.urgency,
@@ -122,6 +122,17 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
       if (error) {
         throw error
       }
+
+      // Send email notification (non-blocking)
+      fetch('/api/send-rfq-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          formType: 'rfq',
+          pageUrl: window.location.href
+        })
+      }).catch(console.error)
 
       setSubmitStatus('success')
       reset()
@@ -144,28 +155,28 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
   }
 
   return (
-    <Card className={`w-full max-w-2xl mx-auto ${className}`}>
+    <Card className={`w-full max-w-2xl mx-auto bg-white/5 backdrop-blur-sm border-white/10 ${className}`}>
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-black">
+        <CardTitle className="text-2xl font-bold text-center text-white">
           {texts.title}
         </CardTitle>
-        <p className="text-gray-600 text-center">
+        <p className="text-gray-400 text-center">
           {texts.subtitle}
         </p>
       </CardHeader>
 
       <CardContent>
         {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-green-800 text-center font-medium">
+          <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+            <p className="text-green-400 text-center font-medium">
               {texts.successMessage}
             </p>
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-800 text-center font-medium">
+          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <p className="text-red-400 text-center font-medium">
               {texts.errorMessage}
             </p>
           </div>
@@ -175,18 +186,19 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
           {/* Contact Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.name} *
               </label>
               <Input
                 {...register('name')}
                 placeholder={texts.namePlaceholder}
                 error={errors.name?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.email} *
               </label>
               <Input
@@ -194,120 +206,128 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
                 {...register('email')}
                 placeholder={texts.emailPlaceholder}
                 error={errors.email?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.company} *
               </label>
               <Input
                 {...register('company')}
                 placeholder={texts.companyPlaceholder}
                 error={errors.company?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.phone}
               </label>
               <Input
                 {...register('phone')}
                 placeholder={texts.phonePlaceholder}
                 error={errors.phone?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
           </div>
 
           {/* Product Information */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               {texts.productInterest} *
             </label>
             <Input
               {...register('productInterest')}
               placeholder={texts.productPlaceholder}
               error={errors.productInterest?.message}
+              className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               {texts.message} *
             </label>
             <textarea
               {...register('message')}
               placeholder={texts.messagePlaceholder}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.message && (
-              <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+              <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
             )}
           </div>
 
           {/* Additional Information */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.quantity}
               </label>
               <Input
                 {...register('quantity')}
                 placeholder={texts.quantityPlaceholder}
                 error={errors.quantity?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.country}
               </label>
               <Input
                 {...register('country')}
                 placeholder={texts.countryPlaceholder}
                 error={errors.country?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.industry}
               </label>
               <Input
                 {...register('industry')}
                 placeholder={texts.industryPlaceholder}
                 error={errors.industry?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.urgency}
               </label>
               <select
                 {...register('urgency')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
-                <option value="normal">{texts.urgencyNormal}</option>
-                <option value="urgent">{texts.urgencyUrgent}</option>
-                <option value="flexible">{texts.urgencyFlexible}</option>
+                <option value="normal" className="bg-slate-900">{texts.urgencyNormal}</option>
+                <option value="urgent" className="bg-slate-900">{texts.urgencyUrgent}</option>
+                <option value="flexible" className="bg-slate-900">{texts.urgencyFlexible}</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 {texts.budgetRange}
               </label>
               <Input
                 {...register('budgetRange')}
                 placeholder={texts.budgetPlaceholder}
                 error={errors.budgetRange?.message}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
               />
             </div>
           </div>
@@ -317,7 +337,7 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
             <Button
               type="submit"
               size="lg"
-              className="w-full"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white"
               disabled={isSubmitting}
             >
               {isSubmitting ? texts.submitting : texts.submitButton}

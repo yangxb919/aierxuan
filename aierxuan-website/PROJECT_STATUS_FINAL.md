@@ -72,12 +72,12 @@
 **登录凭据**:
 ```
 Admin账户：
-Email: admin@aierxuan.com
-Password: admin123
+Email: admin@example.com
+Password: <CHANGE_PASSWORD>
 
 Editor账户：
-Email: editor@aierxuan.com
-Password: editor123
+Email: editor@example.com
+Password: <CHANGE_PASSWORD>
 ```
 
 **测试状态**: ✅ 已测试通过
@@ -318,8 +318,8 @@ npm run dev
 ### 登录凭据
 ```
 Admin账户：
-Email: admin@aierxuan.com
-Password: admin123
+Email: admin@example.com
+Password: <CHANGE_PASSWORD>
 ```
 
 ---

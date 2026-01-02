@@ -18,16 +18,19 @@ interface Product {
   translations: {
     locale: string
     title: string
-    short_desc: string
+    short_desc: string | null
   }[]
 }
 
 async function getProducts(): Promise<Product[]> {
   const supabase = createSupabaseAdminClient()
 
-  const { data, error } = await supabase
+  // NOTE: The production DB uses `product_translations.locale/title/short_desc/...`.
+  // Use a broad select and normalize in code to avoid type/schema drift breaking the page.
+  const { data, error } = await (supabase as any)
     .from('products')
-    .select(`
+    .select(
+      `
       id,
       slug,
       category,
@@ -37,12 +40,9 @@ async function getProducts(): Promise<Product[]> {
       sort_order,
       created_at,
       updated_at,
-      product_translations (
-        locale,
-        title,
-        short_desc
-      )
-    `)
+      translations:product_translations(*)
+    `
+    )
     .order('sort_order', { ascending: true })
 
   if (error) {
@@ -51,8 +51,8 @@ async function getProducts(): Promise<Product[]> {
   }
 
   // Map products and prioritize translations (en > zh-CN > first available)
-  return data.map(product => {
-    const translations = product.product_translations || []
+  return (data || []).map((product: any) => {
+    const translations: any[] = product.translations || []
     // Try to get English translation first, fallback to Chinese, then any translation
     const preferredTranslation =
       translations.find(t => t.locale === 'en') ||

@@ -73,6 +73,7 @@ const translations = {
         client: 'Глобальный медицинский центр',
         industry: 'Здравоохранение',
         icon: '🏥',
+        image: '/images/case-study-healthcare.webp',
         challenge: 'Больничное оборудование требовало низкого энергопотребления и долгосрочной стабильной работы для систем мониторинга пациентов 24/7',
         solution: 'Индивидуальные промышленные мини-ПК с оптимизированной системой охлаждения, медицинскими сертификатами и антимикробным покрытием',
         results: [
@@ -86,6 +87,7 @@ const translations = {
         client: 'Институт умного образования',
         industry: 'Образование',
         icon: '🎓',
+        image: '/images/case-study-education.webp',
         challenge: 'Образовательному учреждению требовалось 500+ надежных управляемых ноутбуков для компьютерных классов и программ дистанционного обучения',
         solution: 'Развернуты ноутбуки образовательного уровня с централизованным ПО управления, расширенной гарантией и технической поддержкой на месте',
         results: [
@@ -99,6 +101,7 @@ const translations = {
         client: 'Производственные решения',
         industry: 'Промышленность',
         icon: '🏭',
+        image: '/images/case-study-manufacturing.webp',
         challenge: 'Производственный цех требовал прочных вычислительных систем, способных выдерживать пыль, вибрацию и экстремальные температуры',
         solution: 'Безвентиляторные промышленные мини-ПК с рейтингом IP65, широким диапазоном температур (-20°C до 60°C) и ударопрочным дизайном',
         results: [
@@ -123,6 +126,7 @@ const translations = {
         client: 'グローバル医療センター',
         industry: 'ヘルスケア',
         icon: '🏥',
+        image: '/images/case-study-healthcare.webp',
         challenge: '病院設備は、24時間365日の患者監視システムのために低消費電力と長期安定動作が必要でした',
         solution: '最適化された冷却システム、医療認証、抗菌コーティングを備えたカスタマイズされた産業グレードミニPC',
         results: [
@@ -136,6 +140,7 @@ const translations = {
         client: 'スマート教育研究所',
         industry: '教育',
         icon: '🎓',
+        image: '/images/case-study-education.webp',
         challenge: '教育機関は、コンピュータラボと遠隔学習プログラム用に500台以上の信頼性の高い管理可能なノートPCが必要でした',
         solution: '集中管理ソフトウェア、延長保証、オンサイト技術サポート付きの教育グレードノートPCを展開',
         results: [
@@ -149,6 +154,7 @@ const translations = {
         client: '製造ソリューション株式会社',
         industry: '産業',
         icon: '🏭',
+        image: '/images/case-study-manufacturing.webp',
         challenge: '工場フロアには、ほこり、振動、極端な温度に耐えられる堅牢なコンピューティングシステムが必要でした',
         solution: 'IP65定格、広い温度範囲（-20°Cから60°C）、耐衝撃設計を備えたファンレス産業用ミニPC',
         results: [
@@ -173,6 +179,7 @@ const translations = {
         client: 'Centre médical mondial',
         industry: 'Santé',
         icon: '🏥',
+        image: '/images/case-study-healthcare.webp',
         challenge: 'L\'équipement hospitalier nécessitait une faible consommation d\'énergie et un fonctionnement stable à long terme pour les systèmes de surveillance des patients 24/7',
         solution: 'Mini PC de qualité industrielle personnalisés avec système de refroidissement optimisé, certifications médicales et revêtement antimicrobien',
         results: [
@@ -186,6 +193,7 @@ const translations = {
         client: 'Institut d\'éducation intelligente',
         industry: 'Éducation',
         icon: '🎓',
+        image: '/images/case-study-education.webp',
         challenge: 'L\'établissement d\'enseignement avait besoin de plus de 500 ordinateurs portables fiables et gérables pour les laboratoires informatiques et les programmes d\'apprentissage à distance',
         solution: 'Déploiement d\'ordinateurs portables de qualité éducative avec logiciel de gestion centralisé, garantie étendue et support technique sur site',
         results: [
@@ -199,6 +207,7 @@ const translations = {
         client: 'Solutions de fabrication Inc.',
         industry: 'Industriel',
         icon: '🏭',
+        image: '/images/case-study-manufacturing.webp',
         challenge: 'L\'atelier de production nécessitait des systèmes informatiques robustes capables de résister à la poussière, aux vibrations et aux températures extrêmes',
         solution: 'Mini PC industriels sans ventilateur avec indice IP65, large plage de température (-20°C à 60°C) et conception résistante aux chocs',
         results: [
@@ -223,6 +232,7 @@ const translations = {
         client: 'Centro Médico Global',
         industry: 'Saúde',
         icon: '🏥',
+        image: '/images/case-study-healthcare.webp',
         challenge: 'Equipamento hospitalar exigia baixo consumo de energia e operação estável a longo prazo para sistemas de monitoramento de pacientes 24/7',
         solution: 'Mini PCs de nível industrial personalizados com sistema de resfriamento otimizado, certificações médicas e revestimento antimicrobiano',
         results: [
@@ -236,6 +246,7 @@ const translations = {
         client: 'Instituto de Educação Inteligente',
         industry: 'Educação',
         icon: '🎓',
+        image: '/images/case-study-education.webp',
         challenge: 'Instituição educacional precisava de mais de 500 laptops confiáveis e gerenciáveis para laboratórios de informática e programas de ensino à distância',
         solution: 'Implantação de laptops de nível educacional com software de gerenciamento centralizado, garantia estendida e suporte técnico no local',
         results: [
@@ -249,6 +260,7 @@ const translations = {
         client: 'Soluções de Fabricação Inc.',
         industry: 'Industrial',
         icon: '🏭',
+        image: '/images/case-study-manufacturing.webp',
         challenge: 'Chão de fábrica exigia sistemas de computação robustos capazes de suportar poeira, vibração e temperaturas extremas',
         solution: 'Mini PCs industriais sem ventilador com classificação IP65, ampla faixa de temperatura (-20°C a 60°C) e design resistente a choques',
         results: [
@@ -273,6 +285,7 @@ const translations = {
         client: '全球医疗中心',
         industry: '医疗保健',
         icon: '🏥',
+        image: '/images/case-study-healthcare.webp',
         challenge: '医院设备需要低功耗且长时间稳定运行，用于 24/7 患者监控系统',
         solution: '定制工业级迷你 PC，优化散热系统，具有医疗认证和抗菌涂层',
         results: [
@@ -286,6 +299,7 @@ const translations = {
         client: '智慧教育学院',
         industry: '教育',
         icon: '🎓',
+        image: '/images/case-study-education.webp',
         challenge: '教育机构需要 500+ 台可靠、可管理的笔记本电脑，用于计算机实验室和远程学习项目',
         solution: '部署教育级笔记本电脑，配备集中管理软件、延长保修和现场技术支持',
         results: [
@@ -299,6 +313,7 @@ const translations = {
         client: '制造解决方案公司',
         industry: '工业',
         icon: '🏭',
+        image: '/images/case-study-manufacturing.webp',
         challenge: '工厂车间需要坚固的计算系统，能够承受灰尘、振动和极端温度',
         solution: '无风扇工业迷你 PC，IP65 防护等级，宽温度范围（-20°C 至 60°C）和抗震设计',
         results: [

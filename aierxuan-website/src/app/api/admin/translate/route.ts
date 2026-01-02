@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { translateBlogFields, translateProductFields } from '@/lib/translation/deepseek'
+import { hashSessionToken } from '@/lib/auth-security'
 
 type Params = {
   content: any
@@ -17,7 +18,8 @@ async function ensureAdminAuth() {
     return { ok: false as const, error: 'Unauthorized: no admin session' }
   }
   const supabase = createSupabaseAdminClient()
-  const { data, error } = await supabase.rpc('validate_admin_session', { token: sessionToken })
+  const hashedToken = hashSessionToken(sessionToken)
+  const { data, error } = await (supabase.rpc as any)('validate_admin_session', { token: hashedToken }) as { data: any[] | null, error: any }
   if (error || !data || data.length === 0) {
     return { ok: false as const, error: 'Unauthorized: invalid or expired session' }
   }

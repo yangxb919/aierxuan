@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Heading {
   id: string
@@ -11,60 +11,99 @@ interface Heading {
 interface TableOfContentsProps {
   content: string
   title: string
+  variant?: 'dark' | 'light'
+  containerId?: string
 }
 
-export default function TableOfContents({ content, title }: TableOfContentsProps) {
+export default function TableOfContents({
+  content,
+  title,
+  variant = 'dark',
+  containerId,
+}: TableOfContentsProps) {
   const [headings, setHeadings] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const isLight = variant === 'light'
+  const navRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    // Extract headings from markdown content
-    const headingRegex = /^(#{1,3})\s+(.+)$/gm
-    const extractedHeadings: Heading[] = []
-    let match
-
-    while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length
-      const text = match[2].trim()
-      // Generate ID from text (same as markdown renderer does)
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-
-      extractedHeadings.push({ id, text, level })
+    const container = containerId ? document.getElementById(containerId) : document
+    if (!container) {
+      setHeadings([])
+      return
     }
 
-    setHeadings(extractedHeadings)
-  }, [content])
+    const selector = 'h1[id], h2[id], h3[id], h4[id]'
+    const nodes = Array.from(container.querySelectorAll<HTMLElement>(selector))
+    const extracted = nodes
+      .map((node) => {
+        const level = Number(node.tagName.replace('H', '')) || 2
+        const text = (node.textContent || '').trim()
+        return { id: node.id, text, level }
+      })
+      .filter((h) => h.id && h.text)
+
+    setHeadings(extracted)
+  }, [content, containerId])
 
   useEffect(() => {
-    // Observe headings in the document
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
-      },
-      {
-        rootMargin: '-80px 0px -80% 0px',
-      }
-    )
+    if (headings.length === 0) {
+      setActiveId('')
+      return
+    }
 
-    // Observe all heading elements
-    headings.forEach(({ id }) => {
-      const element = document.getElementById(id)
-      if (element) {
-        observer.observe(element)
+    let rafId = 0
+    const offset = 96
+
+    const getHeadingElements = () =>
+      headings
+        .map((h) => document.getElementById(h.id))
+        .filter(Boolean) as HTMLElement[]
+
+    let headingEls = getHeadingElements()
+
+    const updateActive = () => {
+      const y = window.scrollY + offset + 1
+      let current = headingEls[0]?.id || ''
+
+      for (const el of headingEls) {
+        const top = el.getBoundingClientRect().top + window.scrollY
+        if (top <= y) current = el.id
+        else break
       }
-    })
+
+      if (!current) return
+      setActiveId((prev) => (prev === current ? prev : current))
+    }
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId)
+      rafId = window.requestAnimationFrame(updateActive)
+    }
+
+    const onResize = () => {
+      headingEls = getHeadingElements()
+      onScroll()
+    }
+
+    onResize()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
 
     return () => {
-      observer.disconnect()
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
     }
   }, [headings])
+
+  useEffect(() => {
+    if (!activeId) return
+    const nav = navRef.current
+    if (!nav) return
+    const activeEl = nav.querySelector<HTMLElement>(`[data-toc-id="${CSS.escape(activeId)}"]`)
+    activeEl?.scrollIntoView({ block: 'nearest' })
+  }, [activeId])
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id)
@@ -84,13 +123,23 @@ export default function TableOfContents({ content, title }: TableOfContentsProps
     return null
   }
 
+  const titleClasses = isLight ? 'text-slate-900' : 'text-white'
+  const iconClasses = isLight ? 'text-blue-700' : 'text-blue-400'
+  const dividerClasses = isLight ? 'border-black/10' : 'border-white/10'
+  const activeItemClasses = isLight
+    ? 'text-blue-700 font-semibold'
+    : 'text-blue-400 font-semibold'
+  const inactiveItemClasses = isLight
+    ? 'text-slate-600 hover:text-slate-900'
+    : 'text-gray-400 hover:text-blue-400'
+
   return (
-    <nav className="max-h-[calc(100vh-12rem)] overflow-y-auto">
-      <div className="flex items-center mb-4 pb-3 border-b border-gray-200">
-        <svg className="w-5 h-5 mr-2 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <nav ref={navRef} className="max-h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className={`flex items-center mb-4 pb-3 border-b ${dividerClasses}`}>
+        <svg className={`w-5 h-5 mr-2 ${iconClasses}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <h3 className="text-lg font-bold text-gray-900">
+        <h3 className={`text-lg font-bold ${titleClasses}`}>
           {title}
         </h3>
       </div>
@@ -102,9 +151,10 @@ export default function TableOfContents({ content, title }: TableOfContentsProps
           >
             <button
               onClick={() => handleClick(heading.id)}
+              data-toc-id={heading.id}
               className={`text-left w-full text-sm leading-relaxed transition-colors ${activeId === heading.id
-                  ? 'text-blue-600 font-semibold'
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? activeItemClasses
+                  : inactiveItemClasses
                 }`}
             >
               {heading.text}
@@ -115,4 +165,3 @@ export default function TableOfContents({ content, title }: TableOfContentsProps
     </nav>
   )
 }
-

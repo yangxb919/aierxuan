@@ -3,37 +3,22 @@ import { createSupabaseAdminClient } from '@/lib/supabase'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
 
-interface RFQ {
-  id: string
-  name: string
-  company: string | null
-  email: string
-  phone: string | null
-  country: string | null
-  product_interest: string | null
-  quantity: number | null
-  message: string | null
-  status: string
-  budget_range: string | null
-  urgency: string | null
-  industry: string | null
-  created_at: string
-}
+import type { RFQ } from '@/types'
 
 async function getRFQs(): Promise<RFQ[]> {
   const supabase = createSupabaseAdminClient()
-  
+
   const { data, error } = await supabase
     .from('rfqs')
     .select('*')
     .order('created_at', { ascending: false })
-  
+
   if (error) {
     console.error('Error fetching RFQs:', error)
     return []
   }
-  
-  return data || []
+
+  return (data || []) as RFQ[]
 }
 
 function getStatusBadgeColor(status: string): string {
@@ -267,23 +252,23 @@ export default async function AdminRFQsPage() {
                 <div key={rfq.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusBadgeColor(rfq.status)}`}>
-                        {getStatusLabel(rfq.status)}
+                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusBadgeColor(rfq.status || 'new')}`}>
+                        {getStatusLabel(rfq.status || 'new')}
                       </span>
                       <span className="text-xs text-gray-400">
-                        {rfq.urgency && (
+                        {rfq.priority && (
                           <span className="flex items-center text-red-500">
                             <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            {rfq.urgency}
+                            {rfq.priority}
                           </span>
                         )}
                       </span>
                     </div>
 
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {rfq.company || 'Individual Customer'}
+                      {(rfq as any).company || (rfq as any).company_name || 'Individual Customer'}
                     </h3>
 
                     <div className="text-sm text-gray-500 mb-4">
@@ -307,14 +292,6 @@ export default async function AdminRFQsPage() {
                           {rfq.phone}
                         </div>
                       )}
-                      {rfq.country && (
-                        <div className="flex items-center">
-                          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          {rfq.country}
-                        </div>
-                      )}
                     </div>
 
                     <div className="bg-gray-50 rounded-lg p-3 mb-4">
@@ -322,13 +299,15 @@ export default async function AdminRFQsPage() {
                       <div className="text-sm text-gray-900">
                         {rfq.product_interest || 'Not specified'}
                       </div>
-                      {rfq.quantity && (
-                        <div className="text-sm text-gray-500 mt-1">Quantity: {rfq.quantity}</div>
+                      {((rfq as any).quantity || (rfq as any).quantity_needed) && (
+                        <div className="text-sm text-gray-500 mt-1">
+                          Quantity: {(rfq as any).quantity || (rfq as any).quantity_needed}
+                        </div>
                       )}
                     </div>
 
                     <div className="flex items-center justify-between text-xs text-gray-400">
-                      <span>{formatDate(rfq.created_at)}</span>
+                      <span>{rfq.created_at ? formatDate(rfq.created_at) : 'N/A'}</span>
                       {rfq.industry && (
                         <span className="bg-gray-100 px-2 py-1 rounded">{rfq.industry}</span>
                       )}

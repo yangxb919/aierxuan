@@ -2,6 +2,7 @@ import { createSupabaseAdminClient } from '@/lib/supabase'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import type { AdminUser } from '@/types'
+import { hashSessionToken } from '@/lib/auth-security'
 
 export interface AdminAuthUser {
   id: string
@@ -11,6 +12,16 @@ export interface AdminAuthUser {
   lastName: string
   isActive: boolean
   sessionId: string
+}
+
+interface ValidateSessionResult {
+  admin_user_id: string
+  email: string
+  role: string
+  first_name: string | null
+  last_name: string | null
+  is_active: boolean
+  session_id: string
 }
 
 /**
@@ -28,9 +39,12 @@ export async function getCurrentAdminUser(): Promise<AdminAuthUser | null> {
 
     const supabase = createSupabaseAdminClient()
 
+    // Hash the token before validating against database
+    const hashedToken = hashSessionToken(sessionToken)
+
     // Validate session and get user info
-    const { data: sessionData, error: sessionError } = await supabase
-      .rpc('validate_admin_session', { token: sessionToken })
+    const { data: sessionData, error: sessionError } = await (supabase
+      .rpc as any)('validate_admin_session', { token: hashedToken }) as { data: ValidateSessionResult[] | null, error: any }
 
     if (sessionError || !sessionData || sessionData.length === 0) {
       // Clear invalid session cookie
@@ -50,8 +64,8 @@ export async function getCurrentAdminUser(): Promise<AdminAuthUser | null> {
       id: user.admin_user_id,
       email: user.email,
       role: user.role,
-      firstName: user.first_name,
-      lastName: user.last_name,
+      firstName: user.first_name || '',
+      lastName: user.last_name || '',
       isActive: user.is_active,
       sessionId: user.session_id
     }
@@ -128,15 +142,22 @@ export async function logoutAdminUser(): Promise<boolean> {
 
     const supabase = createSupabaseAdminClient()
 
+    // Hash the token before querying database
+    const hashedToken = hashSessionToken(sessionToken)
+
     // Revoke the session
-    await supabase
+    const { error: updateError } = await supabase
       .from('admin_sessions')
-      .update({ 
+      .update({
         revoked_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       })
-      .eq('session_token', sessionToken)
-      .eq('revoked_at', null)
+      .eq('session_token', hashedToken)
+      .is('revoked_at', null)
+
+    if (updateError) {
+      console.error('Error revoking session:', updateError)
+    }
 
     // Clear the cookie
     (await cookieStore).set('admin_session', '', {
@@ -162,8 +183,8 @@ export async function revokeAllUserSessions(userId: string): Promise<boolean> {
   try {
     const supabase = createSupabaseAdminClient()
 
-    const { error } = await supabase
-      .rpc('revoke_all_admin_sessions', { user_id: userId })
+    const { error } = await (supabase
+      .rpc as any)('revoke_all_admin_sessions', { user_id: userId }) as { data: any, error: any }
 
     return !error
 
@@ -180,8 +201,8 @@ export async function cleanupExpiredSessions(): Promise<number> {
   try {
     const supabase = createSupabaseAdminClient()
 
-    const { data, error } = await supabase
-      .rpc('cleanup_expired_admin_sessions')
+    const { data, error } = await (supabase
+      .rpc as any)('cleanup_expired_admin_sessions') as { data: number | null, error: any }
 
     if (error) {
       console.error('Cleanup expired sessions error:', error)

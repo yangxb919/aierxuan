@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { cookies } from 'next/headers'
+import { hashSessionToken } from '@/lib/auth-security'
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,6 +17,9 @@ export async function POST(request: NextRequest) {
 
     const supabase = createSupabaseAdminClient()
 
+    // Tokens are stored hashed in the DB
+    const hashedToken = hashSessionToken(sessionToken)
+
     // Revoke the session
     const { data: revokeData, error: revokeError } = await supabase
       .from('admin_sessions')
@@ -23,7 +27,7 @@ export async function POST(request: NextRequest) {
         revoked_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       })
-      .eq('session_token', sessionToken)
+      .eq('session_token', hashedToken)
       .is('revoked_at', null) // Only revoke if not already revoked
       .select()
 

@@ -43,7 +43,7 @@ rg -n "NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_ANON_KEY|SUPABASE_SERVICE_R
 ```bash
 node scripts/setup-admin-password.js
 ```
-预期输出包含：`admin@aierxuan.com / admin123`、`editor@aierxuan.com / editor123` 设置成功与哈希校验通过。
+预期输出包含：`admin@example.com / <CHANGE_PASSWORD>`、`editor@example.com / <CHANGE_PASSWORD>` 设置成功与哈希校验通过。
 
 常见问题：若后台登录相关接口报错，极可能是第4步 `validate_admin_session` 函数未创建。请回到第4步执行对应 SQL。
 
@@ -134,7 +134,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/contact
 1) 登录，保存 Cookie 到 `cookies.txt`：
 ```bash
 curl -i -c cookies.txt -H 'Content-Type: application/json' \
-  -d '{"email":"admin@aierxuan.com","password":"admin123"}' \
+  -d '{"email":"admin@example.com","password":"<CHANGE_PASSWORD>"}' \
   http://localhost:3000/api/admin/login
 ```
 

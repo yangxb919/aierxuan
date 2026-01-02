@@ -148,7 +148,7 @@ export function getLocalizedContent(
   field: string
 ): string {
   const translation = getTranslation(item, language)
-  return translation?.[field] || ''
+  return (translation as Record<string, any>)?.[field] || ''
 }
 
 // URL utilities

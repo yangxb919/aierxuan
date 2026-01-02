@@ -1,0 +1,255 @@
+.md {
+  --md-fg: #0f172a;
+  --md-muted: #475569;
+  --md-heading: #0b1220;
+  --md-link: #1d4ed8;
+  --md-border: rgba(15, 23, 42, 0.14);
+  --md-code-bg: rgba(29, 78, 216, 0.08);
+  --md-code-fg: #1d4ed8;
+  --md-pre-bg: #0b1220;
+  --md-pre-fg: #e5e7eb;
+  --md-quote-border: rgba(29, 78, 216, 0.55);
+  --md-quote-bg: rgba(29, 78, 216, 0.06);
+  --md-selection: rgba(29, 78, 216, 0.18);
+
+  color: var(--md-fg);
+  font-family:
+    ui-serif,
+    "Iowan Old Style",
+    "Palatino Linotype",
+    Palatino,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
+  font-size: clamp(1.05rem, 0.4vw + 1rem, 1.18rem);
+  line-height: 1.85;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.md-light {
+  /* Default (light) theme: variables declared on .md */
+}
+
+.md-dark {
+  --md-fg: #e5e7eb;
+  --md-muted: rgba(226, 232, 240, 0.78);
+  --md-heading: #ffffff;
+  --md-link: #60a5fa;
+  --md-border: rgba(226, 232, 240, 0.18);
+  --md-code-bg: rgba(96, 165, 250, 0.12);
+  --md-code-fg: #93c5fd;
+  --md-pre-bg: rgba(2, 6, 23, 0.92);
+  --md-pre-fg: #e5e7eb;
+  --md-quote-border: rgba(96, 165, 250, 0.6);
+  --md-quote-bg: rgba(96, 165, 250, 0.08);
+  --md-selection: rgba(96, 165, 250, 0.22);
+}
+
+.md-sm {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.md ::selection {
+  background: var(--md-selection);
+}
+
+.md :where(p) {
+  margin: 0.95em 0;
+  color: var(--md-fg);
+}
+
+.md :where(p > br) {
+  display: block;
+  margin: 0.55em 0;
+}
+
+.md :where(h1, h2, h3, h4) {
+  color: var(--md-heading);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
+  font-weight: 780;
+  line-height: 1.25;
+  letter-spacing: -0.018em;
+  margin: 2.1em 0 0.65em;
+}
+
+.md :where(h1) {
+  font-size: clamp(2.05rem, 1.35vw + 1.55rem, 2.95rem);
+  margin-top: 0.4em;
+}
+
+.md :where(h2) {
+  font-size: clamp(1.7rem, 1vw + 1.3rem, 2.25rem);
+  position: relative;
+  padding-top: 0.95em;
+}
+
+.md :where(h2)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--md-border), transparent);
+}
+
+.md :where(h3) {
+  font-size: clamp(1.35rem, 0.7vw + 1.15rem, 1.75rem);
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.md :where(h3)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  bottom: 0.25em;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(29, 78, 216, 0.75), rgba(29, 78, 216, 0.15));
+}
+
+.md :where(h4) {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.md :where(h1, h2, h3, h4) {
+  scroll-margin-top: 96px;
+}
+
+.md :where(a) {
+  color: var(--md-link);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.md :where(a:hover) {
+  text-decoration-thickness: 2px;
+}
+
+.md :where(strong) {
+  color: var(--md-heading);
+  font-weight: 700;
+}
+
+.md :where(ul, ol) {
+  margin: 0.95em 0;
+  padding-left: 1.35em;
+}
+
+.md :where(li) {
+  margin: 0.35em 0;
+  color: var(--md-fg);
+}
+
+.md :where(hr) {
+  border: none;
+  height: 1px;
+  background: var(--md-border);
+  margin: 1.6em 0;
+}
+
+.md :where(blockquote) {
+  margin: 1.2em 0;
+  padding: 0.9em 1.05em;
+  border-left: 3px solid var(--md-quote-border);
+  background: var(--md-quote-bg);
+  color: var(--md-muted);
+  border-radius: 0.85rem;
+}
+
+.md :where(blockquote p) {
+  margin: 0.55em 0;
+  color: var(--md-muted);
+}
+
+.md :where(code) {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 0.92em;
+  color: var(--md-code-fg);
+  background: var(--md-code-bg);
+  padding: 0.12em 0.38em;
+  border-radius: 0.4em;
+}
+
+.md :where(pre) {
+  margin: 1.1em 0;
+  padding: 1rem 1.1rem;
+  background: var(--md-pre-bg);
+  color: var(--md-pre-fg);
+  border-radius: 1rem;
+  overflow: auto;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.md :where(pre code) {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.md :where(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.15em auto;
+  border-radius: 1rem;
+  box-shadow:
+    0 16px 40px rgba(2, 6, 23, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.md :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25em 0;
+  font-size: 0.95em;
+}
+
+.md :where(th, td) {
+  border: 1px solid var(--md-border);
+  padding: 0.65em 0.75em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.md :where(th) {
+  color: var(--md-heading);
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.md-dark :where(th) {
+  background: rgba(226, 232, 240, 0.06);
+}
+
+.md :where(tbody tr:nth-child(even) td) {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.md-dark :where(tbody tr:nth-child(even) td) {
+  background: rgba(226, 232, 240, 0.03);
+}

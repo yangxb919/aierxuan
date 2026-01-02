@@ -65,13 +65,13 @@ npm run dev
 
 #### 测试结果：
 1. ✅ **登录API**: 成功
-   - 用户: admin@aierxuan.com
+   - 用户: admin@example.com
    - 角色: admin
    - Session ID: 已生成
    - Cookie: 已设置
 
 2. ✅ **获取用户信息**: 成功
-   - Email: admin@aierxuan.com
+   - Email: admin@example.com
    - Role: admin
    - Name: Admin User
 
@@ -274,7 +274,7 @@ Missing Supabase environment variables
   "success": true,
   "user": {
     "id": "f0149900-ae05-4597-a401-9b9a1d962912",
-    "email": "admin@aierxuan.com",
+    "email": "admin@example.com",
     "role": "admin",
     "firstName": "Admin",
     "lastName": "User"
@@ -292,7 +292,7 @@ Missing Supabase environment variables
   "success": true,
   "user": {
     "id": "f0149900-ae05-4597-a401-9b9a1d962912",
-    "email": "admin@aierxuan.com",
+    "email": "admin@example.com",
     "role": "admin",
     "firstName": "Admin",
     "lastName": "User",

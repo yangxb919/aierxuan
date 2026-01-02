@@ -5,10 +5,11 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSanitize from 'rehype-sanitize'
-import { Button } from '@/components/ui'
+import { sanitizeSchema } from '@/lib/sanitize-schema'
 
 interface MarkdownEditorProps {
   value: string
+   
   onChange: (value: string) => void
   placeholder?: string
   minHeight?: string
@@ -188,13 +189,13 @@ export default function MarkdownEditor({
             style={{ minHeight }}
           />
         ) : (
-          <div className="p-4 prose prose-sm max-w-none overflow-auto" style={{ minHeight }}>
+          <div className="p-4 md md-light md-sm max-w-none overflow-auto" style={{ minHeight }}>
             {value ? (
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                rehypePlugins={[rehypeRaw, [rehypeSanitize, sanitizeSchema]]}
               >
-                {value}
+                {addHardLineBreaks(value)}
               </ReactMarkdown>
             ) : (
               <p className="text-gray-400 italic">Nothing to preview</p>
@@ -214,3 +215,45 @@ export default function MarkdownEditor({
   )
 }
 
+function addHardLineBreaks(markdown: string) {
+  const normalized = (markdown || '').replace(/\r\n/g, '\n')
+  if (!normalized) return normalized
+
+  const lines = normalized.split('\n')
+  const fenceRegex = /^\s*(```|~~~)/
+  const nextBlockStartRegex = /^\s*(#{1,6}\s|>+\s|([-*+]|\d+\.)\s|(```|~~~))/
+
+  let inFence = false
+  const out: string[] = []
+
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i] ?? ''
+    const line = rawLine.replace(/\s+$/, '')
+    const nextLine = lines[i + 1] ?? ''
+
+    if (fenceRegex.test(line)) {
+      inFence = !inFence
+      out.push(rawLine)
+      continue
+    }
+
+    if (inFence) {
+      out.push(rawLine)
+      continue
+    }
+
+    const isBlank = line.trim().length === 0
+    const nextIsBlank = nextLine.trim().length === 0
+    const nextStartsBlock = nextBlockStartRegex.test(nextLine)
+    const isTableRow = /^\s*\|.*\|\s*$/.test(line)
+
+    if (!isBlank && !nextIsBlank && !nextStartsBlock && !isTableRow) {
+      out.push(`${line}  `)
+      continue
+    }
+
+    out.push(rawLine)
+  }
+
+  return out.join('\n')
+}

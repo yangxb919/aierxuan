@@ -130,7 +130,7 @@ SELECT
     '127.0.0.1'::inet,
     'Test User Agent'
 FROM admin_users 
-WHERE email = 'admin@aierxuan.com'
+WHERE email = 'admin@example.com'
 LIMIT 1;
 */
 

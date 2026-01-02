@@ -94,7 +94,7 @@ export async function PATCH(
         locale: t.locale,
         question: t.question,
         answer: t.answer
-      }))
+      }) as any)
     
     if (translationsToInsert.length > 0) {
       const { error: translationsError } = await supabase

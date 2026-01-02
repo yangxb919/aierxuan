@@ -190,7 +190,7 @@ npm run dev
 1. 登录后台：
    ```bash
    curl -c cookies.txt -H 'Content-Type: application/json' \
-     -d '{"email":"admin@aierxuan.com","password":"admin123"}' \
+     -d '{"email":"admin@example.com","password":"<CHANGE_PASSWORD>"}' \
      http://localhost:3000/api/admin/login
    ```
 

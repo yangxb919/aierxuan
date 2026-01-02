@@ -4,7 +4,7 @@
 -- Method 1: Create via Supabase Dashboard (Recommended)
 -- 1. Go to Supabase Dashboard -> Authentication -> Users
 -- 2. Click "Add user"
--- 3. Enter email: admin@aierxuan.com
+-- 3. Enter email: admin@example.com
 -- 4. Set password and record it
 -- 5. After user creation, copy the user ID from the Users list
 -- 6. Execute the SQL statements below to add to admin_users table
@@ -24,7 +24,7 @@ INSERT INTO admin_users (
     is_active
 ) VALUES (
     'YOUR_USER_UUID_HERE', -- Replace with actual auth.users.id
-    'admin@aierxuan.com',
+    'admin@example.com',
     'admin',
     'Admin',
     'User',
@@ -52,7 +52,7 @@ INSERT INTO admin_users (
     is_active
 ) VALUES (
     'YOUR_EDITOR_UUID_HERE', -- Replace with actual editor user UUID
-    'editor@aierxuan.com',
+    'editor@example.com',
     'editor',
     'Test',
     'Editor',
@@ -68,11 +68,11 @@ Step 1: Create Auth users in Supabase Dashboard
 1. Go to project -> Authentication -> Users
 2. Click "Add user"
 3. Create admin user:
-   - Email: admin@aierxuan.com
+   - Email: admin@example.com
    - Password: Set strong password
    - Auto confirm: Check (skip email verification)
 4. Create editor user:
-   - Email: editor@aierxuan.com
+   - Email: editor@example.com
    - Password: Set strong password
    - Auto confirm: Check
 

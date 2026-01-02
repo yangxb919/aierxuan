@@ -146,6 +146,165 @@
                 ]
             }
         },
+        "coreAdvantages": {
+            "title": "为什么全球合作伙伴选择AIERXUAN",
+            "subtitle": "B2B成功的可靠优势",
+            "items": [
+                {
+                    "title": "灵活起订量",
+                    "description": "从1台样品到10,000+批量订单。适合市场测试和大规模部署。",
+                    "stats": "起订量100台起",
+                    "details": [
+                        "样品订单：1-10台",
+                        "小批量：100-500台",
+                        "批量订单：1,000-10,000+台",
+                        "无隐藏费用或附加费"
+                    ]
+                },
+                {
+                    "title": "快速交付",
+                    "description": "行业领先的生产速度，品质始终如一。支持紧急订单。",
+                    "stats": "7-15天交付",
+                    "details": [
+                        "标准交期：7-15天",
+                        "加急订单：3-5天可选",
+                        "准时交付率：98%+",
+                        "实时生产跟踪"
+                    ]
+                },
+                {
+                    "title": "全面定制",
+                    "description": "完整的OEM/ODM服务，包括Logo印刷、包装设计、软件预装和硬件配置。",
+                    "stats": "100%可定制",
+                    "details": [
+                        "Logo印刷与雕刻",
+                        "定制包装设计",
+                        "软件预装",
+                        "硬件配置选项"
+                    ]
+                }
+            ]
+        },
+        "trustBadges": {
+            "title": "全球客户信赖",
+            "subtitle": "认证品质与行业认可",
+            "clients": "我们的客户",
+            "certifications": "认证证书",
+            "partners": "技术合作伙伴",
+            "stats": {
+                "clients": {
+                    "value": "500+",
+                    "label": "全球客户"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "服务国家"
+                },
+                "experience": {
+                    "value": "10+",
+                    "label": "年经验"
+                },
+                "satisfaction": {
+                    "value": "99.8%",
+                    "label": "客户满意度"
+                }
+            },
+            "certificationItems": [
+                {
+                    "name": "CE",
+                    "description": "欧洲合格认证"
+                },
+                {
+                    "name": "FCC",
+                    "description": "美国联邦通信委员会"
+                },
+                {
+                    "name": "RoHS",
+                    "description": "有害物质限制"
+                },
+                {
+                    "name": "UL",
+                    "description": "美国保险商实验室"
+                },
+                {
+                    "name": "ISO 9001",
+                    "description": "质量管理体系"
+                },
+                {
+                    "name": "ISO 14001",
+                    "description": "环境管理体系"
+                }
+            ]
+        },
+        "manufacturingCapability": {
+            "title": "我们的制造能力",
+            "subtitle": "先进设施与质量控制",
+            "description": "凭借先进的制造设施和严格的质量控制流程，我们确保每件产品都符合最高标准。",
+            "items": [
+                {
+                    "title": "现代化工厂",
+                    "description": "配备自动化生产线的先进制造设施",
+                    "stats": [
+                        {
+                            "value": "50,000+",
+                            "label": "月产能（台）"
+                        },
+                        {
+                            "value": "10,000㎡",
+                            "label": "生产车间"
+                        }
+                    ]
+                },
+                {
+                    "title": "生产线",
+                    "description": "先进的自动化组装和测试系统，确保品质一致",
+                    "stats": [
+                        {
+                            "value": "15+",
+                            "label": "生产线"
+                        },
+                        {
+                            "value": "98%",
+                            "label": "自动化率"
+                        }
+                    ]
+                },
+                {
+                    "title": "质量控制",
+                    "description": "每个生产阶段的全面测试和检验",
+                    "stats": [
+                        {
+                            "value": "100%",
+                            "label": "产品测试"
+                        },
+                        {
+                            "value": "ISO 9001",
+                            "label": "认证"
+                        }
+                    ]
+                },
+                {
+                    "title": "仓储物流",
+                    "description": "高效的库存管理和全球发货能力",
+                    "stats": [
+                        {
+                            "value": "24-48h",
+                            "label": "快速发货"
+                        },
+                        {
+                            "value": "100+",
+                            "label": "服务国家"
+                        }
+                    ]
+                }
+            ],
+            "features": [
+                "先进制造设备",
+                "严格质量控制体系",
+                "经验丰富的技术团队",
+                "全球物流网络"
+            ]
+        },
         "finalCTA": {
             "title": "准备好开始了吗？",
             "subtitle": "获取适合您业务需求的定制报价",

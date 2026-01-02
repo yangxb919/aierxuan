@@ -51,18 +51,35 @@ export function FinalCTA({ lang, texts }: FinalCTAProps) {
 
     try {
       // Important: use returning: 'minimal' so anon insert doesn't require SELECT permission
-      const { error } = await supabase.from('rfq_requests').insert([
+      const { error } = await supabase.from('rfqs').insert([
         {
           name: formData.name || null,
-          company_name: formData.country || null, // Using company_name field to store country temporarily
           email: formData.email,
-          phone: formData.productInterest || null, // Using phone field to store product interest temporarily
+          country: formData.country || null,
+          product_interest: formData.productInterest || null,
           message: formData.message || null,
-          status: 'new'
+          status: 'new',
+          source: 'website',
+          language_code: lang
         } as any
       ])
 
       if (error) throw error
+
+      // Send email notification (non-blocking)
+      fetch('/api/send-rfq-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          country: formData.country,
+          productInterest: formData.productInterest,
+          message: formData.message,
+          formType: 'finalcta',
+          pageUrl: window.location.href
+        })
+      }).catch(console.error)
 
       // Redirect to thank you page
       router.push(`/${lang}/thank-you`)

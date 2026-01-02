@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { createSupabaseClient } from '@/lib/supabase'
@@ -28,23 +28,12 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPosts, setTotalPosts] = useState(initialTotal)
     const [hasMore, setHasMore] = useState(initialPosts.length < initialTotal)
+    const didMountRef = useRef(false)
 
-    const supabase = createSupabaseClient()
+    const supabase = useMemo(() => createSupabaseClient(), [])
     const texts = dictionary
 
-    // Reset state when category changes
-    useEffect(() => {
-        if (selectedCategory !== 'all') {
-            fetchPosts(1, true)
-        } else {
-            // If switching back to 'all', we might want to reset to initialPosts if we haven't loaded more?
-            // For simplicity, let's just fetch again or use initial if page is 1.
-            // Actually, to keep it consistent, let's just fetch.
-            fetchPosts(1, true)
-        }
-    }, [selectedCategory])
-
-    async function fetchPosts(page = 1, reset = true) {
+    const fetchPosts = useCallback(async (page = 1, reset = true) => {
         try {
             setLoading(true)
             setError(null)
@@ -70,7 +59,11 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
             const { data, error: fetchError, count } = await query
 
             if (fetchError) {
-                throw new Error(fetchError.message)
+                const msg = fetchError.message || 'Failed to fetch posts'
+                // Use warn to avoid triggering the Next.js dev overlay for recoverable errors.
+                console.warn('Blog fetch failed:', msg)
+                setError(msg)
+                return
             }
 
             // Transform data to ensure translations array exists
@@ -90,12 +83,23 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
             setHasMore((data?.length || 0) === POSTS_PER_PAGE && (page * POSTS_PER_PAGE) < (count || 0))
 
         } catch (err) {
-            console.error('Error fetching blog posts:', err)
+            console.warn('Error fetching blog posts:', err)
             setError(texts.loadingError)
         } finally {
             setLoading(false)
         }
-    }
+    }, [supabase, texts.loadingError])
+
+    // Reset state when category changes
+    useEffect(() => {
+        // Avoid an extra fetch on first mount: server already provided initialPosts.
+        // This also prevents dev overlay noise when env is misconfigured.
+        if (!didMountRef.current) {
+            didMountRef.current = true
+            return
+        }
+        fetchPosts(1, true)
+    }, [selectedCategory, fetchPosts])
 
     const handleCategoryChange = (category: string) => {
         if (category === selectedCategory) return
@@ -135,16 +139,16 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
     return (
         <>
             {/* Category Filter */}
-            <section className="py-8 bg-white border-b border-gray-200">
+            <section className="py-8 bg-[#0a0a0f] border-b border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-wrap gap-2 justify-center">
                         {categories.map((category) => (
                             <button
                                 key={category.key}
                                 onClick={() => handleCategoryChange(category.key)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === category.key
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category.key
+                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
                                     }`}
                             >
                                 {category.label}
@@ -155,33 +159,33 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
             </section>
 
             {/* Blog Posts */}
-            <section className="py-16">
+            <section className="py-16 bg-[#0a0a0f]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {loading && posts.length === 0 ? (
                         <BlogPostsSkeleton />
                     ) : error ? (
                         <div className="text-center py-12">
-                            <div className="text-red-600 mb-4">
+                            <div className="text-red-400 mb-4">
                                 <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-medium text-gray-900 mb-2">{texts.loadingError}</h3>
+                            <h3 className="text-lg font-medium text-white mb-2">{texts.loadingError}</h3>
                             <button
                                 onClick={() => fetchPosts(1, true)}
-                                className="text-blue-600 hover:text-blue-500 font-medium"
+                                className="text-blue-400 hover:text-blue-300 font-medium"
                             >
                                 {texts.tryAgain}
                             </button>
                         </div>
                     ) : posts.length === 0 ? (
                         <div className="text-center py-12">
-                            <div className="text-gray-400 mb-4">
+                            <div className="text-gray-500 mb-4">
                                 <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-medium text-gray-900">{texts.noArticles}</h3>
+                            <h3 className="text-lg font-medium text-white">{texts.noArticles}</h3>
                         </div>
                     ) : (
                         <>
@@ -207,7 +211,7 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
                                     <button
                                         onClick={handleLoadMore}
                                         disabled={loading}
-                                        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="inline-flex items-center px-6 py-3 text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-blue-500/25"
                                     >
                                         {loading ? (
                                             <>
@@ -256,21 +260,21 @@ function BlogPostCard({
     const excerpt = translation?.excerpt || ''
 
     return (
-        <article className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <div className="aspect-video bg-gray-200 relative">
+        <article className="group bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-blue-500/30">
+            <div className="aspect-video bg-slate-800 relative overflow-hidden">
                 {post.cover_image ? (
                     <Image
                         src={post.cover_image}
                         alt={title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                         onError={(e) => {
                             const target = e.target as HTMLImageElement
                             target.style.display = 'none'
                         }}
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    <div className="w-full h-full flex items-center justify-center text-gray-600">
                         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -278,25 +282,25 @@ function BlogPostCard({
                 )}
             </div>
             <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
+                <div className="flex items-center text-sm text-gray-500 mb-3">
                     <time dateTime={post.published_at || post.created_at || ''}>
                         {texts.publishedOn} {formatDate(post.published_at || post.created_at || '')}
                     </time>
                     <span className="mx-2">•</span>
                     <span>{texts.by} {texts.author}</span>
                 </div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                <h2 className="text-xl font-semibold text-white mb-3 line-clamp-2 group-hover:text-blue-400 transition-colors">
                     {title}
                 </h2>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-400 mb-4 line-clamp-3">
                     {excerpt}
                 </p>
                 <Link
                     href={`/${lang}/blog/${post.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium"
+                    className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors"
                 >
                     {texts.readMore}
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </Link>
@@ -310,14 +314,14 @@ function BlogPostsSkeleton() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg shadow-sm overflow-hidden animate-pulse">
-                    <div className="aspect-video bg-gray-200"></div>
+                <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden animate-pulse border border-white/10">
+                    <div className="aspect-video bg-slate-800"></div>
                     <div className="p-6">
-                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                        <div className="h-6 bg-gray-200 rounded w-full mb-3"></div>
-                        <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                        <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
-                        <div className="h-4 bg-gray-200 rounded w-20"></div>
+                        <div className="h-4 bg-slate-700 rounded w-3/4 mb-3"></div>
+                        <div className="h-6 bg-slate-700 rounded w-full mb-3"></div>
+                        <div className="h-4 bg-slate-700 rounded w-full mb-2"></div>
+                        <div className="h-4 bg-slate-700 rounded w-2/3 mb-4"></div>
+                        <div className="h-4 bg-slate-700 rounded w-20"></div>
                     </div>
                 </div>
             ))}

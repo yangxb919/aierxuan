@@ -8,19 +8,18 @@ import { notFound } from 'next/navigation'
 interface Product {
   id: string
   slug: string
-  category: string
+  category: string | null
   images: string[]
-  status: string
-  featured: boolean
-  sort_order: number
-  moq?: number
-  price?: number
-  datasheet_url?: string
-  created_at: string
-  updated_at: string
+  status: string | null
+  featured: boolean | null
+  sort_order: number | null
+  moq?: number | null
+  price?: number | null
+  datasheet_url?: string | null
+  created_at: string | null
+  updated_at: string | null
   translations: {
     locale: string
-    language_code?: string
     title: string
     short_desc: string
     long_desc: string
@@ -30,9 +29,6 @@ interface Product {
     quality_tests?: any
     oem_services?: any
     faqs?: any
-    durability_images?: any
-    oem_images?: any
-    features?: any
   }[]
 }
 
@@ -61,15 +57,19 @@ async function getProduct(id: string): Promise<Product | null> {
   
   return {
     ...product,
-    translations: (translations || []).map((t) => ({
-      ...t,
-      locale: (t as any).locale || t.language_code || 'en',
+    category: product.category,
+    images: Array.isArray(product.images) ? (product.images as string[]) : [],
+    translations: (translations || []).map((t: any) => ({
+      locale: t.locale || 'en',
+      title: t.title || '',
+      short_desc: t.short_desc || '',
+      long_desc: t.long_desc || '',
+      key_specs: t.key_specs || {},
+      seo_title: t.seo_title || '',
+      seo_desc: t.seo_desc || '',
       quality_tests: Array.isArray(t.quality_tests) ? t.quality_tests : [],
       oem_services: Array.isArray(t.oem_services) ? t.oem_services : [],
-      faqs: Array.isArray(t.faqs) ? t.faqs : [],
-      durability_images: Array.isArray((t as any).durability_images) ? (t as any).durability_images : Array.isArray((t as any).features?.durability_images) ? (t as any).features.durability_images : [],
-      oem_images: Array.isArray((t as any).oem_images) ? (t as any).oem_images : Array.isArray((t as any).features?.oem_images) ? (t as any).features.oem_images : [],
-      features: (t as any).features || {}
+      faqs: Array.isArray(t.faqs) ? t.faqs : []
     }))
   }
 }
@@ -88,18 +88,29 @@ export default async function AdminProductEditPage({
     notFound()
   }
   
-  // Prepare form data
+  // Prepare form data - convert database field names to form field names
   const formData = {
     slug: product.slug,
-    category: product.category,
-    status: product.status,
-    featured: product.featured,
-    sort_order: product.sort_order,
-    moq: product.moq,
-    price: product.price,
+    category: product.category || '',
+    status: product.status || 'draft',
+    featured: product.featured ?? false,
+    sort_order: product.sort_order ?? 0,
+    moq: product.moq ?? undefined,
+    price: product.price ?? undefined,
     datasheet_url: product.datasheet_url || '',
     images: product.images || [],
-    translations: product.translations
+    translations: product.translations.map(t => ({
+      locale: t.locale,
+      title: t.title,
+      short_desc: t.short_desc,
+      long_desc: t.long_desc,
+      key_specs: t.key_specs,
+      seo_title: t.seo_title,
+      seo_desc: t.seo_desc,
+      quality_tests: t.quality_tests,
+      oem_services: t.oem_services,
+      faqs: t.faqs
+    }))
   }
   
   return (

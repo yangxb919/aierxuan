@@ -5,11 +5,28 @@ import { match as matchLocale } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 
 function getLocale(request: NextRequest): string {
-    const negotiatorHeaders: Record<string, string> = {}
-    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
+    try {
+        const negotiatorHeaders: Record<string, string> = {}
+        request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-    const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-    return matchLocale(languages, i18n.locales, i18n.defaultLocale)
+        let languages = new Negotiator({ headers: negotiatorHeaders }).languages()
+
+        // Filter out invalid locales (like '*') that cause matchLocale to fail
+        languages = languages.filter((lang: string) => {
+            // Only allow valid locale patterns (e.g., 'en', 'en-US', 'zh-CN')
+            return /^[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?$/.test(lang)
+        })
+
+        // If no valid languages found, return default
+        if (languages.length === 0) {
+            return i18n.defaultLocale
+        }
+
+        return matchLocale(languages, i18n.locales, i18n.defaultLocale)
+    } catch (error) {
+        // If any error occurs, return default locale
+        return i18n.defaultLocale
+    }
 }
 
 export function middleware(request: NextRequest) {

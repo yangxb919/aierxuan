@@ -116,7 +116,7 @@ SELECT 'validate_admin_session function created successfully!' AS result;
 3. 点击"Run"执行
 4. 测试登录：
    - 访问 http://localhost:3000/admin/login
-   - 使用凭据：admin@aierxuan.com / admin123
+   - 使用凭据：admin@example.com / <CHANGE_PASSWORD>
    - 应该成功登录并跳转到仪表盘
 
 ### 操作 #2: 确认RFQ表结构（中优先级）
@@ -206,13 +206,13 @@ DROP TABLE IF EXISTS request_for_quotes CASCADE;
 
 ```
 Admin账户（完全权限）：
-Email: admin@aierxuan.com
-Password: admin123
+Email: admin@example.com
+Password: <CHANGE_PASSWORD>
 Role: admin
 
 Editor账户（编辑权限）：
-Email: editor@aierxuan.com
-Password: editor123
+Email: editor@example.com
+Password: <CHANGE_PASSWORD>
 Role: editor
 ```
 
