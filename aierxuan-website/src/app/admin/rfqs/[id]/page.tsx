@@ -2,6 +2,7 @@ import { requireAdminAuth } from '@/lib/admin-auth'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
+import AdminShell from '@/components/admin/AdminShell'
 import { notFound } from 'next/navigation'
 import RFQStatusUpdater from '@/components/admin/RFQStatusUpdater'
 import type { RFQ } from '@/types'
@@ -83,28 +84,21 @@ export default async function AdminRFQDetailPage({
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">RFQ Details</h1>
-              <p className="mt-1 text-sm text-gray-500">
-                Request for Quotation #{rfq.id.slice(0, 8)}
-              </p>
-            </div>
-            <Link href="/admin/rfqs">
-              <Button variant="outline">
-                ← Back to RFQs
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <AdminShell
+      user={user}
+      title="RFQ Details"
+      subtitle={`Request for Quotation #${rfq.id.slice(0, 8)}`}
+      showSearch={false}
+      showNotifications={false}
+      headerActions={
+        <Link href="/admin/rfqs">
+          <Button variant="outline" size="sm">
+            ← Back to RFQs
+          </Button>
+        </Link>
+      }
+    >
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
@@ -259,6 +253,6 @@ export default async function AdminRFQDetailPage({
           </div>
         </div>
       </div>
-    </div>
+    </AdminShell>
   )
 }

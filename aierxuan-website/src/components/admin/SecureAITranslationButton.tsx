@@ -8,7 +8,7 @@ import TranslationResultsDialog from './TranslationResultsDialog'
 
 interface SecureAITranslationButtonProps {
   content: any
-  contentType: 'product' | 'blog'
+  contentType: 'product' | 'blog' | 'faq'
   onTranslationComplete: (translations: any[], results: any[]) => void
   disabled?: boolean
 }
@@ -19,7 +19,7 @@ export default function SecureAITranslationButton({
   onTranslationComplete,
   disabled = false
 }: SecureAITranslationButtonProps) {
-  const { translateProduct, translateBlog, translationState, resetTranslation, cancelTranslation } = useSecureTranslation({
+  const { translateProduct, translateBlog, translateFAQ, translationState, resetTranslation, cancelTranslation } = useSecureTranslation({
     onSuccess: (translations, results) => {
       // 翻译完成：关闭进度、展示结果并把内容回填到表单
       setTranslationResults(results)
@@ -69,14 +69,26 @@ export default function SecureAITranslationButton({
   const [translationResults, setTranslationResults] = useState<any[]>([])
 
   const targetLanguages = ['ru', 'ja', 'fr', 'pt', 'zh-CN']
+  const [languageConcurrency, setLanguageConcurrency] = useState<number>(3)
+
+  const hasValidSourceContent = () => {
+    if (!content) return false
+    if (contentType === 'product') return Boolean(content.title && content.long_desc)
+    if (contentType === 'blog') return Boolean(content.title && content.body)
+    if (contentType === 'faq') return Boolean(content.question && content.answer)
+    return false
+  }
 
   const handleAITranslate = async () => {
     // 验证源内容
-    if (!content || !content.title || (!content.long_desc && !content.body)) {
+    if (!hasValidSourceContent()) {
       showNotification({
         type: 'error',
         title: '内容不完整',
-        message: '请确保标题和描述/正文已填写完整',
+        message:
+          contentType === 'faq'
+            ? '请确保英文 Question 和 Answer 已填写完整'
+            : '请确保标题和描述/正文已填写完整',
         duration: 4000
       })
       return
@@ -87,9 +99,11 @@ export default function SecureAITranslationButton({
 
     try {
       if (contentType === 'product') {
-        await translateProduct(content, targetLanguages)
+        await translateProduct(content, targetLanguages, { languageConcurrency })
+      } else if (contentType === 'blog') {
+        await translateBlog(content, targetLanguages, { languageConcurrency })
       } else {
-        await translateBlog(content, targetLanguages)
+        await translateFAQ(content, targetLanguages, { languageConcurrency })
       }
       // 具体的回填与提示在 onSuccess 中统一处理
     } catch (error) {
@@ -147,6 +161,13 @@ export default function SecureAITranslationButton({
 
   const buttonState = getButtonState()
 
+  const getCompletedTranslationCount = () => {
+    // Count only translate-* steps (exclude validation/finalization)
+    const translateSteps = translationState.steps.filter(s => s.id.startsWith('translate-'))
+    const done = translateSteps.filter(s => s.status === 'completed' || s.status === 'error')
+    return { done: done.length, total: translateSteps.length }
+  }
+
   const getLanguageName = (code: string): string => {
     const languages: Record<string, string> = {
       'ru': 'Russian',
@@ -161,6 +182,27 @@ export default function SecureAITranslationButton({
   return (
     <>
       <div className="space-y-3">
+        {/* 并发设置（更稳妥：默认 3） */}
+        <div className="flex items-center justify-end gap-2">
+          <span className="text-xs text-gray-500">并发</span>
+          {[2, 3, 5].map((n) => (
+            <button
+              key={n}
+              type="button"
+              onClick={() => setLanguageConcurrency(n)}
+              disabled={translationState.isTranslating}
+              className={`px-2 py-1 rounded-md text-xs border transition-colors ${
+                languageConcurrency === n
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+              } ${translationState.isTranslating ? 'opacity-50 cursor-not-allowed' : ''}`}
+              title={n === 5 ? '更快但更容易触发限流/失败' : '更稳妥，成功率更高'}
+            >
+              {n}
+            </button>
+          ))}
+        </div>
+
         {/* 主翻译按钮 */}
         <button
           onClick={handleAITranslate}
@@ -196,7 +238,7 @@ export default function SecureAITranslationButton({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <div className="flex justify-between text-sm text-blue-600 mb-2">
               <span>进度: {translationState.progress}%</span>
-              <span>{translationState.currentStep + 1}/{translationState.totalSteps}</span>
+              <span>{getCompletedTranslationCount().done}/{getCompletedTranslationCount().total}</span>
             </div>
             <div className="w-full bg-blue-200 rounded-full h-2">
               <div

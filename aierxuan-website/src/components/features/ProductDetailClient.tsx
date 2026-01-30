@@ -278,7 +278,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                         </Link>
                         <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
                         <Link href={`/${lang}/products`} className="hover:text-blue-400 transition-colors">
-                            Products
+                            {texts.breadcrumbProducts}
                         </Link>
                         <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
                         <span className="text-white font-semibold truncate max-w-[200px]">
@@ -313,7 +313,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                             <div className="absolute bottom-5 right-5 w-3 h-3 border-b-2 border-r-2 border-white/20 group-hover:border-blue-500/50 transition-colors rounded-br-sm" />
 
                             <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm text-[10px] uppercase tracking-widest font-bold text-gray-400 px-2 py-1 rounded border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm translate-y-2 group-hover:translate-y-0 duration-300">
-                                Zoom View
+                                {texts.zoomView}
                             </div>
                         </div>
 
@@ -347,7 +347,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                     <div className="flex flex-col pt-2">
                         <div className="flex items-center gap-3 mb-4">
                             <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold bg-blue-600 text-white tracking-wide uppercase">
-                                New Arrival
+                                {texts.newArrival}
                             </span>
                             <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">
                                 SKU: {product.slug}
@@ -360,7 +360,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
 
                         {/* Industrial Specs Summary */}
                         <div className="mb-8">
-                            <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-3">Key Industrial Specs</h3>
+                            <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-3">{texts.keyIndustrialSpecs}</h3>
                             <ul className="space-y-2">
                                 {heroSpecs.map((spec, i) => (
                                     <li key={i} className="flex items-center text-gray-300">
@@ -368,7 +368,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                         <span className="font-medium">{spec}</span>
                                     </li>
                                 ))}
-                                {heroSpecs.length === 0 && <li className="text-gray-500 italic">Detailed specs available below</li>}
+                                {heroSpecs.length === 0 && <li className="text-gray-500 italic">{texts.detailedSpecsBelow}</li>}
                             </ul>
                         </div>
 
@@ -387,14 +387,14 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                     <p className="text-sm text-gray-400">{texts.contactForPrice}</p>
                                 )}
                                 <p className="text-xs text-gray-500">
-                                    {texts.moq}: {product.moq ? `${product.moq} ${texts.units || 'units'}` : 'Negotiable'}
+                                    {texts.moq}: {product.moq ? `${product.moq} ${texts.units}` : texts.negotiable}
                                 </p>
                             </div>
                             <div className="flex flex-col gap-3">
                                 <Link href={`/${lang}/contact?product=${encodeURIComponent(productTitle)}`} className="w-full">
                                     <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-500 text-white h-14 text-lg font-bold shadow-lg shadow-blue-600/25 rounded-xl transition-all">
                                         <Mail className="w-5 h-5 mr-2" />
-                                        {texts.requestQuote || "Inquire for Wholesale Price"}
+                                        {texts.requestQuote || texts.inquireWholesale}
                                     </Button>
                                 </Link>
                                 {datasheetUrl ? (
@@ -405,7 +405,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                         className="flex items-center justify-center text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors py-2 rounded-md border border-transparent hover:border-blue-500/30"
                                     >
                                         <Download className="w-4 h-4 mr-2" />
-                                        Download Spec Sheet (PDF)
+                                        {texts.downloadSpecSheet}
                                     </a>
                                 ) : (
                                     <button
@@ -414,12 +414,12 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                         disabled
                                     >
                                         <Download className="w-4 h-4 mr-2" />
-                                        Spec sheet coming soon
+                                        {texts.specSheetComingSoon}
                                     </button>
                                 )}
                             </div>
                             <p className="text-xs text-center text-gray-500">
-                                Minimum Order Quantity: {product.moq ? `${product.moq} ${texts.units || 'units'}` : 'Negotiable'} • Global Shipping Available
+                                {texts.minimumOrderQuantity}: {product.moq ? `${product.moq} ${texts.units}` : texts.negotiable} • {texts.globalShippingAvailable}
                             </p>
                         </div>
                     </div>
@@ -431,10 +431,10 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
                         {[
-                            { icon: Factory, text: "Factory Direct" },
-                            { icon: Award, text: "ISO Certified" },
-                            { icon: ShieldCheck, text: "1-Year Warranty" },
-                            { icon: Truck, text: "Fast Shipping" }
+                            { icon: Factory, text: texts.factoryDirect },
+                            { icon: Award, text: texts.isoCertified },
+                            { icon: ShieldCheck, text: texts.oneYearWarranty },
+                            { icon: Truck, text: texts.fastShipping }
                         ].map((item, idx) => (
                             <div key={idx} className="flex flex-col md:flex-row items-center justify-center gap-3 py-6 px-4 text-center md:text-left hover:bg-white/5 transition-colors">
                                 <item.icon className="w-6 h-6 text-blue-400" />
@@ -449,8 +449,8 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
             <section className="relative z-10 py-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Engineered for Durability</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Our internal architecture prioritizes thermal efficiency and component longevity.</p>
+                        <h2 className="text-3xl font-bold text-white mb-4">{texts.engineeredForDurability}</h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">{texts.engineeredForDurabilityDesc}</p>
                     </div>
 
                     <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 aspect-[16/9] md:aspect-[21/9] overflow-hidden shadow-2xl border border-white/10">
@@ -485,7 +485,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                              <span className="text-white font-semibold text-xs md:text-sm tracking-[0.25em] uppercase bg-black/60 backdrop-blur px-4 py-2 rounded border border-white/20">
-                                Internal Architecture Visualization
+                                {texts.internalArchitecture}
                              </span>
                         </div>
                     </div>
@@ -496,14 +496,15 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
             <section className="relative z-10 py-20 border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Quality Assurance Report</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Every unit undergoes rigorous stress testing before shipment.</p>
+                        <h2 className="text-3xl font-bold text-white mb-4">{texts.qualityAssuranceReport}</h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">{texts.qualityAssuranceReportDesc}</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {displayQualityTests.map((test, idx) => {
                           const Icon = getIconComponent(test.icon, ArrowDownToLine)
                           const status = (test.status || 'passed').toLowerCase()
+                          const statusLabel = status === 'passed' ? texts.passed : texts.failed
                           const statusStyles = status === 'passed'
                             ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                             : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
@@ -512,7 +513,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                               <div className="flex items-center justify-between mb-6">
                                 <Icon className="w-8 h-8 text-blue-400" />
                                 <span className={`px-2 py-1 text-xs font-bold uppercase rounded ${statusStyles}`}>
-                                  {status}
+                                  {statusLabel}
                                 </span>
                               </div>
                               <h3 className="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">{test.title}</h3>
@@ -532,9 +533,9 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-6">Your Brand, Our Hardware</h2>
+                            <h2 className="text-3xl font-bold text-white mb-6">{texts.yourBrandOurHardware}</h2>
                             <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                                We provide comprehensive OEM/ODM services to help you build your brand identity. From hardware to packaging, everything is customizable.
+                                {texts.yourBrandOurHardwareDesc}
                             </p>
 
                             <div className="space-y-6">
@@ -570,7 +571,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                         />
                                       ) : (
                                         <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-xs font-semibold uppercase tracking-wide">
-                                          Awaiting upload
+                                          {texts.awaitingUpload}
                                         </div>
                                       )}
                                     </div>
@@ -579,7 +580,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                             </div>
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <span className="bg-black/80 backdrop-blur px-6 py-3 rounded-full text-white font-bold shadow-lg border border-white/20">
-                                    OEM Services Available
+                                    {texts.oemServicesAvailable}
                                 </span>
                             </div>
                         </div>
@@ -594,10 +595,10 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                          <div className="text-center mb-16">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4 border border-blue-500/30">
                                 <FileText className="w-3.5 h-3.5" />
-                                Product Details
+                                {texts.productDetails}
                             </div>
                             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tight">
-                                {texts.overview || 'Product Overview'}
+                                {texts.overview}
                             </h2>
                             <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full opacity-50"></div>
                         </div>
@@ -621,7 +622,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                     <div className="mb-16">
                         <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
                             <Cpu className="w-6 h-6 text-blue-400" />
-                            Technical Specifications
+                            {texts.technicalSpecifications}
                         </h2>
                         <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
                              <table className="w-full text-left text-sm">
@@ -634,7 +635,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                                     ))}
                                     {keySpecs.length === 0 && (
                                         <tr>
-                                            <td className="p-8 text-center text-gray-500" colSpan={2}>No detailed specifications available.</td>
+                                            <td className="p-8 text-center text-gray-500" colSpan={2}>{texts.noSpecsAvailable}</td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -646,7 +647,7 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
                     <div>
                          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
                             <MessageSquare className="w-6 h-6 text-blue-400" />
-                            Frequently Asked Questions
+                            {texts.frequentlyAskedQuestions}
                         </h2>
                         <div className="space-y-4">
                             {displayFaqs.map((faq, idx) => (

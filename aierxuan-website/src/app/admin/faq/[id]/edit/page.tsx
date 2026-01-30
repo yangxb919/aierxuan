@@ -3,6 +3,7 @@ import { createSupabaseAdminClient } from '@/lib/supabase'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
 import FAQForm from '@/components/admin/FAQForm'
+import AdminShell from '@/components/admin/AdminShell'
 import { notFound } from 'next/navigation'
 
 interface FAQ {
@@ -75,30 +76,23 @@ export default async function AdminFAQEditPage({
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Edit FAQ</h1>
-              <p className="mt-1 text-sm text-gray-500">
-                Update FAQ content and settings
-              </p>
-            </div>
-            <Link href="/admin/faq">
-              <Button variant="outline">
-                ← Back to FAQ List
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      
-      {/* Form */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <AdminShell
+      user={user}
+      title="Edit FAQ"
+      subtitle="Update FAQ content and settings"
+      showSearch={false}
+      showNotifications={false}
+      headerActions={
+        <Link href="/admin/faq">
+          <Button variant="outline" size="sm">
+            ← Back to FAQ List
+          </Button>
+        </Link>
+      }
+    >
+      <div className="max-w-7xl mx-auto">
         <FAQForm mode="edit" faqId={id} initialData={formData} />
       </div>
-    </div>
+    </AdminShell>
   )
 }

@@ -12,8 +12,10 @@ interface NavbarProps {
     navigation: {
       home: string
       products: string
+      oem: string
       about: string
       blog: string
+      faq: string
       contact: string
     }
     common: {
@@ -37,15 +39,24 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
   const pathname = usePathname()
 
+  // Defensive: ensure `lang` is a valid locale (prevents hydration mismatch if an unexpected value is ever passed)
+  const safeLang = (() => {
+    const raw = String(lang || '')
+    const first = raw.split('/').filter(Boolean)[0] || i18n.defaultLocale
+    return (i18n.locales.includes(first as any) ? first : i18n.defaultLocale) as Locale
+  })()
+
   const navItems = [
-    { name: dictionary.navigation.home, href: `/${lang}` },
-    { name: dictionary.navigation.products, href: `/${lang}/products` },
-    { name: dictionary.navigation.about, href: `/${lang}/about` },
-    { name: dictionary.navigation.blog, href: `/${lang}/blog` },
-    { name: dictionary.navigation.contact, href: `/${lang}/contact` },
+    { name: dictionary.navigation.home, href: `/${safeLang}` },
+    { name: dictionary.navigation.products, href: `/${safeLang}/products` },
+    { name: dictionary.navigation.oem, href: `/${safeLang}/oem` },
+    { name: dictionary.navigation.about, href: `/${safeLang}/about` },
+    { name: dictionary.navigation.blog, href: `/${safeLang}/blog` },
+    { name: dictionary.navigation.faq, href: `/${safeLang}/faq` },
+    { name: dictionary.navigation.contact, href: `/${safeLang}/contact` },
   ]
 
-  const currentLanguage = languageOptions.find(l => l.code === lang) || languageOptions[0]
+  const currentLanguage = languageOptions.find(l => l.code === safeLang) || languageOptions[0]
 
   // Helper to get the path for a different language
   const getRedirectedPathName = (locale: string) => {
@@ -61,7 +72,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href={`/${lang}`} className="flex items-center">
+            <Link href={`/${safeLang}`} className="flex items-center">
               <div className="flex-shrink-0">
                 <span className="text-2xl font-bold text-blue-600">AIERXUAN</span>
               </div>
@@ -73,7 +84,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
@@ -103,7 +114,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                         key={option.code}
                         href={getRedirectedPathName(option.code)}
                         onClick={() => setLanguageMenuOpen(false)}
-                        className={`flex items-center space-x-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100 ${lang === option.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                        className={`flex items-center space-x-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100 ${safeLang === option.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
                           }`}
                       >
                         <span>{option.flag}</span>
@@ -116,7 +127,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
             </div>
 
             {/* CTA Button */}
-            <Link href={`/${lang}/contact`}>
+            <Link href={`/${safeLang}/contact`}>
               <Button size="sm">
                 {dictionary.common.getQuote}
               </Button>
@@ -146,7 +157,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3 border-t border-gray-200 mt-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
@@ -164,7 +175,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                       key={option.code}
                       href={getRedirectedPathName(option.code)}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm transition-colors ${lang === option.code
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm transition-colors ${safeLang === option.code
                           ? 'bg-blue-100 text-blue-600'
                           : 'text-gray-700 hover:bg-gray-100'
                         }`}
@@ -178,7 +189,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
 
               {/* Mobile CTA Button */}
               <div className="px-3 py-2">
-                <Link href={`/${lang}/contact`} className="block">
+                <Link href={`/${safeLang}/contact`} className="block">
                   <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>
                     {dictionary.common.getQuote}
                   </Button>

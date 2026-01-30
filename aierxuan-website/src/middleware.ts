@@ -43,16 +43,30 @@ export function middleware(request: NextRequest) {
 
         // e.g. incoming request is /products
         // The new URL is now /en/products
-        return NextResponse.redirect(
+        const response = NextResponse.redirect(
             new URL(
                 `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
                 request.url
             )
         )
+        // Set site_lang cookie for SSR html lang
+        response.cookies.set('site_lang', locale, { path: '/' })
+        return response
+    }
+
+    // Extract locale from pathname and set cookie
+    const localeMatch = pathname.match(/^\/([a-zA-Z-]+)/)
+    if (localeMatch) {
+        const locale = localeMatch[1]
+        if (i18n.locales.includes(locale as typeof i18n.locales[number])) {
+            const response = NextResponse.next()
+            response.cookies.set('site_lang', locale, { path: '/' })
+            return response
+        }
     }
 }
 
 export const config = {
-    // Matcher ignoring `/_next/`, `/api/`, `/admin`, static files, etc.
-    matcher: ['/((?!api|admin|_next/static|_next/image|images|uploads|favicon.ico|icon.svg).*)'],
+    // Matcher ignoring `/_next/`, `/api/`, `/admin`, static files, sitemap, robots, etc.
+    matcher: ['/((?!api|admin|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|sitemap.xml|robots.txt).*)'],
 }

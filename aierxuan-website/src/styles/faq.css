@@ -1,0 +1,11 @@
+/* FAQ Grid Layout */
+.faq-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .faq-grid {
+    grid-template-columns: 1fr 2fr;
+  }
+}

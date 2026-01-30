@@ -2,8 +2,10 @@
     "navigation": {
         "home": "Início",
         "products": "Produtos",
+        "oem": "OEM/ODM",
         "about": "Sobre",
         "blog": "Blog",
+        "faq": "FAQ",
         "contact": "Contato"
     },
     "common": {
@@ -575,5 +577,325 @@
                 "description": "Saiba mais sobre nossa empresa"
             }
         ]
+    },
+    "oem": {
+        "meta": {
+            "title": "Serviços de Fabricação OEM/ODM de Notebooks - AIERXUAN",
+            "description": "Serviços profissionais de fabricação OEM/ODM de notebooks e mini PCs. Personalização completa, MOQ flexível a partir de 100 unidades, entrega rápida em 7-15 dias. Solicite um orçamento hoje."
+        },
+        "hero": {
+            "badge": "Parceiro OEM/ODM · Certificado Intel · CE/FCC",
+            "title": "Seu parceiro OEM/ODM de confiança",
+            "subtitle": "Com mais de 10 anos de experiência em fabricação, a AIERXUAN fornece serviços profissionais de OEM/ODM de notebooks e mini PCs para marcas em todo o mundo.",
+            "cta": {
+                "primary": "Obter orçamento",
+                "secondary": "Baixar catálogo"
+            },
+            "stats": {
+                "experience": {
+                    "value": "10+",
+                    "label": "Anos de experiência"
+                },
+                "capacity": {
+                    "value": "50K+",
+                    "label": "Capacidade mensal"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Países exportados"
+                },
+                "delivery": {
+                    "value": "7-15",
+                    "label": "Dias de entrega"
+                }
+            }
+        },
+        "services": {
+            "title": "Serviços OEM & ODM",
+            "subtitle": "Oferecemos modelos de cooperação flexíveis adaptados às suas necessidades",
+            "oem": {
+                "title": "Serviço OEM",
+                "description": "Fabricação de acordo com seu design e especificações. Personalização completa para realizar a visão da sua marca.",
+                "features": [
+                    "Design totalmente personalizado",
+                    "Fabricação conforme suas especificações",
+                    "Identidade de marca única",
+                    "Desenvolvimento de moldes dedicados",
+                    "Opções de configuração flexíveis",
+                    "Suporte técnico dedicado"
+                ],
+                "bestFor": "Ideal para marcas com capacidade de P&D interna"
+            },
+            "odm": {
+                "title": "Serviço ODM",
+                "description": "Escolha entre nossos designs de produtos maduros e rotule-os com sua marca. Entrada rápida no mercado, baixo investimento inicial.",
+                "features": [
+                    "Designs de produtos maduros",
+                    "Entrada rápida no mercado",
+                    "Baixos custos de desenvolvimento",
+                    "MOQ flexível",
+                    "Personalização de marca",
+                    "Suporte técnico incluído"
+                ],
+                "bestFor": "Ideal para novas marcas que buscam entrada rápida no mercado"
+            }
+        },
+        "process": {
+            "title": "Processo de cooperação",
+            "subtitle": "Da ideia ao produto em 6 etapas simples e eficientes",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Consulta inicial",
+                    "description": "Entender suas necessidades, mercado-alvo e orçamento",
+                    "duration": "1-2 dias"
+                },
+                {
+                    "number": "02",
+                    "title": "Planejamento de design",
+                    "description": "Especificações técnicas, seleção de componentes, plano de produção",
+                    "duration": "3-5 dias"
+                },
+                {
+                    "number": "03",
+                    "title": "Confirmação de amostra",
+                    "description": "Produção de amostras, testes e modificações",
+                    "duration": "7-10 dias"
+                },
+                {
+                    "number": "04",
+                    "title": "Produção em massa",
+                    "description": "Produção completa com controle de qualidade",
+                    "duration": "7-15 dias"
+                },
+                {
+                    "number": "05",
+                    "title": "Inspeção de qualidade",
+                    "description": "Teste de estresse de 72h, inspeções múltiplas",
+                    "duration": "Incluído na produção"
+                },
+                {
+                    "number": "06",
+                    "title": "Entrega logística",
+                    "description": "Logística global, suporte pós-venda",
+                    "duration": "Conforme destino"
+                }
+            ]
+        },
+        "capabilities": {
+            "title": "Capacidades de produtos",
+            "subtitle": "Linha de produtos diversificada para atender a todas as necessidades",
+            "items": [
+                {
+                    "icon": "Briefcase",
+                    "title": "Notebooks empresariais",
+                    "description": "Notebooks empresariais confiáveis para corporações. Recursos de segurança, longa duração de bateria, design robusto."
+                },
+                {
+                    "icon": "Gamepad",
+                    "title": "Notebooks gaming",
+                    "description": "Notebooks gaming de alto desempenho. GPUs de última geração, telas de alta taxa de atualização, sistemas de resfriamento eficientes."
+                },
+                {
+                    "icon": "Monitor",
+                    "title": "Mini PCs",
+                    "description": "Mini PCs compactos e poderosos. Ideais para escritórios, sinalização digital, sistemas embarcados."
+                },
+                {
+                    "icon": "GraduationCap",
+                    "title": "Soluções educacionais",
+                    "description": "Notebooks duráveis para instituições educacionais. Fáceis de gerenciar, soluções econômicas."
+                },
+                {
+                    "icon": "Building",
+                    "title": "Soluções empresariais",
+                    "description": "Soluções personalizadas para grandes empresas. Implantação em massa, gerenciamento unificado, suporte dedicado."
+                },
+                {
+                    "icon": "Palette",
+                    "title": "Projetos especiais",
+                    "description": "Projetos personalizados para requisitos especiais. Industrial, médico, militar, etc."
+                }
+            ]
+        },
+        "certifications": {
+            "title": "Certificações e parceiros",
+            "subtitle": "Certificações internacionais e colaboração com parceiros tecnológicos de primeira linha",
+            "certs": {
+                "title": "Certificações",
+                "items": ["CE", "FCC", "RoHS", "ISO 9001", "ISO 14001"]
+            },
+            "partners": {
+                "title": "Parceiros tecnológicos",
+                "items": ["Intel", "AMD", "NVIDIA", "Microsoft", "Samsung", "SK Hynix"]
+            }
+        },
+        "cta": {
+            "title": "Comece sua cooperação OEM/ODM",
+            "subtitle": "Entre em contato agora. Nossa equipe de especialistas responderá em 24 horas.",
+            "button": "Obter orçamento",
+            "features": [
+                {
+                    "icon": "MessageCircle",
+                    "text": "Consulta gratuita"
+                },
+                {
+                    "icon": "Clock",
+                    "text": "Resposta em 24h"
+                },
+                {
+                    "icon": "Package",
+                    "text": "Amostras disponíveis"
+                },
+                {
+                    "icon": "DollarSign",
+                    "text": "Preços competitivos"
+                }
+            ]
+        }
+    },
+    "faq": {
+        "meta": {
+            "title": "Perguntas Frequentes - AIERXUAN",
+            "description": "Encontre respostas para perguntas comuns sobre fabricação de notebooks AIERXUAN, serviços OEM/ODM, MOQ, prazos de entrega e qualidade dos produtos."
+        },
+        "hero": {
+            "title": "Perguntas Frequentes",
+            "subtitle": "Compilamos as respostas para as perguntas mais frequentes de nossos clientes. Se você não encontrar o que procura, não hesite em nos contatar.",
+            "searchPlaceholder": "Pesquisar pergunta..."
+        },
+        "categories": [
+            {
+                "title": "Sobre a empresa",
+                "icon": "building",
+                "items": [
+                    {
+                        "question": "O que é a AIERXUAN?",
+                        "answer": "A AIERXUAN é um fabricante profissional de notebooks e mini PCs fundado em 2014, com sede em Shenzhen. Com mais de 10 anos de experiência e como parceiro certificado Intel, já enviamos mais de 500.000 produtos para todo o mundo."
+                    },
+                    {
+                        "question": "Qual é a capacidade de produção?",
+                        "answer": "Temos uma fábrica de 15.000 m², 6 linhas de produção, mais de 200 funcionários, com capacidade de produção mensal de mais de 50.000 unidades."
+                    },
+                    {
+                        "question": "Para quais países vocês enviam?",
+                        "answer": "Enviamos para mais de 50 países em todo o mundo. Nossos principais mercados são Rússia, Europa, Oriente Médio, Sudeste Asiático, etc."
+                    },
+                    {
+                        "question": "Quais certificações vocês têm?",
+                        "answer": "Obtivemos as certificações internacionais CE, FCC, RoHS, ISO 9001, ISO 14001."
+                    }
+                ]
+            },
+            {
+                "title": "Sobre os produtos",
+                "icon": "package",
+                "items": [
+                    {
+                        "question": "Que tipos de notebooks vocês fabricam?",
+                        "answer": "Fabricamos uma ampla gama de produtos: notebooks empresariais, gaming, ultrabooks, educacionais e mini PCs."
+                    },
+                    {
+                        "question": "Quais processadores vocês usam?",
+                        "answer": "Usamos toda a linha Intel (do Celeron ao Core i9) e as séries AMD Ryzen."
+                    },
+                    {
+                        "question": "Vocês podem personalizar as especificações?",
+                        "answer": "Sim, podemos personalizar RAM, armazenamento, tela, layout do teclado, cor do gabinete e muito mais."
+                    },
+                    {
+                        "question": "Vocês têm teclados em português?",
+                        "answer": "Sim, podemos personalizar qualquer layout de teclado, incluindo português brasileiro (ABNT2). A instalação do Windows em português também é possível."
+                    },
+                    {
+                        "question": "Qual é a política de garantia?",
+                        "answer": "Oferecemos garantia padrão de 12 meses. Extensão de garantia pode ser negociada."
+                    }
+                ]
+            },
+            {
+                "title": "Qualidade e testes",
+                "icon": "shield",
+                "items": [
+                    {
+                        "question": "Como vocês garantem a qualidade?",
+                        "answer": "Aplicamos controle de qualidade em 7 etapas: inspeção de recebimento → inspeção de montagem → teste de inicialização → envelhecimento de 72h → inspeção final → inspeção de embalagem → inspeção pré-embarque."
+                    },
+                    {
+                        "question": "O que inclui o teste de estresse de 72h?",
+                        "answer": "Inclui: operação em carga total, teste de temperatura, ciclos de bateria, teste de memória/armazenamento, teste de portas."
+                    },
+                    {
+                        "question": "O que fazer se eu receber um produto defeituoso?",
+                        "answer": "Entre em contato conosco em até 7 dias. Forneça fotos/vídeos e procederemos com substituição ou reparo sob garantia."
+                    },
+                    {
+                        "question": "A inspeção é possível?",
+                        "answer": "Sim, oferecemos: visita à fábrica, inspeção de terceiros (SGS, etc.), relatórios de fotos/vídeos."
+                    }
+                ]
+            },
+            {
+                "title": "Pedidos e logística",
+                "icon": "truck",
+                "items": [
+                    {
+                        "question": "Qual é o MOQ?",
+                        "answer": "O MOQ padrão é de 100 unidades. Amostras estão disponíveis a partir de 1-10 unidades. Pedidos acima de 1000 unidades têm preços especiais."
+                    },
+                    {
+                        "question": "Qual é o prazo de produção?",
+                        "answer": "Padrão: 7-15 dias úteis. Urgente: 3-5 dias possível."
+                    },
+                    {
+                        "question": "Quais são as opções de entrega?",
+                        "answer": "Transporte marítimo (20-35 dias), aéreo (3-7 dias), courier internacional (3-5 dias), ferroviário (para Europa/Rússia)."
+                    },
+                    {
+                        "question": "Quais são as formas de pagamento?",
+                        "answer": "30% de entrada + 70% antes do embarque. LC e crédito disponíveis para clientes regulares. Aceitamos T/T, Western Union, PayPal."
+                    },
+                    {
+                        "question": "Vocês podem ajudar com o desembaraço aduaneiro?",
+                        "answer": "Fornecemos todos os documentos de exportação. O desembaraço de importação é de responsabilidade do comprador."
+                    }
+                ]
+            },
+            {
+                "title": "Cooperação OEM/ODM",
+                "icon": "handshake",
+                "items": [
+                    {
+                        "question": "Qual é a diferença entre OEM e ODM?",
+                        "answer": "OEM: fabricamos de acordo com seu design. ODM: você escolhe nosso design existente e rotula com sua marca."
+                    },
+                    {
+                        "question": "Vocês podem imprimir nosso logo?",
+                        "answer": "Sim: impressão/gravação a laser do logo, teclado personalizado, embalagem personalizada, documentação personalizada, tela de inicialização personalizada."
+                    },
+                    {
+                        "question": "Como iniciar uma cooperação?",
+                        "answer": "6 etapas: Contato → Orçamento → Amostra → Confirmação de especificações → Pedido → Produção e entrega."
+                    },
+                    {
+                        "question": "Posso obter amostras primeiro?",
+                        "answer": "Sim, podemos fornecer 1-3 amostras ao preço de atacado + frete. Os custos de amostra são reembolsados para pedidos de 100+ unidades."
+                    },
+                    {
+                        "question": "Vocês oferecem exclusividade de distribuidor?",
+                        "answer": "Sim, a exclusividade pode ser negociada com base no volume de compras e parceria estratégica."
+                    }
+                ]
+            }
+        ],
+        "contact": {
+            "title": "Não encontrou sua resposta?",
+            "subtitle": "Não hesite em nos contatar. Nossa equipe de especialistas responderá em 24 horas.",
+            "contactButton": "Entre em contato",
+            "emailLabel": "Email",
+            "emailValue": "admin@aierxuanlaptop.com",
+            "phoneLabel": "Telefone",
+            "phoneValue": "+86 4008-8228-058"
+        }
     }
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/components/ui'
+import SecureAITranslationButton from '@/components/admin/SecureAITranslationButton'
 
 interface FAQTranslation {
   locale: string
@@ -69,6 +70,8 @@ export default function FAQForm({ initialData, faqId, mode }: FAQFormProps) {
   const currentTranslation = formData.translations.find(
     t => t.locale === currentLang
   ) || DEFAULT_TRANSLATION
+
+  const englishTranslation = formData.translations.find(t => t.locale === 'en') || DEFAULT_TRANSLATION
   
   const updateTranslation = (field: keyof FAQTranslation, value: string) => {
     setFormData(prev => ({
@@ -190,7 +193,47 @@ export default function FAQForm({ initialData, faqId, mode }: FAQFormProps) {
       <div className="bg-white rounded-lg shadow">
         <div className="border-b border-gray-200">
           <div className="px-6 py-4">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Content (Multi-language)</h2>
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h2 className="text-lg font-semibold text-gray-900">Content (Multi-language)</h2>
+              <div className="w-[260px] max-w-[55vw]">
+                <SecureAITranslationButton
+                  content={englishTranslation}
+                  contentType="faq"
+                  onTranslationComplete={(translations, results) => {
+                    const raw =
+                      Array.isArray(translations) && translations.length > 0
+                        ? translations
+                        : Array.isArray(results)
+                          ? results
+                              .filter((r: any) => r?.success && r?.content)
+                              .map((r: any) => r.content)
+                          : []
+
+                    const normalized = raw
+                      .map((item: any, idx: number) => {
+                        const locale = item?.locale || (Array.isArray(results) ? (results as any[])[idx]?.language : undefined)
+                        return {
+                          locale: locale || 'en',
+                          question: item?.question || '',
+                          answer: item?.answer || ''
+                        }
+                      })
+                      .filter((t: any) => t.locale && (t.question || t.answer))
+
+                    const byLocale = new Map<string, any>(normalized.map((t: any) => [t.locale, t]))
+
+                    setFormData(prev => ({
+                      ...prev,
+                      translations: prev.translations.map(t => {
+                        const next = byLocale.get(t.locale)
+                        return next ? { ...t, ...next } : t
+                      })
+                    }))
+                  }}
+                  disabled={!englishTranslation.question?.trim() || !englishTranslation.answer?.trim()}
+                />
+              </div>
+            </div>
             <div className="flex flex-wrap gap-2">
               {LANGUAGES.map(lang => (
                 <button
