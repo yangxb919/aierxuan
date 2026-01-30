@@ -137,16 +137,15 @@ export async function PATCH(
     const translationsToInsert = translations
       .filter(t => t.title || t.long_desc) // Only insert translations with content
       .map(t => {
-        // Map form fields to database column names (production schema uses locale/title/short_desc/long_desc)
+        // Map form fields to database column names
         const translation: any = {
           product_id: id,
-          locale: t.locale,
-          title: t.title,
-          short_desc: t.short_desc || '',
-          long_desc: t.long_desc,
-          key_specs: t.key_specs || {},
-          seo_title: t.seo_title || '',
-          seo_desc: t.seo_desc || '',
+          language_code: t.locale,
+          name: t.title,
+          short_description: t.short_desc || '',
+          description: t.long_desc,
+          specifications: t.key_specs || {},
+          meta_description: t.seo_desc || '',
           quality_tests: t.quality_tests || [],
           oem_services: t.oem_services || [],
           faqs: t.faqs || []

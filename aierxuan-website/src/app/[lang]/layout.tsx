@@ -1,21 +1,35 @@
 import type { Metadata } from 'next'
-import Head from 'next/head'
 import Script from 'next/script'
 import { ConditionalNavbar } from '@/components/layout/ConditionalNavbar'
 import { Footer } from '@/components/layout/Footer'
 import { ContactModalLazy } from '@/components/ui/ContactModalLazy'
 import { FloatingCTAButtonLazy } from '@/components/ui/FloatingCTAButtonLazy'
+import { TelegramFloatingButton } from '@/components/ui/TelegramFloatingButton'
 import { HtmlLangSetter } from '@/components/layout/HtmlLangSetter'
 import { i18n, type Locale } from '@/i18n-config'
 import { getDictionary } from '@/get-dictionary'
 
-export const metadata: Metadata = {
-  title: 'AIERXUAN - Professional Laptop & Mini PC Manufacturer',
-  description: 'Leading OEM/ODM manufacturer of high-performance laptops, gaming notebooks, and mini PCs. Custom solutions for global partners.',
-  keywords: 'laptop manufacturer, mini pc factory, oem laptop, odm notebook, gaming laptop supplier, shenzhen electronics',
-  icons: {
-    icon: '/icon.svg',
-  },
+const BASE_URL = 'https://aierxuanlaptop.com'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+
+  return {
+    title: 'AIERXUAN - Professional Laptop & Mini PC Manufacturer',
+    description: 'Leading OEM/ODM manufacturer of high-performance laptops, gaming notebooks, and mini PCs. Custom solutions for global partners.',
+    keywords: 'laptop manufacturer, mini pc factory, oem laptop, odm notebook, gaming laptop supplier, shenzhen electronics',
+    icons: {
+      icon: '/icon.svg',
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${lang}`,
+      languages: {
+        'x-default': `${BASE_URL}/en`,
+        'en': `${BASE_URL}/en`,
+        'ru': `${BASE_URL}/ru`,
+      },
+    },
+  }
 }
 
 export async function generateStaticParams() {
@@ -37,18 +51,6 @@ export default async function RootLayout({
   return (
     <>
       <HtmlLangSetter lang={lang} />
-      <Head>
-        {/* DNS 预取 */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        {/* 预连接关键域名 */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://vjllsepqgqkkxwnqikzi.supabase.co" />
-        {gtmId ? <link rel="preconnect" href="https://www.googletagmanager.com" /> : null}
-        {/* 预加载首屏关键图片 */}
-        <link rel="preload" href="/images/hero-banner.webp" as="image" type="image/webp" />
-      </Head>
 
       {/* Google Tag Manager - lazyOnload 策略 */}
       {gtmId ? (
@@ -84,6 +86,9 @@ export default async function RootLayout({
 
       {/* Floating CTA Button */}
       <FloatingCTAButtonLazy />
+
+      {/* Telegram Floating Button - 仅俄语页面显示 */}
+      <TelegramFloatingButton />
     </>
   );
 }

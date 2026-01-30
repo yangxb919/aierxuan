@@ -55,11 +55,17 @@ export interface UseSecureTranslationOptions {
   onProgress?: (state: TranslationState) => void
 }
 
+type ContentType = 'product' | 'blog' | 'faq'
+type TranslationOptions = {
+  languageConcurrency?: number
+}
+
 export function useSecureTranslation({
   onSuccess,
   onError,
   onProgress
 }: UseSecureTranslationOptions = {}) {
+  const runIdRef = useRef(0)
   const [translationState, setTranslationState] = useState<TranslationState>({
     isTranslating: false,
     currentStep: 0,
@@ -78,13 +84,19 @@ export function useSecureTranslation({
   const stateRef = useRef<TranslationState>(translationState)
 
   // keep an always-fresh snapshot for callbacks
-  const setStateAndSyncRef = (updater: (prev: TranslationState) => TranslationState) => {
+  const setStateAndSyncRef = useCallback((updater: (prev: TranslationState) => TranslationState) => {
     setTranslationState(prev => {
       const next = updater(prev)
       stateRef.current = next
       return next
     })
-  }
+  }, [])
+
+  // 从步骤ID获取当前语言
+  const getCurrentLanguageFromStep = useCallback((stepId: string): string => {
+    const match = stepId.match(/translate-(.+)/)
+    return match ? match[1] : ''
+  }, [])
 
   // 检查用户是否已登录（简单检查）
   const checkUserAuth = async (): Promise<void> => {
@@ -110,8 +122,9 @@ export function useSecureTranslation({
     if (abortControllerRef.current) {
       abortControllerRef.current.abort()
     }
+    abortControllerRef.current = null
 
-    setTranslationState({
+    const next: TranslationState = {
       isTranslating: false,
       currentStep: 0,
       totalSteps: 0,
@@ -123,11 +136,14 @@ export function useSecureTranslation({
       steps: [],
       results: [],
       errors: []
-    })
+    }
+    stateRef.current = next
+    setTranslationState(next)
   }, [])
 
   // 处理流数据
-  const handleStreamData = useCallback((data: any) => {
+  const handleStreamData = useCallback((runId: number, data: any) => {
+    if (runId !== runIdRef.current) return
     switch (data.type) {
       case 'init':
         setTranslationState(prev => ({
@@ -228,14 +244,16 @@ export function useSecureTranslation({
         onError?.(data.error)
         break
     }
-  }, [translationState, onSuccess, onError, onProgress])
+  }, [getCurrentLanguageFromStep, onSuccess, onError, onProgress, setStateAndSyncRef])
 
   // 使用fetch进行流式翻译
-  const startStreamTranslation = async (params: any) => {
+  const startStreamTranslation = async (params: any, runId: number) => {
+    if (runId !== runIdRef.current) return
     try {
       // allow cancel via AbortController
+      const controller = new AbortController()
       abortControllerRef.current?.abort()
-      abortControllerRef.current = new AbortController()
+      abortControllerRef.current = controller
 
       const response = await fetch('/api/admin/translate', {
         method: 'POST',
@@ -244,7 +262,7 @@ export function useSecureTranslation({
           'Accept': 'text/event-stream'
         },
         body: JSON.stringify(params),
-        signal: abortControllerRef.current.signal
+        signal: controller.signal
       })
 
       if (!response.ok) {
@@ -261,6 +279,11 @@ export function useSecureTranslation({
       let buffer = ''
 
       while (true) {
+        if (runId !== runIdRef.current) {
+          controller.abort()
+          try { await reader.cancel() } catch {}
+          return
+        }
         const { done, value } = await reader.read()
         if (done) break
 
@@ -272,7 +295,7 @@ export function useSecureTranslation({
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.substring(6))
-              handleStreamData(data)
+              handleStreamData(runId, data)
             } catch (parseError) {
               console.error('Failed to parse SSE data:', parseError)
             }
@@ -281,21 +304,25 @@ export function useSecureTranslation({
       }
 
     } catch (error) {
+      if (runId !== runIdRef.current) return
+      if ((error as any)?.name === 'AbortError' || abortControllerRef.current?.signal.aborted) return
       console.error('Stream translation failed:', error)
       // 如果流式请求失败，尝试普通API调用
-      await fallbackToNormalAPI(params)
+      await fallbackToNormalAPI(params, runId, abortControllerRef.current?.signal)
     }
   }
 
   // 备用API调用（当流式请求失败时）
-  const fallbackToNormalAPI = async (params: any) => {
+  const fallbackToNormalAPI = async (params: any, runId: number, signal?: AbortSignal) => {
+    if (runId !== runIdRef.current) return
     try {
       const response = await fetch('/api/admin/translate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(params)
+        body: JSON.stringify(params),
+        signal
       })
 
       if (!response.ok) {
@@ -323,6 +350,8 @@ export function useSecureTranslation({
       onSuccess?.(translations, data.results)
 
     } catch (error) {
+      if (runId !== runIdRef.current) return
+      if ((error as any)?.name === 'AbortError' || signal?.aborted) return
       const errorMessage = error instanceof Error ? error.message : '未知错误'
       setTranslationState(prev => ({
         ...prev,
@@ -341,26 +370,45 @@ export function useSecureTranslation({
   // 翻译产品
   const translateProduct = useCallback(async (
     englishContent: any,
-    targetLanguages: string[]
+    targetLanguages: string[],
+    options?: TranslationOptions
   ) => {
     return await translateContent({
       content: englishContent,
       targetLanguages,
       contentType: 'product',
-      sourceLanguage: 'en'
+      sourceLanguage: 'en',
+      languageConcurrency: options?.languageConcurrency
     })
   }, [])
 
   // 翻译博客
   const translateBlog = useCallback(async (
     englishContent: any,
-    targetLanguages: string[]
+    targetLanguages: string[],
+    options?: TranslationOptions
   ) => {
     return await translateContent({
       content: englishContent,
       targetLanguages,
       contentType: 'blog',
-      sourceLanguage: 'en'
+      sourceLanguage: 'en',
+      languageConcurrency: options?.languageConcurrency
+    })
+  }, [])
+
+  // 翻译 FAQ
+  const translateFAQ = useCallback(async (
+    englishContent: any,
+    targetLanguages: string[],
+    options?: TranslationOptions
+  ) => {
+    return await translateContent({
+      content: englishContent,
+      targetLanguages,
+      contentType: 'faq',
+      sourceLanguage: 'en',
+      languageConcurrency: options?.languageConcurrency
     })
   }, [])
 
@@ -368,10 +416,12 @@ export function useSecureTranslation({
   const translateContent = useCallback(async (params: {
     content: any
     targetLanguages: string[]
-    contentType: 'product' | 'blog'
+    contentType: ContentType
     sourceLanguage?: string
+    languageConcurrency?: number
   }) => {
     try {
+      const runId = ++runIdRef.current
       // 重置状态
       resetTranslation()
 
@@ -416,7 +466,7 @@ export function useSecureTranslation({
       })
 
       // 使用流式翻译
-      await startStreamTranslation(params)
+      await startStreamTranslation(params, runId)
 
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : '未知错误'
@@ -433,12 +483,6 @@ export function useSecureTranslation({
       onError?.(errorMessage)
     }
   }, [resetTranslation, getLanguageName, onError])
-
-  // 从步骤ID获取当前语言
-  const getCurrentLanguageFromStep = (stepId: string): string => {
-    const match = stepId.match(/translate-(.+)/)
-    return match ? match[1] : ''
-  }
 
   // 取消翻译
   const cancelTranslation = useCallback(() => {
@@ -465,6 +509,7 @@ export function useSecureTranslation({
   return {
     translateProduct,
     translateBlog,
+    translateFAQ,
     translationState,
     resetTranslation,
     cancelTranslation,

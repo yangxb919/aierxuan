@@ -2,8 +2,10 @@
     "navigation": {
         "home": "Accueil",
         "products": "Produits",
+        "oem": "OEM/ODM",
         "about": "À propos",
         "blog": "Blog",
+        "faq": "FAQ",
         "contact": "Contact"
     },
     "common": {
@@ -575,5 +577,325 @@
                 "description": "En savoir plus sur notre entreprise"
             }
         ]
+    },
+    "oem": {
+        "meta": {
+            "title": "Services de fabrication OEM/ODM d'ordinateurs portables - AIERXUAN",
+            "description": "Services professionnels de fabrication OEM/ODM d'ordinateurs portables et mini PC. Personnalisation complète, MOQ flexible à partir de 100 unités, livraison rapide en 7-15 jours. Demandez un devis aujourd'hui."
+        },
+        "hero": {
+            "badge": "Partenaire OEM/ODM · Certifié Intel · CE/FCC",
+            "title": "Votre partenaire OEM/ODM de confiance",
+            "subtitle": "Avec plus de 10 ans d'expérience en fabrication, AIERXUAN fournit des services professionnels OEM/ODM d'ordinateurs portables et mini PC aux marques du monde entier.",
+            "cta": {
+                "primary": "Obtenir un devis",
+                "secondary": "Télécharger le catalogue"
+            },
+            "stats": {
+                "experience": {
+                    "value": "10+",
+                    "label": "Années d'expérience"
+                },
+                "capacity": {
+                    "value": "50K+",
+                    "label": "Capacité mensuelle"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Pays exportés"
+                },
+                "delivery": {
+                    "value": "7-15",
+                    "label": "Jours de livraison"
+                }
+            }
+        },
+        "services": {
+            "title": "Services OEM & ODM",
+            "subtitle": "Nous proposons des modèles de coopération flexibles adaptés à vos besoins",
+            "oem": {
+                "title": "Service OEM",
+                "description": "Fabrication selon votre conception et vos spécifications. Personnalisation complète pour réaliser la vision de votre marque.",
+                "features": [
+                    "Conception entièrement personnalisée",
+                    "Fabrication selon vos spécifications",
+                    "Identité de marque unique",
+                    "Développement de moules dédiés",
+                    "Options de configuration flexibles",
+                    "Support technique dédié"
+                ],
+                "bestFor": "Idéal pour les marques avec capacité R&D interne"
+            },
+            "odm": {
+                "title": "Service ODM",
+                "description": "Choisissez parmi nos conceptions de produits matures et étiquetez-les avec votre marque. Mise sur le marché rapide, faible investissement initial.",
+                "features": [
+                    "Conceptions de produits matures",
+                    "Mise sur le marché rapide",
+                    "Faibles coûts de développement",
+                    "MOQ flexible",
+                    "Personnalisation de marque",
+                    "Support technique inclus"
+                ],
+                "bestFor": "Idéal pour les nouvelles marques visant une entrée rapide sur le marché"
+            }
+        },
+        "process": {
+            "title": "Processus de coopération",
+            "subtitle": "De l'idée au produit en 6 étapes simples et efficaces",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Consultation initiale",
+                    "description": "Comprendre vos besoins, marché cible et budget",
+                    "duration": "1-2 jours"
+                },
+                {
+                    "number": "02",
+                    "title": "Planification de conception",
+                    "description": "Spécifications techniques, sélection des composants, plan de production",
+                    "duration": "3-5 jours"
+                },
+                {
+                    "number": "03",
+                    "title": "Confirmation d'échantillon",
+                    "description": "Production d'échantillons, tests et modifications",
+                    "duration": "7-10 jours"
+                },
+                {
+                    "number": "04",
+                    "title": "Production en série",
+                    "description": "Production complète avec contrôle qualité",
+                    "duration": "7-15 jours"
+                },
+                {
+                    "number": "05",
+                    "title": "Inspection qualité",
+                    "description": "Test de stress 72h, inspections multiples",
+                    "duration": "Inclus dans la production"
+                },
+                {
+                    "number": "06",
+                    "title": "Livraison logistique",
+                    "description": "Logistique mondiale, support après-vente",
+                    "duration": "Selon destination"
+                }
+            ]
+        },
+        "capabilities": {
+            "title": "Capacités produits",
+            "subtitle": "Gamme de produits diversifiée pour répondre à tous les besoins",
+            "items": [
+                {
+                    "icon": "Briefcase",
+                    "title": "Ordinateurs portables professionnels",
+                    "description": "Ordinateurs portables professionnels fiables pour entreprises. Fonctions de sécurité, longue autonomie, conception robuste."
+                },
+                {
+                    "icon": "Gamepad",
+                    "title": "Ordinateurs portables gaming",
+                    "description": "Ordinateurs portables gaming haute performance. GPU dernière génération, écrans haute fréquence, systèmes de refroidissement efficaces."
+                },
+                {
+                    "icon": "Monitor",
+                    "title": "Mini PC",
+                    "description": "Mini PC compacts et puissants. Idéaux pour bureaux, affichage numérique, systèmes embarqués."
+                },
+                {
+                    "icon": "GraduationCap",
+                    "title": "Solutions éducatives",
+                    "description": "Ordinateurs portables durables pour établissements éducatifs. Faciles à gérer, solutions économiques."
+                },
+                {
+                    "icon": "Building",
+                    "title": "Solutions entreprise",
+                    "description": "Solutions personnalisées pour grandes entreprises. Déploiement en masse, gestion unifiée, support dédié."
+                },
+                {
+                    "icon": "Palette",
+                    "title": "Projets spéciaux",
+                    "description": "Projets personnalisés pour exigences spéciales. Industriel, médical, militaire, etc."
+                }
+            ]
+        },
+        "certifications": {
+            "title": "Certifications et partenaires",
+            "subtitle": "Certifications internationales et collaboration avec des partenaires technologiques de premier plan",
+            "certs": {
+                "title": "Certifications",
+                "items": ["CE", "FCC", "RoHS", "ISO 9001", "ISO 14001"]
+            },
+            "partners": {
+                "title": "Partenaires technologiques",
+                "items": ["Intel", "AMD", "NVIDIA", "Microsoft", "Samsung", "SK Hynix"]
+            }
+        },
+        "cta": {
+            "title": "Commencez votre coopération OEM/ODM",
+            "subtitle": "Contactez-nous maintenant. Notre équipe d'experts vous répondra dans les 24 heures.",
+            "button": "Obtenir un devis",
+            "features": [
+                {
+                    "icon": "MessageCircle",
+                    "text": "Consultation gratuite"
+                },
+                {
+                    "icon": "Clock",
+                    "text": "Réponse sous 24h"
+                },
+                {
+                    "icon": "Package",
+                    "text": "Échantillons disponibles"
+                },
+                {
+                    "icon": "DollarSign",
+                    "text": "Prix compétitifs"
+                }
+            ]
+        }
+    },
+    "faq": {
+        "meta": {
+            "title": "Questions fréquentes - AIERXUAN",
+            "description": "Trouvez les réponses aux questions courantes sur la fabrication d'ordinateurs portables AIERXUAN, les services OEM/ODM, MOQ, délais de livraison et qualité des produits."
+        },
+        "hero": {
+            "title": "Questions fréquentes",
+            "subtitle": "Nous avons compilé les réponses aux questions les plus fréquemment posées par nos clients. Si vous ne trouvez pas ce que vous cherchez, n'hésitez pas à nous contacter.",
+            "searchPlaceholder": "Rechercher une question..."
+        },
+        "categories": [
+            {
+                "title": "À propos de l'entreprise",
+                "icon": "building",
+                "items": [
+                    {
+                        "question": "Qu'est-ce qu'AIERXUAN ?",
+                        "answer": "AIERXUAN est un fabricant professionnel d'ordinateurs portables et mini PC fondé en 2014, basé à Shenzhen. Avec plus de 10 ans d'expérience et en tant que partenaire certifié Intel, nous avons expédié plus de 500 000 produits dans le monde entier."
+                    },
+                    {
+                        "question": "Quelle est votre capacité de production ?",
+                        "answer": "Nous disposons d'une usine de 15 000 m², 6 lignes de production, plus de 200 employés, avec une capacité de production mensuelle de plus de 50 000 unités."
+                    },
+                    {
+                        "question": "Dans quels pays expédiez-vous ?",
+                        "answer": "Nous expédions dans plus de 50 pays dans le monde. Nos principaux marchés sont la Russie, l'Europe, le Moyen-Orient, l'Asie du Sud-Est, etc."
+                    },
+                    {
+                        "question": "Quelles certifications avez-vous ?",
+                        "answer": "Nous avons obtenu les certifications internationales CE, FCC, RoHS, ISO 9001, ISO 14001."
+                    }
+                ]
+            },
+            {
+                "title": "À propos des produits",
+                "icon": "package",
+                "items": [
+                    {
+                        "question": "Quels types d'ordinateurs portables fabriquez-vous ?",
+                        "answer": "Nous fabriquons une large gamme de produits : ordinateurs portables professionnels, gaming, ultrabooks, éducatifs, et mini PC."
+                    },
+                    {
+                        "question": "Quels processeurs utilisez-vous ?",
+                        "answer": "Nous utilisons toute la gamme Intel (du Celeron au Core i9) et les séries AMD Ryzen."
+                    },
+                    {
+                        "question": "Pouvez-vous personnaliser les spécifications ?",
+                        "answer": "Oui, nous pouvons personnaliser la RAM, le stockage, l'écran, la disposition du clavier, la couleur du boîtier, et bien plus encore."
+                    },
+                    {
+                        "question": "Avez-vous des claviers AZERTY français ?",
+                        "answer": "Oui, nous pouvons personnaliser n'importe quelle disposition de clavier, y compris AZERTY français. L'installation de Windows en français est également possible."
+                    },
+                    {
+                        "question": "Quelle est votre politique de garantie ?",
+                        "answer": "Nous offrons une garantie standard de 12 mois. Une extension de garantie peut être négociée."
+                    }
+                ]
+            },
+            {
+                "title": "Qualité et tests",
+                "icon": "shield",
+                "items": [
+                    {
+                        "question": "Comment garantissez-vous la qualité ?",
+                        "answer": "Nous appliquons un contrôle qualité en 7 étapes : inspection à réception → inspection d'assemblage → test de démarrage → vieillissement 72h → inspection finale → inspection d'emballage → inspection avant expédition."
+                    },
+                    {
+                        "question": "Que comprend le test de stress 72h ?",
+                        "answer": "Il comprend : fonctionnement à pleine charge, test de température, cycles de batterie, test mémoire/stockage, test des ports."
+                    },
+                    {
+                        "question": "Que faire si je reçois un produit défectueux ?",
+                        "answer": "Contactez-nous dans les 7 jours. Fournissez des photos/vidéos et nous procéderons au remplacement ou à la réparation sous garantie."
+                    },
+                    {
+                        "question": "L'inspection est-elle possible ?",
+                        "answer": "Oui, nous proposons : visite d'usine, inspection tierce (SGS, etc.), rapports photo/vidéo."
+                    }
+                ]
+            },
+            {
+                "title": "Commandes et logistique",
+                "icon": "truck",
+                "items": [
+                    {
+                        "question": "Quel est le MOQ ?",
+                        "answer": "Le MOQ standard est de 100 unités. Les échantillons sont disponibles à partir de 1-10 unités. Les commandes de plus de 1000 unités bénéficient de prix spéciaux."
+                    },
+                    {
+                        "question": "Quel est le délai de production ?",
+                        "answer": "Standard : 7-15 jours ouvrables. Urgent : 3-5 jours possible."
+                    },
+                    {
+                        "question": "Quelles sont les options de livraison ?",
+                        "answer": "Transport maritime (20-35 jours), aérien (3-7 jours), express international (3-5 jours), ferroviaire (vers Europe/Russie)."
+                    },
+                    {
+                        "question": "Quels sont les modes de paiement ?",
+                        "answer": "30% d'acompte + 70% avant expédition. LC et crédit disponibles pour clients réguliers. Nous acceptons T/T, Western Union, PayPal."
+                    },
+                    {
+                        "question": "Pouvez-vous aider avec le dédouanement ?",
+                        "answer": "Nous fournissons tous les documents d'exportation. Le dédouanement à l'importation est de la responsabilité de l'acheteur."
+                    }
+                ]
+            },
+            {
+                "title": "Coopération OEM/ODM",
+                "icon": "handshake",
+                "items": [
+                    {
+                        "question": "Quelle est la différence entre OEM et ODM ?",
+                        "answer": "OEM : nous fabriquons selon votre conception. ODM : vous choisissez notre conception existante et l'étiquetez avec votre marque."
+                    },
+                    {
+                        "question": "Pouvez-vous imprimer notre logo ?",
+                        "answer": "Oui : impression/gravure laser du logo, clavier personnalisé, emballage personnalisé, documentation personnalisée, écran de démarrage personnalisé."
+                    },
+                    {
+                        "question": "Comment démarrer une coopération ?",
+                        "answer": "6 étapes : Contact → Devis → Échantillon → Confirmation des spécifications → Commande → Production et livraison."
+                    },
+                    {
+                        "question": "Puis-je obtenir des échantillons d'abord ?",
+                        "answer": "Oui, nous pouvons fournir 1-3 échantillons au prix de gros + frais de port. Les frais d'échantillon sont remboursés pour les commandes de 100+ unités."
+                    },
+                    {
+                        "question": "Proposez-vous l'exclusivité distributeur ?",
+                        "answer": "Oui, l'exclusivité peut être négociée en fonction du volume d'achat et du partenariat stratégique."
+                    }
+                ]
+            }
+        ],
+        "contact": {
+            "title": "Vous n'avez pas trouvé votre réponse ?",
+            "subtitle": "N'hésitez pas à nous contacter. Notre équipe d'experts vous répondra dans les 24 heures.",
+            "contactButton": "Nous contacter",
+            "emailLabel": "Email",
+            "emailValue": "admin@aierxuanlaptop.com",
+            "phoneLabel": "Téléphone",
+            "phoneValue": "+86 4008-8228-058"
+        }
     }
 }

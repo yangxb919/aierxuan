@@ -2,8 +2,10 @@
     "navigation": {
         "home": "Home",
         "products": "Products",
+        "oem": "OEM/ODM",
         "about": "About",
         "blog": "Blog",
+        "faq": "FAQ",
         "contact": "Contact"
     },
     "common": {
@@ -471,7 +473,13 @@
             "business": "Business Laptops",
             "gaming": "Gaming Laptops",
             "mini": "Mini PCs",
-            "all": "All"
+            "all": "All",
+            "badge": "OEM/ODM Solutions Available",
+            "stats": {
+                "productModels": "Product Models",
+                "moqUnits": "MOQ Units",
+                "daysDelivery": "Days Delivery"
+            }
         },
         "grid": {
             "noDescription": "No description available",
@@ -505,12 +513,42 @@
             "productImages": "Product Images",
             "noDescription": "No description available",
             "features": "Features",
-            "overview": "Overview",
+            "overview": "Product Overview",
             "moq": "MOQ",
             "price": "Price",
             "units": "units",
             "pricePerUnit": "per unit",
-            "startingFrom": "Starting from"
+            "startingFrom": "Starting from",
+            "breadcrumbProducts": "Products",
+            "newArrival": "New Arrival",
+            "keyIndustrialSpecs": "Key Industrial Specs",
+            "detailedSpecsBelow": "Detailed specs available below",
+            "negotiable": "Negotiable",
+            "inquireWholesale": "Inquire for Wholesale Price",
+            "downloadSpecSheet": "Download Spec Sheet (PDF)",
+            "specSheetComingSoon": "Spec sheet coming soon",
+            "minimumOrderQuantity": "Minimum Order Quantity",
+            "globalShippingAvailable": "Global Shipping Available",
+            "factoryDirect": "Factory Direct",
+            "isoCertified": "ISO Certified",
+            "oneYearWarranty": "1-Year Warranty",
+            "fastShipping": "Fast Shipping",
+            "engineeredForDurability": "Engineered for Durability",
+            "engineeredForDurabilityDesc": "Our internal architecture prioritizes thermal efficiency and component longevity.",
+            "internalArchitecture": "Internal Architecture Visualization",
+            "qualityAssuranceReport": "Quality Assurance Report",
+            "qualityAssuranceReportDesc": "Every unit undergoes rigorous stress testing before shipment.",
+            "passed": "Passed",
+            "failed": "Failed",
+            "yourBrandOurHardware": "Your Brand, Our Hardware",
+            "yourBrandOurHardwareDesc": "We provide comprehensive OEM/ODM services to help you build your brand identity. From hardware to packaging, everything is customizable.",
+            "oemServicesAvailable": "OEM Services Available",
+            "awaitingUpload": "Awaiting upload",
+            "productDetails": "Product Details",
+            "technicalSpecifications": "Technical Specifications",
+            "noSpecsAvailable": "No detailed specifications available.",
+            "frequentlyAskedQuestions": "Frequently Asked Questions",
+            "zoomView": "Zoom View"
         }
     },
     "footer": {
@@ -738,5 +776,321 @@
                 "description": "Learn more about our company"
             }
         ]
+    },
+    "oem": {
+        "meta": {
+            "title": "OEM/ODM Laptop Manufacturing Services - AIERXUAN",
+            "description": "Professional OEM/ODM laptop and mini PC manufacturing services. Custom branding, flexible MOQ from 300 units, fast 15-25 day delivery. CE/FCC/RoHS certified.",
+            "keywords": "OEM laptop manufacturer, ODM laptop factory, custom laptop manufacturing, white label laptop, private label notebook"
+        },
+        "hero": {
+            "badge": "OEM/ODM Partner · Intel Certified · CE/FCC",
+            "title": "Your Trusted OEM/ODM Partner",
+            "subtitle": "From Design to Delivery, We Build Your Brand",
+            "description": "AIERXUAN provides comprehensive OEM/ODM manufacturing services for laptops, gaming notebooks, and mini PCs. With 10+ years of experience and 500,000+ units shipped globally, we help brands turn ideas into reality.",
+            "ctaQuote": "Get Custom Quote",
+            "ctaCatalog": "View Product Catalog",
+            "stats": {
+                "experience": {
+                    "value": "10+",
+                    "label": "Years Experience"
+                },
+                "capacity": {
+                    "value": "50K+",
+                    "label": "Monthly Capacity"
+                },
+                "countries": {
+                    "value": "50+",
+                    "label": "Countries Served"
+                },
+                "leadTime": {
+                    "value": "15-25",
+                    "label": "Days Lead Time"
+                }
+            }
+        },
+        "services": {
+            "title": "OEM vs ODM Services",
+            "subtitle": "Choose the partnership model that fits your business needs",
+            "oem": {
+                "title": "OEM Manufacturing",
+                "description": "We manufacture products based on your exact specifications and design. You provide the product design, we handle the manufacturing with your branding.",
+                "features": [
+                    "Your design, our manufacturing expertise",
+                    "Custom logo, packaging, and branding",
+                    "Pre-installed software and configurations",
+                    "Strict quality control to your standards",
+                    "Full technical support and documentation"
+                ],
+                "moq": "MOQ: 300 units"
+            },
+            "odm": {
+                "title": "ODM Solutions",
+                "description": "We design and manufacture products that you sell under your brand. Choose from our proven designs and customize to your specifications.",
+                "features": [
+                    "Ready-to-market product designs",
+                    "Hardware customization options",
+                    "Flexible configuration choices",
+                    "Faster time-to-market",
+                    "Lower R&D investment required"
+                ],
+                "moq": "MOQ: 500 units"
+            }
+        },
+        "process": {
+            "title": "Cooperation Process",
+            "subtitle": "A streamlined 6-step process from initial inquiry to final delivery",
+            "steps": [
+                {
+                    "title": "Initial Consultation",
+                    "description": "Share your requirements, target market, and specifications. Our team will analyze and provide recommendations.",
+                    "duration": "1-2 Days"
+                },
+                {
+                    "title": "Solution Design",
+                    "description": "We create detailed technical proposals, including hardware specs, customization options, and pricing structure.",
+                    "duration": "3-5 Days"
+                },
+                {
+                    "title": "Sample Production",
+                    "description": "We produce samples for your approval. You can test functionality, quality, and branding implementation.",
+                    "duration": "7-15 Days"
+                },
+                {
+                    "title": "Quality Confirmation",
+                    "description": "Review samples, provide feedback, and confirm final specifications. We iterate until you're satisfied.",
+                    "duration": "3-7 Days"
+                },
+                {
+                    "title": "Mass Production",
+                    "description": "Full-scale manufacturing with rigorous quality control at every stage. Real-time progress updates available.",
+                    "duration": "15-25 Days"
+                },
+                {
+                    "title": "Delivery & Support",
+                    "description": "Global shipping with tracking. Comprehensive after-sales support and warranty service.",
+                    "duration": "5-10 Days"
+                }
+            ]
+        },
+        "capabilities": {
+            "title": "Product Categories",
+            "subtitle": "Comprehensive range of computing products for OEM/ODM customization",
+            "categories": [
+                {
+                    "name": "Business Laptops",
+                    "description": "Professional laptops for enterprise and education",
+                    "specs": ["14-15.6 inch", "Intel Core i3-i9", "8-64GB RAM"]
+                },
+                {
+                    "name": "Gaming Laptops",
+                    "description": "High-performance gaming notebooks",
+                    "specs": ["15.6-17.3 inch", "RTX Graphics", "144Hz Display"]
+                },
+                {
+                    "name": "Mini PCs",
+                    "description": "Compact desktops for various applications",
+                    "specs": ["Intel/AMD", "Fanless Option", "VESA Mount"]
+                },
+                {
+                    "name": "2-in-1 Devices",
+                    "description": "Convertible laptops and tablets",
+                    "specs": ["Touchscreen", "360° Hinge", "Stylus Support"]
+                },
+                {
+                    "name": "Rugged Devices",
+                    "description": "Industrial-grade computing solutions",
+                    "specs": ["IP65 Rated", "MIL-STD", "Wide Temp Range"]
+                },
+                {
+                    "name": "Custom Solutions",
+                    "description": "Bespoke designs for unique requirements",
+                    "specs": ["Custom Design", "Full R&D", "Certification Support"]
+                }
+            ]
+        },
+        "certifications": {
+            "title": "Quality & Certifications",
+            "subtitle": "International certifications ensuring product quality and market compliance",
+            "certifications": [
+                {
+                    "name": "CE Certification",
+                    "description": "European market compliance"
+                },
+                {
+                    "name": "FCC Certification",
+                    "description": "US market compliance"
+                },
+                {
+                    "name": "RoHS Compliant",
+                    "description": "Hazardous substances restriction"
+                },
+                {
+                    "name": "ISO 9001",
+                    "description": "Quality management system"
+                },
+                {
+                    "name": "ISO 14001",
+                    "description": "Environmental management"
+                },
+                {
+                    "name": "UL Listed",
+                    "description": "Product safety certification"
+                }
+            ],
+            "partners": {
+                "title": "Technology Partners",
+                "items": ["Intel", "AMD", "NVIDIA", "Microsoft", "Samsung", "SK Hynix"]
+            }
+        },
+        "cta": {
+            "title": "Ready to Start Your OEM/ODM Project?",
+            "subtitle": "Get a custom quote within 24 hours. Our team is ready to help you build your brand.",
+            "primaryCta": "Request Quote",
+            "secondaryCta": "View Products",
+            "features": [
+                "Free consultation",
+                "Custom branding",
+                "Global shipping",
+                "After-sales support"
+            ]
+        }
+    },
+    "faq": {
+        "meta": {
+            "title": "FAQ - Frequently Asked Questions | AIERXUAN",
+            "description": "Find answers to common questions about AIERXUAN's OEM/ODM laptop manufacturing services, MOQ, lead times, payment terms, and quality control.",
+            "keywords": "laptop manufacturer FAQ, OEM FAQ, ODM questions, custom laptop order, wholesale laptop"
+        },
+        "hero": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "Find answers to common questions about our OEM/ODM manufacturing services",
+            "searchPlaceholder": "Search for answers..."
+        },
+        "categories": [
+            {
+                "title": "Company & Qualifications",
+                "icon": "building",
+                "items": [
+                    {
+                        "question": "How long has AIERXUAN been in business?",
+                        "answer": "AIERXUAN was established in 2014, giving us over 10 years of experience in laptop and mini PC manufacturing. We have shipped more than 500,000 units to customers in 50+ countries worldwide."
+                    },
+                    {
+                        "question": "What certifications do your products have?",
+                        "answer": "Our products are certified with CE (European), FCC (US), RoHS, and UL certifications. Our manufacturing facility is ISO 9001 and ISO 14001 certified, ensuring quality management and environmental compliance."
+                    },
+                    {
+                        "question": "Are you an Intel authorized partner?",
+                        "answer": "Yes, we have been an Intel China Channel Partner since 2019. This partnership ensures we have access to the latest Intel processors and technology support for our products."
+                    },
+                    {
+                        "question": "Can I visit your factory?",
+                        "answer": "Absolutely! We welcome factory visits from potential partners. Our 15,000㎡ facility in Shenzhen includes production lines, testing labs, and R&D center. Please contact us to arrange a visit."
+                    }
+                ]
+            },
+            {
+                "title": "Products & Customization",
+                "icon": "package",
+                "items": [
+                    {
+                        "question": "What products can you manufacture?",
+                        "answer": "We manufacture business laptops (14-15.6 inch), gaming laptops (15.6-17.3 inch), mini PCs, 2-in-1 convertibles, and rugged industrial devices. We can customize specifications including CPU, RAM, storage, display, and more."
+                    },
+                    {
+                        "question": "What's the difference between OEM and ODM?",
+                        "answer": "OEM (Original Equipment Manufacturing) means we manufacture products based on your designs. ODM (Original Design Manufacturing) means we provide ready-to-market designs that you can customize and rebrand. Both options allow full branding customization."
+                    },
+                    {
+                        "question": "Can you pre-install our software?",
+                        "answer": "Yes, we offer complete software customization including OS installation (Windows/Linux), driver optimization, and pre-installation of your proprietary software. We also support custom BIOS logos and boot screens."
+                    },
+                    {
+                        "question": "What customization options are available?",
+                        "answer": "We offer full customization including: custom logo printing/engraving, packaging design, color options, hardware configurations, software pre-installation, keyboard layouts, and more. Our team will work with you to meet your exact specifications."
+                    }
+                ]
+            },
+            {
+                "title": "Quality & Testing",
+                "icon": "shield",
+                "items": [
+                    {
+                        "question": "What quality control processes do you have?",
+                        "answer": "We implement a rigorous 7-step quality control process: incoming material inspection, component assembly check, power-on testing, 72-hour burn-in test, final quality inspection, packaging quality check, and pre-shipment verification."
+                    },
+                    {
+                        "question": "What is burn-in testing?",
+                        "answer": "Burn-in testing runs each device continuously for 72 hours under stress conditions to identify any potential hardware failures before shipping. This ensures reliability and reduces DOA (Dead on Arrival) rates."
+                    },
+                    {
+                        "question": "What's your defect rate?",
+                        "answer": "Our defect rate is less than 0.5%, significantly below the industry average. This is achieved through strict component sourcing, comprehensive testing, and continuous quality improvement processes."
+                    },
+                    {
+                        "question": "Do you provide warranty?",
+                        "answer": "Yes, we provide a standard 1-year warranty for all products. Extended warranty options are available. We also offer RMA (Return Merchandise Authorization) support and spare parts supply for after-sales service."
+                    }
+                ]
+            },
+            {
+                "title": "Orders & Logistics",
+                "icon": "truck",
+                "items": [
+                    {
+                        "question": "What is the minimum order quantity (MOQ)?",
+                        "answer": "Our standard MOQ is 300 units for OEM orders and 500 units for ODM orders. For sample orders, we can provide 1-10 units for testing and evaluation before placing bulk orders."
+                    },
+                    {
+                        "question": "What are the lead times?",
+                        "answer": "Lead times depend on order size: Samples take 7-15 days, standard orders (under 1000 units) take 15-25 days, and large orders (1000+ units) take 25-45 days. Rush orders can be accommodated with advance notice."
+                    },
+                    {
+                        "question": "What payment terms do you accept?",
+                        "answer": "We accept T/T (bank transfer), L/C (Letter of Credit), and PayPal. Standard terms are 30% deposit upon order confirmation and 70% balance before shipment. Flexible payment terms available for established partners."
+                    },
+                    {
+                        "question": "Do you ship worldwide?",
+                        "answer": "Yes, we ship to 50+ countries worldwide. We support various shipping methods including sea freight, air freight, and express delivery (DHL, FedEx, UPS). Door-to-door delivery available for most destinations."
+                    },
+                    {
+                        "question": "Can you handle customs and import documentation?",
+                        "answer": "We provide all necessary export documentation including commercial invoice, packing list, certificate of origin, and product certifications. We can also assist with customs clearance procedures and import requirements."
+                    }
+                ]
+            },
+            {
+                "title": "Partnership & Support",
+                "icon": "handshake",
+                "items": [
+                    {
+                        "question": "How do I start working with AIERXUAN?",
+                        "answer": "Simply contact us through our website or email with your requirements. Our sales team will arrange a consultation call to understand your needs, provide recommendations, and send you a detailed quotation within 24 hours."
+                    },
+                    {
+                        "question": "Do you offer exclusive distribution agreements?",
+                        "answer": "Yes, we can arrange exclusive distribution agreements for specific regions or product lines. This includes guaranteed pricing, priority production scheduling, and dedicated support. Contact us to discuss partnership opportunities."
+                    },
+                    {
+                        "question": "What after-sales support do you provide?",
+                        "answer": "We provide comprehensive after-sales support including technical assistance, warranty service, RMA processing, spare parts supply, and firmware/driver updates. Our support team is available via email, phone, and WhatsApp."
+                    },
+                    {
+                        "question": "Can you provide product training?",
+                        "answer": "Yes, we offer product training for your sales and technical teams. This includes product specifications, feature demonstrations, troubleshooting guides, and competitive positioning. Training can be conducted online or at our facility."
+                    }
+                ]
+            }
+        ],
+        "contact": {
+            "title": "Still Have Questions?",
+            "subtitle": "Our team is ready to help you with any additional inquiries",
+            "contactButton": "Contact Our Team",
+            "emailLabel": "Email",
+            "emailValue": "admin@aierxuanlaptop.com",
+            "phoneLabel": "Phone",
+            "phoneValue": "+86 4008-8228-058"
+        }
     }
 }

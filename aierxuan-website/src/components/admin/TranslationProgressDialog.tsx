@@ -68,6 +68,8 @@ export default function TranslationProgressDialog({
 
   const successCount = state.results.filter(r => r.success).length
   const errorCount = state.results.length - successCount
+  const translateSteps = state.steps.filter(s => s.id.startsWith('translate-'))
+  const completedTranslateSteps = translateSteps.filter(s => s.status === 'completed' || s.status === 'error')
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -131,7 +133,7 @@ export default function TranslationProgressDialog({
           </div>
           <div className="flex justify-between text-xs text-gray-500 mt-2">
             <span>已用时间: {getElapsedTime()}</span>
-            <span>步骤: {state.currentStep + 1}/{state.totalSteps}</span>
+            <span>语言: {completedTranslateSteps.length}/{translateSteps.length}</span>
           </div>
         </div>
 

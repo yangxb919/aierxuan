@@ -15,7 +15,7 @@ interface ProductsClientProps {
             business: string
             gaming: string
             mini: string
-            [key: string]: string
+            [key: string]: string | { [key: string]: string }
         }
         grid: any
         advantages: any

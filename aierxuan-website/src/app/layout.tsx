@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { cookies } from 'next/headers'
 import './globals.css'
+import YandexMetrica from '@/components/YandexMetrica'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,14 +16,18 @@ export const metadata: Metadata = {
   description: 'AIERXUAN Global Manufacturing Platform',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = await cookies()
+  const siteLang = cookieStore.get('site_lang')?.value || 'en'
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={siteLang} suppressHydrationWarning>
       <body className={inter.className}>
+        <YandexMetrica />
         {children}
       </body>
     </html>
