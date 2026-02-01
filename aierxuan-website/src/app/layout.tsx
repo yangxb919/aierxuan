@@ -14,6 +14,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'AIERXUAN',
   description: 'AIERXUAN Global Manufacturing Platform',
+  verification: {
+    yandex: 'cae9fe4eb8159f38',
+  },
 }
 
 export default async function RootLayout({
