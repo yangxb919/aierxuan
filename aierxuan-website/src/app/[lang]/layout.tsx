@@ -8,25 +8,38 @@ import { TelegramFloatingButton } from '@/components/ui/TelegramFloatingButton'
 import { HtmlLangSetter } from '@/components/layout/HtmlLangSetter'
 import { i18n, type Locale } from '@/i18n-config'
 import { getDictionary } from '@/get-dictionary'
+import { SITE_URL } from '@/lib/site-url'
 
-const BASE_URL = 'https://aierxuanlaptop.com'
-
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params
-
-  return {
+const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
+  en: {
     title: 'AIERXUAN - Professional Laptop & Mini PC Manufacturer',
     description: 'Leading OEM/ODM manufacturer of high-performance laptops, gaming notebooks, and mini PCs. Custom solutions for global partners.',
     keywords: 'laptop manufacturer, mini pc factory, oem laptop, odm notebook, gaming laptop supplier, shenzhen electronics',
+  },
+  ru: {
+    title: 'AIERXUAN — Производитель ноутбуков и мини-ПК',
+    description: 'Профессиональное OEM/ODM производство ноутбуков, игровых ноутбуков и мини-ПК. Индивидуальные решения для партнёров по всему миру.',
+    keywords: 'OEM ноутбуки, ODM производство, мини-ПК оптом, производитель ноутбуков, игровые ноутбуки, электроника Шэньчжэнь',
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const seo = metaByLang[lang] ?? metaByLang.en
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     icons: {
       icon: '/icon.svg',
     },
     alternates: {
-      canonical: `${BASE_URL}/${lang}`,
+      canonical: `${SITE_URL}/${lang}`,
       languages: {
-        'x-default': `${BASE_URL}/en`,
-        'en': `${BASE_URL}/en`,
-        'ru': `${BASE_URL}/ru`,
+        'x-default': `${SITE_URL}/en`,
+        'en': `${SITE_URL}/en`,
+        'ru': `${SITE_URL}/ru`,
       },
     },
   }
