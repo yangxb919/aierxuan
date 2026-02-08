@@ -2,8 +2,7 @@ import { Metadata } from 'next'
 import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import FAQPageClient from './FAQPageClient'
-
-const BASE_URL = 'https://aierxuanlaptop.com'
+import { SITE_URL } from '@/lib/site-url'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -15,11 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: texts.meta.description,
     keywords: texts.meta.keywords,
     alternates: {
-      canonical: `${BASE_URL}/${lang}/faq`,
+      canonical: `${SITE_URL}/${lang}/faq`,
       languages: {
-        'x-default': `${BASE_URL}/en/faq`,
-        'en': `${BASE_URL}/en/faq`,
-        'ru': `${BASE_URL}/ru/faq`,
+        'x-default': `${SITE_URL}/en/faq`,
+        'en': `${SITE_URL}/en/faq`,
+        'ru': `${SITE_URL}/ru/faq`,
       },
     },
   }

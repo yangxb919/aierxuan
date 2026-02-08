@@ -9,8 +9,7 @@ import {
   CertificationsSection,
   CTASection,
 } from '@/components/oem'
-
-const BASE_URL = 'https://aierxuanlaptop.com'
+import { SITE_URL } from '@/lib/site-url'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -22,11 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: texts.meta.description,
     keywords: texts.meta.keywords,
     alternates: {
-      canonical: `${BASE_URL}/${lang}/oem`,
+      canonical: `${SITE_URL}/${lang}/oem`,
       languages: {
-        'x-default': `${BASE_URL}/en/oem`,
-        'en': `${BASE_URL}/en/oem`,
-        'ru': `${BASE_URL}/ru/oem`,
+        'x-default': `${SITE_URL}/en/oem`,
+        'en': `${SITE_URL}/en/oem`,
+        'ru': `${SITE_URL}/ru/oem`,
       },
     },
   }
