@@ -1,0 +1,117 @@
+
+> aierxuan-website@0.1.0 dev
+> next dev --turbopack -p 3000
+
+   ▲ Next.js 16.0.8 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.2.100:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+ ✓ Ready in 490ms
+ ○ Compiling /admin/blog ...
+ GET /admin/blog/6fc56923-7d68-4de3-9135-5822503f2494/edit 200 in 7.1s (compile: 4.3s, render: 2.9s)
+ GET /en/blog/oem-laptop-manufacturers-top-suppliers-2025 200 in 7.4s (compile: 4.4s, proxy.ts: 47ms, render: 2.9s)
+ GET /admin/blog 200 in 7.4s (compile: 4.1s, render: 3.3s)
+ GET /admin/blog 200 in 2.3s (compile: 7ms, render: 2.3s)
+ GET /admin/blog/6fc56923-7d68-4de3-9135-5822503f2494/edit 200 in 2.5s (compile: 10ms, render: 2.5s)
+ GET /admin/blog/6fc56923-7d68-4de3-9135-5822503f2494/edit 200 in 2.2s (compile: 6ms, render: 2.2s)
+ GET /admin/blog/6fc56923-7d68-4de3-9135-5822503f2494/edit 200 in 2.1s (compile: 12ms, render: 2.0s)
+ POST /api/admin/upload 200 in 1645ms (compile: 241ms, render: 1405ms)
+ POST /api/admin/translate 200 in 4.8min (compile: 74ms, render: 4.8min)
+ PATCH /api/admin/blog/6fc56923-7d68-4de3-9135-5822503f2494 200 in 4.7s (compile: 530ms, render: 4.2s)
+ GET /admin/blog 200 in 780ms (compile: 1856µs, render: 778ms)
+ GET /admin/blog 200 in 1405ms (compile: 5ms, render: 1400ms)
+ GET /admin/blog/05a64d7f-0b6a-43e5-86c3-e5e535da6745/edit 200 in 1849ms (compile: 13ms, render: 1836ms)
+ POST /api/admin/upload 200 in 1207ms (compile: 5ms, render: 1202ms)
+ POST /api/admin/translate 200 in 4.3min (compile: 2ms, render: 4.3min)
+ PATCH /api/admin/blog/05a64d7f-0b6a-43e5-86c3-e5e535da6745 200 in 4.3s (compile: 9ms, render: 4.3s)
+ GET /admin/blog 200 in 873ms (compile: 4ms, render: 869ms)
+ GET /admin/blog 200 in 848ms (compile: 1158µs, render: 846ms)
+ GET /zh-CN/blog/custom-gaming-laptop-manufacturing-oem-solutions 200 in 1637ms (compile: 6ms, proxy.ts: 1611µs, render: 1629ms)
+ GET /admin/blog/209a1193-8be9-4278-91f9-462fb35ba2f8/edit 200 in 2.3s (compile: 10ms, render: 2.2s)
+ POST /api/admin/upload 200 in 1298ms (compile: 3ms, render: 1295ms)
+ POST /api/admin/translate 200 in 4.4min (compile: 5ms, render: 4.4min)
+ PATCH /api/admin/blog/209a1193-8be9-4278-91f9-462fb35ba2f8 200 in 3.6s (compile: 14ms, render: 3.6s)
+ GET /admin/blog 200 in 685ms (compile: 1196µs, render: 684ms)
+ GET /admin/blog 200 in 712ms (compile: 4ms, render: 708ms)
+ GET /admin/blog/f18377de-844a-4944-a5f7-2bb1e2076b50/edit 200 in 1702ms (compile: 10ms, render: 1692ms)
+ POST /api/admin/upload 200 in 1114ms (compile: 4ms, render: 1110ms)
+ POST /api/admin/translate 200 in 4.1min (compile: 4ms, render: 4.1min)
+ PATCH /api/admin/blog/f18377de-844a-4944-a5f7-2bb1e2076b50 200 in 4.6s (compile: 9ms, render: 4.6s)
+ GET /admin/blog 200 in 729ms (compile: 5ms, render: 724ms)
+ GET /admin/blog 200 in 750ms (compile: 1580µs, render: 748ms)
+ GET /admin/blog/e9372b1c-084e-48f2-a391-2fdf63566be6/edit 200 in 1947ms (compile: 10ms, render: 1937ms)
+ POST /api/admin/upload 200 in 1153ms (compile: 4ms, render: 1149ms)
+ POST /api/admin/translate 200 in 5.1min (compile: 5ms, render: 5.1min)
+ PATCH /api/admin/blog/e9372b1c-084e-48f2-a391-2fdf63566be6 200 in 3.9s (compile: 5ms, render: 3.9s)
+ GET /admin/blog 200 in 721ms (compile: 5ms, render: 716ms)
+ GET /admin/blog 200 in 1004ms (compile: 9ms, render: 995ms)
+ GET /zh-CN/blog/mini-pc-buyers-guide-2025-b2b-wholesale-custom 200 in 1745ms (compile: 8ms, proxy.ts: 3ms, render: 1734ms)
+ GET /zh-CN/blog/mini-pc-buyers-guide-2025.jpg 404 in 1153ms (compile: 6ms, proxy.ts: 3ms, render: 1144ms)
+Get current admin user error: Error: Cookies can only be modified in a Server Action or Route Handler. Read more: https://nextjs.org/docs/app/api-reference/functions/cookies#options
+    at getCurrentAdminUser (src/lib/admin-auth.ts:51:27)
+    at async requireAdminAuth (src/lib/admin-auth.ts:84:16)
+    at async AdminRFQsPage (src/app/admin/rfqs/page.tsx:88:16)
+  49 |     if (sessionError || !sessionData || sessionData.length === 0) {
+  50 |       // Clear invalid session cookie
+> 51 |       (await cookieStore).set('admin_session', '', {
+     |                           ^
+  52 |         httpOnly: true,
+  53 |         secure: process.env.NODE_ENV === 'production',
+  54 |         sameSite: 'lax',
+ GET /admin/rfqs 200 in 5.6s (compile: 227ms, render: 5.3s)
+ GET /admin/login 200 in 137ms (compile: 120ms, render: 17ms)
+ GET /admin/login 200 in 10ms (compile: 1401µs, render: 9ms)
+ GET /api/admin/me 200 in 1285ms (compile: 62ms, render: 1223ms)
+ GET /admin 200 in 2.0s (compile: 131ms, render: 1914ms)
+ GET /api/admin/me 200 in 2.0s (compile: 2ms, render: 2.0s)
+ GET /admin/blog/6fc56923-7d68-4de3-9135-5822503f2494/edit 200 in 4.3s (compile: 16ms, render: 4.3s)
+Get current admin user error: Error: Cookies can only be modified in a Server Action or Route Handler. Read more: https://nextjs.org/docs/app/api-reference/functions/cookies#options
+    at getCurrentAdminUser (src/lib/admin-auth.ts:51:27)
+    at async requireAdminAuth (src/lib/admin-auth.ts:84:16)
+    at async AdminDashboardPage (src/app/admin/page.tsx:71:16)
+  49 |     if (sessionError || !sessionData || sessionData.length === 0) {
+  50 |       // Clear invalid session cookie
+> 51 |       (await cookieStore).set('admin_session', '', {
+     |                           ^
+  52 |         httpOnly: true,
+  53 |         secure: process.env.NODE_ENV === 'production',
+  54 |         sameSite: 'lax',
+ GET /admin/rfqs 200 in 3.4s (compile: 4ms, render: 3.4s)
+ DELETE /api/admin/rfqs/3e1a7c1f-8551-4b97-9ce9-913d4b035b08 200 in 1760ms (compile: 501ms, render: 1258ms)
+ GET /admin/rfqs 200 in 798ms (compile: 7ms, render: 792ms)
+ DELETE /api/admin/rfqs/e42b43e7-390c-40c0-b914-e9227692f316 200 in 672ms (compile: 8ms, render: 664ms)
+ GET /admin/rfqs 200 in 664ms (compile: 5ms, render: 659ms)
+ DELETE /api/admin/rfqs/de16c985-4a39-4831-9210-aa4aee4c30d9 200 in 607ms (compile: 7ms, render: 600ms)
+ GET /admin/rfqs 200 in 671ms (compile: 5ms, render: 667ms)
+ DELETE /api/admin/rfqs/739b6565-02e3-4913-b45a-e2b2ad931bd0 200 in 628ms (compile: 9ms, render: 619ms)
+ GET /admin/rfqs 200 in 663ms (compile: 4ms, render: 659ms)
+ DELETE /api/admin/rfqs/9037be98-ec3f-450e-b648-1e19e598d8eb 200 in 612ms (compile: 7ms, render: 604ms)
+ GET /admin/rfqs 200 in 643ms (compile: 4ms, render: 639ms)
+ DELETE /api/admin/rfqs/825346ae-9d00-482f-b62b-c88a3715cffb 200 in 604ms (compile: 8ms, render: 596ms)
+ GET /admin/rfqs 200 in 650ms (compile: 4ms, render: 646ms)
+ DELETE /api/admin/rfqs/e8e2ac8b-13d0-43ba-978b-ce71b29a4b64 200 in 599ms (compile: 8ms, render: 591ms)
+ GET /admin/rfqs 200 in 619ms (compile: 3ms, render: 616ms)
+ DELETE /api/admin/rfqs/a8f4ac16-eaac-4277-bd6c-3c97ee7868bd 200 in 569ms (compile: 8ms, render: 561ms)
+ GET /admin/rfqs 200 in 607ms (compile: 3ms, render: 605ms)
+ DELETE /api/admin/rfqs/fc0379f1-a411-4ff4-9f67-82007e4ea5e4 200 in 573ms (compile: 8ms, render: 565ms)
+ GET /admin/rfqs 200 in 613ms (compile: 1331µs, render: 611ms)
+ DELETE /api/admin/rfqs/fe2261ef-d3f0-448a-8b92-86d1ef1588f8 200 in 578ms (compile: 4ms, render: 573ms)
+ GET /admin/rfqs 200 in 628ms (compile: 4ms, render: 624ms)
+ DELETE /api/admin/rfqs/e3e4b515-2536-4cbc-ba82-a543174c2e30 200 in 579ms (compile: 6ms, render: 573ms)
+ GET /admin/rfqs 200 in 622ms (compile: 2ms, render: 620ms)
+ DELETE /api/admin/rfqs/e0935a5d-45e0-47f8-a677-0cff64a8eb2f 200 in 573ms (compile: 7ms, render: 565ms)
+ GET /admin/rfqs 200 in 622ms (compile: 5ms, render: 617ms)
+ DELETE /api/admin/rfqs/ef03cc70-7232-4d9b-887e-3a0f38de4427 200 in 578ms (compile: 8ms, render: 570ms)
+ GET /admin/rfqs 200 in 619ms (compile: 4ms, render: 615ms)
+ DELETE /api/admin/rfqs/e0d9e848-aa50-4434-902d-3496e8f10d2b 200 in 578ms (compile: 2ms, render: 576ms)
+ GET /admin/rfqs 200 in 581ms (compile: 956µs, render: 580ms)
+ DELETE /api/admin/rfqs/1d8a83f9-0ab9-4351-87f3-9909c1dbbb1d 200 in 585ms (compile: 8ms, render: 578ms)
+ GET /admin/rfqs 200 in 657ms (compile: 3ms, render: 653ms)
+ GET /admin/products 200 in 2.1s (compile: 157ms, render: 1953ms)
+ DELETE /api/admin/products/f9e75eec-c464-44ca-ac22-bd4dfa1196bc 200 in 2.4s (compile: 433ms, render: 1947ms)
+ GET /admin/products 200 in 1823ms (compile: 5ms, render: 1817ms)
+ GET /admin/products/8e790a01-23de-4c8f-b0e9-c683e8dcfde3/edit 200 in 2.4s (compile: 311ms, render: 2.1s)
+[?25h

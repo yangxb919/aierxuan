@@ -56,7 +56,7 @@ export default async function ProductsPage({
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm mb-8">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-blue-300 text-sm font-medium">
-                OEM/ODM Solutions Available
+                {texts.badge}
               </span>
             </div>
 
@@ -73,9 +73,9 @@ export default async function ProductsPage({
             {/* Quick Stats */}
             <div className="flex flex-wrap justify-center gap-8 mt-12">
               {[
-                { value: '50+', label: 'Product Models' },
-                { value: '100+', label: 'MOQ Units' },
-                { value: '7-15', label: 'Days Delivery' },
+                { value: '50+', label: texts.stats.productModels },
+                { value: '100+', label: texts.stats.moqUnits },
+                { value: '7-15', label: texts.stats.daysDelivery },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl font-bold text-white">{stat.value}</div>

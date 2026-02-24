@@ -1,0 +1,2732 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 6200,
+      "height": 3400,
+      "fill": "#E5E5E5",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "r7jnf",
+          "x": 0,
+          "y": 0,
+          "name": "AIERXUAN Homepage",
+          "width": 1440,
+          "height": 3200,
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sA9kS",
+              "name": "Header",
+              "width": "fill_container",
+              "height": 72,
+              "fill": "#FFFFFF",
+              "padding": [
+                0,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pYhJU",
+                  "name": "logoArea",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dE1w8",
+                      "name": "logoText",
+                      "fill": "#2563EB",
+                      "content": "AIERXUAN",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "88gJk",
+                  "name": "navArea",
+                  "gap": 40,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "A5vLk",
+                      "name": "nav1",
+                      "fill": "#18181B",
+                      "content": "Products",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "H5vMJ",
+                      "name": "nav2",
+                      "fill": "#18181B",
+                      "content": "Solutions",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "obvps",
+                      "name": "nav3",
+                      "fill": "#18181B",
+                      "content": "About Us",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NZFaJ",
+                      "name": "nav4",
+                      "fill": "#18181B",
+                      "content": "Contact",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tLwdS",
+                  "name": "ctaBtn",
+                  "fill": "#2563EB",
+                  "cornerRadius": 100,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SbVqt",
+                      "name": "ctaText",
+                      "fill": "#FFFFFF",
+                      "content": "Get Quote",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9otet",
+              "name": "Hero Section",
+              "width": "fill_container",
+              "height": 700,
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 32,
+              "padding": [
+                120,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zyT88",
+                  "name": "heroTag",
+                  "fill": "#EFF6FF",
+                  "cornerRadius": 100,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rsyQg",
+                      "name": "heroTagText",
+                      "fill": "#2563EB",
+                      "content": "Professional OEM Laptop Manufacturer",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "euFfM",
+                  "name": "heroTitle",
+                  "fill": "#18181B",
+                  "content": "Custom Laptops &\nMini PCs for Your Brand",
+                  "lineHeight": 1.1,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 64,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "u419V",
+                  "name": "heroSubtitle",
+                  "fill": "#71717A",
+                  "content": "From design to delivery, we provide end-to-end OEM/ODM solutions\nfor laptops, mini PCs, and computing devices worldwide.",
+                  "lineHeight": 1.6,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "regular"
+                },
+                {
+                  "type": "frame",
+                  "id": "0rbih",
+                  "name": "heroBtns",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "DcrF5",
+                      "name": "heroBtn1",
+                      "fill": "#2563EB",
+                      "cornerRadius": 100,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HVCv5",
+                          "name": "heroBtn1Text",
+                          "fill": "#FFFFFF",
+                          "content": "View Products",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zQNcP",
+                      "name": "heroBtn2",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 100,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BxDFt",
+                          "name": "heroBtn2Text",
+                          "fill": "#18181B",
+                          "content": "Contact Sales",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mEF4t",
+              "name": "Features Section",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "layout": "vertical",
+              "gap": 64,
+              "padding": [
+                100,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eRzlO",
+                  "name": "featuresHeader",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Qu0xd",
+                      "name": "featuresTag",
+                      "fill": "#2563EB",
+                      "content": "OUR PRODUCTS",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "wYLtc",
+                      "name": "featuresTitle",
+                      "fill": "#18181B",
+                      "content": "Complete Product Portfolio",
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 48,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "goX6n",
+                      "name": "featuresSubtitle",
+                      "fill": "#71717A",
+                      "content": "From business laptops to gaming machines, we manufacture it all.",
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "regular"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2ul8B",
+                  "name": "featuresGrid",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "znv1X",
+                      "name": "card1",
+                      "width": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 20,
+                      "padding": 32,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "VGYTw",
+                          "name": "card1Icon",
+                          "width": 56,
+                          "height": 56,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "8pKH6",
+                              "name": "card1IconText",
+                              "content": "💻",
+                              "fontFamily": "Inter",
+                              "fontSize": 24,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "bmlVC",
+                          "name": "card1Title",
+                          "fill": "#18181B",
+                          "content": "Business Laptops",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tLYAZ",
+                          "name": "card1Desc",
+                          "fill": "#71717A",
+                          "content": "Professional-grade laptops designed for enterprise use with robust security features and reliable performance.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hKQh7",
+                      "name": "card2",
+                      "width": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 20,
+                      "padding": 32,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ciiHN",
+                          "name": "card2Icon",
+                          "width": 56,
+                          "height": 56,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "00bRa",
+                              "name": "card2IconText",
+                              "content": "🎮",
+                              "fontFamily": "Inter",
+                              "fontSize": 24,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "fW3la",
+                          "name": "card2Title",
+                          "fill": "#18181B",
+                          "content": "Gaming Laptops",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "2p6DJ",
+                          "name": "card2Desc",
+                          "fill": "#71717A",
+                          "content": "High-performance gaming laptops with powerful GPUs, advanced cooling systems, and immersive displays.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IFUGk",
+                      "name": "card3",
+                      "width": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 20,
+                      "padding": 32,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "fo4nS",
+                          "name": "card3Icon",
+                          "width": 56,
+                          "height": 56,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "BYypW",
+                              "name": "card3IconText",
+                              "content": "🖥️",
+                              "fontFamily": "Inter",
+                              "fontSize": 24,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZZdW6",
+                          "name": "card3Title",
+                          "fill": "#18181B",
+                          "content": "Mini PCs",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Vp1gw",
+                          "name": "card3Desc",
+                          "fill": "#71717A",
+                          "content": "Compact yet powerful mini PCs perfect for office, digital signage, and embedded applications.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9p2fH",
+              "name": "Why Choose Us",
+              "width": "fill_container",
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 64,
+              "padding": [
+                100,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ce4VX",
+                  "name": "whyUsHeader",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HBx6P",
+                      "name": "whyUsTag",
+                      "fill": "#2563EB",
+                      "content": "WHY AIERXUAN",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "v5sOX",
+                      "name": "whyUsTitle",
+                      "fill": "#18181B",
+                      "content": "Your Trusted OEM Partner",
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 48,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iQcld",
+                      "name": "whyUsSubtitle",
+                      "fill": "#71717A",
+                      "content": "15+ years of manufacturing excellence serving global brands.",
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "regular"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OEtIx",
+                  "name": "statsRow",
+                  "gap": 48,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "6VJgV",
+                      "name": "stat1",
+                      "width": 200,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pr3xQ",
+                          "name": "stat1Num",
+                          "fill": "#2563EB",
+                          "content": "15+",
+                          "fontFamily": "Inter",
+                          "fontSize": 56,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "PMZ9w",
+                          "name": "stat1Label",
+                          "fill": "#71717A",
+                          "content": "Years Experience",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "medium"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "c1G1w",
+                      "name": "stat2",
+                      "width": 200,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IhPRq",
+                          "name": "stat2Num",
+                          "fill": "#2563EB",
+                          "content": "500K+",
+                          "fontFamily": "Inter",
+                          "fontSize": 56,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sXN2r",
+                          "name": "stat2Label",
+                          "fill": "#71717A",
+                          "content": "Units Shipped",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "medium"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "e10Si",
+                      "name": "stat3",
+                      "width": 200,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GwkNP",
+                          "name": "stat3Num",
+                          "fill": "#2563EB",
+                          "content": "50+",
+                          "fontFamily": "Inter",
+                          "fontSize": 56,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "2K2o6",
+                          "name": "stat3Label",
+                          "fill": "#71717A",
+                          "content": "Countries Served",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "medium"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sJKb7",
+                      "name": "stat4",
+                      "width": 200,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "N5VGW",
+                          "name": "stat4Num",
+                          "fill": "#2563EB",
+                          "content": "100+",
+                          "fontFamily": "Inter",
+                          "fontSize": 56,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "d3zQz",
+                          "name": "stat4Label",
+                          "fill": "#71717A",
+                          "content": "Brand Partners",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "medium"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TJXaH",
+              "name": "CTA Section",
+              "width": "fill_container",
+              "fill": "#2563EB",
+              "layout": "vertical",
+              "gap": 32,
+              "padding": [
+                100,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nMuvp",
+                  "name": "ctaTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Ready to Start Your Project?",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "r9j6p",
+                  "name": "ctaSubtitle",
+                  "fill": "rgba(255,255,255,0.8)",
+                  "content": "Get a custom quote for your OEM laptop or mini PC project today.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "regular"
+                },
+                {
+                  "type": "frame",
+                  "id": "5ALEG",
+                  "name": "ctaBtns",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "2kYs5",
+                      "name": "ctaBtn1",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 100,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VDrBy",
+                          "name": "ctaBtn1Text",
+                          "fill": "#2563EB",
+                          "content": "Request Quote",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NY1Po",
+                      "name": "ctaBtn2",
+                      "fill": "transparent",
+                      "cornerRadius": 100,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CNCFc",
+                          "name": "ctaBtn2Text",
+                          "fill": "#FFFFFF",
+                          "content": "Contact Us",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sxq4q",
+              "name": "Footer",
+              "width": "fill_container",
+              "fill": "#18181B",
+              "layout": "vertical",
+              "gap": 48,
+              "padding": [
+                64,
+                80
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pRm5X",
+                  "name": "footerTop",
+                  "width": "fill_container",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "h2JbJ",
+                      "name": "footerBrand",
+                      "width": 300,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "4dJqH",
+                          "name": "footerLogo",
+                          "fill": "#FFFFFF",
+                          "content": "AIERXUAN",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dVm7Y",
+                          "name": "footerDesc",
+                          "fill": "#A1A1AA",
+                          "content": "Professional OEM/ODM manufacturer of laptops and mini PCs since 2008.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tDfGy",
+                      "name": "footerLinks",
+                      "gap": 64,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "PG17L",
+                          "name": "footerCol1",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "0orwD",
+                              "name": "footerCol1Title",
+                              "fill": "#FFFFFF",
+                              "content": "Products",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "UgorG",
+                              "name": "footerCol1Link1",
+                              "fill": "#A1A1AA",
+                              "content": "Business Laptops",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "yt6DF",
+                              "name": "footerCol1Link2",
+                              "fill": "#A1A1AA",
+                              "content": "Gaming Laptops",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "cpf7V",
+                              "name": "footerCol1Link3",
+                              "fill": "#A1A1AA",
+                              "content": "Mini PCs",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ncBGn",
+                          "name": "footerCol2",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s3uYn",
+                              "name": "footerCol2Title",
+                              "fill": "#FFFFFF",
+                              "content": "Company",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "HKAlp",
+                              "name": "footerCol2Link1",
+                              "fill": "#A1A1AA",
+                              "content": "About Us",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "H3ikr",
+                              "name": "footerCol2Link2",
+                              "fill": "#A1A1AA",
+                              "content": "Our Factory",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "SEz0D",
+                              "name": "footerCol2Link3",
+                              "fill": "#A1A1AA",
+                              "content": "Quality Control",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "jbMSQ",
+                          "name": "footerCol3",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "6KVhS",
+                              "name": "footerCol3Title",
+                              "fill": "#FFFFFF",
+                              "content": "Support",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "FDPCP",
+                              "name": "footerCol3Link1",
+                              "fill": "#A1A1AA",
+                              "content": "Contact",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "G6hBa",
+                              "name": "footerCol3Link2",
+                              "fill": "#A1A1AA",
+                              "content": "FAQ",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            },
+                            {
+                              "type": "text",
+                              "id": "kvIZs",
+                              "name": "footerCol3Link3",
+                              "fill": "#A1A1AA",
+                              "content": "Blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Yq1Rd",
+                  "name": "footerBottom",
+                  "width": "fill_container",
+                  "padding": [
+                    24,
+                    0,
+                    0,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M9WLy",
+                      "name": "footerCopyright",
+                      "fill": "#71717A",
+                      "content": "© 2024 AIERXUAN. All rights reserved.",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "regular"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "N7IVg",
+          "x": 1540,
+          "y": 0,
+          "name": "Products Page",
+          "width": 1440,
+          "height": 1200,
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "FEkit",
+              "name": "Header",
+              "width": "fill_container",
+              "height": 72,
+              "fill": "#FFFFFF",
+              "padding": [
+                0,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NQBS5",
+                  "name": "prodLogoArea",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qtsoJ",
+                      "name": "prodLogoText",
+                      "fill": "#2563EB",
+                      "content": "AIERXUAN",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xysTU",
+                  "name": "prodNavArea",
+                  "gap": 40,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cYMuy",
+                      "name": "prodNav1",
+                      "fill": "#2563EB",
+                      "content": "Products",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Lta4u",
+                      "name": "prodNav2",
+                      "fill": "#18181B",
+                      "content": "Solutions",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MI3WO",
+                      "name": "prodNav3",
+                      "fill": "#18181B",
+                      "content": "About Us",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uyHtM",
+                      "name": "prodNav4",
+                      "fill": "#18181B",
+                      "content": "Contact",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VSyji",
+                  "name": "prodCtaBtn",
+                  "fill": "#2563EB",
+                  "cornerRadius": 100,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YNxy9",
+                      "name": "prodCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "Get Quote",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6lmCO",
+              "name": "Products Hero",
+              "width": "fill_container",
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nHsM1",
+                  "name": "prodHeroTag",
+                  "fill": "#2563EB",
+                  "content": "OUR PRODUCTS",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "semibold",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "gWx8T",
+                  "name": "prodHeroTitle",
+                  "fill": "#18181B",
+                  "content": "Explore Our Product Range",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "tqkNR",
+                  "name": "prodHeroSubtitle",
+                  "fill": "#71717A",
+                  "content": "High-quality laptops and mini PCs designed for your business needs.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "regular"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Jx2k3",
+              "name": "Filters",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "gap": 16,
+              "padding": [
+                24,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jC2DX",
+                  "name": "filterAll",
+                  "fill": "#2563EB",
+                  "cornerRadius": 100,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9trGX",
+                      "name": "filterAllText",
+                      "fill": "#FFFFFF",
+                      "content": "All Products",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Iig5j",
+                  "name": "filterLaptop",
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 100,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L4SOC",
+                      "name": "filterLaptopText",
+                      "fill": "#18181B",
+                      "content": "Laptops",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Hga0q",
+                  "name": "filterMini",
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 100,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gw0LL",
+                      "name": "filterMiniText",
+                      "fill": "#18181B",
+                      "content": "Mini PCs",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rEPEt",
+              "name": "Products Grid",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "gap": 24,
+              "padding": [
+                48,
+                80
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "IRlAj",
+                  "name": "prod1",
+                  "width": 400,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "A4fIK",
+                      "name": "prod1Img",
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": "#F4F4F5",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WBYak",
+                          "name": "prod1ImgText",
+                          "content": "💻",
+                          "fontFamily": "Inter",
+                          "fontSize": 64,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZLjR0",
+                      "name": "prod1Info",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "4atTi",
+                          "name": "prod1Cat",
+                          "fill": "#2563EB",
+                          "content": "Business Laptop",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "medium"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AobwL",
+                          "name": "prod1Name",
+                          "fill": "#18181B",
+                          "content": "Air14 Pro 2025",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "1uio9",
+                          "name": "prod1Desc",
+                          "fill": "#71717A",
+                          "content": "Intel Core i5 / 16GB RAM / 512GB SSD",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rWwMS",
+                          "name": "prod1Price",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7ib9U",
+                              "name": "prod1PriceText",
+                              "fill": "#18181B",
+                              "content": "From $299",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "9RJFD",
+                              "name": "prod1Btn",
+                              "fill": "#2563EB",
+                              "cornerRadius": 100,
+                              "padding": [
+                                8,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "JxBog",
+                                  "name": "prod1BtnText",
+                                  "fill": "#FFFFFF",
+                                  "content": "View Details",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "medium"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aQRUW",
+                  "name": "prod2",
+                  "width": 400,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "6osTQ",
+                      "name": "prod2Img",
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": "#F4F4F5",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rDNMi",
+                          "name": "prod2ImgText",
+                          "content": "🎮",
+                          "fontFamily": "Inter",
+                          "fontSize": 64,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "v338X",
+                      "name": "prod2Info",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Nnjyc",
+                          "name": "prod2Cat",
+                          "fill": "#2563EB",
+                          "content": "Gaming Laptop",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "medium"
+                        },
+                        {
+                          "type": "text",
+                          "id": "V3LcA",
+                          "name": "prod2Name",
+                          "fill": "#18181B",
+                          "content": "Gaming Pro X17",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "V4p17",
+                          "name": "prod2Desc",
+                          "fill": "#71717A",
+                          "content": "Intel Core i7 / RTX 4060 / 32GB RAM",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "4zfFW",
+                          "name": "prod2Price",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "I8r4h",
+                              "name": "prod2PriceText",
+                              "fill": "#18181B",
+                              "content": "From $599",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "lSTH9",
+                              "name": "prod2Btn",
+                              "fill": "#2563EB",
+                              "cornerRadius": 100,
+                              "padding": [
+                                8,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Fe1xq",
+                                  "name": "prod2BtnText",
+                                  "fill": "#FFFFFF",
+                                  "content": "View Details",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "medium"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "94G0U",
+                  "name": "prod3",
+                  "width": 400,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ELefQ",
+                      "name": "prod3Img",
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": "#F4F4F5",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VEPec",
+                          "name": "prod3ImgText",
+                          "content": "🖥️",
+                          "fontFamily": "Inter",
+                          "fontSize": 64,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0YHAH",
+                      "name": "prod3Info",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HWJH9",
+                          "name": "prod3Cat",
+                          "fill": "#2563EB",
+                          "content": "Mini PC",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "medium"
+                        },
+                        {
+                          "type": "text",
+                          "id": "q1cSZ",
+                          "name": "prod3Name",
+                          "fill": "#18181B",
+                          "content": "DU61 Compact",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "X0IPn",
+                          "name": "prod3Desc",
+                          "fill": "#71717A",
+                          "content": "Intel Core i9 / 32GB RAM / 1TB NVMe",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "I8BWO",
+                          "name": "prod3Price",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7DOOs",
+                              "name": "prod3PriceText",
+                              "fill": "#18181B",
+                              "content": "From $399",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "1lL3D",
+                              "name": "prod3Btn",
+                              "fill": "#2563EB",
+                              "cornerRadius": 100,
+                              "padding": [
+                                8,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "zFg6E",
+                                  "name": "prod3BtnText",
+                                  "fill": "#FFFFFF",
+                                  "content": "View Details",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "medium"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DwKEc",
+          "x": 3080,
+          "y": 0,
+          "name": "About Us Page",
+          "width": 1440,
+          "height": 2000,
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "r24lm",
+              "name": "Header",
+              "width": "fill_container",
+              "height": 72,
+              "fill": "#FFFFFF",
+              "padding": [
+                0,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JFi16",
+                  "name": "aboutLogoArea",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Xv8Qk",
+                      "name": "aboutLogoText",
+                      "fill": "#2563EB",
+                      "content": "AIERXUAN",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "h6Ax2",
+                  "name": "aboutNavArea",
+                  "gap": 40,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SFiNK",
+                      "name": "aboutNav1",
+                      "fill": "#18181B",
+                      "content": "Products",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vjEcP",
+                      "name": "aboutNav2",
+                      "fill": "#18181B",
+                      "content": "Solutions",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FT6oP",
+                      "name": "aboutNav3",
+                      "fill": "#2563EB",
+                      "content": "About Us",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "IwvyJ",
+                      "name": "aboutNav4",
+                      "fill": "#18181B",
+                      "content": "Contact",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "t5Q4g",
+                  "name": "aboutCtaBtn",
+                  "fill": "#2563EB",
+                  "cornerRadius": 100,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jAzto",
+                      "name": "aboutCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "Get Quote",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WOBKN",
+              "name": "About Hero",
+              "width": "fill_container",
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6VNsd",
+                  "name": "aboutHeroTag",
+                  "fill": "#2563EB",
+                  "content": "ABOUT US",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "semibold",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "vrYTp",
+                  "name": "aboutHeroTitle",
+                  "fill": "#18181B",
+                  "content": "Building the Future of\nComputing Since 2008",
+                  "lineHeight": 1.2,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "9pag8",
+                  "name": "aboutHeroSubtitle",
+                  "fill": "#71717A",
+                  "content": "We are a leading OEM/ODM manufacturer specializing in laptops and mini PCs,\nserving global brands with quality and innovation.",
+                  "lineHeight": 1.6,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "regular"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2Ve6I",
+              "name": "Our Story",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "gap": 64,
+              "padding": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jqifz",
+                  "name": "storyContent",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UaIYX",
+                      "name": "storyTag",
+                      "fill": "#2563EB",
+                      "content": "OUR STORY",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "z2Lco",
+                      "name": "storyTitle",
+                      "fill": "#18181B",
+                      "content": "From Small Workshop to\nGlobal Manufacturer",
+                      "lineHeight": 1.2,
+                      "fontFamily": "Inter",
+                      "fontSize": 36,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "esX4p",
+                      "name": "storyText",
+                      "fill": "#71717A",
+                      "content": "Founded in 2008 in Shenzhen, China, AIERXUAN started as a small workshop with a vision to provide high-quality computing devices to businesses worldwide.\n\nToday, we operate a 50,000 sqm manufacturing facility with over 500 skilled workers, producing more than 500,000 units annually for clients across 50+ countries.",
+                      "lineHeight": 1.8,
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "regular"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AlvDk",
+                  "name": "storyImage",
+                  "width": 560,
+                  "height": 400,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Tzp5U",
+                      "name": "storyImageText",
+                      "content": "🏭",
+                      "fontFamily": "Inter",
+                      "fontSize": 80,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UhzUx",
+              "name": "Our Values",
+              "width": "fill_container",
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 48,
+              "padding": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nU809",
+                  "name": "valuesHeader",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UkYgd",
+                      "name": "valuesTag",
+                      "fill": "#2563EB",
+                      "content": "OUR VALUES",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZrFQM",
+                      "name": "valuesTitle",
+                      "fill": "#18181B",
+                      "content": "What Drives Us Forward",
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 36,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oV2nk",
+                  "name": "valuesGrid",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EVNoh",
+                      "name": "value1",
+                      "width": 280,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 32,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "u63Ll",
+                          "name": "value1Icon",
+                          "width": 64,
+                          "height": 64,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NqxnI",
+                              "name": "value1IconText",
+                              "content": "⭐",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "hVjHd",
+                          "name": "value1Title",
+                          "fill": "#18181B",
+                          "content": "Quality First",
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "0ce7P",
+                          "name": "value1Desc",
+                          "fill": "#71717A",
+                          "content": "Every product undergoes rigorous quality testing before shipping.",
+                          "lineHeight": 1.6,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bPa9e",
+                      "name": "value2",
+                      "width": 280,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 32,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "87Hmk",
+                          "name": "value2Icon",
+                          "width": 64,
+                          "height": 64,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ntHxk",
+                              "name": "value2IconText",
+                              "content": "🚀",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "Q37w0",
+                          "name": "value2Title",
+                          "fill": "#18181B",
+                          "content": "Innovation",
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "xYx3A",
+                          "name": "value2Desc",
+                          "fill": "#71717A",
+                          "content": "Continuously improving our processes and adopting new technologies.",
+                          "lineHeight": 1.6,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZXyl7",
+                      "name": "value3",
+                      "width": 280,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 32,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "B5z8C",
+                          "name": "value3Icon",
+                          "width": 64,
+                          "height": 64,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "pKoei",
+                              "name": "value3IconText",
+                              "content": "🤝",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "rceBx",
+                          "name": "value3Title",
+                          "fill": "#18181B",
+                          "content": "Partnership",
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "czbrf",
+                          "name": "value3Desc",
+                          "fill": "#71717A",
+                          "content": "Building long-term relationships with our clients and suppliers.",
+                          "lineHeight": 1.6,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "8RGkq",
+                      "name": "value4",
+                      "width": 280,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 32,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "H9LT1",
+                          "name": "value4Icon",
+                          "width": 64,
+                          "height": 64,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "u1tAX",
+                              "name": "value4IconText",
+                              "content": "🌍",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "eSm2E",
+                          "name": "value4Title",
+                          "fill": "#18181B",
+                          "content": "Global Reach",
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TpBYZ",
+                          "name": "value4Desc",
+                          "fill": "#71717A",
+                          "content": "Serving customers in 50+ countries with reliable logistics.",
+                          "lineHeight": 1.6,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "regular"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zOMoi",
+          "x": 4620,
+          "y": 0,
+          "name": "Contact Page",
+          "width": 1440,
+          "height": 1400,
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "rNyZ7",
+              "name": "Header",
+              "width": "fill_container",
+              "height": 72,
+              "fill": "#FFFFFF",
+              "padding": [
+                0,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2Tx6E",
+                  "name": "contactLogoArea",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "THXz7",
+                      "name": "contactLogoText",
+                      "fill": "#2563EB",
+                      "content": "AIERXUAN",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sfY6U",
+                  "name": "contactNavArea",
+                  "gap": 40,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GLL8k",
+                      "name": "contactNav1",
+                      "fill": "#18181B",
+                      "content": "Products",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jk3zR",
+                      "name": "contactNav2",
+                      "fill": "#18181B",
+                      "content": "Solutions",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hj2Ui",
+                      "name": "contactNav3",
+                      "fill": "#18181B",
+                      "content": "About Us",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "medium"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nMxuS",
+                      "name": "contactNav4",
+                      "fill": "#2563EB",
+                      "content": "Contact",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "7aHKw",
+                  "name": "contactCtaBtn",
+                  "fill": "#2563EB",
+                  "cornerRadius": 100,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Vofjx",
+                      "name": "contactCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "Get Quote",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SVmpz",
+              "name": "Contact Hero",
+              "width": "fill_container",
+              "fill": "#F8FAFC",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                64,
+                80
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jeg1t",
+                  "name": "contactHeroTag",
+                  "fill": "#2563EB",
+                  "content": "CONTACT US",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "semibold",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "lEXcS",
+                  "name": "contactHeroTitle",
+                  "fill": "#18181B",
+                  "content": "Get in Touch",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "7M92q",
+                  "name": "contactHeroSubtitle",
+                  "fill": "#71717A",
+                  "content": "Have a project in mind? We'd love to hear from you.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "regular"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iRFC2",
+              "name": "Contact Main",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "gap": 64,
+              "padding": [
+                64,
+                80
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vOZS8",
+                  "name": "contactInfo",
+                  "width": 400,
+                  "layout": "vertical",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0nj2i",
+                      "name": "infoTitle",
+                      "fill": "#18181B",
+                      "content": "Contact Information",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XQecu",
+                      "name": "infoItem1",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "TZ9xD",
+                          "name": "infoIcon1",
+                          "width": 48,
+                          "height": 48,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IP8Ni",
+                              "name": "infoIcon1Text",
+                              "content": "📍",
+                              "fontFamily": "Inter",
+                              "fontSize": 20,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "roVc3",
+                          "name": "infoContent1",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "EpDkP",
+                              "name": "infoLabel1",
+                              "fill": "#18181B",
+                              "content": "Address",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "14cPK",
+                              "name": "infoValue1",
+                              "fill": "#71717A",
+                              "content": "Shenzhen, Guangdong, China",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "s07gk",
+                      "name": "infoItem2",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "DoWT0",
+                          "name": "infoIcon2",
+                          "width": 48,
+                          "height": 48,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "C8has",
+                              "name": "infoIcon2Text",
+                              "content": "📧",
+                              "fontFamily": "Inter",
+                              "fontSize": 20,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "xsLxX",
+                          "name": "infoContent2",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "9moUC",
+                              "name": "infoLabel2",
+                              "fill": "#18181B",
+                              "content": "Email",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "G8VE8",
+                              "name": "infoValue2",
+                              "fill": "#71717A",
+                              "content": "sales@aierxuan.com",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HhOtK",
+                      "name": "infoItem3",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "U2yz4",
+                          "name": "infoIcon3",
+                          "width": 48,
+                          "height": 48,
+                          "fill": "#EFF6FF",
+                          "cornerRadius": 12,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "mFsqj",
+                              "name": "infoIcon3Text",
+                              "content": "📱",
+                              "fontFamily": "Inter",
+                              "fontSize": 20,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "N7sF0",
+                          "name": "infoContent3",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AYhyr",
+                              "name": "infoLabel3",
+                              "fill": "#18181B",
+                              "content": "Phone",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "semibold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "7yEyl",
+                              "name": "infoValue3",
+                              "fill": "#71717A",
+                              "content": "+86 755 8888 8888",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ip6J5",
+                  "name": "contactForm",
+                  "width": 700,
+                  "fill": "#F8FAFC",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fXlHS",
+                      "name": "formTitle",
+                      "fill": "#18181B",
+                      "content": "Send us a Message",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BGTNJ",
+                      "name": "formRow1",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "lCeM8",
+                          "name": "formField1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "50gsx",
+                              "name": "formLabel1",
+                              "fill": "#18181B",
+                              "content": "Name",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "medium"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "yXvqT",
+                              "name": "formInput1",
+                              "width": "fill_container",
+                              "height": 48,
+                              "fill": "#FFFFFF",
+                              "cornerRadius": 8,
+                              "padding": [
+                                0,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "wf2KU",
+                                  "name": "formPlaceholder1",
+                                  "fill": "#A1A1AA",
+                                  "content": "Your name",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "regular"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "My2rH",
+                          "name": "formField2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "MN2zJ",
+                              "name": "formLabel2",
+                              "fill": "#18181B",
+                              "content": "Email",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "medium"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Wqzyy",
+                              "name": "formInput2",
+                              "width": "fill_container",
+                              "height": 48,
+                              "fill": "#FFFFFF",
+                              "cornerRadius": 8,
+                              "padding": [
+                                0,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "h5LII",
+                                  "name": "formPlaceholder2",
+                                  "fill": "#A1A1AA",
+                                  "content": "your@email.com",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "regular"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OurCi",
+                      "name": "formField3",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "wnqlK",
+                          "name": "formLabel3",
+                          "fill": "#18181B",
+                          "content": "Message",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "medium"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DzPGL",
+                          "name": "formTextarea",
+                          "width": "fill_container",
+                          "height": 120,
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 8,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qqjjk",
+                              "name": "formPlaceholder3",
+                              "fill": "#A1A1AA",
+                              "content": "Tell us about your project...",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "regular"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zhxZA",
+                      "name": "formSubmit",
+                      "width": "fill_container",
+                      "fill": "#2563EB",
+                      "cornerRadius": 100,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "on1Nl",
+                          "name": "formSubmitText",
+                          "fill": "#FFFFFF",
+                          "content": "Send Message",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

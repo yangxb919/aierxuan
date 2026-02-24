@@ -41,14 +41,21 @@ export function middleware(request: NextRequest) {
     if (pathnameIsMissingLocale) {
         const locale = getLocale(request)
 
-        // e.g. incoming request is /products
-        // The new URL is now /en/products
-        const response = NextResponse.redirect(
-            new URL(
-                `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-                request.url
-            )
+        const newUrl = new URL(
+            `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+            request.url
         )
+
+        // Use rewrite for root path "/" so search engine verification bots
+        // see a 200 response (not a 307 redirect) with meta tags intact
+        if (pathname === '/') {
+            const response = NextResponse.rewrite(newUrl)
+            response.cookies.set('site_lang', locale, { path: '/' })
+            return response
+        }
+
+        // For all other paths, redirect as before
+        const response = NextResponse.redirect(newUrl)
         // Set site_lang cookie for SSR html lang
         response.cookies.set('site_lang', locale, { path: '/' })
         return response
