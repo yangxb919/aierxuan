@@ -1,10 +1,12 @@
 import { Suspense } from 'react'
 import Image from 'next/image'
+import { Metadata } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import { BlogListClient } from '@/components/features/BlogListClient'
 import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import type { BlogPost, BlogPostTranslation } from '@/types'
+import { SITE_URL } from '@/lib/site-url'
 
 // ISR: 每小时重新生成
 export const revalidate = 3600
@@ -15,9 +17,36 @@ interface BlogPostWithTranslations extends BlogPost {
 
 const POSTS_PER_PAGE = 9
 
-export const metadata = {
-  title: 'Blog & News - AIERXUAN',
-  description: 'Latest updates, insights, and industry news from AIERXUAN',
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+
+  const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
+    en: {
+      title: 'Blog & News - Industry Insights | AIERXUAN',
+      description: 'Latest updates, industry insights, and technology news from AIERXUAN. Stay informed about laptop manufacturing, mini PC trends, and OEM solutions.',
+      keywords: 'aierxuan blog, laptop news, mini pc trends, oem manufacturing insights',
+    },
+    ru: {
+      title: 'Блог и новости — Отраслевые обзоры | AIERXUAN',
+      description: 'Последние новости, отраслевые обзоры и технологические тренды от AIERXUAN. Производство ноутбуков, мини-ПК и OEM решения.',
+      keywords: 'блог aierxuan, новости ноутбуков, тренды мини-ПК, OEM производство',
+    },
+  }
+  const seo = metaByLang[lang] ?? metaByLang.en
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: `${SITE_URL}/${lang}/blog`,
+      languages: {
+        'x-default': `${SITE_URL}/en/blog`,
+        'en': `${SITE_URL}/en/blog`,
+        'ru': `${SITE_URL}/ru/blog`,
+      },
+    },
+  }
 }
 
 export default async function BlogPage({

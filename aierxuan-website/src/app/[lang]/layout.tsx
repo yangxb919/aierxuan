@@ -65,6 +65,37 @@ export default async function RootLayout({
     <>
       <HtmlLangSetter lang={lang} />
 
+      {/* Organization Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'AIERXUAN',
+            url: SITE_URL,
+            logo: `${SITE_URL}/images/logo.png`,
+            description: metaByLang[lang]?.description ?? metaByLang.en.description,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Shenzhen',
+              addressRegion: 'Guangdong',
+              addressCountry: 'CN',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+86-4008-8228-058',
+              contactType: 'sales',
+              email: 'admin@aierxuanlaptop.com',
+              availableLanguage: ['English', 'Russian', 'Chinese'],
+            },
+            sameAs: [
+              'https://www.linkedin.com/company/aierxuan',
+            ],
+          }),
+        }}
+      />
+
       {/* Google Tag Manager - lazyOnload 策略 */}
       {gtmId ? (
         <>

@@ -550,27 +550,23 @@
     "footer": {
         "company": {
             "title": "AIERXUAN",
-            "description": "Ведущий поставщик решений промышленной автоматизации, специализирующийся на высококачественном оборудовании и инновационных технологиях для современного производства."
+            "description": "Профессиональный OEM/ODM производитель ноутбуков, мини-ПК и промышленных компьютеров. Индивидуальные решения для бизнеса по всему миру."
         },
         "links": {
             "products": {
                 "title": "Продукты",
                 "items": [
                     {
-                        "name": "Промышленное оборудование",
-                        "href": "/products/industrial"
+                        "name": "Все продукты",
+                        "href": "/products"
                     },
                     {
-                        "name": "Системы автоматизации",
-                        "href": "/products/automation"
+                        "name": "OEM/ODM услуги",
+                        "href": "/oem"
                     },
                     {
-                        "name": "Решения управления",
-                        "href": "/products/control"
-                    },
-                    {
-                        "name": "Датчики и приборы",
-                        "href": "/products/sensors"
+                        "name": "Блог",
+                        "href": "/blog"
                     }
                 ]
             },
@@ -582,16 +578,12 @@
                         "href": "/about"
                     },
                     {
-                        "name": "Наша команда",
-                        "href": "/about/team"
+                        "name": "FAQ",
+                        "href": "/faq"
                     },
                     {
-                        "name": "Карьера",
-                        "href": "/careers"
-                    },
-                    {
-                        "name": "Новости",
-                        "href": "/news"
+                        "name": "Связаться с нами",
+                        "href": "/contact"
                     }
                 ]
             },
@@ -603,16 +595,12 @@
                         "href": "/contact"
                     },
                     {
-                        "name": "Техническая поддержка",
-                        "href": "/support"
-                    },
-                    {
-                        "name": "Документация",
-                        "href": "/docs"
-                    },
-                    {
                         "name": "FAQ",
                         "href": "/faq"
+                    },
+                    {
+                        "name": "OEM/ODM",
+                        "href": "/oem"
                     }
                 ]
             }

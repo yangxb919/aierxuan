@@ -561,20 +561,16 @@
                 "title": "Products",
                 "items": [
                     {
-                        "name": "Industrial Equipment",
-                        "href": "/products/industrial"
+                        "name": "All Products",
+                        "href": "/products"
                     },
                     {
-                        "name": "Automation Systems",
-                        "href": "/products/automation"
+                        "name": "OEM/ODM Services",
+                        "href": "/oem"
                     },
                     {
-                        "name": "Control Solutions",
-                        "href": "/products/control"
-                    },
-                    {
-                        "name": "Sensors & Instruments",
-                        "href": "/products/sensors"
+                        "name": "Blog",
+                        "href": "/blog"
                     }
                 ]
             },
@@ -586,16 +582,12 @@
                         "href": "/about"
                     },
                     {
-                        "name": "Our Team",
-                        "href": "/about/team"
+                        "name": "FAQ",
+                        "href": "/faq"
                     },
                     {
-                        "name": "Careers",
-                        "href": "/careers"
-                    },
-                    {
-                        "name": "News",
-                        "href": "/news"
+                        "name": "Contact Us",
+                        "href": "/contact"
                     }
                 ]
             },
@@ -607,16 +599,12 @@
                         "href": "/contact"
                     },
                     {
-                        "name": "Technical Support",
-                        "href": "/support"
-                    },
-                    {
-                        "name": "Documentation",
-                        "href": "/docs"
-                    },
-                    {
                         "name": "FAQ",
                         "href": "/faq"
+                    },
+                    {
+                        "name": "OEM/ODM",
+                        "href": "/oem"
                     }
                 ]
             }

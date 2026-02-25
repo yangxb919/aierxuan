@@ -1,6 +1,40 @@
+import { Metadata } from 'next'
 import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import { HeroSection, StorySection, CTASection, FactorySection, QualitySection, MilestonesSection, AwardsExhibitionsSection } from '@/components/about'
+import { SITE_URL } from '@/lib/site-url'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+
+  const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
+    en: {
+      title: 'About AIERXUAN - Professional Laptop & PC Manufacturer Since 2017',
+      description: 'Learn about AIERXUAN, a Shenzhen-based OEM/ODM manufacturer specializing in laptops, mini PCs and industrial computers. ISO 9001 certified factory.',
+      keywords: 'about aierxuan, laptop manufacturer, shenzhen factory, oem odm, iso certified',
+    },
+    ru: {
+      title: 'О компании AIERXUAN — Производитель ноутбуков и ПК с 2017 года',
+      description: 'Узнайте об AIERXUAN — OEM/ODM производителе ноутбуков, мини-ПК и промышленных компьютеров в Шэньчжэне. Сертификация ISO 9001.',
+      keywords: 'об aierxuan, производитель ноутбуков, фабрика Шэньчжэнь, OEM ODM, сертификация ISO',
+    },
+  }
+  const seo = metaByLang[lang] ?? metaByLang.en
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: `${SITE_URL}/${lang}/about`,
+      languages: {
+        'x-default': `${SITE_URL}/en/about`,
+        'en': `${SITE_URL}/en/about`,
+        'ru': `${SITE_URL}/ru/about`,
+      },
+    },
+  }
+}
 
 interface AboutPageProps {
   params: Promise<{ lang: Locale }>

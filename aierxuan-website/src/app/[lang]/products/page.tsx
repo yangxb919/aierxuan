@@ -1,9 +1,45 @@
+import { Metadata } from 'next'
 import { getDictionary } from '@/get-dictionary'
 import { ProductsClient } from '@/components/features/ProductsClient'
 import { Locale } from '@/i18n-config'
+import { SITE_URL } from '@/lib/site-url'
 
 // ISR: 每30分钟重新生成
 export const revalidate = 1800
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const dictionary = await getDictionary(lang as Locale)
+  const texts = dictionary.products.page
+
+  const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
+    en: {
+      title: 'Products - Laptops, Mini PCs & Industrial Computers | AIERXUAN',
+      description: 'Browse AIERXUAN full range of OEM/ODM laptops, gaming notebooks, mini PCs and industrial computing solutions. Custom configurations available.',
+      keywords: 'laptops, mini pc, gaming laptop, industrial computer, oem laptop, odm notebook',
+    },
+    ru: {
+      title: 'Продукция — Ноутбуки, мини-ПК и промышленные компьютеры | AIERXUAN',
+      description: 'Полный каталог OEM/ODM ноутбуков, игровых ноутбуков, мини-ПК и промышленных компьютеров AIERXUAN. Индивидуальные конфигурации.',
+      keywords: 'ноутбуки, мини-ПК, игровой ноутбук, промышленный компьютер, OEM ноутбук',
+    },
+  }
+  const seo = metaByLang[lang] ?? metaByLang.en
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: `${SITE_URL}/${lang}/products`,
+      languages: {
+        'x-default': `${SITE_URL}/en/products`,
+        'en': `${SITE_URL}/en/products`,
+        'ru': `${SITE_URL}/ru/products`,
+      },
+    },
+  }
+}
 
 export default async function ProductsPage({
   params,

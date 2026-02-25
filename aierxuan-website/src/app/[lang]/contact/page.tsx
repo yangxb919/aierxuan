@@ -1,12 +1,41 @@
 import { Suspense } from 'react'
 import Image from 'next/image'
+import { Metadata } from 'next'
 import { RFQForm } from '@/components/forms/RFQForm'
 import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
+import { SITE_URL } from '@/lib/site-url'
 
-export const metadata = {
-  title: 'Contact Us - AIERXUAN',
-  description: 'Get in touch with AIERXUAN for your industrial automation needs.',
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+
+  const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
+    en: {
+      title: 'Contact Us - Get a Quote | AIERXUAN',
+      description: 'Contact AIERXUAN for OEM/ODM laptop and mini PC inquiries. Request a quote, get technical support, or discuss custom manufacturing solutions.',
+      keywords: 'contact aierxuan, get quote, oem inquiry, laptop manufacturer contact',
+    },
+    ru: {
+      title: 'Связаться с нами — Запросить цену | AIERXUAN',
+      description: 'Свяжитесь с AIERXUAN для OEM/ODM запросов по ноутбукам и мини-ПК. Запросите цену, получите техническую поддержку.',
+      keywords: 'связаться с aierxuan, запросить цену, OEM запрос, производитель ноутбуков контакт',
+    },
+  }
+  const seo = metaByLang[lang] ?? metaByLang.en
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: `${SITE_URL}/${lang}/contact`,
+      languages: {
+        'x-default': `${SITE_URL}/en/contact`,
+        'en': `${SITE_URL}/en/contact`,
+        'ru': `${SITE_URL}/ru/contact`,
+      },
+    },
+  }
 }
 
 export default async function ContactPage({

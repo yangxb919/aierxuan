@@ -12,6 +12,8 @@ import { getDictionary } from '@/get-dictionary'
 import { getTranslation } from '@/lib/utils'
 import { Button } from '@/components/ui'
 import TableOfContents from '@/components/blog/TableOfContents'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
+import { SITE_URL } from '@/lib/site-url'
 import type { BlogPost } from '@/types'
 import type { Locale } from '@/i18n-config'
 
@@ -71,6 +73,14 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${title} - AIERXUAN`,
     description: excerpt,
+    alternates: {
+      canonical: `${SITE_URL}/${lang}/blog/${slug}`,
+      languages: {
+        'x-default': `${SITE_URL}/en/blog/${slug}`,
+        'en': `${SITE_URL}/en/blog/${slug}`,
+        'ru': `${SITE_URL}/ru/blog/${slug}`,
+      },
+    },
   }
 }
 
@@ -147,6 +157,34 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
+      <BreadcrumbJsonLd
+        lang={lang}
+        items={[
+          { name: 'Home', href: '' },
+          { name: 'Blog', href: '/blog' },
+          { name: title, href: `/blog/${slug}` },
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: title,
+            image: post.cover_image || undefined,
+            datePublished: post.published_at || post.created_at,
+            dateModified: post.updated_at || post.published_at || post.created_at,
+            author: { '@type': 'Organization', name: 'AIERXUAN' },
+            publisher: {
+              '@type': 'Organization',
+              name: 'AIERXUAN',
+              logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
+            },
+            mainEntityOfPage: `${SITE_URL}/${lang}/blog/${slug}`,
+          }),
+        }}
+      />
       {/* Hero Banner with Featured Image and Title */}
       <div className="relative h-[420px] md:h-[520px]">
         {/* Background */}
