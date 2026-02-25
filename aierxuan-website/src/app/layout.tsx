@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   verification: {
     yandex: 'cae9fe4eb8159f38',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default async function RootLayout({

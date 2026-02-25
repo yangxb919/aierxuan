@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AIERXUAN">
+  <rect width="512" height="512" rx="96" fill="#2563eb"/>
+  <path
+    d="M256 116c-15.5 0-29.6 9.2-35.8 23.4L137 336h56.8l15.9-40h92.6l15.9 40H375L291.8 139.4C285.6 125.2 271.5 116 256 116zm-27.8 132 27.8-70 27.8 70h-55.6z"
+    fill="#ffffff"
+  />
+  <path d="M146 386h220v28H146z" fill="#ffffff" opacity="0.85"/>
+</svg>
+
