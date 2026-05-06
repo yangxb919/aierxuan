@@ -30,6 +30,18 @@ function getLocale(request: NextRequest): string {
 }
 
 export function middleware(request: NextRequest) {
+    const hostname = request.headers.get('host') || ''
+
+    // SEO: Redirect non-www to www (canonical domain) with 301
+    if (
+        hostname === 'aierxuanlaptop.com' &&
+        process.env.NODE_ENV === 'production'
+    ) {
+        const url = request.nextUrl.clone()
+        url.host = 'www.aierxuanlaptop.com'
+        return NextResponse.redirect(url, 301)
+    }
+
     const pathname = request.nextUrl.pathname
 
     // Check if there is any supported locale in the pathname
