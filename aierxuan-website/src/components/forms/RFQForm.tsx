@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useForm, type SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button, Input, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
 import { createSupabaseClient } from '@/lib/supabase'
+import { trackLeadFormSubmit } from '@/lib/ads-tracking'
 import type { LanguageCode } from '@/types'
 import type { Dictionary } from '@/get-dictionary'
 
@@ -40,11 +41,12 @@ interface RFQFormProps {
   productSlug?: string
   onSuccess?: () => void
   className?: string
+  variant?: 'dark' | 'light'
   lang: LanguageCode
   dictionary: Dictionary['rfq']
 }
 
-export function RFQForm({ productSlug, onSuccess, className = '', lang, dictionary }: RFQFormProps) {
+export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dark', lang, dictionary }: RFQFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const router = useRouter()
@@ -135,6 +137,12 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
       }).catch(console.error)
 
       setSubmitStatus('success')
+      trackLeadFormSubmit({
+        lang,
+        productInterest: data.productInterest,
+        urgency: data.urgency,
+        source: 'rfq_form',
+      })
       reset()
 
       // Call success callback or redirect
@@ -154,13 +162,25 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
     }
   }
 
+  const isLight = variant === 'light'
+  const labelClass = isLight ? 'text-slate-700' : 'text-gray-300'
+  const inputClass = isLight
+    ? 'bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400 focus:border-blue-500'
+    : 'bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500'
+  const textareaClass = isLight
+    ? 'w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-md text-slate-950 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+    : 'w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+  const selectClass = isLight
+    ? 'w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-md text-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+    : 'w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+
   return (
-    <Card className={`w-full max-w-2xl mx-auto bg-white/5 backdrop-blur-sm border-white/10 ${className}`}>
+    <Card className={`w-full max-w-2xl mx-auto ${isLight ? 'bg-white border-slate-200' : 'bg-white/5 backdrop-blur-sm border-white/10'} ${className}`}>
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-white">
+        <CardTitle className={`text-2xl font-bold text-center ${isLight ? 'text-slate-950' : 'text-white'}`}>
           {texts.title}
         </CardTitle>
-        <p className="text-gray-400 text-center">
+        <p className={`${isLight ? 'text-slate-600' : 'text-gray-400'} text-center`}>
           {texts.subtitle}
         </p>
       </CardHeader>
@@ -186,19 +206,19 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
           {/* Contact Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.name} *
               </label>
               <Input
                 {...register('name')}
                 placeholder={texts.namePlaceholder}
                 error={errors.name?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.email} *
               </label>
               <Input
@@ -206,59 +226,59 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
                 {...register('email')}
                 placeholder={texts.emailPlaceholder}
                 error={errors.email?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.company} *
               </label>
               <Input
                 {...register('company')}
                 placeholder={texts.companyPlaceholder}
                 error={errors.company?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.phone}
               </label>
               <Input
                 {...register('phone')}
                 placeholder={texts.phonePlaceholder}
                 error={errors.phone?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
           </div>
 
           {/* Product Information */}
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
               {texts.productInterest} *
             </label>
             <Input
               {...register('productInterest')}
               placeholder={texts.productPlaceholder}
               error={errors.productInterest?.message}
-              className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+              className={inputClass}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
               {texts.message} *
             </label>
             <textarea
               {...register('message')}
               placeholder={texts.messagePlaceholder}
               rows={4}
-              className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className={textareaClass}
             />
             {errors.message && (
               <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
@@ -268,66 +288,66 @@ export function RFQForm({ productSlug, onSuccess, className = '', lang, dictiona
           {/* Additional Information */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.quantity}
               </label>
               <Input
                 {...register('quantity')}
                 placeholder={texts.quantityPlaceholder}
                 error={errors.quantity?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.country}
               </label>
               <Input
                 {...register('country')}
                 placeholder={texts.countryPlaceholder}
                 error={errors.country?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.industry}
               </label>
               <Input
                 {...register('industry')}
                 placeholder={texts.industryPlaceholder}
                 error={errors.industry?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.urgency}
               </label>
               <select
                 {...register('urgency')}
-                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className={selectClass}
               >
-                <option value="normal" className="bg-slate-900">{texts.urgencyNormal}</option>
-                <option value="urgent" className="bg-slate-900">{texts.urgencyUrgent}</option>
-                <option value="flexible" className="bg-slate-900">{texts.urgencyFlexible}</option>
+                <option value="normal" className={isLight ? 'bg-white text-slate-950' : 'bg-slate-900'}>{texts.urgencyNormal}</option>
+                <option value="urgent" className={isLight ? 'bg-white text-slate-950' : 'bg-slate-900'}>{texts.urgencyUrgent}</option>
+                <option value="flexible" className={isLight ? 'bg-white text-slate-950' : 'bg-slate-900'}>{texts.urgencyFlexible}</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className={`block text-sm font-medium mb-2 ${labelClass}`}>
                 {texts.budgetRange}
               </label>
               <Input
                 {...register('budgetRange')}
                 placeholder={texts.budgetPlaceholder}
                 error={errors.budgetRange?.message}
-                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
+                className={inputClass}
               />
             </div>
           </div>

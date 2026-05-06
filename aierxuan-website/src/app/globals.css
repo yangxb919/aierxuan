@@ -3,13 +3,39 @@
 @import "../styles/markdown.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0f;
+  --foreground: #f8fafc;
+  --color-bg-base: #0a0a0f;
+  --color-bg-panel: #0f1424;
+  --color-bg-elev: #141b30;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hi: rgba(59, 130, 246, 0.35);
+  --color-brand-500: #2563eb;
+  --color-brand-400: #3b82f6;
+  --color-brand-300: #60a5fa;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-lime: #a3e635;
+  --color-accent-red: #f43f5e;
+  --color-text-1: #ffffff;
+  --color-text-2: #c7cdd9;
+  --color-text-3: #8a93a6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-panel: var(--color-bg-panel);
+  --color-bg-elev: var(--color-bg-elev);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-300: var(--color-brand-300);
+  --color-accent-cyan: var(--color-accent-cyan);
+  --color-accent-lime: var(--color-accent-lime);
+  --color-accent-red: var(--color-accent-red);
+  --color-text-1: var(--color-text-1);
+  --color-text-2: var(--color-text-2);
+  --color-text-3: var(--color-text-3);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -24,7 +50,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.45);
+  color: #fff;
 }
 
 /* Hero Section Animations */

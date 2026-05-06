@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import Image from 'next/image'
 import { Metadata } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import { BlogListClient } from '@/components/features/BlogListClient'
@@ -7,6 +6,7 @@ import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import type { BlogPost, BlogPostTranslation } from '@/types'
 import { SITE_URL } from '@/lib/site-url'
+import { SectionHeader, TechCTA, TechHero, redesignImages } from '@/components/redesign/TechPrimitives'
 
 // ISR: 每小时重新生成
 export const revalidate = 3600
@@ -64,26 +64,7 @@ export default async function BlogPage({
   if (!supabaseUrl || !supabaseAnonKey) {
     return (
       <div className="min-h-screen bg-[#0a0a0f] text-white">
-        <section className="relative text-white overflow-hidden">
-          <Image
-            src="/images/blog-hero-banner.webp"
-            alt="Blog"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
-                {texts.title}
-              </h1>
-              <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-                {texts.subtitle}
-              </p>
-            </div>
-          </div>
-        </section>
+        <BlogHero lang={lang} texts={texts} />
 
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,26 +101,7 @@ export default async function BlogPage({
   if (error) {
     return (
       <div className="min-h-screen bg-[#0a0a0f] text-white">
-        <section className="relative text-white overflow-hidden">
-          <Image
-            src="/images/blog-hero-banner.webp"
-            alt="Blog"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
-                {texts.title}
-              </h1>
-              <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-                {texts.subtitle}
-              </p>
-            </div>
-          </div>
-        </section>
+        <BlogHero lang={lang} texts={texts} />
 
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,42 +130,26 @@ export default async function BlogPage({
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
-      {/* Hero Section */}
-      <section className="relative text-white overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src="/images/blog-hero-banner.webp"
-          alt="Blog"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f]/85 via-slate-900/80 to-[#0a0a0f]/85" />
+      <BlogHero lang={lang} texts={texts} />
 
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `
-            linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}></div>
-
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-15 bg-blue-600" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10 bg-violet-600" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
-              {texts.title}
-            </h1>
-            <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-              {texts.subtitle}
-            </p>
-            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-              {texts.heroDescription}
+      <section className="relative overflow-hidden bg-[#070b12] py-20 text-white">
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)', backgroundSize: '76px 76px' }} />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Featured Insight"
+            title="How to Evaluate a Laptop OEM Factory Before You Order"
+            description="Turn common sourcing questions into practical articles about MOQ, samples, quality checks, certifications, packaging and import documentation."
+          />
+          <div className="rounded-xl border border-white/12 bg-white/[0.045] p-6 sm:p-8">
+            <div className="flex flex-wrap gap-3">
+              {['OEM/ODM', 'Buyer Checklist', '8 min read', 'Quality Guide'].map((tag) => (
+                <span key={tag} className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-bold uppercase text-cyan-200">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300">
+              Use the blog as a buyer education hub, not only a news list. Every article should help importers and distributors ask better questions before requesting a quote.
             </p>
           </div>
         </div>
@@ -217,6 +163,47 @@ export default async function BlogPage({
           dictionary={dictionary.blog}
         />
       </Suspense>
+
+      <TechCTA
+        title="Have a Product Question?"
+        description="Every article can lead buyers into a qualified sales conversation with real product requirements."
+        href={`/${lang}/contact`}
+      />
     </div>
+  )
+}
+
+function BlogHero({ lang, texts }: { lang: Locale; texts: any }) {
+  void texts
+
+  return (
+    <TechHero
+      lang={lang}
+      image={redesignImages.blogHero}
+      eyebrow="OEM Insights | Product Trends | Quality Guides"
+      title="Manufacturing Insights for Hardware Buyers"
+      subtitle="Sourcing guides, product trends, and quality notes for laptop and Mini PC importers."
+      primaryLabel="Read Latest"
+      secondaryLabel="Ask a Question"
+      secondaryHref={`/${lang}/contact`}
+      widgets={[
+        {
+          title: 'Trending Topics',
+          rows: [
+            { label: 'OEM Factory Audit', value: 'Hot', status: 'live' },
+            { label: 'Mini PC Specs', value: 'New' },
+            { label: 'Certification', value: 'Guide', status: 'ok' },
+          ],
+        },
+        {
+          title: 'Buyer Checklist',
+          rows: [
+            { label: 'MOQ', value: '100+' },
+            { label: 'Samples', value: '7-15d', status: 'ok' },
+            { label: 'Quote Path', value: '24h', status: 'ok' },
+          ],
+        },
+      ]}
+    />
   )
 }

@@ -3,6 +3,15 @@ import { getDictionary } from '@/get-dictionary'
 import { ProductsClient } from '@/components/features/ProductsClient'
 import { Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
+import {
+  ProductFamilyCard,
+  ProofStrip,
+  SectionHeader,
+  TechCTA,
+  TechHero,
+  productFamilies,
+  redesignImages,
+} from '@/components/redesign/TechPrimitives'
 
 // ISR: 每30分钟重新生成
 export const revalidate = 1800
@@ -55,80 +64,64 @@ export default async function ProductsPage({
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-24 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/images/products-hero-banner.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+      <TechHero
+        lang={lang}
+        image={redesignImages.productsHero}
+        eyebrow="50+ Models | MOQ 100+ | Fast Samples"
+        title="Product Portfolio for Global Hardware Brands"
+        subtitle="Laptops, gaming notebooks, and Mini PCs ready for OEM/ODM customization."
+        primaryLabel={dictionary.common.requestQuote}
+        secondaryLabel="Compare Products"
+        secondaryHref={`/${lang}/products#compare`}
+        widgets={[
+          {
+            title: 'Category Mix',
+            rows: [
+              { label: 'Business Laptops', value: '42%', status: 'live' },
+              { label: 'Gaming Laptops', value: '24%' },
+              { label: 'Mini PCs', value: '28%' },
+              { label: 'Custom SKUs', value: '6%' },
+            ],
+          },
+          {
+            title: 'Catalog Readiness',
+            rows: [
+              { label: 'ODM Platforms', value: 'Ready', status: 'ok' },
+              { label: 'Private Label', value: 'Ready', status: 'ok' },
+              { label: 'Certifications', value: 'CE/FCC', status: 'ok' },
+            ],
+          },
+        ]}
+      />
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-[#0a0a0f]" />
-
-        {/* Grid Pattern */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-20 bg-blue-600" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-15 bg-violet-600" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16">
-          <div className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm mb-8">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-blue-300 text-sm font-medium">
-                {texts.badge}
-              </span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {texts.title}
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
-              {texts.subtitle}
-            </p>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              {texts.description}
-            </p>
-
-            {/* Quick Stats */}
-            <div className="flex flex-wrap justify-center gap-8 mt-12">
-              {[
-                { value: '50+', label: texts.stats.productModels },
-                { value: '100+', label: texts.stats.moqUnits },
-                { value: '7-15', label: texts.stats.daysDelivery },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            eyebrow="All Product Families"
+            title="Built for Sourcing Teams to Compare Fast"
+            description="Start with the family, then request the exact CPU, memory, storage, display, branding and certification requirements."
+          />
+          <div className="grid gap-6 md:grid-cols-3">
+            {productFamilies.map((family) => (
+              <ProductFamilyCard key={family.title} family={family} href={`/${lang}/products?category=all`} />
+            ))}
+          </div>
+          <div className="mt-8">
+            <ProofStrip />
           </div>
         </div>
-
-        {/* Bottom Fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
       </section>
 
       {/* Products Section */}
-      <section className="relative py-16">
+      <section className="relative overflow-hidden bg-[#070b12] py-20">
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)', backgroundSize: '76px 76px' }} />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <SectionHeader
+            eyebrow="Live Catalog"
+            title={texts.allProducts}
+            description="Browse current uploaded products and send quote requests from the product card."
+          />
           <ProductsClient
             lang={lang}
             dictionary={dictionary.products}
@@ -136,6 +129,39 @@ export default async function ProductsPage({
           />
         </div>
       </section>
+
+      <section id="compare" className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            eyebrow="Configuration Snapshot"
+            title="Key Specs Buyers Usually Compare"
+            description="Use this quick matrix to decide the right family before requesting a private configuration."
+          />
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
+            <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+              <thead className="bg-slate-100 text-slate-950">
+                <tr>
+                  {['Category', 'Typical Size', 'Core Options', 'Best For', 'MOQ'].map((head) => (
+                    <th key={head} className="px-5 py-4 font-bold">{head}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-600">
+                <tr className="transition-colors hover:bg-blue-50/70"><td className="px-5 py-4 font-semibold text-slate-900">Business Laptop</td><td className="px-5 py-4">14-15.6 inch</td><td className="px-5 py-4">Intel Core / N-series</td><td className="px-5 py-4">Education, office, distributors</td><td className="px-5 py-4">100+</td></tr>
+                <tr className="transition-colors hover:bg-blue-50/70"><td className="px-5 py-4 font-semibold text-slate-900">Gaming Laptop</td><td className="px-5 py-4">15.6-17.3 inch</td><td className="px-5 py-4">High refresh / discrete graphics</td><td className="px-5 py-4">Gaming retail channels</td><td className="px-5 py-4">100+</td></tr>
+                <tr className="transition-colors hover:bg-blue-50/70"><td className="px-5 py-4 font-semibold text-slate-900">Mini PC</td><td className="px-5 py-4">Compact desktop</td><td className="px-5 py-4">Intel / AMD, VESA, fanless</td><td className="px-5 py-4">Signage, kiosk, office, industrial</td><td className="px-5 py-4">100+</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <TechCTA
+        title="Need a Private Configuration?"
+        description="Send the model, CPU, memory, storage, destination market, logo and packaging requirements for a practical quote."
+        href={`/${lang}/contact`}
+      />
     </div>
   )
 }

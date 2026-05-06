@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/store/useAppStore'
+import { trackTelegramClick } from '@/lib/ads-tracking'
 
 export function TelegramFloatingButton() {
   const language = useLanguage()
@@ -27,6 +28,7 @@ export function TelegramFloatingButton() {
       href="https://t.me/aierxuan_russia"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackTelegramClick(language)}
       className="fixed bottom-8 left-8 z-50 bg-[#0088cc] text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 hover:bg-[#006699] animate-pulse"
       aria-label="Связаться в Telegram"
       title="Telegram: @aierxuan_russia"
