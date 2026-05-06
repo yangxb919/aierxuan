@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Playwright MCP local artifacts
+.playwright-mcp/
+*.playwright-mcp*.log
+
+# Temporary screenshots / live snapshots
+aierxuan-home-current.png
+aierxuan-home-current-snapshot.md
+aierxuan-products-current.png
+
+# Design mockups & generated previews (kept locally only)
+aierxuan-redesign-generated-images/
+design-mockups/
+
+# Page redesign QA screenshots
+aierxuan-website/redesign-check-*.png
+aierxuan-website/redesign-final-*.png
+
+# Certificate exploration artifacts (only -front-photo-v3 variant is referenced in code)
+aierxuan-website/about-certificates-*.png
+aierxuan-website/about-original-images-contact-sheet.png
+aierxuan-website/about-real-photos-*.png
+aierxuan-website/certificate-front-photo-preview*.png
+aierxuan-website/certificate-preview-sheet.png
+aierxuan-website/certificate-real-preview-sheet.png
+aierxuan-website/certificate-wall-photo-preview.png
+aierxuan-website/public/images/certificates/*-front-photo.webp
+aierxuan-website/public/images/certificates/*-front-photo-v2.webp
+aierxuan-website/public/images/certificates/*-photo.webp
+aierxuan-website/public/images/certificates/*-real.webp
+aierxuan-website/public/images/certificates/*-wall-photo.webp
+aierxuan-website/public/images/certificates/certificates-front-wall-source.png
+aierxuan-website/public/images/certificates/certificates-wall-photo-source.png
