@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui'
+import { ThankYouTracking } from '@/components/thank-you/ThankYouTracking'
 import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 
@@ -14,6 +15,8 @@ export default async function ThankYouPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <ThankYouTracking lang={lang} />
+
       {/* Hero Section */}
       <section className="bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">

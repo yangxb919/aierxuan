@@ -2,7 +2,7 @@
 
 import Script from 'next/script'
 
-const YANDEX_METRICA_ID = 106511138
+export const YANDEX_METRICA_ID = 106511138
 
 export default function YandexMetrica() {
   return (

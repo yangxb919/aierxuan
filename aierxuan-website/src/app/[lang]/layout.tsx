@@ -60,6 +60,7 @@ export default async function RootLayout({
   const lang = langParam as Locale
   const dictionary = await getDictionary(lang)
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
 
   return (
     <>
@@ -114,6 +115,23 @@ export default async function RootLayout({
               style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
+        </>
+      ) : null}
+
+      {googleAdsId ? (
+        <>
+          <Script
+            id="google-ads-gtag-src"
+            src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}
+            strategy="afterInteractive"
+          />
+          <Script
+            id="google-ads-gtag-config"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};gtag('js', new Date());gtag('config', '${googleAdsId}');`,
+            }}
+          />
         </>
       ) : null}
 
