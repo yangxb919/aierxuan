@@ -50,6 +50,22 @@ export const defaultHeroStats = [
   { icon: Users, label: 'Global Clients', value: '500+', detail: 'Partners' },
 ]
 
+export type HeroStatTexts = {
+  moq?: { label?: string; detail?: string }
+  delivery?: { label?: string; detail?: string }
+  capacity?: { label?: string; detail?: string }
+  clients?: { label?: string; detail?: string }
+}
+
+export function defaultHeroStatsFor(t?: HeroStatTexts) {
+  return [
+    { icon: Boxes, label: t?.moq?.label ?? 'MOQ', value: '100+', detail: t?.moq?.detail ?? 'Units' },
+    { icon: Clock3, label: t?.delivery?.label ?? 'Delivery', value: '7-15', detail: t?.delivery?.detail ?? 'Days' },
+    { icon: Factory, label: t?.capacity?.label ?? 'Capacity', value: '50,000+', detail: t?.capacity?.detail ?? '/ Month' },
+    { icon: Users, label: t?.clients?.label ?? 'Global Clients', value: '500+', detail: t?.clients?.detail ?? 'Partners' },
+  ]
+}
+
 export const productFamilies = [
   {
     icon: Laptop,
@@ -73,6 +89,36 @@ export const productFamilies = [
     specs: ['Intel/AMD', 'VESA Mount', 'Fanless Option'],
   },
 ]
+
+export type ProductFamilyTexts = {
+  business?: { title?: string; description?: string; specs?: string[] }
+  gaming?: { title?: string; description?: string; specs?: string[] }
+  miniPc?: { title?: string; description?: string; specs?: string[] }
+}
+
+export function productFamiliesFor(t?: ProductFamilyTexts) {
+  const base = productFamilies
+  return [
+    {
+      ...base[0],
+      title: t?.business?.title ?? base[0].title,
+      description: t?.business?.description ?? base[0].description,
+      specs: t?.business?.specs ?? base[0].specs,
+    },
+    {
+      ...base[1],
+      title: t?.gaming?.title ?? base[1].title,
+      description: t?.gaming?.description ?? base[1].description,
+      specs: t?.gaming?.specs ?? base[1].specs,
+    },
+    {
+      ...base[2],
+      title: t?.miniPc?.title ?? base[2].title,
+      description: t?.miniPc?.description ?? base[2].description,
+      specs: t?.miniPc?.specs ?? base[2].specs,
+    },
+  ]
+}
 
 export function GlowButton({
   href,
@@ -147,9 +193,11 @@ export function StatusWidget({
   title,
   rows,
   compact = false,
+  liveLabel = 'Live',
 }: {
   title: string
   compact?: boolean
+  liveLabel?: string
   rows: Array<{ label: string; value: string; status?: 'live' | 'ok' | 'warn' }>
 }) {
   return (
@@ -159,7 +207,7 @@ export function StatusWidget({
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-white">{title}</span>
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-lime-300">
           <span className="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_14px_rgba(163,230,53,0.8)]" />
-          Live
+          {liveLabel}
         </span>
       </div>
       <div className="space-y-2">
@@ -195,6 +243,7 @@ export function TechHero({
   secondaryHref,
   widgets,
   stats = defaultHeroStats,
+  liveLabel = 'Live',
 }: {
   lang: string
   image: string
@@ -206,6 +255,7 @@ export function TechHero({
   secondaryHref?: string
   widgets: Array<{ title: string; rows: Array<{ label: string; value: string; status?: 'live' | 'ok' | 'warn' }> }>
   stats?: typeof defaultHeroStats
+  liveLabel?: string
 }) {
   return (
     <section className="relative min-h-[760px] overflow-hidden bg-slate-950 text-white">
@@ -248,7 +298,7 @@ export function TechHero({
           <div className="hidden justify-self-end lg:block">
             <div className="w-[330px] space-y-4 xl:w-[360px]">
               {widgets.map((widget) => (
-                <StatusWidget key={widget.title} title={widget.title} rows={widget.rows} />
+                <StatusWidget key={widget.title} title={widget.title} rows={widget.rows} liveLabel={liveLabel} />
               ))}
             </div>
           </div>
@@ -351,20 +401,27 @@ export function ProductFamilyCard({
 
 export function ProofStrip({
   light = true,
+  metrics,
+  certs = ['CE', 'FCC', 'RoHS', 'ISO 9001'],
 }: {
   light?: boolean
+  metrics?: Array<{ value: string; label: string }>
+  certs?: string[]
 }) {
-  const metrics = [
+  const defaultMetrics = [
     { icon: Award, value: '10+', label: 'Years Experience' },
     { icon: Users, value: '500+', label: 'Global Clients' },
     { icon: Globe2, value: '50+', label: 'Countries Served' },
     { icon: ShieldCheck, value: '99.8%', label: 'Customer Satisfaction' },
   ]
-  const certs = ['CE', 'FCC', 'RoHS', 'ISO 9001']
+  const icons = [Award, Users, Globe2, ShieldCheck]
+  const finalMetrics = metrics
+    ? metrics.map((m, i) => ({ icon: icons[i] ?? Award, value: m.value, label: m.label }))
+    : defaultMetrics
 
   return (
     <div className={`grid gap-0 overflow-hidden rounded-xl border ${light ? 'border-slate-200 bg-white' : 'border-white/12 bg-white/[0.04]'} shadow-[0_18px_55px_rgba(15,23,42,0.08)] md:grid-cols-8`}>
-      {metrics.map((metric) => {
+      {finalMetrics.map((metric) => {
         const Icon = metric.icon
         return (
           <div key={metric.label} className={`border-b p-6 md:border-b-0 md:border-r ${light ? 'border-slate-200' : 'border-white/12'}`}>
