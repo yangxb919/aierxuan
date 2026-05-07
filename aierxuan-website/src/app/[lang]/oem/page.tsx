@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import {
   FeatureTile,
   ProcessCards,
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/oem`,
       },
     },
+    ...buildOgTwitter({ lang, title: texts.meta.title, description: texts.meta.description, path: '/oem' }),
   }
 }
 

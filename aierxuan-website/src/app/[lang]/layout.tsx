@@ -9,6 +9,7 @@ import { HtmlLangSetter } from '@/components/layout/HtmlLangSetter'
 import { i18n, type Locale } from '@/i18n-config'
 import { getDictionary } from '@/get-dictionary'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 
 const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
   en: {
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru`,
       },
     },
+    ...buildOgTwitter({ lang, title: seo.title, description: seo.description }),
   }
 }
 

@@ -6,6 +6,7 @@ import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import type { BlogPost, BlogPostTranslation } from '@/types'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import { SectionHeader, TechCTA, TechHero, redesignImages } from '@/components/redesign/TechPrimitives'
 
 // ISR: 每小时重新生成
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/blog`,
       },
     },
+    ...buildOgTwitter({ lang, title: seo.title, description: seo.description, path: '/blog' }),
   }
 }
 

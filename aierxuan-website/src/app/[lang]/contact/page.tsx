@@ -5,6 +5,7 @@ import { RFQForm } from '@/components/forms/RFQForm'
 import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import {
   ProcessCards,
   SectionHeader,
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/contact`,
       },
     },
+    ...buildOgTwitter({ lang, title: seo.title, description: seo.description, path: '/contact' }),
   }
 }
 

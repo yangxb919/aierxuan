@@ -3,6 +3,7 @@ import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import FAQPageClient from './FAQPageClient'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/faq`,
       },
     },
+    ...buildOgTwitter({ lang, title: texts.meta.title, description: texts.meta.description, path: '/faq' }),
   }
 }
 

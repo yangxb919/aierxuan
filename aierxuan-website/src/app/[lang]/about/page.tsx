@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { type Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import Image from 'next/image'
 import type { LucideIcon } from 'lucide-react'
 import { Award, Cpu, Handshake, PackageCheck, Presentation, ShieldCheck, Truck, Users } from 'lucide-react'
@@ -41,6 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/about`,
       },
     },
+    ...buildOgTwitter({ lang, title: seo.title, description: seo.description, path: '/about' }),
   }
 }
 

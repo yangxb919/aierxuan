@@ -3,6 +3,7 @@ import { getDictionary } from '@/get-dictionary'
 import { ProductsClient } from '@/components/features/ProductsClient'
 import { Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
+import { buildOgTwitter } from '@/lib/seo'
 import {
   ProductFamilyCard,
   ProofStrip,
@@ -47,6 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'ru': `${SITE_URL}/ru/products`,
       },
     },
+    ...buildOgTwitter({ lang, title: seo.title, description: seo.description, path: '/products' }),
   }
 }
 
