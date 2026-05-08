@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/site-url'
 
-const DEFAULT_OG_IMAGE = '/images/redesign/home-hero.png'
+const DEFAULT_OG_IMAGE = '/images/redesign/home-hero.webp'
 
 export function buildOgTwitter({
   lang,

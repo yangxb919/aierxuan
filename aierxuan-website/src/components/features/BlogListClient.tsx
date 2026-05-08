@@ -19,7 +19,7 @@ interface BlogListClientProps {
 }
 
 const POSTS_PER_PAGE = 9
-const BLOG_CARD_FALLBACK_IMAGE = '/images/redesign/blog-hero.png'
+const BLOG_CARD_FALLBACK_IMAGE = '/images/redesign/blog-hero.webp'
 
 function getBlogCoverImage(src?: string | null) {
     if (!src || src.startsWith('/uploads/blog/')) {
