@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { i18n } from './i18n-config'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+import { i18n } from './i18n-config'
+import { updateSupabaseSession } from '@/lib/supabase-middleware'
 
 function getLocale(request: NextRequest): string {
     try {
@@ -23,13 +24,13 @@ function getLocale(request: NextRequest): string {
         }
 
         return matchLocale(languages, i18n.locales, i18n.defaultLocale)
-    } catch (error) {
+    } catch {
         // If any error occurs, return default locale
         return i18n.defaultLocale
     }
 }
 
-export function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const hostname = request.headers.get('host') || ''
 
     // SEO: Redirect non-www to www (canonical domain) with 301
@@ -43,6 +44,25 @@ export function middleware(request: NextRequest) {
     }
 
     const pathname = request.nextUrl.pathname
+    const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/')
+
+    if (isAdminRoute) {
+        const { response, user } = await updateSupabaseSession(request)
+        const isLoginRoute = pathname === '/admin/login'
+
+        if (!user && !isLoginRoute) {
+            const url = request.nextUrl.clone()
+            url.pathname = '/admin/login'
+            url.searchParams.set('next', pathname)
+            return NextResponse.redirect(url)
+        }
+
+        if (user && isLoginRoute) {
+            return NextResponse.redirect(new URL('/admin', request.url))
+        }
+
+        return response
+    }
 
     // Check if there is any supported locale in the pathname
     const pathnameIsMissingLocale = i18n.locales.every(
@@ -86,6 +106,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    // Matcher ignoring `/_next/`, `/api/`, `/admin`, static files, sitemap, robots, etc.
-    matcher: ['/((?!api|admin|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html).*)'],
+    // Matcher ignoring `/_next/`, `/api/`, static files, sitemap, robots, etc.
+    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html).*)'],
 }

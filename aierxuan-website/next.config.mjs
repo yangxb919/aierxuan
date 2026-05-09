@@ -1,5 +1,15 @@
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep Turbopack scoped to this app when the repository root also has a lockfile.
+  turbopack: {
+    root: __dirname,
+  },
+
   // 图片优化 - 增强性能配置
   images: {
     remotePatterns: [
