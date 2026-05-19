@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { cookies } from 'next/headers'
 import './globals.css'
 import YandexMetrica from '@/components/YandexMetrica'
 
@@ -29,11 +28,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookieStore = await cookies()
-  const siteLang = cookieStore.get('site_lang')?.value || 'en'
-
   return (
-    <html lang={siteLang} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <YandexMetrica />
         {children}
