@@ -78,7 +78,7 @@ const nextConfig: NextConfig = {
       },
       // 图片缓存策略 - 1年不可变缓存
       {
-        source: '/images/:path*',
+        source: '/:folder(images|uploads)/:path*',
         headers: [
           {
             key: 'Cache-Control',
