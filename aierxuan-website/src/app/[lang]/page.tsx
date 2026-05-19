@@ -14,6 +14,7 @@ import {
   redesignImages,
 } from '@/components/redesign/TechPrimitives'
 import Image from 'next/image'
+import { brandFacts } from '@/lib/brand-facts'
 
 // ISR: 每小时重新生成
 export const revalidate = 3600
@@ -21,7 +22,7 @@ export const revalidate = 3600
 const homeRedesignText = {
   en: {
     hero: {
-      eyebrow: 'Intel Partner | CE/FCC Certified',
+      eyebrow: `Intel Partner Since ${brandFacts.intelPartnerSince} | CE/FCC/RoHS Certified`,
       title: 'OEM/ODM Laptop & Mini PC Manufacturing',
       subtitle: 'Custom computing hardware for global brands, delivered from Shenzhen with certified quality.',
       liveLabel: 'Live',
@@ -30,7 +31,7 @@ const homeRedesignText = {
         line: { label: 'Line 03', value: 'Running' },
         qa: { label: 'QA Pass Rate', value: '99.8%' },
         delivery: { label: 'On-Time Delivery', value: '98%' },
-        output: { label: 'Monthly Output', value: '50,000+' },
+        output: { label: 'Monthly Output', value: brandFacts.monthlyCapacity },
       },
       quality: {
         title: 'Quality System',
@@ -68,9 +69,9 @@ const homeRedesignText = {
         },
       },
       proof: [
-        { value: '10+', label: 'Years Experience' },
-        { value: '500+', label: 'Global Clients' },
-        { value: '50+', label: 'Countries Served' },
+        { value: brandFacts.yearsExperience, label: 'Years Experience' },
+        { value: brandFacts.globalClients, label: 'Global Clients' },
+        { value: brandFacts.countriesServed, label: 'Countries Served' },
         { value: '99.8%', label: 'Customer Satisfaction' },
       ],
     },
@@ -109,7 +110,7 @@ const homeRedesignText = {
   },
   ru: {
     hero: {
-      eyebrow: 'Партнёр Intel | Сертификаты CE/FCC',
+      eyebrow: `Партнёр Intel с ${brandFacts.intelPartnerSince} | CE/FCC/RoHS`,
       title: 'OEM/ODM производство ноутбуков и мини-ПК',
       subtitle: 'Индивидуальные компьютерные решения для мировых брендов с сертифицированным качеством из Шэньчжэня.',
       liveLabel: 'В работе',

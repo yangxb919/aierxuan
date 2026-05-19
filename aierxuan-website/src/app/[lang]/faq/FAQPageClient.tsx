@@ -10,6 +10,7 @@ import {
   iconFor,
   redesignImages,
 } from '@/components/redesign/TechPrimitives'
+import { brandFacts } from '@/lib/brand-facts'
 
 interface FAQPageClientProps {
   texts: {
@@ -63,7 +64,7 @@ export default function FAQPageClient({ texts, lang }: FAQPageClientProps) {
       <TechHero
         lang={lang}
         image={redesignImages.faqHero}
-        eyebrow="MOQ | Lead Time | Quality | Logistics"
+        eyebrow={`${brandFacts.moqText} | ${brandFacts.sampleLeadTimeText} Samples | Quality | Logistics`}
         title="Answers for Sourcing, Procurement and Brand Teams"
         subtitle="Fast answers about MOQ, lead time, customization, quality control, payment, logistics, and support."
         primaryLabel="Search Answers"
@@ -82,8 +83,8 @@ export default function FAQPageClient({ texts, lang }: FAQPageClientProps) {
           {
             title: 'Support Status',
             rows: [
-              { label: 'Quote Response', value: '24h', status: 'live' },
-              { label: 'Sample Window', value: '7-15d' },
+              { label: 'Quote Response', value: brandFacts.responseTimeText, status: 'live' },
+              { label: 'Sample Window', value: brandFacts.sampleLeadTimeText },
               { label: 'Sales Team', value: 'Online', status: 'ok' },
             ],
           },
@@ -155,8 +156,8 @@ export default function FAQPageClient({ texts, lang }: FAQPageClientProps) {
             description="The FAQ page turns repeated questions into trust-building proof before the RFQ form."
           />
           <div className="grid gap-5 md:grid-cols-4">
-            <FeatureTile icon={iconFor('mail')} title="24h Quote Response" description="Structured inquiries can receive practical next steps within one business day." />
-            <FeatureTile icon={iconFor('zap')} title="7-15 Day Samples" description="Sample timelines depend on configuration, branding and component availability." />
+            <FeatureTile icon={iconFor('mail')} title={`${brandFacts.responseTimeText} Quote Response`} description="Structured inquiries can receive practical next steps within one business day." />
+            <FeatureTile icon={iconFor('zap')} title={`${brandFacts.sampleLeadTimeText} Samples`} description="Sample timelines depend on configuration, branding and component availability." />
             <FeatureTile icon={iconFor('quality')} title="CE/FCC/RoHS" description="Certification support helps importers prepare for target market requirements." />
             <FeatureTile icon={iconFor('package')} title="Warranty Support" description="After-sales support, RMA coordination and spare parts planning are available." />
           </div>

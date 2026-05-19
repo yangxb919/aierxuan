@@ -12,18 +12,19 @@ import {
   TechHero,
   redesignImages,
 } from '@/components/redesign/TechPrimitives'
+import { brandFacts, brandFactText } from '@/lib/brand-facts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
 
   const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
     en: {
-      title: 'About AIERXUAN - Professional Laptop & PC Manufacturer Since 2017',
+      title: `About AIERXUAN - Professional Laptop & PC Manufacturer Since ${brandFacts.foundedYear}`,
       description: 'Learn about AIERXUAN, a Shenzhen-based OEM/ODM manufacturer specializing in laptops, mini PCs and industrial computers. ISO 9001 certified factory.',
       keywords: 'about aierxuan, laptop manufacturer, shenzhen factory, oem odm, iso certified',
     },
     ru: {
-      title: 'О компании AIERXUAN — Производитель ноутбуков и ПК с 2017 года',
+      title: `О компании AIERXUAN — Производитель ноутбуков и ПК с ${brandFacts.foundedYear} года`,
       description: 'Узнайте об AIERXUAN — OEM/ODM производителе ноутбуков, мини-ПК и промышленных компьютеров в Шэньчжэне. Сертификация ISO 9001.',
       keywords: 'об aierxuan, производитель ноутбуков, фабрика Шэньчжэнь, OEM ODM, сертификация ISO',
     },
@@ -52,6 +53,7 @@ interface AboutPageProps {
 
 export default async function AboutPage({ params }: AboutPageProps) {
   const { lang } = await params
+  const localizedFacts = brandFactText[lang === 'ru' ? 'ru' : 'en']
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
@@ -60,22 +62,22 @@ export default async function AboutPage({ params }: AboutPageProps) {
         image={redesignImages.aboutHero}
         eyebrow="Professional Laptop & Mini PC Manufacturer"
         title="Built in Shenzhen for Reliable Computing Brands"
-        subtitle="AIERXUAN combines R&D, manufacturing, quality control, and export support for global hardware partners."
+        subtitle={localizedFacts.companySummary}
         widgets={[
           {
             title: 'Facility Overview',
             rows: [
               { label: 'Factory System', value: 'Active', status: 'live' },
-              { label: 'Monthly Capacity', value: '50,000+' },
+              { label: 'Monthly Capacity', value: brandFacts.monthlyCapacity },
               { label: 'Quality Control', value: 'ISO', status: 'ok' },
             ],
           },
           {
             title: 'Global Reach',
             rows: [
-              { label: 'Countries', value: '50+', status: 'ok' },
-              { label: 'Clients', value: '500+' },
-              { label: 'Units Shipped', value: '500K+' },
+              { label: 'Countries', value: brandFacts.countriesServed, status: 'ok' },
+              { label: 'Clients', value: brandFacts.globalClients },
+              { label: 'Units Shipped', value: brandFacts.unitsShippedShort },
             ],
           },
         ]}
@@ -215,8 +217,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
           />
           <div className="grid gap-4 md:grid-cols-5">
             {[
-              ['2017', 'AIERXUAN begins laptop and computing hardware operations.'],
-              ['2019', 'Intel channel partnership strengthens platform access.'],
+              [brandFacts.foundedYear, 'AIERXUAN is founded in Shenzhen and begins laptop and computing hardware operations.'],
+              [brandFacts.intelPartnerSince, 'Intel channel partnership strengthens platform access.'],
               ['2021', 'Mini PC and industrial computing programs expand.'],
               ['2024', 'Global export catalog and OEM workflows mature.'],
               ['2026', 'Digital experience rebuilt for global sourcing teams.'],

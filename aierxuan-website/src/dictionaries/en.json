@@ -377,7 +377,7 @@
             "title": "About AIERXUAN",
             "subtitle": "Professional Laptop Manufacturer Since 2014",
             "paragraph1": "Founded in 2014, AIERXUAN specializes in high-performance laptops and mini PCs for B2B clients worldwide. As an Intel China Channel Partner since 2019, we've shipped 500,000+ units to customers in 50+ countries.",
-            "paragraph2": "Our 15,000㎡ facility combines advanced manufacturing with strict quality control. We offer flexible MOQ from 1 sample to bulk orders, full OEM/ODM customization, and fast 7-15 day delivery."
+            "paragraph2": "Our 15,000㎡ facility combines advanced manufacturing with strict quality control. We offer samples from 1-10 units, standard MOQ from 100 units, full OEM/ODM customization, and clear lead times from sample to bulk production."
         },
         "factory": {
             "title": "Manufacturing Capability",
@@ -768,7 +768,7 @@
     "oem": {
         "meta": {
             "title": "OEM/ODM Laptop Manufacturing Services - AIERXUAN",
-            "description": "Professional OEM/ODM laptop and mini PC manufacturing services. Custom branding, flexible MOQ from 300 units, fast 15-25 day delivery. CE/FCC/RoHS certified.",
+            "description": "Professional OEM/ODM laptop and mini PC manufacturing services. Custom branding, MOQ from 100 units, samples in 7-15 days, and standard production in 15-25 days. CE/FCC/RoHS certified.",
             "keywords": "OEM laptop manufacturer, ODM laptop factory, custom laptop manufacturing, white label laptop, private label notebook"
         },
         "hero": {
@@ -810,7 +810,7 @@
                     "Strict quality control to your standards",
                     "Full technical support and documentation"
                 ],
-                "moq": "MOQ: 300 units"
+                "moq": "MOQ: from 100 units"
             },
             "odm": {
                 "title": "ODM Solutions",
@@ -822,7 +822,7 @@
                     "Faster time-to-market",
                     "Lower R&D investment required"
                 ],
-                "moq": "MOQ: 500 units"
+                "moq": "MOQ: from 100 units, depending on customization"
             }
         },
         "process": {
@@ -1028,11 +1028,11 @@
                 "items": [
                     {
                         "question": "What is the minimum order quantity (MOQ)?",
-                        "answer": "Our standard MOQ is 300 units for OEM orders and 500 units for ODM orders. For sample orders, we can provide 1-10 units for testing and evaluation before placing bulk orders."
+                        "answer": "Our standard MOQ starts at 100 units for most models. For sample orders, we can provide 1-10 units for testing and evaluation before placing bulk orders. Larger orders of 1000+ units qualify for project pricing."
                     },
                     {
                         "question": "What are the lead times?",
-                        "answer": "Lead times depend on order size: Samples take 7-15 days, standard orders (under 1000 units) take 15-25 days, and large orders (1000+ units) take 25-45 days. Rush orders can be accommodated with advance notice."
+                        "answer": "Lead times depend on order size: Samples take 7-15 days, standard production orders take 15-25 days, and large orders (1000+ units) take 25-45 days. Rush orders can be accommodated with advance notice and component availability."
                     },
                     {
                         "question": "What payment terms do you accept?",

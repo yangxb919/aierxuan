@@ -14,6 +14,7 @@ import { Button } from '@/components/ui'
 import TableOfContents from '@/components/blog/TableOfContents'
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 import { SITE_URL } from '@/lib/site-url'
+import { stripDuplicateMarkdownH1 } from '@/lib/technical-seo'
 import type { BlogPost } from '@/types'
 import type { Locale } from '@/i18n-config'
 
@@ -113,7 +114,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const title = translation?.title || `Blog Post ${post.id}`
   // const excerpt = translation?.excerpt || '' // Unused
   const content = translation?.body_md || ''
-  const contentForRender = addHardLineBreaks(content)
+  const contentForRender = addHardLineBreaks(stripDuplicateMarkdownH1(content, title))
 
   const estimateReadingTime = (text: string) => {
     const wordsPerMinute = 200
@@ -300,7 +301,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                       </h3>
                       <div className="flex flex-wrap gap-3">
                         <a
-                          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://aierxuan.com/${lang}/blog/${slug}`)}`}
+                          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`${SITE_URL}/${lang}/blog/${slug}`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-4 py-2 border border-black/10 rounded-lg text-sm font-medium text-slate-700 bg-white hover:bg-black/5 transition-colors"
@@ -311,7 +312,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                           Twitter
                         </a>
                         <a
-                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://aierxuan.com/${lang}/blog/${slug}`)}`}
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/${lang}/blog/${slug}`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-4 py-2 border border-black/10 rounded-lg text-sm font-medium text-slate-700 bg-white hover:bg-black/5 transition-colors"

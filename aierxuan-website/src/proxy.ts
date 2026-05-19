@@ -4,6 +4,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 import { i18n } from './i18n-config'
 import { updateSupabaseSession } from '@/lib/supabase-middleware'
+import { toCanonicalWwwUrl } from '@/lib/technical-seo'
 
 function getLocale(request: NextRequest): string {
     try {
@@ -38,8 +39,7 @@ export async function proxy(request: NextRequest) {
         hostname === 'aierxuanlaptop.com' &&
         process.env.NODE_ENV === 'production'
     ) {
-        const url = request.nextUrl.clone()
-        url.host = 'www.aierxuanlaptop.com'
+        const url = toCanonicalWwwUrl(request.nextUrl)
         return NextResponse.redirect(url, 301)
     }
 
@@ -81,31 +81,17 @@ export async function proxy(request: NextRequest) {
         // Use rewrite for root path "/" so search engine verification bots
         // see a 200 response (not a 307 redirect) with meta tags intact
         if (pathname === '/') {
-            const response = NextResponse.rewrite(newUrl)
-            response.cookies.set('site_lang', locale, { path: '/' })
-            return response
+            return NextResponse.rewrite(newUrl)
         }
 
         // For all other paths, redirect as before
-        const response = NextResponse.redirect(newUrl)
-        // Set site_lang cookie for SSR html lang
-        response.cookies.set('site_lang', locale, { path: '/' })
-        return response
+        return NextResponse.redirect(newUrl)
     }
 
-    // Extract locale from pathname and set cookie
-    const localeMatch = pathname.match(/^\/([a-zA-Z-]+)/)
-    if (localeMatch) {
-        const locale = localeMatch[1]
-        if (i18n.locales.includes(locale as typeof i18n.locales[number])) {
-            const response = NextResponse.next()
-            response.cookies.set('site_lang', locale, { path: '/' })
-            return response
-        }
-    }
+    return NextResponse.next()
 }
 
 export const config = {
     // Matcher ignoring `/_next/`, `/api/`, static files, sitemap, robots, etc.
-    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html|google[^/]+\\.html).*)'],
 }

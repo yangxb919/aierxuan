@@ -12,6 +12,7 @@ import {
   iconFor,
   redesignImages,
 } from '@/components/redesign/TechPrimitives'
+import { brandFacts } from '@/lib/brand-facts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -108,15 +109,16 @@ export default async function OEMPage({ params }: OEMPageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
   const texts = normalizeOemTexts(dictionary.oem)
+  const heroSubtitle = `Custom laptops and Mini PCs with ${brandFacts.moqText.toLowerCase()}, certified quality, and global delivery.`
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
       <TechHero
         lang={lang}
         image={redesignImages.oemHero}
-        eyebrow="Flexible MOQ | 7-15 Day Samples | Certified Factory"
+        eyebrow={`${brandFacts.moqText} | ${brandFacts.sampleLeadTimeText} Samples | CE/FCC/RoHS Certified Factory`}
         title="OEM/ODM Manufacturing From Sample to Shipment"
-        subtitle="Custom laptops and Mini PCs with flexible branding, certified quality, and global delivery."
+        subtitle={heroSubtitle}
         primaryLabel={texts.hero.ctaQuote}
         secondaryLabel="View Process"
         secondaryHref={`/${lang}/oem#process`}
@@ -124,9 +126,9 @@ export default async function OEMPage({ params }: OEMPageProps) {
           {
             title: 'Project Pipeline',
             rows: [
-              { label: 'Brief Review', value: '24h', status: 'live' },
-              { label: 'Sample Window', value: '7-15d', status: 'ok' },
-              { label: 'ODM Platforms', value: 'Ready', status: 'ok' },
+              { label: 'Brief Review', value: brandFacts.responseTimeText, status: 'live' },
+              { label: 'Samples', value: brandFacts.sampleLeadTimeText, status: 'ok' },
+              { label: 'Standard Production', value: brandFacts.standardProductionLeadTimeText, status: 'ok' },
               { label: 'Custom Branding', value: 'Ready' },
             ],
           },
@@ -135,6 +137,7 @@ export default async function OEMPage({ params }: OEMPageProps) {
             rows: [
               { label: 'BOM Check', value: '100%', status: 'ok' },
               { label: 'Burn-in Test', value: '72h', status: 'ok' },
+              { label: 'MOQ', value: brandFacts.moq, status: 'ok' },
               { label: 'Export Docs', value: 'Ready', status: 'ok' },
             ],
           },
@@ -230,7 +233,7 @@ export default async function OEMPage({ params }: OEMPageProps) {
 
       <TechCTA
         title={texts.cta.title}
-        description="Send target SKU, volume, country, certifications and branding requirements for a 24-hour response."
+        description={`Send target SKU, volume, country, certifications and branding requirements for a ${brandFacts.responseTimeText} response.`}
         href={`/${lang}/contact`}
         label={texts.cta.primaryCta}
       />

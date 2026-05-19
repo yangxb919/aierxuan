@@ -22,6 +22,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react'
+import { brandFacts } from '@/lib/brand-facts'
 
 export const redesignImages = {
   homeHero: '/images/redesign/home-hero.webp',
@@ -44,10 +45,10 @@ export const redesignImages = {
 }
 
 export const defaultHeroStats = [
-  { icon: Boxes, label: 'MOQ', value: '100+', detail: 'Units' },
-  { icon: Clock3, label: 'Delivery', value: '7-15', detail: 'Days' },
-  { icon: Factory, label: 'Capacity', value: '50,000+', detail: '/ Month' },
-  { icon: Users, label: 'Global Clients', value: '500+', detail: 'Partners' },
+  { icon: Boxes, label: 'MOQ', value: brandFacts.moq, detail: 'Units' },
+  { icon: Clock3, label: 'Samples', value: brandFacts.sampleLeadTime, detail: 'Days' },
+  { icon: Factory, label: 'Capacity', value: brandFacts.monthlyCapacity, detail: '/ Month' },
+  { icon: Users, label: 'Global Clients', value: brandFacts.globalClients, detail: 'Partners' },
 ]
 
 export type HeroStatTexts = {
@@ -59,10 +60,10 @@ export type HeroStatTexts = {
 
 export function defaultHeroStatsFor(t?: HeroStatTexts) {
   return [
-    { icon: Boxes, label: t?.moq?.label ?? 'MOQ', value: '100+', detail: t?.moq?.detail ?? 'Units' },
-    { icon: Clock3, label: t?.delivery?.label ?? 'Delivery', value: '7-15', detail: t?.delivery?.detail ?? 'Days' },
-    { icon: Factory, label: t?.capacity?.label ?? 'Capacity', value: '50,000+', detail: t?.capacity?.detail ?? '/ Month' },
-    { icon: Users, label: t?.clients?.label ?? 'Global Clients', value: '500+', detail: t?.clients?.detail ?? 'Partners' },
+    { icon: Boxes, label: t?.moq?.label ?? 'MOQ', value: brandFacts.moq, detail: t?.moq?.detail ?? 'Units' },
+    { icon: Clock3, label: t?.delivery?.label ?? 'Samples', value: brandFacts.sampleLeadTime, detail: t?.delivery?.detail ?? 'Days' },
+    { icon: Factory, label: t?.capacity?.label ?? 'Capacity', value: brandFacts.monthlyCapacity, detail: t?.capacity?.detail ?? '/ Month' },
+    { icon: Users, label: t?.clients?.label ?? 'Global Clients', value: brandFacts.globalClients, detail: t?.clients?.detail ?? 'Partners' },
   ]
 }
 
@@ -402,16 +403,16 @@ export function ProductFamilyCard({
 export function ProofStrip({
   light = true,
   metrics,
-  certs = ['CE', 'FCC', 'RoHS', 'ISO 9001'],
+  certs = [...brandFacts.productCertifications, ...brandFacts.facilityCertifications],
 }: {
   light?: boolean
   metrics?: Array<{ value: string; label: string }>
   certs?: string[]
 }) {
   const defaultMetrics = [
-    { icon: Award, value: '10+', label: 'Years Experience' },
-    { icon: Users, value: '500+', label: 'Global Clients' },
-    { icon: Globe2, value: '50+', label: 'Countries Served' },
+    { icon: Award, value: brandFacts.yearsExperience, label: 'Years Experience' },
+    { icon: Users, value: brandFacts.globalClients, label: 'Global Clients' },
+    { icon: Globe2, value: brandFacts.countriesServed, label: 'Countries Served' },
     { icon: ShieldCheck, value: '99.8%', label: 'Customer Satisfaction' },
   ]
   const icons = [Award, Users, Globe2, ShieldCheck]
