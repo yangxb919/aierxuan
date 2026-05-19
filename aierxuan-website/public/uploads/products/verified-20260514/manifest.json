@@ -1,0 +1,401 @@
+[
+  {
+    "slug": "r5-7430-business-laptop",
+    "brand": "AIERXUAN",
+    "series": "Linggan Series",
+    "productModel": "W042-45A-ID12",
+    "shopModel": "Aierxuan Huanying Air14/R5-7430",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "AMD Ryzen 5 7430",
+    "graphics": "Integrated graphics",
+    "display": "14-inch class business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/r5-7430-business-laptop/01-main-factory.webp",
+      "/uploads/products/verified-20260514/r5-7430-business-laptop/02-front-open.webp",
+      "/uploads/products/verified-20260514/r5-7430-business-laptop/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/r5-7430-business-laptop/04-closed-back.webp",
+      "/uploads/products/verified-20260514/r5-7430-business-laptop/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "linggan-i5-12450h",
+    "brand": "AIERXUAN",
+    "series": "Linggan Series",
+    "productModel": "Linggan i5-12450H",
+    "shopModel": "Linggan 14 Pro/i5-12450H",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i5-12450H",
+    "graphics": "Integrated graphics",
+    "display": "14-inch class business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/linggan-i5-12450h/01-main-factory.webp",
+      "/uploads/products/verified-20260514/linggan-i5-12450h/02-front-open.webp",
+      "/uploads/products/verified-20260514/linggan-i5-12450h/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/linggan-i5-12450h/04-closed-back.webp",
+      "/uploads/products/verified-20260514/linggan-i5-12450h/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "linggan-i3-1215u",
+    "brand": "AIERXUAN",
+    "series": "Linggan Series",
+    "productModel": "Linggan i3-1215U",
+    "shopModel": "Linggan 14 Air/i3-1215U",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i3-1215U",
+    "graphics": "Integrated graphics",
+    "display": "14-inch class business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/linggan-i3-1215u/01-main-factory.webp",
+      "/uploads/products/verified-20260514/linggan-i3-1215u/02-front-open.webp",
+      "/uploads/products/verified-20260514/linggan-i3-1215u/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/linggan-i3-1215u/04-closed-back.webp",
+      "/uploads/products/verified-20260514/linggan-i3-1215u/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "linggan-i7-13620h",
+    "brand": "AIERXUAN",
+    "series": "Linggan Series",
+    "productModel": "Linggan i5-13620H",
+    "shopModel": "Linggan 14 Ultra/i7-13620H",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i7-13620H",
+    "graphics": "Integrated graphics",
+    "display": "14-inch class business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/linggan-i7-13620h/01-main-factory.webp",
+      "/uploads/products/verified-20260514/linggan-i7-13620h/02-front-open.webp",
+      "/uploads/products/verified-20260514/linggan-i7-13620h/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/linggan-i7-13620h/04-closed-back.webp",
+      "/uploads/products/verified-20260514/linggan-i7-13620h/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "air15-ultra-i7-6600u",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "15.4-inch",
+    "shopModel": "Air15-Ultra/I7-6600U",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i7-6600U",
+    "graphics": "Integrated graphics",
+    "display": "15.4-inch business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/air15-ultra-i7-6600u/01-main-factory.webp",
+      "/uploads/products/verified-20260514/air15-ultra-i7-6600u/02-front-open.webp",
+      "/uploads/products/verified-20260514/air15-ultra-i7-6600u/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/air15-ultra-i7-6600u/04-closed-side.webp",
+      "/uploads/products/verified-20260514/air15-ultra-i7-6600u/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "yaoxing-15s-n100-dual-screen",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "15.6-inch",
+    "shopModel": "Yaoxing 15S/N100",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel N100",
+    "graphics": "Integrated graphics",
+    "display": "15.6-inch dual-screen laptop",
+    "images": [
+      "/uploads/products/verified-20260514/yaoxing-15s-n100-dual-screen/01-main-factory.webp",
+      "/uploads/products/verified-20260514/yaoxing-15s-n100-dual-screen/02-front-open.webp",
+      "/uploads/products/verified-20260514/yaoxing-15s-n100-dual-screen/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/yaoxing-15s-n100-dual-screen/04-closed-back.webp",
+      "/uploads/products/verified-20260514/yaoxing-15s-n100-dual-screen/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "air14-n5095",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "V14/XU141",
+    "shopModel": "Air14",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Celeron N5095",
+    "graphics": "Intel UHD Graphics",
+    "display": "14-inch business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/air14-n5095/01-main-factory.webp",
+      "/uploads/products/verified-20260514/air14-n5095/02-front-open.webp",
+      "/uploads/products/verified-20260514/air14-n5095/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/air14-n5095/04-closed-side.webp",
+      "/uploads/products/verified-20260514/air14-n5095/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "air14-pro2025-i3-6100u",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "14-inch TU140",
+    "shopModel": "Air14-Pro2025/i3-6100U",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i3-6100U",
+    "graphics": "Integrated graphics",
+    "display": "14-inch business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/air14-pro2025-i3-6100u/01-main-factory.webp",
+      "/uploads/products/verified-20260514/air14-pro2025-i3-6100u/02-front-open.webp",
+      "/uploads/products/verified-20260514/air14-pro2025-i3-6100u/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/air14-pro2025-i3-6100u/04-closed-side.webp",
+      "/uploads/products/verified-20260514/air14-pro2025-i3-6100u/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "du61-i9-11900h",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "DU61",
+    "shopModel": "DU61/i9-11900H",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Core i9-11900H",
+    "graphics": "Integrated graphics",
+    "display": "15.6-inch business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/du61-i9-11900h/01-main-factory.webp",
+      "/uploads/products/verified-20260514/du61-i9-11900h/02-front-open.webp",
+      "/uploads/products/verified-20260514/du61-i9-11900h/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/du61-i9-11900h/04-closed-back.webp",
+      "/uploads/products/verified-20260514/du61-i9-11900h/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "air15-n5095",
+    "brand": "AIERXUAN",
+    "series": "Xiaoxuan Series",
+    "productModel": "V15/XU156",
+    "shopModel": "Air15",
+    "category": "business-laptop",
+    "categoryLabel": "Business Laptop",
+    "processor": "Intel Celeron N5095",
+    "graphics": "Intel UHD Graphics",
+    "display": "15.6-inch business laptop",
+    "images": [
+      "/uploads/products/verified-20260514/air15-n5095/01-main-factory.webp",
+      "/uploads/products/verified-20260514/air15-n5095/02-front-open.webp",
+      "/uploads/products/verified-20260514/air15-n5095/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/air15-n5095/04-closed-back.webp",
+      "/uploads/products/verified-20260514/air15-n5095/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "i7-8750h-gtx1050-gaming",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "i7 8750H-1050",
+    "shopModel": "Hunsheng X16 Y715/I7 8750H-1050",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-8750H",
+    "graphics": "NVIDIA GeForce GTX 1050",
+    "display": "15.6-inch gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/i7-8750h-gtx1050-gaming/01-main-factory.webp",
+      "/uploads/products/verified-20260514/i7-8750h-gtx1050-gaming/02-front-open.webp",
+      "/uploads/products/verified-20260514/i7-8750h-gtx1050-gaming/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/i7-8750h-gtx1050-gaming/04-closed-side.webp",
+      "/uploads/products/verified-20260514/i7-8750h-gtx1050-gaming/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i7-8850h-p106",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "i7 8850H-P106",
+    "shopModel": "Hunsheng X16 Y715/I7 8850H-P106",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-8850H",
+    "graphics": "NVIDIA P106",
+    "display": "15.6-inch gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-p106/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-p106/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-p106/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-p106/04-closed-side.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-p106/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i7-8850h-gtx1060",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "i7 8850H-GTX1060",
+    "shopModel": "I7 8850H-GTX1060",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-8850H",
+    "graphics": "NVIDIA GeForce GTX 1060",
+    "display": "15.6-inch gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-gtx1060/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-gtx1060/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-gtx1060/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-gtx1060/04-closed-side.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-8850h-gtx1060/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i9-11900h-rtx3060",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "11900H-RTX3060",
+    "shopModel": "Kaiwang 16Pro/i9 11900H-RTX3060",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i9-11900H",
+    "graphics": "NVIDIA GeForce RTX 3060",
+    "display": "16-inch class gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i9-11900h-rtx3060/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-11900h-rtx3060/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-11900h-rtx3060/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-11900h-rtx3060/04-closed-back.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-11900h-rtx3060/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i7-9750h-rtx3050",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "i7 9750H-3050",
+    "shopModel": "Hunsheng X16 Y735/I7 9750H-3050",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-9750H",
+    "graphics": "NVIDIA GeForce RTX 3050",
+    "display": "15.6-inch gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i7-9750h-rtx3050/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-9750h-rtx3050/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-9750h-rtx3050/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-9750h-rtx3050/04-closed-side.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-9750h-rtx3050/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i9-12900hk-rtx3060",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "12900HK-RTX3060",
+    "shopModel": "Kaiwang X16/i9 12900H-RTX3060",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i9-12900HK",
+    "graphics": "NVIDIA GeForce RTX 3060",
+    "display": "16-inch class gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i9-12900hk-rtx3060/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-12900hk-rtx3060/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-12900hk-rtx3060/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-12900hk-rtx3060/04-closed-back.webp",
+      "/uploads/products/verified-20260514/qinglong-i9-12900hk-rtx3060/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i7-11850h-rtx3060",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "11850H-RTX3060",
+    "shopModel": "Kaiwang 16Pro/i7 11850H-RTX3060",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-11850H",
+    "graphics": "NVIDIA GeForce RTX 3060",
+    "display": "16-inch class gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i7-11850h-rtx3060/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-11850h-rtx3060/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-11850h-rtx3060/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-11850h-rtx3060/04-closed-back.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-11850h-rtx3060/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "qinglong-i7-13620h-rtx5060",
+    "brand": "GameSoul",
+    "series": "Qinglong Series",
+    "productModel": "GT161/i7 13620H-RTX5060",
+    "shopModel": "Qinglong 16Pro/i7 13620H-RTX5060",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i7-13620H",
+    "graphics": "NVIDIA GeForce RTX 5060",
+    "display": "16-inch 2560x1600 165Hz gaming laptop",
+    "images": [
+      "/uploads/products/verified-20260514/qinglong-i7-13620h-rtx5060/01-main-factory.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-13620h-rtx5060/02-front-open.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-13620h-rtx5060/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-13620h-rtx5060/04-closed-back.webp",
+      "/uploads/products/verified-20260514/qinglong-i7-13620h-rtx5060/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "zhuque-n95-mx230",
+    "brand": "GameSoul",
+    "series": "Zhuque Series",
+    "productModel": "N95-MX230",
+    "shopModel": "Wanjia Zhanhun Jiguang X16 N923/N95MX230",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel N95",
+    "graphics": "NVIDIA GeForce MX230",
+    "display": "16-inch laptop",
+    "images": [
+      "/uploads/products/verified-20260514/zhuque-n95-mx230/01-main-factory.webp",
+      "/uploads/products/verified-20260514/zhuque-n95-mx230/02-front-open.webp",
+      "/uploads/products/verified-20260514/zhuque-n95-mx230/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/zhuque-n95-mx230/04-closed-back.webp",
+      "/uploads/products/verified-20260514/zhuque-n95-mx230/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "zhuque-r5-7430u-15-6",
+    "brand": "GameSoul",
+    "series": "Zhuque Series",
+    "productModel": "R5-7430U 15.6-inch",
+    "shopModel": "Wujie X15/R5-7430U",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "AMD Ryzen 5 7430U",
+    "graphics": "Integrated graphics",
+    "display": "15.6-inch laptop",
+    "images": [
+      "/uploads/products/verified-20260514/zhuque-r5-7430u-15-6/01-main-factory.webp",
+      "/uploads/products/verified-20260514/zhuque-r5-7430u-15-6/02-front-open.webp",
+      "/uploads/products/verified-20260514/zhuque-r5-7430u-15-6/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/zhuque-r5-7430u-15-6/04-closed-back.webp",
+      "/uploads/products/verified-20260514/zhuque-r5-7430u-15-6/05-ports.webp"
+    ]
+  },
+  {
+    "slug": "zhuque-12900hk",
+    "brand": "GameSoul",
+    "series": "Zhuque Series",
+    "productModel": "NB07",
+    "shopModel": "Jiguang X15 12900HK",
+    "category": "gaming-laptop",
+    "categoryLabel": "Gaming Laptop",
+    "processor": "Intel Core i9-12900HK",
+    "graphics": "Integrated graphics",
+    "display": "15-inch class laptop",
+    "images": [
+      "/uploads/products/verified-20260514/zhuque-12900hk/01-main-factory.webp",
+      "/uploads/products/verified-20260514/zhuque-12900hk/02-front-open.webp",
+      "/uploads/products/verified-20260514/zhuque-12900hk/03-keyboard-top.webp",
+      "/uploads/products/verified-20260514/zhuque-12900hk/04-closed-back.webp",
+      "/uploads/products/verified-20260514/zhuque-12900hk/05-ports.webp"
+    ]
+  }
+]

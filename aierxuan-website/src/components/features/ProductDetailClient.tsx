@@ -152,8 +152,8 @@ export function ProductDetailClient({ product, lang, dictionary }: ProductDetail
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const texts = dictionary
 
-  const translation = getTranslation(product, lang, 'language_code')
-  const productTitle = translation?.name || product.slug
+  const translation = getTranslation(product, lang, 'locale') as any
+  const productTitle = translation?.title || translation?.name || product.slug
   const rawImages = (product.images as string[] | null) || []
   // Normalize all image paths so locale prefixes are stripped
   const images = rawImages.map(img => normalizeAssetUrl(img))
