@@ -19,6 +19,31 @@ design-mockups/
 aierxuan-website/redesign-check-*.png
 aierxuan-website/redesign-final-*.png
 
+# Verified product workflow QA screenshots (root-level, generated locally)
+/verified-product-detail-*.png
+/verified-products-*.png
+
+# GA / GSC / GTM dashboard scrape & snapshot artifacts (kept locally only)
+/ga-*.md
+/ga-*.txt
+/gsc-*.md
+/gtm-*.md
+
+# AI tooling local workspaces & lock files (machine-specific, not portable)
+/.agents/
+/.gemini-review-input.md
+/skills-lock.json
+/tmp-302ai-docs/
+/hyperframes-aierxuan-intro/
+
+# Local-only reference assets (large, not for the web bundle)
+/网站图片和核对后文档_*/
+/Aierxuan_GameSoul_Folder_Product_Handbook_*.docx
+/Aierxuan_GameSoul_Folder_Product_Handbook_*.md
+
+# Operation-log DB snapshot backups (kept locally for rollback, too big for git)
+/操作日志/backups/
+
 # Certificate exploration artifacts (only -front-photo-v3 variant is referenced in code)
 aierxuan-website/about-certificates-*.png
 aierxuan-website/about-original-images-contact-sheet.png
