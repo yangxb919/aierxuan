@@ -35,6 +35,13 @@ export default async function FAQPage({ params }: FAQPageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
   const texts = dictionary.faq
+  const clientTexts = {
+    ...texts,
+    contact: {
+      ...texts.contact,
+      emailValue: '',
+    },
+  }
 
   // Flatten all FAQ items for JSON-LD
   const allFaqItems = texts.categories.flatMap((cat: any) =>
@@ -51,7 +58,7 @@ export default async function FAQPage({ params }: FAQPageProps) {
         ]}
       />
       <FAQJsonLd items={allFaqItems} />
-      <FAQPageClient texts={texts} lang={lang} />
+      <FAQPageClient texts={clientTexts} lang={lang} />
     </>
   )
 }

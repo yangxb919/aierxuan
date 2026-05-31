@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import type { LanguageCode } from '@/types'
+import { SafeEmail } from '@/components/common/SafeEmail'
+import { publicEmailParts } from '@/lib/public-contact'
 
 interface FooterProps {
   lang: LanguageCode
@@ -34,6 +36,7 @@ interface FooterProps {
 
 export function Footer({ lang, dictionary }: FooterProps) {
   const content = dictionary
+  const email = publicEmailParts()
   const localizedHref = (href: string) => {
     if (!href.startsWith('/') || href.startsWith(`/${lang}`)) {
       return href
@@ -124,7 +127,7 @@ export function Footer({ lang, dictionary }: FooterProps) {
             </h3>
             <div className="space-y-3">
               <div>
-                <p className="text-slate-400 text-sm">{content.contact.email}</p>
+                <SafeEmail className="text-slate-400 text-sm" {...email} />
               </div>
               <div>
                 <p className="text-slate-400 text-sm">{content.contact.phone}</p>

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { MessageCircle, Mail, Phone, Clock } from 'lucide-react'
+import { SafeEmail } from '@/components/common/SafeEmail'
+import { publicEmailParts } from '@/lib/public-contact'
 
 interface CTASectionProps {
   texts: {
@@ -15,6 +17,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({ texts }: CTASectionProps) {
+  const email = publicEmailParts()
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Pattern */}
@@ -85,7 +89,7 @@ export function CTASection({ texts }: CTASectionProps) {
                 <Mail className="w-6 h-6" />
               </div>
               <p className="text-lg font-bold text-white mb-1">{texts.email}</p>
-              <p className="text-sm text-gray-500">admin@aierxuanlaptop.com</p>
+              <SafeEmail className="text-sm text-gray-500" {...email} />
             </div>
 
             {/* Phone */}
