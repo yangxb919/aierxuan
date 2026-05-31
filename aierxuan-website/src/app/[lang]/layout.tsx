@@ -11,6 +11,11 @@ import { getDictionary } from '@/get-dictionary'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
 import { brandFacts } from '@/lib/brand-facts'
+import {
+  canonicalForLocale,
+  localizedAlternates,
+  robotsForLocale,
+} from '@/lib/technical-seo'
 
 const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
   en: {
@@ -33,16 +38,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    robots: robotsForLocale(lang),
     icons: {
       icon: '/icon.svg',
     },
     alternates: {
-      canonical: `${SITE_URL}/${lang}`,
-      languages: {
-        'x-default': `${SITE_URL}/en`,
-        'en': `${SITE_URL}/en`,
-        'ru': `${SITE_URL}/ru`,
-      },
+      canonical: canonicalForLocale(lang),
+      languages: localizedAlternates(),
     },
     ...buildOgTwitter({ lang, title: seo.title, description: seo.description }),
   }
@@ -64,6 +66,12 @@ export default async function RootLayout({
   const dictionary = await getDictionary(lang)
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID
   const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
+  const navbarDictionary = {
+    navigation: dictionary.navigation,
+    common: {
+      getQuote: dictionary.common.getQuote,
+    },
+  }
 
   return (
     <>
@@ -102,7 +110,6 @@ export default async function RootLayout({
               '@type': 'ContactPoint',
               telephone: brandFacts.contact.phone,
               contactType: 'sales',
-              email: brandFacts.contact.email,
               availableLanguage: ['English', 'Russian', 'Chinese'],
               areaServed: 'Worldwide',
             },
@@ -133,7 +140,7 @@ export default async function RootLayout({
       ) : null}
 
       <div className="min-h-screen flex flex-col">
-        <ConditionalNavbar dictionary={dictionary} lang={lang} />
+        <ConditionalNavbar dictionary={navbarDictionary} lang={lang} />
         <main className="flex-1">
           {children}
         </main>

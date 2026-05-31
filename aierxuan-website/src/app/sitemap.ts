@@ -5,6 +5,16 @@ import { supabase } from '@/lib/supabase'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locales = ['en', 'ru']
   const pages = ['', '/products', '/oem', '/about', '/contact', '/blog', '/faq']
+  const alternatesFor = (path: string) => ({
+    'x-default': `${SITE_URL}/en${path}`,
+    en: `${SITE_URL}/en${path}`,
+    ru: `${SITE_URL}/ru${path}`,
+  })
+  const priorityFor = (page: string) => {
+    if (page === '') return 1
+    if (page === '/oem') return 0.95
+    return 0.8
+  }
 
   const entries: MetadataRoute.Sitemap = []
 
@@ -15,12 +25,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${SITE_URL}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: page === '' ? 'daily' : 'weekly',
-        priority: page === '' ? 1 : 0.8,
+        priority: priorityFor(page),
         alternates: {
-          languages: {
-            en: `${SITE_URL}/en${page}`,
-            ru: `${SITE_URL}/ru${page}`,
-          },
+          languages: alternatesFor(page),
         },
       })
     }
@@ -41,10 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: 'weekly',
           priority: 0.6,
           alternates: {
-            languages: {
-              en: `${SITE_URL}/en/blog/${post.slug}`,
-              ru: `${SITE_URL}/ru/blog/${post.slug}`,
-            },
+            languages: alternatesFor(`/blog/${post.slug}`),
           },
         })
       }
@@ -66,10 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: 'weekly',
           priority: 0.7,
           alternates: {
-            languages: {
-              en: `${SITE_URL}/en/products/${product.slug}`,
-              ru: `${SITE_URL}/ru/products/${product.slug}`,
-            },
+            languages: alternatesFor(`/products/${product.slug}`),
           },
         })
       }
