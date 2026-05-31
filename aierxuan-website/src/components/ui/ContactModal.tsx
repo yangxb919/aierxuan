@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from './Button'
 import { useLanguage, useAppStore } from '@/store/useAppStore'
 import { contactFormContent, type ContactFormContent } from '@/content/contact-form'
+import { trackLeadFormSubmit } from '@/lib/ads-tracking'
 
 export function ContactModal() {
   const language = useLanguage()
@@ -82,6 +83,11 @@ export function ContactModal() {
       })
 
       setSubmitStatus('success')
+      trackLeadFormSubmit({
+        lang: language,
+        productInterest: 'general',
+        source: 'contact_modal',
+      })
       // Reset form
       setFormData({ name: '', company: '', email: '', message: '' })
 
