@@ -101,7 +101,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <Link
@@ -123,7 +123,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
           </div>
 
           {/* Right side buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Language Selector */}
             <div className="relative">
               <button
@@ -164,7 +164,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md border border-white/10 bg-white/5 p-2 text-gray-200 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
@@ -182,7 +182,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="space-y-1 px-2 pb-4 pt-3 sm:px-3 border-t border-white/10">
               {navItems.map((item) => (
                 <Link

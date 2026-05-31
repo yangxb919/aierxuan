@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
   const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
     en: {
-      title: `About AIERXUAN - Professional Laptop & PC Manufacturer Since ${brandFacts.foundedYear}`,
+      title: 'About AIERXUAN - Laptop & Mini PC Factory',
       description: 'Learn about AIERXUAN, a Shenzhen-based OEM/ODM manufacturer specializing in laptops, mini PCs and industrial computers. ISO 9001 certified factory.',
       keywords: 'about aierxuan, laptop manufacturer, shenzhen factory, oem odm, iso certified',
     },
     ru: {
-      title: `О компании AIERXUAN — Производитель ноутбуков и ПК с ${brandFacts.foundedYear} года`,
+      title: 'О AIERXUAN - фабрика ноутбуков и мини-ПК',
       description: 'Узнайте об AIERXUAN — OEM/ODM производителе ноутбуков, мини-ПК и промышленных компьютеров в Шэньчжэне. Сертификация ISO 9001.',
       keywords: 'об aierxuan, производитель ноутбуков, фабрика Шэньчжэнь, OEM ODM, сертификация ISO',
     },

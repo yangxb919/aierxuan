@@ -1,0 +1,159 @@
+import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const root = path.resolve(new URL('..', import.meta.url).pathname)
+
+function read(relativePath) {
+  return fs.readFileSync(path.join(root, relativePath), 'utf8')
+}
+
+function readJson(relativePath) {
+  return JSON.parse(read(relativePath))
+}
+
+function collectHrefValues(value, out = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectHrefValues(item, out))
+    return out
+  }
+  if (value && typeof value === 'object') {
+    for (const [key, nested] of Object.entries(value)) {
+      if (key === 'href' && typeof nested === 'string') out.push(nested)
+      collectHrefValues(nested, out)
+    }
+  }
+  return out
+}
+
+const checks = [
+  [
+    'public localized routes do not emit NextResponse.next from proxy',
+    () => {
+      const proxy = read('src/proxy.ts')
+      assert(!/return\s+NextResponse\.next\(\)/.test(proxy))
+    },
+  ],
+  [
+    'sitemap alternates include x-default for indexable URLs',
+    () => {
+      const sitemap = read('src/app/sitemap.ts')
+      assert(sitemap.includes("'x-default'"))
+    },
+  ],
+  [
+    'unsupported public locales are marked noindex instead of entering sitemap',
+    () => {
+      const layout = read('src/app/[lang]/layout.tsx')
+      const sitemap = read('src/app/sitemap.ts')
+      assert(layout.includes('robotsForLocale'))
+      assert(sitemap.includes("const locales = ['en', 'ru']"))
+      for (const locale of ['ja', 'fr', 'pt', 'zh-CN']) {
+        assert(!sitemap.includes(`/${locale}`), `${locale} leaked into sitemap`)
+      }
+    },
+  ],
+  [
+    'legacy blog slugs redirect to current published slugs',
+    () => {
+      const technicalSeo = read('src/lib/technical-seo.ts')
+      const blogPage = read('src/app/[lang]/blog/[slug]/page.tsx')
+      assert(technicalSeo.includes('BLOG_SLUG_ALIASES'))
+      assert(blogPage.includes('permanentRedirect'))
+      for (const slug of [
+        'oem-vs-odm-manufacturing-complete-guide-2025',
+        'mini-pc-wholesale-b2b-pricing-moq',
+        'odm-vs-oem-cost-analysis-laptop-manufacturing',
+      ]) {
+        assert(technicalSeo.includes(slug), `${slug} alias missing`)
+      }
+    },
+  ],
+  [
+    'markdown body links are normalized away from 404 resources and mailto links',
+    () => {
+      const technicalSeo = read('src/lib/technical-seo.ts')
+      const blogPage = read('src/app/[lang]/blog/[slug]/page.tsx')
+      assert(technicalSeo.includes('normalizeInternalMarkdownLinks'))
+      assert(blogPage.includes('normalizeInternalMarkdownLinks'))
+      for (const pathName of ['/consultation', '/catalog', '/samples', '/resources/oem-rfq-template', '/factory-tour']) {
+        assert(technicalSeo.includes(pathName), `${pathName} normalization missing`)
+      }
+    },
+  ],
+  [
+    'public email rendering avoids Cloudflare email-obfuscation URLs',
+    () => {
+      const footer = read('src/components/layout/Footer.tsx')
+      const contact = read('src/app/[lang]/contact/page.tsx')
+      const thankYou = read('src/app/[lang]/thank-you/page.tsx')
+      const aboutCta = read('src/components/about/CTASection.tsx')
+      const layout = read('src/app/[lang]/layout.tsx')
+      assert(footer.includes('SafeEmail'))
+      assert(contact.includes('SafeEmail'))
+      assert(thankYou.includes('SafeEmail'))
+      assert(aboutCta.includes('SafeEmail'))
+      assert(!layout.includes('email: brandFacts.contact.email'))
+      assert(!aboutCta.includes('admin@aierxuanlaptop.com'))
+    },
+  ],
+  [
+    'on-page metadata is length-normalized and duplicate markdown H1 is stripped',
+    () => {
+      const technicalSeo = read('src/lib/technical-seo.ts')
+      const blogPage = read('src/app/[lang]/blog/[slug]/page.tsx')
+      const productPage = read('src/app/[lang]/products/[slug]/page.tsx')
+      assert(technicalSeo.includes('formatSeoTitle'))
+      assert(technicalSeo.includes('formatSeoDescription'))
+      assert(technicalSeo.includes('stripMarkdownH1ForArticle'))
+      assert(blogPage.includes('formatSeoTitle'))
+      assert(blogPage.includes('stripMarkdownH1ForArticle'))
+      assert(productPage.includes('formatSeoTitle'))
+    },
+  ],
+  [
+    'product detail pages select localized translations by language_code',
+    () => {
+      const productPage = read('src/app/[lang]/products/[slug]/page.tsx')
+      assert(productPage.includes('language_code === lang'))
+      assert(!productPage.includes('t.locale === lang'))
+    },
+  ],
+  [
+    'tablet navbar uses mobile menu before lg to avoid header overflow',
+    () => {
+      const navbar = read('src/components/layout/Navbar.tsx')
+      assert(navbar.includes('hidden lg:block'))
+      assert(navbar.includes('hidden lg:flex'))
+      assert(navbar.includes('lg:hidden'))
+    },
+  ],
+  [
+    'dictionary resource links do not point to unpublished /support',
+    () => {
+      for (const locale of ['en', 'ru', 'ja', 'fr', 'pt', 'zh-CN']) {
+        const hrefs = collectHrefValues(readJson(`src/dictionaries/${locale}.json`))
+        assert(!hrefs.includes('/support'), `${locale}.json still links to /support`)
+      }
+    },
+  ],
+]
+
+let failed = 0
+for (const [name, run] of checks) {
+  try {
+    run()
+    console.log(`ok - ${name}`)
+  } catch (error) {
+    failed += 1
+    console.error(`not ok - ${name}`)
+    console.error(`  ${error.message}`)
+  }
+}
+
+if (failed > 0) {
+  console.error(`\n${failed} SEO P0 check(s) failed.`)
+  process.exit(1)
+}
+
+console.log('\nAll SEO P0 checks passed.')
