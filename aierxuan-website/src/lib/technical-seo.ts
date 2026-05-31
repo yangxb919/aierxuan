@@ -4,6 +4,15 @@ const CANONICAL_HOST = 'www.aierxuanlaptop.com'
 export const INDEXABLE_LOCALES = ['en', 'ru'] as const
 
 export const BLOG_SLUG_ALIASES: Record<string, string> = {
+  'barebones-laptop-kit-oem-solutions': 'clevo-oem-laptop-manufacturing-b2b-buyers',
+  'best-mini-pc-gaming-2025-oem': 'best-mini-pc-gaming-2025-oem-solutions',
+  'custom-gaming-laptop-manufacturing-oem': 'custom-gaming-laptop-manufacturing-oem-solutions',
+  'custom-laptop-builder-specifications-guide': 'laptop-specifications-guide-cpu-ram-storage-custom-orders',
+  'how-to-build-custom-laptop-b2b-guide': 'how-to-build-custom-laptop-b2b-manufacturing-guide',
+  'how-to-choose-laptop-manufacturer-b2b-guide': 'oem-laptop-manufacturers-top-suppliers-2025',
+  'mini-pc-digital-signage-commercial': 'mini-pc-buyers-guide-2025-b2b-wholesale-custom',
+  'mini-pc-digital-signage-commercial-solutions': 'mini-pc-buyers-guide-2025-b2b-wholesale-custom',
+  'mini-pc-wholesale-b2b-pricing-moq-guide': 'mini-pc-buyers-guide-2025-b2b-wholesale-custom',
   'what-is-oem-manufacturing-complete-explanation-b2b-buyers': 'what-is-oem-manufacturing-complete-explanation-for-b2b-buyers',
   'odm-vs-oem-cost-analysis-laptop-manufacturing': 'oem-vs-odm-manufacturing-complete-guide-tech-brands-2025',
   'oem-vs-odm-manufacturing-complete-guide-2025': 'oem-vs-odm-manufacturing-complete-guide-tech-brands-2025',
@@ -15,6 +24,7 @@ const BROKEN_RESOURCE_PATHS = [
   '/consultation',
   '/catalog',
   '/samples',
+  '/resources/mini-pc-spec-guide.pdf',
   '/resources/oem-rfq-template',
   '/factory-tour',
 ]

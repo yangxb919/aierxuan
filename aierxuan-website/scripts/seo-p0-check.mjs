@@ -26,6 +26,18 @@ function collectHrefValues(value, out = []) {
   return out
 }
 
+const residualArticleSlugs = [
+  'barebones-laptop-kit-oem-solutions',
+  'best-mini-pc-gaming-2025-oem',
+  'custom-gaming-laptop-manufacturing-oem',
+  'custom-laptop-builder-specifications-guide',
+  'how-to-build-custom-laptop-b2b-guide',
+  'how-to-choose-laptop-manufacturer-b2b-guide',
+  'mini-pc-digital-signage-commercial',
+  'mini-pc-digital-signage-commercial-solutions',
+  'mini-pc-wholesale-b2b-pricing-moq-guide',
+]
+
 const checks = [
   [
     'public localized routes do not emit NextResponse.next from proxy',
@@ -61,6 +73,7 @@ const checks = [
       assert(technicalSeo.includes('BLOG_SLUG_ALIASES'))
       assert(blogPage.includes('permanentRedirect'))
       for (const slug of [
+        ...residualArticleSlugs,
         'oem-vs-odm-manufacturing-complete-guide-2025',
         'mini-pc-wholesale-b2b-pricing-moq',
         'odm-vs-oem-cost-analysis-laptop-manufacturing',
@@ -76,7 +89,7 @@ const checks = [
       const blogPage = read('src/app/[lang]/blog/[slug]/page.tsx')
       assert(technicalSeo.includes('normalizeInternalMarkdownLinks'))
       assert(blogPage.includes('normalizeInternalMarkdownLinks'))
-      for (const pathName of ['/consultation', '/catalog', '/samples', '/resources/oem-rfq-template', '/factory-tour']) {
+      for (const pathName of ['/consultation', '/catalog', '/samples', '/resources/mini-pc-spec-guide.pdf', '/resources/oem-rfq-template', '/factory-tour']) {
         assert(technicalSeo.includes(pathName), `${pathName} normalization missing`)
       }
     },
