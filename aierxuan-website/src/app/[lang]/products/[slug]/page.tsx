@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (!data) return {}
 
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.language_code === lang)
-  const fallbackTranslation = product.translations?.find((t: any) => t.language_code === 'en') || product.translations?.[0] as any
+  const translation = product.translations?.find((t: any) => (t.locale || t.language_code) === lang)
+  const fallbackTranslation = product.translations?.find((t: any) => (t.locale || t.language_code) === 'en') || product.translations?.[0] as any
   const title = (translation as any)?.title || fallbackTranslation?.title || (translation as any)?.name || fallbackTranslation?.name || slug
   const description = (translation as any)?.short_desc || fallbackTranslation?.short_desc || (translation as any)?.short_description || fallbackTranslation?.short_description || ''
   const path = `/products/${slug}`
@@ -74,8 +74,8 @@ export default async function ProductDetailPage({
   // Cast the data to ProductWithTranslations to ensure type compatibility
   // The query structure matches the type
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.language_code === lang) as any
-  const fallbackTranslation = (product.translations?.find((t: any) => t.language_code === 'en') || product.translations?.[0]) as any
+  const translation = product.translations?.find((t: any) => (t.locale || t.language_code) === lang) as any
+  const fallbackTranslation = (product.translations?.find((t: any) => (t.locale || t.language_code) === 'en') || product.translations?.[0]) as any
   const productName = translation?.title || fallbackTranslation?.title || translation?.name || fallbackTranslation?.name || slug
 
   return (

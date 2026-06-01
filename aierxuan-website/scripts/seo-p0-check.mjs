@@ -125,11 +125,13 @@ const checks = [
     },
   ],
   [
-    'product detail pages select localized translations by language_code',
+    'product detail pages select localized translations by locale (real DB column)',
     () => {
       const productPage = read('src/app/[lang]/products/[slug]/page.tsx')
-      assert(productPage.includes('language_code === lang'))
-      assert(!productPage.includes('t.locale === lang'))
+      // Production product_translations uses the `locale` column (verified against live DB);
+      // use a defensive (locale || language_code) lookup so neither raw nor remapped shapes regress.
+      assert(productPage.includes('(t.locale || t.language_code) === lang'))
+      assert(!productPage.includes('t.language_code === lang'))
     },
   ],
   [

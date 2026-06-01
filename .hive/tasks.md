@@ -1,9 +1,13 @@
 # AIERXUAN 任务清单
 
-## 已合入/待评审
+## 已上线（部署完成 2026-06-01）
 
-### PR #1 fix/generate-lead-tracking → main
-- https://github.com/yangxb919/aierxuan/pull/1 （4 commit：埋点修复 + P0 SEO，已 push，待评审）
+### PR #1 + VPS GEO 调和 → main → 生产部署 ✅
+- PR #1 已合并(merge 72bf0c3)；与 VPS 未提交 GEO 工作调和(merge c9c8e80)后推 main
+- VPS 部署：备份分支 vps-local-20260601(7424149) 已 push 留存；110 碰撞文件确认全相同/超集后 pull；npm build + pm2 restart aierxuan；线上验证 200 + email-protection 归零 + FAQ JSON-LD + sitemap 含 /en/oem
+- ⚠️ 调和保留：oem GEO answer-first 全保留；唯独 layout Organization JSON-LD 的 email 字段未重新加(与 PR 移除明文 email 的修复对立)——待老板裁定是否需要
+- ⚠️ 待老板确认：admin 代码注释称生产库列为 product_translations.locale，而 PR 用 language_code(有 seo-p0-check 守卫)；若线上产品标题异常需复核此字段
+- 清理：备份分支 vps-local-20260601 暂留作安全网，确认无误后可删
 
 ## 待办
 
