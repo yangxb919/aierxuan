@@ -3,6 +3,7 @@ import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
+import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 import {
   canonicalForLocale,
   formatSeoDescription,
@@ -10,7 +11,6 @@ import {
   localizedAlternates,
   robotsForLocale,
 } from '@/lib/technical-seo'
-import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 import {
   FeatureTile,
   ProcessCards,
