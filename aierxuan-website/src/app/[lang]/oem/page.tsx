@@ -3,6 +3,7 @@ import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
+import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 import {
   FeatureTile,
   ProcessCards,
@@ -12,6 +13,7 @@ import {
   iconFor,
   redesignImages,
 } from '@/components/redesign/TechPrimitives'
+import { brandFacts } from '@/lib/brand-facts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -104,19 +106,141 @@ function normalizeOemTexts(texts: any) {
   }
 }
 
+function getOemSeoContent(lang: string) {
+  if (lang === 'ru') {
+    return {
+      directAnswers: [
+        {
+          title: 'Кто такой AIERXUAN?',
+          text: 'AIERXUAN — производитель OEM/ODM ноутбуков и Mini PC из Шэньчжэня для брендов, дистрибьюторов и B2B покупателей.',
+        },
+        {
+          title: 'Что можно кастомизировать?',
+          text: 'Команда поддерживает брендирование, упаковку, конфигурации CPU/RAM/SSD, BIOS, образ ОС, клавиатуру и экспортные документы.',
+        },
+        {
+          title: 'Как начать проект?',
+          text: 'Отправьте целевой SKU, количество, страну продажи, требования к брендингу и сертификации, чтобы получить ответ в течение 24 часов.',
+        },
+      ],
+      faq: [
+        {
+          question: 'Does AIERXUAN provide OEM laptop manufacturing?',
+          answer: 'Yes. AIERXUAN supports OEM laptop manufacturing for B2B buyers, including custom hardware configuration, logo branding, packaging, software image and export documentation.',
+        },
+        {
+          question: 'What is the MOQ for OEM or ODM laptop orders?',
+          answer: `${brandFacts.moqText}. Final MOQ depends on the product platform, configuration, branding depth and component availability.`,
+        },
+        {
+          question: 'Can AIERXUAN make white label or private label laptops?',
+          answer: 'Yes. AIERXUAN can provide white label and private label laptop programs using proven ODM platforms with your brand, packaging and configuration requirements.',
+        },
+        {
+          question: 'How long do samples and production take?',
+          answer: `Typical samples take ${brandFacts.sampleLeadTimeText}. Standard production is usually ${brandFacts.standardProductionLeadTimeText} after sample approval and final specification confirmation.`,
+        },
+        {
+          question: 'Which products can be customized?',
+          answer: 'AIERXUAN supports customization for business laptops, gaming notebooks, Mini PCs and selected custom computing projects.',
+        },
+      ],
+    }
+  }
+
+  return {
+    directAnswers: [
+      {
+        title: 'Who is AIERXUAN?',
+        text: 'AIERXUAN is a Shenzhen-based OEM/ODM laptop and Mini PC manufacturer for brands, distributors, education buyers and B2B hardware teams.',
+      },
+      {
+        title: 'What can buyers customize?',
+        text: 'Buyers can customize logo, packaging, CPU/RAM/SSD configuration, BIOS, OS image, keyboard layout, labels and export documentation.',
+      },
+      {
+        title: 'How do buyers start?',
+        text: 'Send the target SKU, order quantity, destination market, branding needs and certification requirements to receive an RFQ response within 24 hours.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does AIERXUAN provide OEM laptop manufacturing?',
+        answer: 'Yes. AIERXUAN supports OEM laptop manufacturing for B2B buyers, including custom hardware configuration, logo branding, packaging, software image and export documentation.',
+      },
+      {
+        question: 'What is the MOQ for OEM or ODM laptop orders?',
+        answer: `${brandFacts.moqText}. Final MOQ depends on the product platform, configuration, branding depth and component availability.`,
+      },
+      {
+        question: 'Can AIERXUAN make white label or private label laptops?',
+        answer: 'Yes. AIERXUAN can provide white label and private label laptop programs using proven ODM platforms with your brand, packaging and configuration requirements.',
+      },
+      {
+        question: 'How long do samples and production take?',
+        answer: `Typical samples take ${brandFacts.sampleLeadTimeText}. Standard production is usually ${brandFacts.standardProductionLeadTimeText} after sample approval and final specification confirmation.`,
+      },
+      {
+        question: 'Which products can be customized?',
+        answer: 'AIERXUAN supports customization for business laptops, gaming notebooks, Mini PCs and selected custom computing projects.',
+      },
+    ],
+  }
+}
+
 export default async function OEMPage({ params }: OEMPageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
   const texts = normalizeOemTexts(dictionary.oem)
+  const heroSubtitle = `Custom laptops and Mini PCs with ${brandFacts.moqText.toLowerCase()}, certified quality, and global delivery.`
+  const seoContent = getOemSeoContent(lang)
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: lang === 'ru' ? 'OEM/ODM производство ноутбуков и Mini PC' : 'OEM/ODM Laptop and Mini PC Manufacturing',
+    serviceType: 'OEM/ODM computer hardware manufacturing',
+    url: `${SITE_URL}/${lang}/oem`,
+    description: heroSubtitle,
+    provider: {
+      '@type': ['Organization', 'Manufacturer'],
+      name: brandFacts.name,
+      url: SITE_URL,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: brandFacts.address.streetAddress,
+        addressLocality: brandFacts.address.locality,
+        addressRegion: brandFacts.address.region,
+        addressCountry: brandFacts.address.countryCode,
+      },
+    },
+    areaServed: 'Worldwide',
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType: 'Brands, distributors, education buyers and B2B hardware procurement teams',
+    },
+  }
 
   return (
+    <>
+    <BreadcrumbJsonLd
+      lang={lang}
+      items={[
+        { name: 'Home', href: '' },
+        { name: 'OEM/ODM', href: '/oem' },
+      ]}
+    />
+    <FAQJsonLd items={seoContent.faq} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+    />
     <div className="min-h-screen bg-[#0a0a0f]">
       <TechHero
         lang={lang}
         image={redesignImages.oemHero}
-        eyebrow="Flexible MOQ | 7-15 Day Samples | Certified Factory"
+        eyebrow={`${brandFacts.moqText} | ${brandFacts.sampleLeadTimeText} Samples | CE/FCC/RoHS Certified Factory`}
         title="OEM/ODM Manufacturing From Sample to Shipment"
-        subtitle="Custom laptops and Mini PCs with flexible branding, certified quality, and global delivery."
+        subtitle={heroSubtitle}
         primaryLabel={texts.hero.ctaQuote}
         secondaryLabel="View Process"
         secondaryHref={`/${lang}/oem#process`}
@@ -124,9 +248,9 @@ export default async function OEMPage({ params }: OEMPageProps) {
           {
             title: 'Project Pipeline',
             rows: [
-              { label: 'Brief Review', value: '24h', status: 'live' },
-              { label: 'Sample Window', value: '7-15d', status: 'ok' },
-              { label: 'ODM Platforms', value: 'Ready', status: 'ok' },
+              { label: 'Brief Review', value: brandFacts.responseTimeText, status: 'live' },
+              { label: 'Samples', value: brandFacts.sampleLeadTimeText, status: 'ok' },
+              { label: 'Standard Production', value: brandFacts.standardProductionLeadTimeText, status: 'ok' },
               { label: 'Custom Branding', value: 'Ready' },
             ],
           },
@@ -135,11 +259,31 @@ export default async function OEMPage({ params }: OEMPageProps) {
             rows: [
               { label: 'BOM Check', value: '100%', status: 'ok' },
               { label: 'Burn-in Test', value: '72h', status: 'ok' },
+              { label: 'MOQ', value: brandFacts.moq, status: 'ok' },
               { label: 'Export Docs', value: 'Ready', status: 'ok' },
             ],
           },
         ]}
       />
+
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            eyebrow="Direct Answer"
+            title="OEM/ODM Laptop Manufacturing for B2B Buyers"
+            description="This page summarizes what AIERXUAN manufactures, what can be customized, and how sourcing teams can start an OEM or ODM project."
+          />
+          <div className="grid gap-4 md:grid-cols-3">
+            {seoContent.directAnswers.map((item) => (
+              <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-6">
+                <h2 className="text-lg font-bold text-slate-950">{item.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -228,12 +372,32 @@ export default async function OEMPage({ params }: OEMPageProps) {
         </div>
       </section>
 
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            eyebrow="OEM/ODM FAQ"
+            title="Common Buyer Questions"
+            description="Short answers for sourcing teams comparing OEM laptop manufacturers, ODM laptop factories and private label laptop programs."
+          />
+          <div className="space-y-4">
+            {seoContent.faq.map((item) => (
+              <div key={item.question} className="rounded-xl border border-slate-200 bg-slate-50 p-6">
+                <h2 className="text-lg font-bold text-slate-950">{item.question}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <TechCTA
         title={texts.cta.title}
-        description="Send target SKU, volume, country, certifications and branding requirements for a 24-hour response."
+        description={`Send target SKU, volume, country, certifications and branding requirements for a ${brandFacts.responseTimeText} response.`}
         href={`/${lang}/contact`}
         label={texts.cta.primaryCta}
       />
     </div>
+    </>
   )
 }

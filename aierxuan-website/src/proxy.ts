@@ -107,5 +107,5 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
     // Matcher ignoring `/_next/`, `/api/`, static files, sitemap, robots, etc.
-    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html|google[^/]+\\.html).*)'],
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
 import { createSupabaseClient } from '@/lib/supabase'
@@ -41,7 +41,7 @@ export function ProductGrid({ featured = false, limit, category, lang, dictionar
   const [products, setProducts] = useState<ProductWithTranslations[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const supabase = createSupabaseClient()
+  const supabase = useMemo(() => createSupabaseClient(), [])
   const texts = dictionary.grid
 
   useEffect(() => {
@@ -142,10 +142,12 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product, lang, dictionary, index }: ProductCardProps) {
-  const translation = getTranslation(product, lang, 'language_code')
+  const translation = getTranslation(product, lang, 'locale') as any
   const { openContactModal } = useContactForm()
   const texts = dictionary.grid
   const images = product.images as string[] | null
+  const productTitle = translation?.title || translation?.name || product.slug
+  const productDescription = translation?.short_desc || translation?.description || texts.noDescription
 
   // Prefer uploaded product image, otherwise choose by normalized category type
   let primaryImage = (images && images.length > 0 ? images[0] : '') as string
@@ -170,7 +172,7 @@ function ProductCard({ product, lang, dictionary, index }: ProductCardProps) {
       <Link href={`/${lang}/products/${product.slug}`} className="block relative aspect-[4/3] overflow-hidden">
         <OptimizedImage
           src={primaryImage}
-          alt={translation?.name || product.slug || texts.productImage}
+          alt={productTitle || texts.productImage}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
@@ -190,12 +192,12 @@ function ProductCard({ product, lang, dictionary, index }: ProductCardProps) {
       <div className="p-6">
         <Link href={`/${lang}/products/${product.slug}`} className="block">
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-1">
-            {translation?.name || product.slug}
+            {productTitle}
           </h3>
         </Link>
 
         <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
-          {translation?.description || texts.noDescription}
+          {productDescription}
         </p>
 
         <div className="flex items-center text-xs font-mono text-gray-500 mb-4">

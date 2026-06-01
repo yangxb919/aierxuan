@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation'
 import type { ProductWithTranslations } from '@/types'
 import { SITE_URL } from '@/lib/site-url'
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
+import { buildProductJsonLd } from '@/lib/technical-seo'
 
 // ISR: 每30分钟重新生成
 export const revalidate = 1800
@@ -24,9 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (!data) return {}
 
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.language_code === lang)
-  const title = translation?.name || product.translations?.[0]?.name || slug
-  const description = translation?.short_description || product.translations?.[0]?.short_description || ''
+  const translation = product.translations?.find((t: any) => t.locale === lang)
+  const fallbackTranslation = product.translations?.[0] as any
+  const title = (translation as any)?.title || fallbackTranslation?.title || (translation as any)?.name || fallbackTranslation?.name || slug
+  const description = (translation as any)?.short_desc || fallbackTranslation?.short_desc || (translation as any)?.short_description || fallbackTranslation?.short_description || ''
 
   return {
     title: `${title} | AIERXUAN`,
@@ -68,8 +70,9 @@ export default async function ProductDetailPage({
   // Cast the data to ProductWithTranslations to ensure type compatibility
   // The query structure matches the type
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.language_code === lang)
-  const productName = translation?.name || product.translations?.[0]?.name || slug
+  const translation = product.translations?.find((t: any) => t.locale === lang) as any
+  const fallbackTranslation = product.translations?.[0] as any
+  const productName = translation?.title || fallbackTranslation?.title || translation?.name || fallbackTranslation?.name || slug
 
   return (
     <>
@@ -84,24 +87,18 @@ export default async function ProductDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Product',
+          __html: JSON.stringify(buildProductJsonLd({
+            lang,
+            slug,
             name: productName,
-            description: translation?.short_description || '',
-            image: (product as any).images?.[0] || undefined,
-            brand: { '@type': 'Brand', name: 'AIERXUAN' },
-            manufacturer: { '@type': 'Organization', name: 'AIERXUAN' },
-            url: `${SITE_URL}/${lang}/products/${slug}`,
-            ...(product.price ? {
-              offers: {
-                '@type': 'Offer',
-                priceCurrency: 'USD',
-                price: product.price,
-                availability: 'https://schema.org/InStock',
-              },
-            } : {}),
-          }),
+            shortDescription: translation?.short_desc || translation?.short_description,
+            images: (product as any).images,
+            price: product.price,
+            category: (product as any).category,
+            sku: (product as any).sku,
+            model: (product as any).model,
+            moq: product.moq,
+          })),
         }}
       />
       <ProductDetailClient

@@ -595,9 +595,9 @@
         "description": "准备好改变您的制造流程了吗？我们的专家随时为您找到完美的工业自动化解决方案。",
         "contactInfo": "联系信息",
         "address": "地址",
-        "addressValue": "工业区，城市，国家",
+        "addressValue": "中国深圳市龙岗区吉华街道聚银科技工业园",
         "phone": "电话",
-        "phoneValue": "+86 123 456 7890",
+        "phoneValue": "+86 4008-8228-058",
         "email": "邮箱",
         "emailValue": "info@aierxuan.com",
         "businessHours": "营业时间",
@@ -714,7 +714,7 @@
         "backToHome": "返回首页",
         "browseProducts": "浏览产品",
         "contactInfo": "需要立即帮助？",
-        "phone": "致电我们：+86 123 456 7890",
+        "phone": "致电我们：+86 4008-8228-058",
         "email": "邮件联系：admin@aierxuanlaptop.com",
         "businessHours": "营业时间：周一至周五，上午9:00 - 下午6:00 (GMT+8)",
         "socialMedia": "关注我们获取更新",
@@ -740,7 +740,7 @@
     "oem": {
         "meta": {
             "title": "OEM/ODM笔记本电脑制造服务 - AIERXUAN",
-            "description": "专业的OEM/ODM笔记本电脑和迷你主机制造服务。定制品牌、灵活起订量300台起、快速15-25天交付。CE/FCC/RoHS认证。",
+            "description": "专业的OEM/ODM笔记本电脑和迷你主机制造服务。定制品牌、灵活起订量100台起、样品7-15天、标准生产15-25天。CE/FCC/RoHS认证。",
             "keywords": "OEM笔记本制造商, ODM笔记本工厂, 定制笔记本制造, 白牌笔记本, 贴牌笔记本"
         },
         "hero": {
@@ -782,7 +782,7 @@
                     "按您的标准严格质量控制",
                     "完整的技术支持和文档"
                 ],
-                "moq": "起订量：300台"
+                "moq": "起订量：100台起"
             },
             "odm": {
                 "title": "ODM解决方案",
@@ -1000,7 +1000,7 @@
                 "items": [
                     {
                         "question": "最低起订量（MOQ）是多少？",
-                        "answer": "我们的标准起订量是OEM订单300台，ODM订单500台。对于样品订单，我们可以提供1-10台用于测试和评估，然后再下批量订单。"
+                        "answer": "我们的标准起订量从100台起，具体取决于配置和定制要求。样品订单可提供1-10台用于测试和评估，然后再下批量订单。"
                     },
                     {
                         "question": "交货期是多久？",

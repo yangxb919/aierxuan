@@ -12,6 +12,7 @@ export default async function ThankYouPage({ params }: PageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
   const texts = dictionary.thankYou
+  const resourceHref = (href: string) => href === '/support' ? '/contact#rfq' : href
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -130,7 +131,7 @@ export default async function ThankYouPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {texts.resources.map((resource, index) => (
-              <Link key={index} href={`/${lang}${resource.href}`}>
+              <Link key={index} href={`/${lang}${resourceHref(resource.href)}`}>
                 <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer">
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
                     {resource.title}

@@ -10,6 +10,7 @@ import { i18n, type Locale } from '@/i18n-config'
 import { getDictionary } from '@/get-dictionary'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
+import { brandFacts } from '@/lib/brand-facts'
 
 const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
   en: {
@@ -61,11 +62,22 @@ export default async function RootLayout({
   const { lang: langParam } = await params
   const lang = langParam as Locale
   const dictionary = await getDictionary(lang)
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID
   const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
 
   return (
     <>
       <HtmlLangSetter lang={lang} />
+
+      {gtmId ? (
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`,
+          }}
+        />
+      ) : null}
 
       {/* Organization Schema JSON-LD */}
       <script
@@ -73,24 +85,29 @@ export default async function RootLayout({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'AIERXUAN',
+            '@type': ['Organization', 'Manufacturer'],
+            name: brandFacts.name,
             url: SITE_URL,
             logo: `${SITE_URL}/images/logo.png`,
             description: metaByLang[lang]?.description ?? metaByLang.en.description,
+            foundingDate: brandFacts.foundedYear,
             address: {
               '@type': 'PostalAddress',
-              addressLocality: 'Shenzhen',
-              addressRegion: 'Guangdong',
-              addressCountry: 'CN',
+              streetAddress: brandFacts.address.streetAddress,
+              addressLocality: brandFacts.address.locality,
+              addressRegion: brandFacts.address.region,
+              addressCountry: brandFacts.address.countryCode,
             },
             contactPoint: {
               '@type': 'ContactPoint',
-              telephone: '+86-4008-8228-058',
+              telephone: brandFacts.contact.phone,
               contactType: 'sales',
-              email: 'admin@aierxuanlaptop.com',
+              email: brandFacts.contact.email,
               availableLanguage: ['English', 'Russian', 'Chinese'],
+              areaServed: 'Worldwide',
             },
+            knowsAbout: ['OEM laptop manufacturing', 'ODM laptop manufacturing', 'Mini PC manufacturing', 'Custom computer hardware'],
+            award: brandFacts.certifications,
             sameAs: [
               'https://www.linkedin.com/company/aierxuan',
             ],
