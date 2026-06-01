@@ -51,6 +51,7 @@ const homeRedesignText = {
       sidebarTitle: 'From product idea to export-ready hardware.',
       sidebarText: 'Business laptops, gaming notebooks, Mini PCs and custom configurations for distributors, education, offices, industrial projects and regional brands.',
       viewAll: 'View All Products',
+      viewOem: 'OEM/ODM Manufacturing',
       families: {
         business: {
           title: 'Business Laptop',
@@ -139,6 +140,7 @@ const homeRedesignText = {
       sidebarTitle: 'От идеи продукта до готового к экспорту оборудования.',
       sidebarText: 'Бизнес-ноутбуки, игровые ноутбуки, мини-ПК и индивидуальные конфигурации для дистрибьюторов, образования, офисов, промышленных проектов и региональных брендов.',
       viewAll: 'Вся продукция',
+      viewOem: 'OEM/ODM производство',
       families: {
         business: {
           title: 'Бизнес-ноутбук',
@@ -262,10 +264,16 @@ export default async function Home({
                   {t.products.sidebarText}
                 </p>
               </div>
-              <a href={`/${lang}/products`} className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-blue-600">
-                {t.products.viewAll}
-                <span>→</span>
-              </a>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a href={`/${lang}/products`} className="inline-flex items-center gap-2 text-sm font-bold text-blue-600">
+                  {t.products.viewAll}
+                  <span>→</span>
+                </a>
+                <a href={`/${lang}/oem`} className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-blue-600">
+                  {t.products.viewOem}
+                  <span>→</span>
+                </a>
+              </div>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {families.map((family) => (

@@ -19,17 +19,15 @@ export const revalidate = 1800
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
-  const dictionary = await getDictionary(lang as Locale)
-  const texts = dictionary.products.page
 
   const metaByLang: Record<string, { title: string; description: string; keywords: string }> = {
     en: {
-      title: 'Products - Laptops, Mini PCs & Industrial Computers | AIERXUAN',
+      title: 'Products - Laptops, Mini PCs & OEM Hardware | AIERXUAN',
       description: 'Browse AIERXUAN full range of OEM/ODM laptops, gaming notebooks, mini PCs and industrial computing solutions. Custom configurations available.',
       keywords: 'laptops, mini pc, gaming laptop, industrial computer, oem laptop, odm notebook',
     },
     ru: {
-      title: 'Продукция — Ноутбуки, мини-ПК и промышленные компьютеры | AIERXUAN',
+      title: 'Продукция - ноутбуки и мини-ПК | AIERXUAN',
       description: 'Полный каталог OEM/ODM ноутбуков, игровых ноутбуков, мини-ПК и промышленных компьютеров AIERXUAN. Индивидуальные конфигурации.',
       keywords: 'ноутбуки, мини-ПК, игровой ноутбук, промышленный компьютер, OEM ноутбук',
     },
@@ -156,6 +154,10 @@ export default async function ProductsPage({
               </tbody>
             </table>
           </div>
+          <a href={`/${lang}/oem`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700">
+            OEM/ODM customization process
+            <span>→</span>
+          </a>
         </div>
       </section>
 

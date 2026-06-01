@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
@@ -14,7 +14,16 @@ import { Button } from '@/components/ui'
 import TableOfContents from '@/components/blog/TableOfContents'
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 import { SITE_URL } from '@/lib/site-url'
-import { stripDuplicateMarkdownH1 } from '@/lib/technical-seo'
+import {
+  canonicalForLocale,
+  formatSeoDescription,
+  formatSeoTitle,
+  localizedAlternates,
+  normalizeInternalMarkdownLinks,
+  resolveBlogSlugAlias,
+  robotsForLocale,
+  stripMarkdownH1ForArticle,
+} from '@/lib/technical-seo'
 import type { BlogPost } from '@/types'
 import type { Locale } from '@/i18n-config'
 
@@ -48,6 +57,11 @@ function getServerSupabase() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { lang, slug } = await params
+  const canonicalSlug = resolveBlogSlugAlias(slug)
+
+  if (canonicalSlug) {
+    permanentRedirect(`/${lang}/blog/${canonicalSlug}`)
+  }
 
   const supabase = getServerSupabase()
   if (!supabase) {
@@ -70,23 +84,27 @@ export async function generateMetadata({ params }: PageProps) {
   const translation = getTranslation(post as BlogPostWithTranslations, lang, 'locale')
   const title = translation?.seo_title || translation?.title || `Blog Post ${post.id}`
   const excerpt = translation?.seo_desc || translation?.excerpt || ''
+  const path = `/blog/${slug}`
 
   return {
-    title: `${title} - AIERXUAN`,
-    description: excerpt,
+    title: formatSeoTitle(title),
+    description: formatSeoDescription(excerpt),
+    robots: robotsForLocale(lang),
     alternates: {
-      canonical: `${SITE_URL}/${lang}/blog/${slug}`,
-      languages: {
-        'x-default': `${SITE_URL}/en/blog/${slug}`,
-        'en': `${SITE_URL}/en/blog/${slug}`,
-        'ru': `${SITE_URL}/ru/blog/${slug}`,
-      },
+      canonical: canonicalForLocale(lang, path),
+      languages: localizedAlternates(path),
     },
   }
 }
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { lang, slug } = await params
+  const canonicalSlug = resolveBlogSlugAlias(slug)
+
+  if (canonicalSlug) {
+    permanentRedirect(`/${lang}/blog/${canonicalSlug}`)
+  }
+
   const dictionary = await getDictionary(lang)
   const texts = dictionary.blogDetail
 
@@ -114,7 +132,9 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const title = translation?.title || `Blog Post ${post.id}`
   // const excerpt = translation?.excerpt || '' // Unused
   const content = translation?.body_md || ''
-  const contentForRender = addHardLineBreaks(stripDuplicateMarkdownH1(content, title))
+  const contentForRender = addHardLineBreaks(
+    stripMarkdownH1ForArticle(normalizeInternalMarkdownLinks(content, lang), title)
+  )
 
   const estimateReadingTime = (text: string) => {
     const wordsPerMinute = 200

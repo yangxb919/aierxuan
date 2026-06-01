@@ -88,7 +88,10 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(newUrl)
     }
 
-    return NextResponse.next()
+    // Let public localized pages continue without emitting a middleware
+    // response, so CDN cache keys are not polluted by Set-Cookie/private
+    // headers from middleware.
+    return
 }
 
 export const config = {

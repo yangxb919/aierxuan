@@ -3,6 +3,8 @@ import { Button } from '@/components/ui'
 import { ThankYouTracking } from '@/components/thank-you/ThankYouTracking'
 import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
+import { SafeEmailText } from '@/components/common/SafeEmail'
+import { splitPublicEmailText } from '@/lib/public-contact'
 
 interface PageProps {
   params: Promise<{ lang: Locale }>
@@ -13,6 +15,7 @@ export default async function ThankYouPage({ params }: PageProps) {
   const dictionary = await getDictionary(lang)
   const texts = dictionary.thankYou
   const resourceHref = (href: string) => href === '/support' ? '/contact#rfq' : href
+  const emailText = splitPublicEmailText(texts.email)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -111,7 +114,12 @@ export default async function ThankYouPage({ params }: PageProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <p className="text-lg font-medium text-gray-900">{texts.email}</p>
+                <SafeEmailText
+                  className="text-lg font-medium text-gray-900"
+                  prefix={emailText.prefix}
+                  suffix={emailText.suffix}
+                  {...emailText.email}
+                />
               </div>
             </div>
 

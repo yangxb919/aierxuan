@@ -51,6 +51,8 @@ export function trackLeadFormSubmit(payload: LeadTrackingPayload) {
     urgency: payload.urgency || 'normal',
     source: payload.source || 'website',
     page_location: window.location.href,
+    value: 1,
+    currency: 'USD',
   }
 
   pushDataLayerEvent('rfq_submit', eventPayload)

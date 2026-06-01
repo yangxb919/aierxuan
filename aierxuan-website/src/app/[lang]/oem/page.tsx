@@ -3,6 +3,13 @@ import { getDictionary } from '@/get-dictionary'
 import { type Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
+import {
+  canonicalForLocale,
+  formatSeoDescription,
+  formatSeoTitle,
+  localizedAlternates,
+  robotsForLocale,
+} from '@/lib/technical-seo'
 import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 import {
   FeatureTile,
@@ -21,16 +28,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const texts = dictionary.oem
 
   return {
-    title: texts.meta.title,
-    description: texts.meta.description,
+    title: formatSeoTitle(texts.meta.title),
+    description: formatSeoDescription(texts.meta.description),
     keywords: texts.meta.keywords,
+    robots: robotsForLocale(lang),
     alternates: {
-      canonical: `${SITE_URL}/${lang}/oem`,
-      languages: {
-        'x-default': `${SITE_URL}/en/oem`,
-        'en': `${SITE_URL}/en/oem`,
-        'ru': `${SITE_URL}/ru/oem`,
-      },
+      canonical: canonicalForLocale(lang, '/oem'),
+      languages: localizedAlternates('/oem'),
     },
     ...buildOgTwitter({ lang, title: texts.meta.title, description: texts.meta.description, path: '/oem' }),
   }

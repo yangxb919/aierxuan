@@ -6,6 +6,8 @@ import { getDictionary } from '@/get-dictionary'
 import type { Locale } from '@/i18n-config'
 import { SITE_URL } from '@/lib/site-url'
 import { buildOgTwitter } from '@/lib/seo'
+import { SafeEmail } from '@/components/common/SafeEmail'
+import { publicEmailParts } from '@/lib/public-contact'
 import {
   ProcessCards,
   SectionHeader,
@@ -55,6 +57,7 @@ export default async function ContactPage({
   const { lang } = await params
   const dictionary = await getDictionary(lang)
   const texts = dictionary.contact
+  const email = publicEmailParts()
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
@@ -156,7 +159,7 @@ export default async function ContactPage({
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-semibold text-slate-950">{texts.email}</p>
-                      <p className="text-sm text-slate-600">{texts.emailValue}</p>
+                      <SafeEmail className="text-sm text-slate-600" {...email} />
                     </div>
                   </div>
 

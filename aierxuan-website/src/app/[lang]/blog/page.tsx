@@ -153,6 +153,10 @@ export default async function BlogPage({
             <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300">
               Use the blog as a buyer education hub, not only a news list. Every article should help importers and distributors ask better questions before requesting a quote.
             </p>
+            <a href={`/${lang}/oem`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-200 hover:text-white">
+              OEM/ODM manufacturing service
+              <span>→</span>
+            </a>
           </div>
         </div>
       </section>

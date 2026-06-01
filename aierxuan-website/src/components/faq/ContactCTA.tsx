@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { MessageSquare, Mail, Phone } from 'lucide-react'
+import { SafeEmail } from '@/components/common/SafeEmail'
+import { PUBLIC_CONTACT_EMAIL } from '@/lib/public-contact'
 
 interface ContactCTAProps {
   texts: {
@@ -44,7 +46,7 @@ export function ContactCTA({ texts, lang }: ContactCTAProps) {
               </div>
               <div className="text-left">
                 <div className="text-xs text-white/50">{texts.emailLabel}</div>
-                <div className="text-sm font-medium text-white">{texts.emailValue}</div>
+                <SafeEmail className="text-sm font-medium text-white" {...PUBLIC_CONTACT_EMAIL} />
               </div>
             </div>
 

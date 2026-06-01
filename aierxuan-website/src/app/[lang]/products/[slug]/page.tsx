@@ -5,9 +5,15 @@ import { Locale } from '@/i18n-config'
 import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import type { ProductWithTranslations } from '@/types'
-import { SITE_URL } from '@/lib/site-url'
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
-import { buildProductJsonLd } from '@/lib/technical-seo'
+import {
+  buildProductJsonLd,
+  canonicalForLocale,
+  formatSeoDescription,
+  formatSeoTitle,
+  localizedAlternates,
+  robotsForLocale,
+} from '@/lib/technical-seo'
 
 // ISR: 每30分钟重新生成
 export const revalidate = 1800
@@ -25,21 +31,19 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (!data) return {}
 
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.locale === lang)
-  const fallbackTranslation = product.translations?.[0] as any
+  const translation = product.translations?.find((t: any) => t.language_code === lang)
+  const fallbackTranslation = product.translations?.find((t: any) => t.language_code === 'en') || product.translations?.[0] as any
   const title = (translation as any)?.title || fallbackTranslation?.title || (translation as any)?.name || fallbackTranslation?.name || slug
   const description = (translation as any)?.short_desc || fallbackTranslation?.short_desc || (translation as any)?.short_description || fallbackTranslation?.short_description || ''
+  const path = `/products/${slug}`
 
   return {
-    title: `${title} | AIERXUAN`,
-    description,
+    title: formatSeoTitle(title),
+    description: formatSeoDescription(description),
+    robots: robotsForLocale(lang),
     alternates: {
-      canonical: `${SITE_URL}/${lang}/products/${slug}`,
-      languages: {
-        'x-default': `${SITE_URL}/en/products/${slug}`,
-        'en': `${SITE_URL}/en/products/${slug}`,
-        'ru': `${SITE_URL}/ru/products/${slug}`,
-      },
+      canonical: canonicalForLocale(lang, path),
+      languages: localizedAlternates(path),
     },
   }
 }
@@ -70,8 +74,8 @@ export default async function ProductDetailPage({
   // Cast the data to ProductWithTranslations to ensure type compatibility
   // The query structure matches the type
   const product = data as unknown as ProductWithTranslations
-  const translation = product.translations?.find((t: any) => t.locale === lang) as any
-  const fallbackTranslation = product.translations?.[0] as any
+  const translation = product.translations?.find((t: any) => t.language_code === lang) as any
+  const fallbackTranslation = (product.translations?.find((t: any) => t.language_code === 'en') || product.translations?.[0]) as any
   const productName = translation?.title || fallbackTranslation?.title || translation?.name || fallbackTranslation?.name || slug
 
   return (

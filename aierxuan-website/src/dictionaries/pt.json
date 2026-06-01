@@ -409,7 +409,7 @@
                     },
                     {
                         "name": "Suporte Técnico",
-                        "href": "/support"
+                        "href": "/contact#rfq"
                     },
                     {
                         "name": "Documentação",
@@ -568,7 +568,7 @@
             },
             {
                 "title": "Suporte Técnico",
-                "href": "/support",
+                "href": "/contact#rfq",
                 "description": "Obtenha assistência técnica"
             },
             {
