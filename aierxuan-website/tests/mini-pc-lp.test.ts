@@ -21,6 +21,7 @@ test('EN mini PC landing page is wired for SEO and lead tracking', () => {
   assert.match(page, /oemQcLab/)
   assert.match(page, /oemPackagingExport/)
   assert.match(page, /localizedAlternates\('\/lp\/mini-pc'\)/)
+  assert.doesNotMatch(page, /TBD|待老板|老板确认/)
   assert.match(sitemap, /\/lp\/mini-pc/)
   assert.match(rfqForm, /trackingSource/)
   assert.match(rfqForm, /source: trackingSource/)

@@ -60,7 +60,7 @@ const sellingPoints = [
   {
     title: 'Certification & Compliance',
     description:
-      'Mini PCs ship CE, FCC, and RoHS certified for global market access. We support your import paperwork and can assist with region-specific certification such as EAC for Russia/EAEU. (Per-model certification status: see SKU certification matrix — [TBD: 待老板确认每款具体认证].)',
+      'Mini PCs ship CE, FCC, and RoHS certified for global market access. We support your import paperwork and can assist with region-specific certification such as EAC for Russia/EAEU. Per-model certification status is confirmed before quoting.',
     icon: iconFor('globe'),
   },
   {
@@ -114,12 +114,12 @@ const audiences = [
   {
     title: 'Embedded & System Integrators',
     description:
-      'Source mini PC platforms for your integrated solutions, with custom I/O and configuration support. (Industrial-grade / wide-temperature variants: [TBD: 待老板确认工控级产品线与认证].)',
+      'Source mini PC platforms for your integrated solutions, with custom I/O and configuration support. Industrial-grade and wide-temperature requirements are confirmed before quoting.',
   },
   {
     title: 'Digital Signage & Kiosk Operators',
     description:
-      'Compact, always-on players for signage and kiosk networks, customizable for fanless or multi-display setups. (Fanless / multi-display SKU availability: [TBD: 待老板确认].)',
+      'Compact, always-on players for signage and kiosk networks, with fanless or multi-display SKU availability confirmed before quoting.',
   },
 ]
 
@@ -181,12 +181,12 @@ const faq = [
   {
     question: 'Are your mini PCs certified?',
     answer:
-      'Yes — mini PCs ship CE, FCC, and RoHS certified for global market access. For region-specific requirements such as EAC (Russia/EAEU), we assist with the certification process. Per-model certification status is confirmed before quoting. [TBD: 待老板确认每款机型具体认证]',
+      'Yes — mini PCs ship CE, FCC, and RoHS certified for global market access. For region-specific requirements such as EAC (Russia/EAEU), we assist with the certification process. Per-model certification status is confirmed before quoting.',
   },
   {
     question: 'What are your payment terms and Incoterms?',
     answer:
-      'We work on flexible Incoterms — EXW, FOB, CIF, or DDP — chosen to fit your supply chain. Typical payment terms are a deposit on order with balance before shipment. [TBD: 待老板确认具体付款比例，如 30/70]',
+      'We work on flexible Incoterms — EXW, FOB, CIF, or DDP — chosen to fit your supply chain. Typical payment terms are a deposit on order with balance before shipment.',
   },
   {
     question: 'What is the production lead time for a bulk order?',
@@ -196,7 +196,7 @@ const faq = [
   {
     question: 'Do you offer a warranty and after-sales support?',
     answer:
-      'Yes — we provide after-sales support and handle defective-unit (RMA) cases. [TBD: 待老板确认质保期限与 RMA 政策]',
+      'Yes — we provide after-sales support and handle defective-unit (RMA) cases. Warranty terms are confirmed in your quote.',
   },
 ]
 
