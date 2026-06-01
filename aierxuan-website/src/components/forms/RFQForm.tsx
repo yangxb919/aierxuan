@@ -45,9 +45,25 @@ interface RFQFormProps {
   lang: LanguageCode
   dictionary: Dictionary['rfq']
   trackingSource?: string
+  title?: string
+  subtitle?: string
+  submitButtonLabel?: string
+  reassuranceText?: string
 }
 
-export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dark', lang, dictionary, trackingSource = 'rfq_form' }: RFQFormProps) {
+export function RFQForm({
+  productSlug,
+  onSuccess,
+  className = '',
+  variant = 'dark',
+  lang,
+  dictionary,
+  trackingSource = 'rfq_form',
+  title,
+  subtitle,
+  submitButtonLabel,
+  reassuranceText,
+}: RFQFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const router = useRouter()
@@ -179,10 +195,10 @@ export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dar
     <Card className={`w-full max-w-2xl mx-auto ${isLight ? 'bg-white border-slate-200' : 'bg-white/5 backdrop-blur-sm border-white/10'} ${className}`}>
       <CardHeader>
         <CardTitle className={`text-2xl font-bold text-center ${isLight ? 'text-slate-950' : 'text-white'}`}>
-          {texts.title}
+          {title ?? texts.title}
         </CardTitle>
         <p className={`${isLight ? 'text-slate-600' : 'text-gray-400'} text-center`}>
-          {texts.subtitle}
+          {subtitle ?? texts.subtitle}
         </p>
       </CardHeader>
 
@@ -361,8 +377,13 @@ export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dar
               className="w-full bg-blue-600 hover:bg-blue-500 text-white"
               disabled={isSubmitting}
             >
-              {isSubmitting ? texts.submitting : texts.submitButton}
+              {isSubmitting ? texts.submitting : submitButtonLabel ?? texts.submitButton}
             </Button>
+            {reassuranceText && (
+              <p className={`mt-3 text-center text-xs ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
+                {reassuranceText}
+              </p>
+            )}
           </div>
         </form>
       </CardContent>

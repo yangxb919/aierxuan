@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { RFQForm } from '@/components/forms/RFQForm'
 import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd'
 import {
@@ -7,7 +8,6 @@ import {
   ProcessCards,
   ProofStrip,
   SectionHeader,
-  TechCTA,
   TechHero,
   defaultHeroStatsFor,
   iconFor,
@@ -21,7 +21,6 @@ import { buildOgTwitter } from '@/lib/seo'
 import {
   canonicalForLocale,
   formatSeoDescription,
-  formatSeoTitle,
   localizedAlternates,
   robotsForLocale,
 } from '@/lib/technical-seo'
@@ -30,116 +29,180 @@ const pagePath = '/lp/mini-pc'
 const heroImage = redesignImages.miniPcLpHero
 
 const meta = {
-  title: 'Custom Mini PC OEM Manufacturer for Wholesale Buyers',
+  title: 'Custom Mini PC Manufacturer | OEM/ODM Supplier — AIERXUAN',
   description:
-    'Custom mini PC OEM and ODM manufacturing for European distributors, office IT rollouts and embedded integrators. Wholesale Mini PCs, branding, QA and export support from AIERXUAN.',
+    'Shenzhen OEM/ODM mini PC manufacturer. Custom mini PCs for business, office & embedded use. MOQ from 100, 7–15 day samples, CE/FCC/RoHS certified.',
   keywords:
-    'custom mini pc, mini pc wholesale, oem mini pc manufacturer, mini pc supplier, mini pc odm, business mini pc, embedded mini pc',
+    'custom mini pc, mini pc manufacturer, oem mini pc supplier, mini pc wholesale, industrial mini pc, embedded mini pc',
 }
 
-const directAnswers = [
-  {
-    title: 'Who is this Mini PC OEM page for?',
-    text: 'This page is for European distributors, office IT resellers and embedded system integrators that need custom Mini PCs in wholesale quantities, with branding, QA and export support handled by one factory partner.',
-  },
-  {
-    title: 'What can AIERXUAN customize?',
-    text: 'AIERXUAN can support Mini PC configuration, memory and storage tiers, port layout planning on available platforms, BIOS and OS image requirements, logo labels, packaging and export documentation.',
-  },
-  {
-    title: 'How does a Mini PC OEM quote start?',
-    text: 'Send the target CPU class, RAM and SSD, operating system, I/O requirements, quantity, destination market and branding needs. Sales can return a structured RFQ response within 24 hours.',
-  },
-]
+const proofLine = '10+ years manufacturing · Intel Partner since 2019 · 500,000+ units shipped · 50+ countries served'
 
-const valueProps = [
+const sellingPoints = [
   {
-    title: 'OEM / ODM customization',
-    description: 'Private label Mini PC programs with configuration planning, brand labels, packaging and software image coordination.',
+    title: 'OEM / ODM Customization',
+    description:
+      'Build your own mini PC line without a factory of your own. We customize CPU, RAM, storage, ports, chassis, BIOS, boot logo, and packaging to match your product roadmap and target market.',
     icon: iconFor('cpu'),
   },
   {
-    title: 'MOQ from 100 units',
-    description: `${brandFacts.moqText} for standard platforms, with sample preparation available before wholesale Mini PC orders scale.`,
+    title: 'Low MOQ, Flexible Volumes',
+    description:
+      'Start at MOQ from 100 units and scale to high-volume runs. Samples available from 1–10 units so you can validate the product before committing to a production order.',
     icon: iconFor('package'),
   },
   {
-    title: 'Factory QA gates',
-    description: 'Incoming material checks, burn-in testing, functional inspection and packaging verification before export shipment.',
+    title: 'Quality You Can Audit',
+    description:
+      'Every unit passes functional QC and an aging test before shipment. Our facility is ISO 9001 and ISO 14001 certified, with 6 production lines and a monthly capacity of 50,000+ units backing your order.',
     icon: iconFor('quality'),
   },
   {
-    title: 'Export-ready support',
-    description: 'Commercial invoice, packing list, carton labels and CE/FCC/RoHS documentation support for international buyers.',
+    title: 'Certification & Compliance',
+    description:
+      'Mini PCs ship CE, FCC, and RoHS certified for global market access. We support your import paperwork and can assist with region-specific certification such as EAC for Russia/EAEU. (Per-model certification status: see SKU certification matrix — [TBD: 待老板确认每款具体认证].)',
     icon: iconFor('globe'),
   },
-]
-
-const capabilities = [
-  ['Business deployment', 'Windows or Linux images, VESA mounting, quiet operation and multi-screen office use.'],
-  ['Embedded projects', 'Stable platforms for kiosk, signage, control rooms and light industrial edge workloads.'],
-  ['Channel programs', 'Retail carton planning, distributor labels, SKU tiers and repeatable packing standards.'],
-  ['EU procurement', 'CE/FCC/RoHS documentation support, export paperwork and shipment coordination for European buyers.'],
-]
-
-const scenarios = [
   {
-    title: 'Office IT refresh',
-    description: 'Compact desktops for call centers, education rooms and branch offices where buyers need predictable replacement cycles.',
+    title: 'Export & Logistics',
+    description:
+      'We ship to 50+ countries and work on flexible Incoterms — EXW, FOB, CIF, or DDP — so you can choose the landed-cost model that fits your supply chain. Lithium-battery-free mini PCs simplify air and sea freight.',
+    icon: iconFor('truck'),
   },
   {
-    title: 'Digital signage and kiosk',
-    description: 'Mini PCs for display networks, self-service kiosks and content playback with stable OS images and port planning.',
-  },
-  {
-    title: 'Embedded integration',
-    description: 'Small form factor platforms for integrators building control panels, test benches and edge computing kits.',
+    title: 'Fast Sampling',
+    description:
+      'Get a working sample in 7–15 days. Standard production runs 15–25 days; large orders 25–45 days; rush builds in 3–5 days subject to component availability.',
+    icon: iconFor('zap'),
   },
 ]
 
 const processSteps = [
-  { title: 'RFQ intake', description: 'Share CPU class, memory, storage, I/O, OS, quantity, destination market and branding scope.' },
-  { title: 'Platform match', description: 'Engineering checks available Mini PC platforms, thermal envelope and BOM feasibility.' },
-  { title: 'Sample build', description: `Samples are normally prepared in ${brandFacts.sampleLeadTimeText} after specifications are confirmed.` },
-  { title: 'QA approval', description: 'Validate image, ports, accessories, packaging and inspection requirements before production.' },
-  { title: 'Mass production', description: `Standard production is usually ${brandFacts.standardProductionLeadTimeText}, depending on volume and components.` },
-  { title: 'Export handoff', description: 'Ship with labels, packing list, commercial invoice and after-sales communication path.' },
+  {
+    title: 'Share Your Requirements',
+    description: 'Send us your use case, target specs, volume, and branding needs. We respond within 24 hours.',
+  },
+  {
+    title: 'Get a Quote & Spec Sheet',
+    description: 'Receive a tailored configuration, pricing by volume tier, and a draft datasheet.',
+  },
+  {
+    title: 'Approve a Sample',
+    description: 'We build and ship a sample (7–15 days) for your validation and testing.',
+  },
+  {
+    title: 'Mass Production',
+    description: 'On approval, we run production with full QC and aging tests (15–25 days standard).',
+  },
+  {
+    title: 'Ship & Support',
+    description: 'We handle export documentation and logistics to your port or door, with after-sales support.',
+  },
+]
+
+const audiences = [
+  {
+    title: 'European & Global Distributors',
+    description:
+      'Add a reliable, certified mini PC line to your catalog under your own brand, with dependable lead times and restocking.',
+  },
+  {
+    title: 'Corporate & Office IT Procurement',
+    description:
+      'Standardize on compact, low-power desktops for office deployment, tuned to your spec and image.',
+  },
+  {
+    title: 'Embedded & System Integrators',
+    description:
+      'Source mini PC platforms for your integrated solutions, with custom I/O and configuration support. (Industrial-grade / wide-temperature variants: [TBD: 待老板确认工控级产品线与认证].)',
+  },
+  {
+    title: 'Digital Signage & Kiosk Operators',
+    description:
+      'Compact, always-on players for signage and kiosk networks, customizable for fanless or multi-display setups. (Fanless / multi-display SKU availability: [TBD: 待老板确认].)',
+  },
+]
+
+const trustStatement =
+  'AIERXUAN is a Shenzhen-based OEM/ODM laptop and mini PC manufacturer founded in 2014. From a 15,000㎡ facility with 6 production lines and 50,000+ units of monthly capacity, we have shipped 500,000+ units to 500+ clients across 50+ countries. As an Intel Partner since 2019, with ISO 9001 and ISO 14001 certified operations, we build mini PCs that meet CE, FCC, and RoHS standards.'
+
+const trustPoints = [
+  ['Founded', '2014 (10+ years)'],
+  ['Intel Partner since', '2019'],
+  ['Units shipped', '500,000+'],
+  ['Countries served', '50+'],
+  ['Global clients', '500+'],
+  ['Facility', '15,000㎡, Longgang District, Shenzhen, China'],
+  ['Production lines', '6'],
+  ['Monthly capacity', '50,000+ units'],
+  ['Team', '200+'],
+  ['Product certifications', 'CE · FCC · RoHS'],
+  ['Facility certifications', 'ISO 9001 · ISO 14001'],
+  ['First response time', 'within 24 hours'],
+]
+
+const proofImages = [
+  {
+    src: redesignImages.oemAssemblyLine,
+    alt: 'AIERXUAN OEM production line for custom mini PC and laptop assembly',
+    label: 'Production line',
+    caption: '6 production lines backing standard and high-volume mini PC orders.',
+  },
+  {
+    src: redesignImages.oemQcLab,
+    alt: 'AIERXUAN QC inspection lab for mini PC functional testing',
+    label: 'QC inspection',
+    caption: 'Functional QC and aging tests before shipment.',
+  },
+  {
+    src: redesignImages.oemPackagingExport,
+    alt: 'AIERXUAN export packaging and logistics preparation for B2B hardware orders',
+    label: 'Export packaging',
+    caption: 'Packing, labels and export documentation for global delivery.',
+  },
 ]
 
 const faq = [
   {
-    question: 'Can AIERXUAN manufacture custom Mini PCs for wholesale buyers?',
+    question: 'What is your minimum order quantity (MOQ) for mini PCs?',
     answer:
-      'Yes. AIERXUAN supports custom Mini PC OEM and ODM projects for B2B buyers, including hardware configuration, brand labels, packaging, OS image coordination and export documentation.',
+      'MOQ starts at 100 units. Samples are available from 1–10 units so you can evaluate quality before placing a production order. Exact MOQ depends on the configuration and level of customization.',
   },
   {
-    question: 'What is the MOQ for OEM Mini PC orders?',
-    answer: `${brandFacts.moqText} for standard Mini PC platforms. Final MOQ depends on CPU platform, shell availability, branding depth, packaging scope and component supply.`,
-  },
-  {
-    question: 'Can we order samples before wholesale production?',
-    answer: `Yes. Samples are available before mass production. Typical sample lead time is ${brandFacts.sampleLeadTimeText} after the target configuration and branding scope are confirmed.`,
-  },
-  {
-    question: 'Which Mini PC specifications can be customized?',
+    question: 'How much can I customize?',
     answer:
-      'Buyers can define CPU class, RAM, SSD, wireless module, OS image, labels, packaging, accessories and available I/O options on selected platforms.',
+      'Extensively. We customize CPU, RAM, storage, ports, chassis, BIOS, boot logo, and packaging. You can ship a fully white-label mini PC under your own brand.',
   },
   {
-    question: 'Does AIERXUAN support European Mini PC distributors?',
+    question: 'How long does sampling take?',
     answer:
-      'Yes. The team supports European distributors with wholesale Mini PC programs, CE/FCC/RoHS documentation support, carton labeling, repeatable SKU tiers and export paperwork.',
+      'A working sample ships in 7–15 days. After sample approval, standard production takes 15–25 days, large orders 25–45 days, and rush builds 3–5 days subject to component availability.',
   },
   {
-    question: 'Is this page for retail Mini PC buyers?',
+    question: 'Are your mini PCs certified?',
     answer:
-      'No. This landing page is built for B2B OEM, ODM and wholesale Mini PC buyers. Retail single-unit orders are not the target workflow.',
+      'Yes — mini PCs ship CE, FCC, and RoHS certified for global market access. For region-specific requirements such as EAC (Russia/EAEU), we assist with the certification process. Per-model certification status is confirmed before quoting. [TBD: 待老板确认每款机型具体认证]',
+  },
+  {
+    question: 'What are your payment terms and Incoterms?',
+    answer:
+      'We work on flexible Incoterms — EXW, FOB, CIF, or DDP — chosen to fit your supply chain. Typical payment terms are a deposit on order with balance before shipment. [TBD: 待老板确认具体付款比例，如 30/70]',
+  },
+  {
+    question: 'What is the production lead time for a bulk order?',
+    answer:
+      'Standard production is 15–25 days; large orders 25–45 days. Lead time is confirmed in your quote based on volume and component availability.',
+  },
+  {
+    question: 'Do you offer a warranty and after-sales support?',
+    answer:
+      'Yes — we provide after-sales support and handle defective-unit (RMA) cases. [TBD: 待老板确认质保期限与 RMA 政策]',
   },
 ]
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
-  const title = formatSeoTitle(meta.title)
+  const title = meta.title
   const description = formatSeoDescription(meta.description)
 
   return {
@@ -186,7 +249,7 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
     areaServed: ['Europe', 'Worldwide'],
     audience: {
       '@type': 'BusinessAudience',
-      audienceType: 'European distributors, office IT resellers and embedded system integrators',
+      audienceType: 'Distributors, system integrators, corporate buyers, digital signage operators and kiosk operators',
     },
   }
 
@@ -209,70 +272,52 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
         <TechHero
           lang={lang}
           image={heroImage}
-          eyebrow="Custom Mini PC OEM | Wholesale Supply | Export Support"
-          title="Custom Mini PC OEM Manufacturing for B2B Buyers"
-          subtitle="Build a private label Mini PC program for European distribution, office IT deployment or embedded integration with AIERXUAN factory support."
-          primaryLabel="Get a Mini PC OEM Quote"
+          eyebrow="Custom Mini PC | OEM/ODM Supplier | Mini PC Wholesale"
+          title="Custom Mini PCs, Built to Your Spec and Brand"
+          subtitle="AIERXUAN is a Shenzhen-based OEM/ODM mini PC manufacturer. We help distributors, system integrators, and corporate buyers source fully customized mini PCs — your configuration, your branding, your certifications — from sample to bulk production."
+          primaryLabel="Request a Quote"
           primaryHref={quoteHref}
-          secondaryLabel="Review Capabilities"
-          secondaryHref={`/${lang}/lp/mini-pc#capabilities`}
+          secondaryLabel="Download Mini PC Catalog"
+          secondaryHref={quoteHref}
+          proofLine={proofLine}
           stats={defaultHeroStatsFor({
             moq: { label: 'MOQ', detail: 'Units' },
             delivery: { label: 'Samples', detail: 'Days' },
-            capacity: { label: 'Capacity', detail: '/ Month' },
-            clients: { label: 'Global Clients', detail: 'Partners' },
+            capacity: { label: 'Monthly Capacity', detail: 'Units' },
+            clients: { label: 'Global Clients', detail: 'B2B' },
           })}
           widgets={[
             {
               title: 'Quote Inputs',
               rows: [
-                { label: 'CPU / Platform', value: 'Required', status: 'warn' },
-                { label: 'RAM / SSD tiers', value: 'Required', status: 'warn' },
-                { label: 'Quantity', value: 'Required', status: 'warn' },
-                { label: 'Destination market', value: 'Required', status: 'warn' },
+                { label: 'Use case', value: 'Required', status: 'warn' },
+                { label: 'Target specs', value: 'Required', status: 'warn' },
+                { label: 'Volume', value: 'Required', status: 'warn' },
+                { label: 'Branding needs', value: 'Required', status: 'warn' },
               ],
             },
             {
-              title: 'Factory Gates',
+              title: 'Verified Facts',
               rows: [
-                { label: 'Platform match', value: 'Ready', status: 'ok' },
-                { label: 'Sample lead time', value: brandFacts.sampleLeadTimeText, status: 'ok' },
-                { label: 'QA inspection', value: '100%', status: 'ok' },
-                { label: 'Export docs', value: 'Supported', status: 'ok' },
+                { label: 'Response time', value: '24h', status: 'ok' },
+                { label: 'Samples', value: '7–15 days', status: 'ok' },
+                { label: 'Production', value: '15–25 days', status: 'ok' },
+                { label: 'Certifications', value: 'CE/FCC/RoHS', status: 'ok' },
               ],
             },
           ]}
         />
 
-        <section className="bg-white py-16">
+        <section id="capabilities" className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               light
-              eyebrow="Answer-first overview"
-              title="Mini PC OEM Supply Without the Retail Noise"
-              description="This page is built for buyers comparing custom mini PC, mini PC wholesale and OEM mini PC manufacturer options."
+              eyebrow="Core selling points"
+              title="Build a Mini PC Line Without Owning the Factory"
+              description="Six operational reasons to choose AIERXUAN as your custom mini PC manufacturer and OEM mini PC supplier."
             />
-            <div className="grid gap-4 md:grid-cols-3">
-              {directAnswers.map((item) => (
-                <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-6">
-                  <h2 className="text-lg font-bold text-slate-950">{item.title}</h2>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="capabilities" className="bg-slate-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SectionHeader
-              light
-              eyebrow="Mini PC OEM capability"
-              title="What Your Mini PC Program Can Include"
-              description="A B2B Mini PC quote needs more than a CPU list. Buyers need platform control, repeatable QA, export paperwork and brand-ready packaging."
-            />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {valueProps.map((item) => (
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {sellingPoints.map((item) => (
                 <FeatureTile
                   key={item.title}
                   light
@@ -282,14 +327,18 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
                 />
               ))}
             </div>
-            <div className="mt-10 grid gap-4 lg:grid-cols-4">
-              {capabilities.map(([title, description]) => (
-                <div key={title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-[0_20px_54px_rgba(15,23,42,0.08)]">
-                  <h3 className="text-lg font-bold text-slate-950">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
-                </div>
-              ))}
-            </div>
+          </div>
+        </section>
+
+        <section className="bg-slate-50 py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeader
+              light
+              eyebrow="OEM ordering process"
+              title="From Requirement Brief to Export Support"
+              description="A five-step workflow for Mini PC wholesale buyers moving from first quote to repeatable supply."
+            />
+            <ProcessCards light steps={processSteps} />
           </div>
         </section>
 
@@ -297,15 +346,15 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
           <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)', backgroundSize: '76px 76px' }} />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
-              eyebrow="Use cases"
-              title="Built for Business Deployment, Not Consumer Retail"
-              description="The Mini PC offer is positioned around repeatable B2B rollouts: offices, signage, kiosks and embedded integration."
+              eyebrow="Who it's for"
+              title="Mini PC Programs for Buyers With Repeat Demand"
+              description="The page is built for commercial procurement, distribution, integration and deployment teams rather than single-unit retail buyers."
             />
-            <div className="grid gap-4 md:grid-cols-3">
-              {scenarios.map((scenario) => (
-                <div key={scenario.title} className="rounded-xl border border-white/12 bg-white/[0.045] p-7">
-                  <h2 className="text-xl font-bold text-white">{scenario.title}</h2>
-                  <p className="mt-4 text-sm leading-6 text-slate-300">{scenario.description}</p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {audiences.map((audience) => (
+                <div key={audience.title} className="rounded-xl border border-white/12 bg-white/[0.045] p-7">
+                  <h2 className="text-xl font-bold text-white">{audience.title}</h2>
+                  <p className="mt-4 text-sm leading-6 text-slate-300">{audience.description}</p>
                 </div>
               ))}
             </div>
@@ -316,30 +365,73 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               light
-              eyebrow="Factory proof"
-              title="Signals B2B Buyers Can Verify"
-              description="Use these facts in procurement review before asking for a formal Mini PC OEM quotation."
+              eyebrow="Trust / credibility"
+              title="Verified Factory Facts for Procurement Review"
+              description={trustStatement}
             />
             <ProofStrip
               metrics={[
                 { value: brandFacts.foundedYear, label: 'Founded' },
-                { value: brandFacts.unitsShippedShort, label: 'Units Shipped' },
-                { value: brandFacts.facilityArea, label: 'Facility Area' },
-                { value: brandFacts.productionLines, label: 'Production Lines' },
+                { value: brandFacts.unitsShipped, label: 'Units Shipped' },
+                { value: brandFacts.countriesServed, label: 'Countries Served' },
+                { value: brandFacts.monthlyCapacity, label: 'Monthly Capacity' },
               ]}
             />
+            <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_54px_rgba(15,23,42,0.08)]">
+                <div className="grid grid-cols-[1fr_1.1fr] bg-slate-950 px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white">
+                  <span>Proof point</span>
+                  <span>Value</span>
+                </div>
+                {trustPoints.map(([point, value]) => (
+                  <div key={point} className="grid grid-cols-[1fr_1.1fr] border-t border-slate-200 px-5 py-3 text-sm">
+                    <span className="font-semibold text-slate-700">{point}</span>
+                    <span className="text-slate-950">{value}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {proofImages.map((image, index) => (
+                  <div
+                    key={image.src}
+                    className={index === 0 ? 'sm:col-span-2' : ''}
+                  >
+                    <div className="relative aspect-[3/2] overflow-hidden rounded-xl bg-slate-100 shadow-[0_20px_54px_rgba(15,23,42,0.1)]">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes={index === 0 ? '(min-width: 1024px) 42vw, 100vw' : '(min-width: 1024px) 20vw, 50vw'}
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <h3 className="text-sm font-bold uppercase tracking-[0.14em] text-slate-950">{image.label}</h3>
+                      <p className="mt-1 text-sm leading-6 text-slate-600">{image.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         <section className="bg-slate-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               light
-              eyebrow="OEM process"
-              title="From Mini PC RFQ to Export Handoff"
-              description="A predictable process helps distributors and integrators compare suppliers on cost, risk and speed."
+              eyebrow="Mini PC OEM FAQ"
+              title="Answer-first Questions for B2B Buyers"
+              description="Procurement-friendly answers for buyers comparing custom mini pc, mini pc manufacturer, mini pc wholesale and embedded mini pc options."
             />
-            <ProcessCards light steps={processSteps} />
+            <div className="space-y-4">
+              {faq.map((item) => (
+                <div key={item.question} className="rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_44px_rgba(15,23,42,0.06)]">
+                  <h2 className="text-lg font-bold text-slate-950">{item.question}</h2>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{item.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -349,17 +441,17 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
               <div>
                 <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Mini PC RFQ</div>
                 <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
-                  Get a Mini PC OEM Quote
+                  Ready to Build Your Mini PC Line?
                 </h2>
                 <p className="mt-5 text-base leading-7 text-slate-600">
-                  Use the form to send target CPU, RAM, SSD, I/O, operating system, quantity, market and branding scope. A complete brief helps sales return a practical Mini PC OEM quote faster.
+                  Tell us your specs and volume — we'll send a tailored quote and datasheet within 24 hours.
                 </p>
                 <div className="mt-8 grid gap-3 text-sm text-slate-700">
                   {[
-                    'Target Mini PC platform or CPU class',
-                    'RAM and SSD tiers for wholesale SKUs',
-                    'Branding, packaging and label requirements',
-                    'Certification and destination market needs',
+                    'Use case and target specs',
+                    'Volume and sample requirements',
+                    'Target market and certification needs',
+                    'Branding, packaging and logistics scope',
                   ].map((item) => (
                     <div key={item} className="flex gap-3">
                       <span className="mt-1.5 h-2 w-2 shrink-0 bg-blue-600" />
@@ -375,38 +467,16 @@ export default async function MiniPcLandingPage({ params }: MiniPcLandingPagePro
                   variant="light"
                   productSlug="custom-mini-pc-oem"
                   trackingSource="lp_mini_pc"
+                  title="Get Your Custom Mini PC Quote"
+                  subtitle="Share your requirements below. The more detail you give on configuration, volume, target market, and branding, the faster we can quote."
+                  submitButtonLabel="Request My Quote"
+                  reassuranceText="No obligation · Response within 24 hours · Your details stay confidential"
                   className="max-w-none shadow-[0_22px_70px_rgba(15,23,42,0.08)]"
                 />
               </Suspense>
             </div>
           </div>
         </section>
-
-        <section className="bg-slate-50 py-20">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <SectionHeader
-              light
-              eyebrow="Mini PC OEM FAQ"
-              title="Answer-first Questions for B2B Buyers"
-              description="Short, procurement-friendly answers for buyers searching custom mini pc, mini pc wholesale and OEM mini pc manufacturer options."
-            />
-            <div className="space-y-4">
-              {faq.map((item) => (
-                <div key={item.question} className="rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_44px_rgba(15,23,42,0.06)]">
-                  <h2 className="text-lg font-bold text-slate-950">{item.question}</h2>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <TechCTA
-          title="Ready to price a private label Mini PC program?"
-          description="Send the target platform, quantity, destination market and branding scope. AIERXUAN will turn the brief into a practical OEM quotation path."
-          href={quoteHref}
-          label="Get a Mini PC OEM Quote"
-        />
       </div>
     </>
   )
