@@ -44,9 +44,10 @@ interface RFQFormProps {
   variant?: 'dark' | 'light'
   lang: LanguageCode
   dictionary: Dictionary['rfq']
+  trackingSource?: string
 }
 
-export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dark', lang, dictionary }: RFQFormProps) {
+export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dark', lang, dictionary, trackingSource = 'rfq_form' }: RFQFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const router = useRouter()
@@ -141,7 +142,7 @@ export function RFQForm({ productSlug, onSuccess, className = '', variant = 'dar
         lang,
         productInterest: data.productInterest,
         urgency: data.urgency,
-        source: 'rfq_form',
+        source: trackingSource,
       })
       reset()
 

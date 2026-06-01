@@ -32,6 +32,7 @@ export const redesignImages = {
   blogHero: '/images/redesign/blog-hero.webp',
   faqHero: '/images/redesign/faq-hero.webp',
   contactHero: '/images/redesign/contact-hero.webp',
+  miniPcLpHero: '/images/lp/en-mini-pc-hero-EN01-16x9.webp',
   business: '/images/redesign/product-business.webp',
   gaming: '/images/redesign/product-gaming.webp',
   miniPc: '/images/redesign/product-mini-pc.webp',
@@ -240,6 +241,7 @@ export function TechHero({
   title,
   subtitle,
   primaryLabel = 'Request Quote',
+  primaryHref,
   secondaryLabel = 'View Products',
   secondaryHref,
   widgets,
@@ -252,6 +254,7 @@ export function TechHero({
   title: string
   subtitle: string
   primaryLabel?: string
+  primaryHref?: string
   secondaryLabel?: string
   secondaryHref?: string
   widgets: Array<{ title: string; rows: Array<{ label: string; value: string; status?: 'live' | 'ok' | 'warn' }> }>
@@ -288,7 +291,7 @@ export function TechHero({
               {subtitle}
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <GlowButton href={`/${lang}/contact`}>{primaryLabel}</GlowButton>
+              <GlowButton href={primaryHref ?? `/${lang}/contact`}>{primaryLabel}</GlowButton>
               <GlowButton href={secondaryHref ?? `/${lang}/products`} variant="secondary">
                 {secondaryLabel}
               </GlowButton>
