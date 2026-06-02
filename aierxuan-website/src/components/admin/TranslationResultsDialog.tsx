@@ -46,7 +46,6 @@ export default function TranslationResultsDialog({
       'ja': { name: 'Japanese', flag: '🇯🇵', nativeName: '日本語' },
       'fr': { name: 'French', flag: '🇫🇷', nativeName: 'Français' },
       'pt': { name: 'Portuguese', flag: '🇵🇹', nativeName: 'Português' },
-      'zh-CN': { name: 'Chinese (Simplified)', flag: '🇨🇳', nativeName: '简体中文' }
     }
     return info[language] || { name: language, flag: '🌐', nativeName: language }
   }

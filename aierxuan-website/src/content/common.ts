@@ -83,44 +83,5 @@ export const commonContent: Record<string, CommonContent> = {
       admin: 'Admin'
     }
   },
-  'zh-CN': {
-    buttons: {
-      submit: '提交',
-      cancel: '取消',
-      save: '保存',
-      edit: '编辑',
-      delete: '删除',
-      view: '查看',
-      back: '返回',
-      next: '下一步',
-      previous: '上一步',
-      close: '关闭',
-      loading: '加载中...'
-    },
-    form: {
-      required: '必填',
-      optional: '选填',
-      email: '邮箱',
-      phone: '电话',
-      name: '姓名',
-      message: '留言',
-      company: '公司',
-      search: '搜索'
-    },
-    status: {
-      success: '成功',
-      error: '错误',
-      loading: '加载中...',
-      empty: '暂无数据'
-    },
-    navigation: {
-      home: '首页',
-      about: '关于',
-      products: '产品',
-      contact: '联系',
-      blog: '博客',
-      admin: '管理'
-    }
-  },
   // 其他语言版本可以类似添加...
 }

@@ -6,7 +6,6 @@ import { brandFacts } from '../src/lib/brand-facts'
 
 const en = JSON.parse(readFileSync(new URL('../src/dictionaries/en.json', import.meta.url), 'utf8'))
 const ru = JSON.parse(readFileSync(new URL('../src/dictionaries/ru.json', import.meta.url), 'utf8'))
-const zhCN = JSON.parse(readFileSync(new URL('../src/dictionaries/zh-CN.json', import.meta.url), 'utf8'))
 const aboutPageSource = readFileSync(new URL('../src/app/[lang]/about/page.tsx', import.meta.url), 'utf8')
 const oemPageSource = readFileSync(new URL('../src/app/[lang]/oem/page.tsx', import.meta.url), 'utf8')
 const faqPageSource = readFileSync(new URL('../src/app/[lang]/faq/FAQPageClient.tsx', import.meta.url), 'utf8')
@@ -38,14 +37,6 @@ test('Russian public dictionary uses the canonical order and lead-time facts', (
   assert.doesNotMatch(JSON.stringify(ru.faq), /MOQ составляет 300/)
   assert.match(JSON.stringify(ru.faq), /стандартный MOQ начинается от 100/)
   assert.match(JSON.stringify(ru.faq), /Образцы занимают 7-15 дней/)
-})
-
-test('Chinese public dictionary no longer exposes the old 300/500 unit MOQ claim', () => {
-  assert.match(zhCN.oem.meta.description, /起订量100台起/)
-  assert.match(zhCN.oem.services.oem.moq, /100台起/)
-  assert.doesNotMatch(JSON.stringify(zhCN.oem), /起订量300台|300台起/)
-  assert.doesNotMatch(JSON.stringify(zhCN.faq), /OEM订单300台，ODM订单500台/)
-  assert.match(JSON.stringify(zhCN.faq), /标准起订量从100台起/)
 })
 
 test('core public pages reference the shared brand facts instead of stale literals', () => {

@@ -23,7 +23,6 @@ export function formatDate(date: string | Date, locale: LanguageCode = 'en'): st
     ja: 'ja-JP',
     fr: 'fr-FR',
     pt: 'pt-PT',
-    'zh-CN': 'zh-CN'
   }
   
   return dateObj.toLocaleDateString(localeMap[locale], options)
@@ -46,7 +45,6 @@ export function formatDateTime(date: string | Date, locale: LanguageCode = 'en')
     ja: 'ja-JP',
     fr: 'fr-FR',
     pt: 'pt-PT',
-    'zh-CN': 'zh-CN'
   }
 
   return dateObj.toLocaleDateString(localeMap[locale], options)
@@ -59,7 +57,7 @@ export function timeAgo(date: string | Date, locale: LanguageCode = 'en'): strin
 
   // Use Intl.RelativeTimeFormat for better internationalization
   try {
-    const rtf = new Intl.RelativeTimeFormat(locale === 'zh-CN' ? 'zh-CN' : locale, { numeric: 'auto' })
+    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' })
 
     if (diffInSeconds < 60) {
       return rtf.format(0, 'second')
@@ -82,7 +80,6 @@ export function timeAgo(date: string | Date, locale: LanguageCode = 'en'): strin
       ja: '前',
       fr: 'il y a',
       pt: 'atrás',
-      'zh-CN': '前'
     }
 
     if (diffInSeconds < 60) return 'just now'
@@ -206,7 +203,6 @@ export function formatNumber(num: number, locale: LanguageCode = 'en'): string {
     ja: 'ja-JP',
     fr: 'fr-FR',
     pt: 'pt-PT',
-    'zh-CN': 'zh-CN'
   }
 
   return num.toLocaleString(localeMap[locale])

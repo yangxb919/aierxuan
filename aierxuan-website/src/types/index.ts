@@ -57,7 +57,7 @@ export interface FAQWithTranslations extends FAQ {
 }
 
 // Language and locale types
-export type LanguageCode = 'en' | 'ru' | 'ja' | 'fr' | 'pt' | 'zh-CN'
+export type LanguageCode = 'en' | 'ru' | 'ja' | 'fr' | 'pt'
 
 export interface LocalizedContent {
   en?: string
@@ -65,7 +65,6 @@ export interface LocalizedContent {
   ja?: string
   fr?: string
   pt?: string
-  'zh-CN'?: string
 }
 
 // API response types

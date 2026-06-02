@@ -227,50 +227,6 @@ const translations = {
       }
     ]
   },
-  'zh-CN': {
-    title: '行业解决方案',
-    subtitle: '针对您特定行业挑战的定制解决方案',
-    learnMore: '了解更多',
-    viewCase: '查看案例',
-    solutions: [
-      {
-        industry: '教育',
-        icon: '🎓',
-        image: '/images/industry-education-solution.webp',
-        challenge: '学校需要可靠、经济高效的计算解决方案，能够处理各种教育软件并支持远程学习',
-        solution: '我们的教育级笔记本电脑和迷你 PC 提供出色的性能、耐用性和便于 IT 管理员管理',
-        benefits: ['价格实惠', '坚固耐用', '易于管理', '兼容教育软件'],
-        color: 'blue'
-      },
-      {
-        industry: '工业制造',
-        icon: '🏭',
-        image: '/images/industry-manufacturing-solution.webp',
-        challenge: '制造环境需要坚固的系统，能够承受恶劣条件同时保持 24/7 可靠性',
-        solution: '工业级迷你 PC，配备无风扇冷却、宽温度范围和抗震设计，适用于工厂车间',
-        benefits: ['无风扇冷却设计', '宽温度范围', '抗震抗振', '长期供货保证'],
-        color: 'orange'
-      },
-      {
-        industry: '医疗保健',
-        icon: '🏥',
-        image: '/images/industry-healthcare-solution.webp',
-        challenge: '医疗机构需要经过认证的可靠系统，用于患者数据管理和医学影像应用',
-        solution: '医疗级计算解决方案，具有认证、抗菌涂层和静音运行，适用于患者护理区域',
-        benefits: ['医疗认证', '抗菌涂层', '静音运行', '符合 HIPAA'],
-        color: 'green'
-      },
-      {
-        industry: '零售与酒店',
-        icon: '🛒',
-        image: '/images/industry-retail-solution.webp',
-        challenge: '零售企业需要紧凑、可靠的 POS 系统，能够处理高交易量并与现有软件集成',
-        solution: '针对 POS 应用优化的紧凑型迷你 PC，具有多个 I/O 选项和可靠的 24/7 运行',
-        benefits: ['紧凑尺寸', '多个 I/O 端口', '24/7 运行', '兼容 POS 软件'],
-        color: 'purple'
-      }
-    ]
-  }
 }
 
 const colorClasses = {

@@ -170,39 +170,6 @@ const pricingContent = {
     cta: 'Obter sua cotação',
     note: '* Os preços variam de acordo com especificações, quantidade e requisitos de personalização.'
   },
-  'zh-CN': {
-    title: '灵活的价格方案，满足各种订单规模',
-    subtitle: '从单个样品到批量订单，我们满足您的所有需求',
-    description: '我们的价格具有竞争力且透明。联系我们获取基于您具体需求的详细报价。',
-    orderTypes: [
-      {
-        icon: '📦',
-        type: '样品订单',
-        moq: '1台起订',
-        description: '适合评估和测试',
-        priceRange: '联系获取报价',
-        features: ['支持完全定制', '快速交付', '包含技术支持']
-      },
-      {
-        icon: '📊',
-        type: '小批量',
-        moq: '10-50台',
-        description: '适合试点项目和小规模部署',
-        priceRange: '典型范围: FOB $XXX-XXX',
-        features: ['享受数量折扣', '灵活付款条款', '优先生产排期']
-      },
-      {
-        icon: '🏭',
-        type: '批量订单',
-        moq: '50台以上',
-        description: '大规模部署的最佳选择',
-        priceRange: '具竞争力的批发价格',
-        features: ['最大成本节约', '专属客户经理', '定制包装选项']
-      }
-    ],
-    cta: '获取定制报价',
-    note: '* 价格根据规格、数量和定制要求而有所不同。提供FOB条款。'
-  }
 }
 
 export function PricingInfo() {

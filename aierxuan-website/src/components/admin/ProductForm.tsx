@@ -70,7 +70,6 @@ const LANGUAGES = [
   { code: 'ja', name: 'Japanese' },
   { code: 'fr', name: 'French' },
   { code: 'pt', name: 'Portuguese' },
-  { code: 'zh-CN', name: 'Chinese (Simplified)' }
 ]
 
 // Product categories restricted to three options per requirement

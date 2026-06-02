@@ -123,7 +123,7 @@ export function BlogListClient({ initialPosts, initialTotal, lang, dictionary }:
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString)
-        return date.toLocaleDateString(lang === 'zh-CN' ? 'zh-CN' : lang, {
+        return date.toLocaleDateString(lang, {
             year: 'numeric',
             month: 'long',
             day: 'numeric'

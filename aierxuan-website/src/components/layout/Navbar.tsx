@@ -30,7 +30,6 @@ const languageOptions = [
   { code: 'ja', name: '日本語', flag: '🇯🇵' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'pt', name: 'Português', flag: '🇵🇹' },
-  { code: 'zh-CN', name: '中文', flag: '🇨🇳' },
 ] as const
 
 export function Navbar({ dictionary, lang }: NavbarProps) {
@@ -199,7 +198,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
 
               {/* Mobile Language Options */}
               <div className="px-3 py-2">
-                <div className="text-sm font-medium text-gray-400 mb-2">Language / 语言</div>
+                <div className="text-sm font-medium text-gray-400 mb-2">Language</div>
                 <div className="grid grid-cols-2 gap-2">
                   {languageOptions.map((option) => (
                     <Link

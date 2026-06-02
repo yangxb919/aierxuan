@@ -33,7 +33,6 @@ export const DB_VALUE_TO_SLUG: Record<string, CategorySlug> = {
 // Localized labels for UI display
 export const CATEGORY_LABELS: Record<CategorySlug, Record<LanguageCode, string>> = {
   'business-laptop': {
-    'zh-CN': 'Business Laptop',
     en: 'Business Laptop',
     ru: 'Бизнес-ноутбук',
     ja: 'ビジネスノートPC',
@@ -41,7 +40,6 @@ export const CATEGORY_LABELS: Record<CategorySlug, Record<LanguageCode, string>>
     pt: 'Laptop empresarial'
   },
   'gaming-laptop': {
-    'zh-CN': 'Gaming Laptop',
     en: 'Gaming Laptop',
     ru: 'Игровой ноутбук',
     ja: 'ゲーミングノートPC',
@@ -49,7 +47,6 @@ export const CATEGORY_LABELS: Record<CategorySlug, Record<LanguageCode, string>>
     pt: 'Laptop gamer'
   },
   'mini-pc': {
-    'zh-CN': 'Mini PC',
     en: 'Mini PC',
     ru: 'Мини ПК',
     ja: 'ミニPC',

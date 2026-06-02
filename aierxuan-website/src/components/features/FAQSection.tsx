@@ -44,14 +44,6 @@ const faqSectionTexts = {
     noFAQs: 'Nenhuma pergunta frequente disponível no momento.',
     tryAgain: 'Tentar Novamente'
   },
-  'zh-CN': {
-    title: '常见问题',
-    // Updated to match provided design copy
-    subtitle: '快速了解我们的服务详情',
-    loadingError: '加载FAQ失败',
-    noFAQs: '目前没有常见问题。',
-    tryAgain: '重试'
-  }
 }
 
 interface FAQWithTranslations extends FAQ {

@@ -68,7 +68,7 @@ export default function SecureAITranslationButton({
   const [showResultsDialog, setShowResultsDialog] = useState(false)
   const [translationResults, setTranslationResults] = useState<any[]>([])
 
-  const targetLanguages = ['ru', 'ja', 'fr', 'pt', 'zh-CN']
+  const targetLanguages = ['ru', 'ja', 'fr', 'pt']
   const [languageConcurrency, setLanguageConcurrency] = useState<number>(3)
 
   const hasValidSourceContent = () => {
@@ -174,7 +174,6 @@ export default function SecureAITranslationButton({
       'ja': 'Japanese',
       'fr': 'French',
       'pt': 'Portuguese',
-      'zh-CN': 'Chinese (Simplified)'
     }
     return languages[code] || code
   }
@@ -335,7 +334,6 @@ function getLanguageFlag(language: string): string {
     'ja': '🇯🇵',
     'fr': '🇫🇷',
     'pt': '🇵🇹',
-    'zh-CN': '🇨🇳'
   }
   return flags[language] || '🌐'
 }

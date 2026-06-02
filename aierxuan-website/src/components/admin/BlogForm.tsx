@@ -35,7 +35,6 @@ const LANGUAGES = [
   { code: 'ja', name: 'Japanese' },
   { code: 'fr', name: 'French' },
   { code: 'pt', name: 'Portuguese' },
-  { code: 'zh-CN', name: 'Chinese (Simplified)' }
 ]
 
 const DEFAULT_TRANSLATION: BlogTranslation = {

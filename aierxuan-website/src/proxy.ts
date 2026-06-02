@@ -15,7 +15,7 @@ function getLocale(request: NextRequest): string {
 
         // Filter out invalid locales (like '*') that cause matchLocale to fail
         languages = languages.filter((lang: string) => {
-            // Only allow valid locale patterns (e.g., 'en', 'en-US', 'zh-CN')
+            // Only allow valid locale patterns (e.g., 'en', 'en-US')
             return /^[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?$/.test(lang)
         })
 
@@ -44,6 +44,13 @@ export async function proxy(request: NextRequest) {
     }
 
     const pathname = request.nextUrl.pathname
+
+    if (pathname === '/zh-CN' || pathname.startsWith('/zh-CN/')) {
+        const url = request.nextUrl.clone()
+        url.pathname = `/en${pathname.slice('/zh-CN'.length)}`
+        return NextResponse.redirect(url, 301)
+    }
+
     const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/')
 
     if (isAdminRoute) {

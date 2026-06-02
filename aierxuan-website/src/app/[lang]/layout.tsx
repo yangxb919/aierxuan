@@ -110,7 +110,7 @@ export default async function RootLayout({
               '@type': 'ContactPoint',
               telephone: brandFacts.contact.phone,
               contactType: 'sales',
-              availableLanguage: ['English', 'Russian', 'Chinese'],
+              availableLanguage: ['English', 'Russian', 'Japanese', 'French', 'Portuguese'],
               areaServed: 'Worldwide',
             },
             knowsAbout: ['OEM laptop manufacturing', 'ODM laptop manufacturing', 'Mini PC manufacturing', 'Custom computer hardware'],

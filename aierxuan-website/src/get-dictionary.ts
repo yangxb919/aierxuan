@@ -8,7 +8,6 @@ const dictionaries = {
     ja: () => import('./dictionaries/ja.json').then((module) => module.default),
     fr: () => import('./dictionaries/fr.json').then((module) => module.default),
     pt: () => import('./dictionaries/pt.json').then((module) => module.default),
-    'zh-CN': () => import('./dictionaries/zh-CN.json').then((module) => module.default),
 }
 
 export type Dictionary = Awaited<ReturnType<typeof dictionaries['en']>>
@@ -44,5 +43,5 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }
 
     const localeDictionary = await (dictionaries[locale]?.() ?? dictionaries.en())
-    return deepMerge(defaultDictionary, localeDictionary as Partial<Dictionary>)
+    return deepMerge(defaultDictionary, localeDictionary as unknown as Partial<Dictionary>)
 }

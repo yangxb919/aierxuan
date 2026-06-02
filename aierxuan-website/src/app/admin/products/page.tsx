@@ -51,13 +51,12 @@ async function getProducts(): Promise<Product[]> {
     return []
   }
 
-  // Map products and prioritize translations (en > zh-CN > first available)
+  // Map products and prioritize translations (en > first available)
   return (data || []).map((product: any) => {
     const translations: any[] = product.translations || []
     // Try to get English translation first, fallback to Chinese, then any translation
     const preferredTranslation =
       translations.find(t => t.locale === 'en') ||
-      translations.find(t => t.locale === 'zh-CN') ||
       translations[0]
 
     return {
