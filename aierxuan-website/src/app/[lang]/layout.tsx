@@ -28,6 +28,21 @@ const metaByLang: Record<string, { title: string; description: string; keywords:
     description: 'Профессиональное OEM/ODM производство ноутбуков, игровых ноутбуков и мини-ПК. Индивидуальные решения для партнёров по всему миру.',
     keywords: 'OEM ноутбуки, ODM производство, мини-ПК оптом, производитель ноутбуков, игровые ноутбуки, электроника Шэньчжэнь',
   },
+  ja: {
+    title: 'AIERXUAN - ノートPC・Mini PCメーカー',
+    description: '高性能ノートPC、ゲーミングノートPC、Mini PCのOEM/ODMメーカー。グローバルパートナー向けにカスタムソリューションを提供します。',
+    keywords: 'ノートPCメーカー, Mini PC工場, OEMノートPC, ODMノートPC, ゲーミングノートPCサプライヤー, 深セン電子機器',
+  },
+  fr: {
+    title: 'AIERXUAN - Fabricant de laptops et Mini PC',
+    description: 'Fabricant OEM/ODM de laptops haute performance, laptops gaming et Mini PC. Solutions personnalisées pour partenaires internationaux.',
+    keywords: 'fabricant laptop, usine mini pc, laptop oem, notebook odm, fournisseur laptop gaming, électronique shenzhen',
+  },
+  pt: {
+    title: 'AIERXUAN - Fabricante de laptops e Mini PCs',
+    description: 'Fabricante OEM/ODM de laptops de alto desempenho, notebooks gamer e Mini PCs. Soluções personalizadas para parceiros globais.',
+    keywords: 'fabricante de laptops, fábrica de mini pc, laptop oem, notebook odm, fornecedor de notebook gamer, eletrônicos shenzhen',
+  },
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
