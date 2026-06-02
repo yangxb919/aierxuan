@@ -80,44 +80,6 @@ export const contactContent: Record<string, ContactContent> = {
       retry: 'Try Again'
     }
   },
-  'zh-CN': {
-    title: '联系我们',
-    subtitle: '取得联系',
-    description: '准备好讨论您的自动化需求了吗？立即联系我们，获取专业咨询和解决方案。',
-    form: {
-      title: '发送消息',
-      name: '姓名',
-      email: '邮箱地址',
-      phone: '电话号码',
-      company: '公司名称',
-      message: '您的消息',
-      productInterest: '感兴趣的产品',
-      quantity: '需要数量',
-      industry: '所属行业',
-      contactMethod: '首选联系方式',
-      submit: '发送消息',
-      submitting: '发送中...',
-      required: '必填项',
-      optional: '选填项'
-    },
-    contactInfo: {
-      title: '联系信息',
-      address: '深圳市龙岗区吉华街道聚银科技产业园',
-      phone: '4008-8228-058',
-      email: 'admin@aierxuanlaptop.com',
-      hours: '周一至周五: 上午9:00 - 下午6:00 (GMT+8)'
-    },
-    success: {
-      title: '消息发送成功！',
-      message: '感谢您的联系，我们将在24小时内回复。',
-      close: '关闭'
-    },
-    error: {
-      title: '发送失败',
-      message: '请检查信息后重试。',
-      retry: '重试'
-    }
-  },
   // 其他语言版本...
   ru: {
     title: 'Связаться с нами',

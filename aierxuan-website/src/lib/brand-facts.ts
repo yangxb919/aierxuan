@@ -52,4 +52,19 @@ export const brandFactText = {
     companySummary: `${brandFacts.name} — OEM/ODM производитель ноутбуков и мини-ПК из Шэньчжэня, основанный в ${brandFacts.foundedYear} году. Компания поставила ${brandFacts.unitsShipped} устройств клиентам в ${brandFacts.countriesServed} странах.`,
     leadTimeSummary: 'Образцы: 7-15 дней; стандартное производство: 15-25 дней; крупные заказы: 25-45 дней.',
   },
+  ja: {
+    proofLine: `${brandFacts.yearsExperience}年の経験 | ${brandFacts.intelPartnerSince}年からIntelパートナー | MOQは100台から | ${brandFacts.countriesServed}か国に対応`,
+    companySummary: `${brandFacts.name}は${brandFacts.foundedYear}年に設立された深セン拠点のOEM/ODMノートPC・Mini PCメーカーです。${brandFacts.countriesServed}か国の顧客に${brandFacts.unitsShipped}台以上を出荷しています。`,
+    leadTimeSummary: `サンプル: ${brandFacts.sampleLeadTimeText}; 標準量産: ${brandFacts.standardProductionLeadTimeText}; 大口注文: ${brandFacts.largeOrderLeadTimeText}.`,
+  },
+  fr: {
+    proofLine: `${brandFacts.yearsExperience} ans d’expérience | Partenaire Intel depuis ${brandFacts.intelPartnerSince} | MOQ à partir de 100 unités | ${brandFacts.countriesServed} pays servis`,
+    companySummary: `${brandFacts.name} est un fabricant OEM/ODM de laptops et Mini PC basé à Shenzhen, fondé en ${brandFacts.foundedYear}. L’entreprise a expédié ${brandFacts.unitsShipped} unités à des clients dans ${brandFacts.countriesServed} pays.`,
+    leadTimeSummary: `Échantillons: ${brandFacts.sampleLeadTimeText}; production standard: ${brandFacts.standardProductionLeadTimeText}; grandes commandes: ${brandFacts.largeOrderLeadTimeText}.`,
+  },
+  pt: {
+    proofLine: `${brandFacts.yearsExperience} anos de experiência | Parceiro Intel desde ${brandFacts.intelPartnerSince} | MOQ a partir de 100 unidades | ${brandFacts.countriesServed} países atendidos`,
+    companySummary: `${brandFacts.name} é uma fabricante OEM/ODM de laptops e Mini PCs sediada em Shenzhen, fundada em ${brandFacts.foundedYear}. A empresa enviou ${brandFacts.unitsShipped} unidades para clientes em ${brandFacts.countriesServed} países.`,
+    leadTimeSummary: `Amostras: ${brandFacts.sampleLeadTimeText}; produção padrão: ${brandFacts.standardProductionLeadTimeText}; grandes pedidos: ${brandFacts.largeOrderLeadTimeText}.`,
+  },
 } as const

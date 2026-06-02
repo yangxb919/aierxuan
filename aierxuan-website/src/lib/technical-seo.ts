@@ -146,7 +146,7 @@ export function normalizeInternalMarkdownLinks(markdown: string, lang: string) {
   let normalized = markdown || ''
 
   normalized = normalized.replace(
-    /(?:https?:\/\/(?:www\.)?aierxuanlaptop\.com)?\/(?:en|ru|ja|fr|pt|zh-CN)?\/?blog\/([a-z0-9-]+)/gi,
+    /(?:https?:\/\/(?:www\.)?aierxuanlaptop\.com)?\/(?:en|ru|ja|fr|pt)?\/?blog\/([a-z0-9-]+)/gi,
     (match, slug: string) => {
       const cleanSlug = slug.toLowerCase()
       const targetSlug = resolveBlogSlugAlias(cleanSlug)
@@ -164,7 +164,7 @@ export function normalizeInternalMarkdownLinks(markdown: string, lang: string) {
 
   const resourceReplacements: Array<[RegExp, string]> = BROKEN_RESOURCE_PATHS.map((pathName) => [
     new RegExp(
-      `(?:https?:\\/\\/(?:www\\.)?aierxuanlaptop\\.com)?\\/(?:en|ru|ja|fr|pt|zh-CN)?\\/?${escapeRegExp(pathName.startsWith('/') ? pathName.slice(1) : pathName)}\\b`,
+      `(?:https?:\\/\\/(?:www\\.)?aierxuanlaptop\\.com)?\\/(?:en|ru|ja|fr|pt)?\\/?${escapeRegExp(pathName.startsWith('/') ? pathName.slice(1) : pathName)}\\b`,
       'gi'
     ),
     pathName === '/factory-tour' ? `/${locale}/about` : `/${locale}/contact#rfq`,

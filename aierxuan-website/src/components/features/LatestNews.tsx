@@ -54,15 +54,6 @@ const translations = {
     error: 'Falha ao carregar artigos',
     noArticles: 'Nenhum artigo disponível'
   },
-  'zh-CN': {
-    title: '最新资讯与洞察',
-    subtitle: '了解行业趋势和公司新闻',
-    readMore: '阅读更多',
-    viewAll: '查看所有文章',
-    loading: '加载文章中...',
-    error: '加载文章失败',
-    noArticles: '暂无文章'
-  }
 }
 
 interface BlogPost {
@@ -135,7 +126,7 @@ export function LatestNews() {
   // Format date
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString(language === 'zh-CN' ? 'zh-CN' : language, {
+    return date.toLocaleDateString(language, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

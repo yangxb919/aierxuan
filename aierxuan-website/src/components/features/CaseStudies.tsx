@@ -272,59 +272,6 @@ const translations = {
       }
     ]
   },
-  'zh-CN': {
-    title: '成功案例',
-    subtitle: '来自真实客户的真实成果',
-    readMore: '阅读完整案例',
-    challenge: '挑战',
-    solution: '解决方案',
-    results: '成果',
-    industry: '行业',
-    caseStudies: [
-      {
-        client: '全球医疗中心',
-        industry: '医疗保健',
-        icon: '🏥',
-        image: '/images/case-study-healthcare.webp',
-        challenge: '医院设备需要低功耗且长时间稳定运行，用于 24/7 患者监控系统',
-        solution: '定制工业级迷你 PC，优化散热系统，具有医疗认证和抗菌涂层',
-        results: [
-          { metric: '60%', label: '设备故障率下降' },
-          { metric: '2+ 年', label: '持续稳定运行' },
-          { metric: '30%', label: '能源成本节省' }
-        ],
-        color: 'green'
-      },
-      {
-        client: '智慧教育学院',
-        industry: '教育',
-        icon: '🎓',
-        image: '/images/case-study-education.webp',
-        challenge: '教育机构需要 500+ 台可靠、可管理的笔记本电脑，用于计算机实验室和远程学习项目',
-        solution: '部署教育级笔记本电脑，配备集中管理软件、延长保修和现场技术支持',
-        results: [
-          { metric: '500+', label: '成功部署的设备' },
-          { metric: '95%', label: '学生满意度' },
-          { metric: '40%', label: 'IT 支持工单减少' }
-        ],
-        color: 'blue'
-      },
-      {
-        client: '制造解决方案公司',
-        industry: '工业',
-        icon: '🏭',
-        image: '/images/case-study-manufacturing.webp',
-        challenge: '工厂车间需要坚固的计算系统，能够承受灰尘、振动和极端温度',
-        solution: '无风扇工业迷你 PC，IP65 防护等级，宽温度范围（-20°C 至 60°C）和抗震设计',
-        results: [
-          { metric: '99.9%', label: '系统正常运行时间' },
-          { metric: '0', label: '18 个月内硬件故障' },
-          { metric: '50%', label: '生产监控速度提升' }
-        ],
-        color: 'orange'
-      }
-    ]
-  }
 }
 
 const colorClasses = {

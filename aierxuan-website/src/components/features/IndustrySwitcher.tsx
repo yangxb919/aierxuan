@@ -209,44 +209,6 @@ const translations = {
     viewProducts: 'Ver produtos',
     learnMore: 'Saiba mais'
   },
-  'zh-CN': {
-    title: '行业解决方案',
-    subtitle: '选择您的行业，探索定制化解决方案',
-    industries: {
-      education: {
-        name: '教育',
-        description: '为现代教室和教育机构提供可靠的计算解决方案',
-        applications: ['智慧教室', '计算机实验室', '远程教学', '行政管理系统'],
-        icon: '🎓'
-      },
-      industrial: {
-        name: '工业',
-        description: '为制造和工业环境提供坚固可靠的系统',
-        applications: ['工厂自动化', '质量控制', '生产监控', '工业物联网'],
-        icon: '🏭'
-      },
-      medical: {
-        name: '医疗',
-        description: '为医疗机构提供高性能认证解决方案',
-        applications: ['医学影像', '患者记录', '诊断系统', '远程医疗'],
-        icon: '🏥'
-      },
-      office: {
-        name: '办公',
-        description: '为现代商业环境提供高效可扩展的解决方案',
-        applications: ['企业计算', '视频会议', '数据处理', '云服务'],
-        icon: '🏢'
-      },
-      retail: {
-        name: '零售',
-        description: '为零售企业提供可靠的 POS 和库存管理解决方案',
-        applications: ['销售终端', '库存管理', '客户分析', '数字标牌'],
-        icon: '🛒'
-      }
-    },
-    viewProducts: '查看产品',
-    learnMore: '了解更多'
-  }
 }
 
 export function IndustrySwitcher() {

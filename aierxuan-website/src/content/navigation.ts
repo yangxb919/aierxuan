@@ -82,19 +82,6 @@ export const navigationContent: Record<string, NavigationContent> = {
     menu: 'Menu',
     close: 'Fechar'
   },
-  'zh-CN': {
-    logo: 'AIERXUAN',
-    home: '首页',
-    about: '关于',
-    products: '产品',
-    contact: '联系',
-    blog: '博客',
-    admin: '管理',
-    languageSelector: '语言',
-    search: '搜索',
-    menu: '菜单',
-    close: '关闭'
-  }
 }
 
 export const NAVIGATION_CONTENT_LIMITS = {

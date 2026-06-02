@@ -84,19 +84,6 @@ export const heroContent: Record<string, HeroContent> = {
     cta: 'Ver Produtos',
     contact: 'Solicitar Cotação'
   },
-  'zh-CN': {
-    slides: [
-      {
-        key: 'main-hero',
-        title: '专业笔记本电脑和迷你主机制造商',
-        subtitle: '为全球合作伙伴提供OEM/ODM解决方案',
-        description: '✓ 灵活起订量100台起  ✓ 快速交付7-15天  ✓ 全面定制服务  ✓ Intel合作伙伴 | CE/FCC认证',
-        image: '/images/hero-banner.webp'
-      }
-    ],
-    cta: '查看产品',
-    contact: '获取报价'
-  }
 }
 
 // 文案长度限制（防止破坏布局）

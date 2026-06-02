@@ -233,42 +233,4 @@ export const contactFormContent: Record<string, ContactFormContent> = {
       loading: 'Enviando sua mensagem...'
     }
   },
-  'zh-CN': {
-    title: '联系我们',
-    subtitle: '联系我们的团队获取咨询、报价或技术支持。',
-    fields: {
-      name: {
-        label: '姓名 *',
-        placeholder: '请输入您的姓名',
-        required: '姓名为必填项'
-      },
-      company: {
-        label: '公司 *',
-        placeholder: '请输入您的公司名称',
-        required: '公司名称为必填项'
-      },
-      email: {
-        label: '邮箱地址 *',
-        placeholder: '请输入您的邮箱地址',
-        required: '邮箱为必填项',
-        invalid: '请输入有效的邮箱地址'
-      },
-      message: {
-        label: '留言内容 *',
-        placeholder: '请告诉我们您的需求...',
-        required: '留言内容为必填项',
-        minLength: '留言内容至少需要10个字符'
-      }
-    },
-    buttons: {
-      submit: '发送消息',
-      cancel: '取消',
-      submitting: '发送中...'
-    },
-    messages: {
-      success: '感谢您的留言！我们将在24小时内与您联系。',
-      error: '发送失败，请重试或直接联系我们。',
-      loading: '正在发送您的消息...'
-    }
-  }
 }

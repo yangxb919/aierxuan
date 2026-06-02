@@ -198,6 +198,273 @@ const homeRedesignText = {
       label: 'Получить индивидуальное предложение',
     },
   },
+  ja: {
+    hero: {
+      eyebrow: `${brandFacts.intelPartnerSince}年からIntelパートナー | CE/FCC/RoHS認証`,
+      title: 'OEM/ODMノートPC・Mini PC製造',
+      subtitle: '深セン発の認証品質で、グローバルブランド向けにカスタムコンピューティングハードウェアを提供します。',
+      liveLabel: '稼働中',
+      production: {
+        title: '生産ステータス',
+        line: { label: 'ライン03', value: '稼働中' },
+        qa: { label: 'QA合格率', value: '99.8%' },
+        delivery: { label: '納期遵守率', value: '98%' },
+        output: { label: '月間生産能力', value: brandFacts.monthlyCapacity },
+      },
+      quality: {
+        title: '品質システム',
+      },
+      stats: {
+        moq: { label: 'MOQ', detail: '台' },
+        delivery: { label: '納期', detail: '日' },
+        capacity: { label: '生産能力', detail: '/ 月' },
+        clients: { label: 'グローバル顧客', detail: '社' },
+      },
+    },
+    products: {
+      eyebrow: '製品ラインアップ',
+      title: 'ビジネス向けに設計されたコンピューティングソリューション',
+      description: '性能、信頼性、エンタープライズ導入を重視して設計されたノートPCとMini PCの包括的な製品群です。',
+      sidebarEyebrow: 'プライベートブランド対応',
+      sidebarTitle: '製品アイデアから輸出対応ハードウェアまで。',
+      sidebarText: '販売代理店、教育機関、オフィス、産業プロジェクト、地域ブランド向けに、ビジネスノートPC、ゲーミングノートPC、Mini PC、カスタム構成を提供します。',
+      viewAll: 'すべての製品を見る',
+      viewOem: 'OEM/ODM製造',
+      families: {
+        business: {
+          title: 'ビジネスノートPC',
+          description: '現代のビジネスと教育向けに、信頼性、安全性、効率性を備えたノートPCです。',
+          specs: ['Intel Core', '8-64GB RAM', 'カスタム筐体'],
+        },
+        gaming: {
+          title: 'ゲーミングノートPC',
+          description: '没入型体験と小売チャネル向けの高性能ゲーミングノートPCです。',
+          specs: ['RTX対応', '144Hzディスプレイ', '熱設計'],
+        },
+        miniPc: {
+          title: 'Mini PC',
+          description: 'あらゆるワークスペースや導入環境に対応する、コンパクトで高性能なMini PCです。',
+          specs: ['Intel/AMD', 'VESAマウント', 'ファンレス対応'],
+        },
+      },
+      proof: [
+        { value: brandFacts.yearsExperience, label: '年の経験' },
+        { value: brandFacts.globalClients, label: 'グローバル顧客' },
+        { value: brandFacts.countriesServed, label: '対応国' },
+        { value: '99.8%', label: '顧客満足度' },
+      ],
+    },
+    manufacturing: {
+      eyebrow: '精密製造',
+      title: 'バイヤーに提示できる工場能力',
+      description: '空白の説明ではなく、自動化生産、品質試験、物流支援、認証済みの輸出対応力を実証します。',
+      factoryEyebrow: '高度な製造',
+      factoryTitle: '自動組立・検査ライン',
+      factoryAlt: 'AIERXUAN製造施設',
+      tiles: {
+        quality: { title: '品質試験', description: '入荷検査、生産中チェック、バーンイン試験、出荷前の最終検証を実施します。' },
+        config: { title: '構成管理', description: 'CPU、メモリ、ストレージ、ディスプレイ、BIOS、OSイメージ、地域別キーボードに対応します。' },
+        branding: { title: 'ブランド・梱包対応', description: 'ロゴ、筐体仕上げ、ラベル、マニュアル、小売箱を市場に合わせて設計します。' },
+        logistics: { title: 'グローバル物流', description: '輸出書類、認証、カートン設計、世界各地への配送調整を支援します。' },
+      },
+    },
+    process: {
+      eyebrow: '協業フロー',
+      title: '要件確認から出荷まで',
+      description: '明確な調達プロセスにより、問い合わせ後の流れをバイヤーが把握しやすくなります。',
+      steps: [
+        { title: '相談', description: '製品タイプ、対象市場、構成、数量を共有してください。' },
+        { title: '提案', description: 'BOM、価格帯、サンプル計画、生産スケジュールを提示します。' },
+        { title: 'サンプル', description: 'ハードウェア、ブランド、梱包、ソフトウェアイメージを検証します。' },
+        { title: '確定', description: '仕様と品質受入基準を確定します。' },
+        { title: '生産', description: '品質チェックポイントと進捗共有を含む量産を行います。' },
+        { title: '納品', description: '輸出書類、物流追跡、アフターサポートを提供します。' },
+      ],
+    },
+    cta: {
+      title: '次のハードウェアラインを構築しますか？',
+      description: '目標構成とブランド要件をお送りください。サンプル、MOQ、認証、納期について現実的な選択肢を提案します。',
+      label: 'カスタム見積もりを依頼',
+    },
+  },
+  fr: {
+    hero: {
+      eyebrow: `Partenaire Intel depuis ${brandFacts.intelPartnerSince} | Certifié CE/FCC/RoHS`,
+      title: 'Fabrication OEM/ODM de laptops et Mini PC',
+      subtitle: 'Matériel informatique sur mesure pour marques internationales, livré depuis Shenzhen avec une qualité certifiée.',
+      liveLabel: 'En cours',
+      production: {
+        title: 'Statut de production',
+        line: { label: 'Ligne 03', value: 'En marche' },
+        qa: { label: 'Taux de réussite QA', value: '99.8%' },
+        delivery: { label: 'Livraison à temps', value: '98%' },
+        output: { label: 'Capacité mensuelle', value: brandFacts.monthlyCapacity },
+      },
+      quality: {
+        title: 'Système qualité',
+      },
+      stats: {
+        moq: { label: 'MOQ', detail: 'unités' },
+        delivery: { label: 'Délai', detail: 'jours' },
+        capacity: { label: 'Capacité', detail: '/ mois' },
+        clients: { label: 'Clients mondiaux', detail: 'partenaires' },
+      },
+    },
+    products: {
+      eyebrow: 'Nos produits',
+      title: 'Solutions informatiques conçues pour votre activité',
+      description: 'Une gamme complète de laptops et Mini PC conçus pour la performance, la fiabilité et les déploiements professionnels.',
+      sidebarEyebrow: 'Prêt pour marque privée',
+      sidebarTitle: 'De l’idée produit au matériel prêt à l’export.',
+      sidebarText: 'Laptops professionnels, laptops gaming, Mini PC et configurations personnalisées pour distributeurs, éducation, bureaux, projets industriels et marques régionales.',
+      viewAll: 'Voir tous les produits',
+      viewOem: 'Fabrication OEM/ODM',
+      families: {
+        business: {
+          title: 'Laptop professionnel',
+          description: 'Laptops fiables, sécurisés et efficaces pour les entreprises modernes et l’éducation.',
+          specs: ['Intel Core', '8-64GB RAM', 'Châssis personnalisé'],
+        },
+        gaming: {
+          title: 'Laptop gaming',
+          description: 'Laptops gaming haute performance pour expériences immersives et canaux retail.',
+          specs: ['Compatible RTX', 'Écran 144Hz', 'Design thermique'],
+        },
+        miniPc: {
+          title: 'Mini PC',
+          description: 'Mini PC compacts, puissants et polyvalents pour tout poste de travail ou déploiement.',
+          specs: ['Intel/AMD', 'Support VESA', 'Option fanless'],
+        },
+      },
+      proof: [
+        { value: brandFacts.yearsExperience, label: 'ans d’expérience' },
+        { value: brandFacts.globalClients, label: 'clients mondiaux' },
+        { value: brandFacts.countriesServed, label: 'pays servis' },
+        { value: '99.8%', label: 'satisfaction client' },
+      ],
+    },
+    manufacturing: {
+      eyebrow: 'Fabrication de précision',
+      title: 'Une capacité usine que vous pouvez montrer aux acheteurs',
+      description: 'Des preuves concrètes: production automatisée, tests qualité, support logistique et préparation certifiée pour l’export.',
+      factoryEyebrow: 'Fabrication avancée',
+      factoryTitle: 'Lignes automatisées d’assemblage et d’inspection',
+      factoryAlt: 'Site de fabrication AIERXUAN',
+      tiles: {
+        quality: { title: 'Tests qualité', description: 'Inspection entrante, contrôles de production, burn-in testing et vérification finale avant expédition.' },
+        config: { title: 'Contrôle de configuration', description: 'CPU, mémoire, stockage, écran, BIOS, image OS et options de clavier régional.' },
+        branding: { title: 'Branding et packaging', description: 'Logo, finition du châssis, étiquettes, manuels et boîtes retail pour votre marché.' },
+        logistics: { title: 'Logistique mondiale', description: 'Documents export, certifications, planification carton et coordination des livraisons internationales.' },
+      },
+    },
+    process: {
+      eyebrow: 'Flux de coopération',
+      title: 'Du besoin à l’expédition',
+      description: 'Un parcours d’approvisionnement clair aide les acheteurs à comprendre ce qui suit après l’envoi d’une demande.',
+      steps: [
+        { title: 'Consultation', description: 'Partagez le type de produit, le marché cible, la configuration et le volume.' },
+        { title: 'Proposition', description: 'Recevez la BOM, la fourchette de prix, le plan d’échantillon et le calendrier de production.' },
+        { title: 'Échantillon', description: 'Validez le matériel, le branding, le packaging et l’image logicielle.' },
+        { title: 'Confirmation', description: 'Figez les spécifications et les standards d’acceptation qualité.' },
+        { title: 'Production', description: 'Production de masse avec checkpoints qualité et mises à jour de statut.' },
+        { title: 'Livraison', description: 'Documents export, suivi logistique et support après-vente.' },
+      ],
+    },
+    cta: {
+      title: 'Prêt à créer votre prochaine gamme hardware ?',
+      description: 'Envoyez votre configuration cible et vos besoins de branding. Notre équipe répondra avec des options concrètes pour échantillons, MOQ, certifications et livraison.',
+      label: 'Demander un devis personnalisé',
+    },
+  },
+  pt: {
+    hero: {
+      eyebrow: `Parceiro Intel desde ${brandFacts.intelPartnerSince} | Certificado CE/FCC/RoHS`,
+      title: 'Fabricação OEM/ODM de laptops e Mini PCs',
+      subtitle: 'Hardware de computação personalizado para marcas globais, entregue de Shenzhen com qualidade certificada.',
+      liveLabel: 'Ao vivo',
+      production: {
+        title: 'Status da produção',
+        line: { label: 'Linha 03', value: 'Em operação' },
+        qa: { label: 'Taxa de aprovação QA', value: '99.8%' },
+        delivery: { label: 'Entrega no prazo', value: '98%' },
+        output: { label: 'Produção mensal', value: brandFacts.monthlyCapacity },
+      },
+      quality: {
+        title: 'Sistema de qualidade',
+      },
+      stats: {
+        moq: { label: 'MOQ', detail: 'unidades' },
+        delivery: { label: 'Entrega', detail: 'dias' },
+        capacity: { label: 'Capacidade', detail: '/ mês' },
+        clients: { label: 'Clientes globais', detail: 'parceiros' },
+      },
+    },
+    products: {
+      eyebrow: 'Nossos produtos',
+      title: 'Soluções de computação criadas para o seu negócio',
+      description: 'Uma linha completa de laptops e Mini PCs projetados para desempenho, confiabilidade e implantação empresarial.',
+      sidebarEyebrow: 'Pronto para marca própria',
+      sidebarTitle: 'Da ideia do produto ao hardware pronto para exportação.',
+      sidebarText: 'Laptops empresariais, notebooks gamer, Mini PCs e configurações personalizadas para distribuidores, educação, escritórios, projetos industriais e marcas regionais.',
+      viewAll: 'Ver todos os produtos',
+      viewOem: 'Fabricação OEM/ODM',
+      families: {
+        business: {
+          title: 'Laptop empresarial',
+          description: 'Laptops confiáveis, seguros e eficientes para empresas modernas e educação.',
+          specs: ['Intel Core', '8-64GB RAM', 'Carcaça personalizada'],
+        },
+        gaming: {
+          title: 'Notebook gamer',
+          description: 'Notebooks gamer de alto desempenho para experiências imersivas e canais de varejo.',
+          specs: ['Pronto para RTX', 'Tela 144Hz', 'Design térmico'],
+        },
+        miniPc: {
+          title: 'Mini PC',
+          description: 'Mini PCs compactos, potentes e versáteis para qualquer espaço de trabalho ou implantação.',
+          specs: ['Intel/AMD', 'Montagem VESA', 'Opção fanless'],
+        },
+      },
+      proof: [
+        { value: brandFacts.yearsExperience, label: 'anos de experiência' },
+        { value: brandFacts.globalClients, label: 'clientes globais' },
+        { value: brandFacts.countriesServed, label: 'países atendidos' },
+        { value: '99.8%', label: 'satisfação do cliente' },
+      ],
+    },
+    manufacturing: {
+      eyebrow: 'Fabricação de precisão',
+      title: 'Capacidade de fábrica que você pode mostrar aos compradores',
+      description: 'Provas concretas: produção automatizada, testes de qualidade, suporte logístico e prontidão certificada para exportação.',
+      factoryEyebrow: 'Fabricação avançada',
+      factoryTitle: 'Linhas automatizadas de montagem e inspeção',
+      factoryAlt: 'Instalação de fabricação da AIERXUAN',
+      tiles: {
+        quality: { title: 'Testes de qualidade', description: 'Inspeção de entrada, checagens em produção, burn-in testing e verificação final antes do envio.' },
+        config: { title: 'Controle de configuração', description: 'CPU, memória, armazenamento, tela, BIOS, imagem do OS e opções de teclado regional.' },
+        branding: { title: 'Branding e embalagem', description: 'Logo, acabamento da carcaça, etiquetas, manuais e caixas de varejo para o seu mercado.' },
+        logistics: { title: 'Logística global', description: 'Documentos de exportação, certificações, planejamento de caixas e coordenação de entrega mundial.' },
+      },
+    },
+    process: {
+      eyebrow: 'Fluxo de cooperação',
+      title: 'Do requisito ao embarque',
+      description: 'Um caminho de sourcing claro ajuda compradores a entender o que acontece depois do envio da consulta.',
+      steps: [
+        { title: 'Consulta', description: 'Compartilhe o tipo de produto, mercado-alvo, configuração e volume.' },
+        { title: 'Proposta', description: 'Receba BOM, faixa de preço, plano de amostra e cronograma de produção.' },
+        { title: 'Amostra', description: 'Valide hardware, branding, embalagem e imagem de software.' },
+        { title: 'Confirmação', description: 'Congele especificações e padrões de aceitação de qualidade.' },
+        { title: 'Produção', description: 'Produção em massa com checkpoints de qualidade e atualizações de status.' },
+        { title: 'Entrega', description: 'Documentos de exportação, rastreamento logístico e suporte pós-venda.' },
+      ],
+    },
+    cta: {
+      title: 'Pronto para criar sua próxima linha de hardware?',
+      description: 'Envie sua configuração-alvo e requisitos de branding. Nossa equipe pode responder com opções práticas para amostras, MOQ, certificações e entrega.',
+      label: 'Solicitar cotação personalizada',
+    },
+  },
 }
 
 export default async function Home({
@@ -207,7 +474,7 @@ export default async function Home({
 }) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
-  const t = homeRedesignText[lang as 'en' | 'ru'] ?? homeRedesignText.en
+  const t = homeRedesignText[lang] ?? homeRedesignText.en
 
   const families = productFamiliesFor(t.products.families)
   const heroStats = defaultHeroStatsFor(t.hero.stats)

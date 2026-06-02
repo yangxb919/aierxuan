@@ -48,7 +48,6 @@ async function getFAQs(): Promise<FAQ[]> {
     const translations: any[] = faq.translations || []
     const preferred =
       translations.find(t => t.locale === 'en') ||
-      translations.find(t => t.locale === 'zh-CN') ||
       translations[0]
 
     return {

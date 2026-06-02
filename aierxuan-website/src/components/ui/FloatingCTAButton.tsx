@@ -27,10 +27,6 @@ const translations = {
     getQuote: 'Obter cotação',
     requestSample: 'Solicitar amostra'
   },
-  'zh-CN': {
-    getQuote: '获取报价',
-    requestSample: '索取样品'
-  }
 }
 
 export function FloatingCTAButton() {

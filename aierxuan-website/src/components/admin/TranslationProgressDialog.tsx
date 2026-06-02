@@ -53,7 +53,6 @@ export default function TranslationProgressDialog({
       'ja': 'Japanese',
       'fr': 'French',
       'pt': 'Portuguese',
-      'zh-CN': 'Chinese (Simplified)'
     }
     return languages[code] || code
   }

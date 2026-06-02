@@ -146,7 +146,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString(lang === 'zh-CN' ? 'zh-CN' : lang, {
+    return date.toLocaleDateString(lang, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

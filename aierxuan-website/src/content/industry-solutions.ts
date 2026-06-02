@@ -65,50 +65,6 @@ export const industrySolutionsContent: Record<string, IndustrySolutionsContent> 
       }
     ]
   },
-  'zh-CN': {
-    title: '行业解决方案',
-    subtitle: '针对特定行业挑战的定制解决方案',
-    learnMore: '了解更多',
-    viewCase: '查看案例研究',
-    solutions: [
-      {
-        title: '教育行业',
-        icon: '🎓',
-        image: '/images/corporate-business-solution.webp',
-        challenge: '学校需要可靠、高性价比的计算解决方案，能够处理多样化的教育软件并支持远程学习',
-        solution: '我们的教育级笔记本电脑和迷你PC为IT管理员提供卓越的性能、耐用性和简便的管理',
-        benefits: ['经济实惠的价格', '耐用的构造', '简单的设备管理', '教育软件兼容'],
-        color: 'blue'
-      },
-      {
-        title: '工业制造',
-        icon: '🏭',
-        image: '/images/industry-solution-manufacturing.webp',
-        challenge: '制造环境需要坚固的系统，能够承受恶劣条件并保持24/7的可靠性',
-        solution: '工业级迷你PC，具有无风扇冷却、宽温度范围和抗冲击设计，适用于工厂车间',
-        benefits: ['无风扇冷却设计', '宽温度范围', '抗冲击和振动', '长期可用性'],
-        color: 'orange'
-      },
-      {
-        title: '医疗保健',
-        icon: '🏥',
-        image: '/images/industry-solution-healthcare.webp',
-        challenge: '医疗机构需要经过认证的可靠系统，用于患者数据管理和医学成像应用',
-        solution: '医疗级计算解决方案，具有认证、抗菌涂层和静音操作，适用于患者护理区域',
-        benefits: ['医疗认证', '抗菌涂层', '静音操作', '符合HIPAA标准'],
-        color: 'green'
-      },
-      {
-        title: '零售酒店业',
-        icon: '🛒',
-        image: '/images/industry-solution-retail.webp',
-        challenge: '零售企业需要紧凑、可靠的POS系统，能够处理高交易量并与现有软件集成',
-        solution: '为POS应用优化的紧凑型迷你PC，具有多种I/O选项和可靠的24/7运行',
-        benefits: ['紧凑的外形', '多个I/O端口', '24/7运行', 'POS软件兼容'],
-        color: 'purple'
-      }
-    ]
-  },
   // 其他语言版本...
   ru: {
     title: 'Отраслевые решения',
