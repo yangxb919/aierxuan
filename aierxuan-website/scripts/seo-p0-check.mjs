@@ -60,7 +60,7 @@ const checks = [
       const sitemap = read('src/app/sitemap.ts')
       assert(layout.includes('robotsForLocale'))
       assert(sitemap.includes("const locales = ['en', 'ru']"))
-      for (const locale of ['ja', 'fr', 'pt', 'zh-CN']) {
+      for (const locale of ['ja', 'fr', 'pt']) {
         assert(!sitemap.includes(`/${locale}`), `${locale} leaked into sitemap`)
       }
     },
@@ -146,10 +146,44 @@ const checks = [
   [
     'dictionary resource links do not point to unpublished /support',
     () => {
-      for (const locale of ['en', 'ru', 'ja', 'fr', 'pt', 'zh-CN']) {
+      for (const locale of ['en', 'ru', 'ja', 'fr', 'pt']) {
         const hrefs = collectHrefValues(readJson(`src/dictionaries/${locale}.json`))
         assert(!hrefs.includes('/support'), `${locale}.json still links to /support`)
       }
+    },
+  ],
+  [
+    'zh-CN locale is removed from public runtime code and redirects to /en',
+    () => {
+      assert(!fs.existsSync(path.join(root, 'src/dictionaries/zh-CN.json')))
+      for (const relativePath of [
+        'src/i18n-config.ts',
+        'src/get-dictionary.ts',
+        'src/components/layout/Navbar.tsx',
+        'src/lib/technical-seo.ts',
+        'src/app/[lang]/layout.tsx',
+        'src/app/[lang]/page.tsx',
+        'src/app/[lang]/about/page.tsx',
+      ]) {
+        assert(!read(relativePath).includes('zh-CN'), `${relativePath} still references zh-CN`)
+      }
+
+      const proxy = read('src/proxy.ts')
+      assert(proxy.includes("pathname === '/zh-CN'"))
+      assert(proxy.includes('NextResponse.redirect(url, 301)'))
+    },
+  ],
+  [
+    'home and about pages carry copy for all active locales',
+    () => {
+      const home = read('src/app/[lang]/page.tsx')
+      const about = read('src/app/[lang]/about/page.tsx')
+      for (const locale of ['en', 'ru', 'ja', 'fr', 'pt']) {
+        assert(home.includes(`${locale}: {`), `home copy missing ${locale}`)
+        assert(about.includes(`${locale}: {`), `about copy missing ${locale}`)
+      }
+      assert(!home.includes("lang as 'en' | 'ru'"))
+      assert(!about.includes("lang === 'ru' ? 'ru' : 'en'"))
     },
   ],
 ]
