@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locales = ['en', 'ru']
   const pages = ['', '/products', '/oem', '/about', '/contact', '/blog', '/faq']
+  const enOnlyPages = ['/lp/mini-pc']
   const alternatesFor = (path: string) => ({
     'x-default': `${SITE_URL}/en${path}`,
     en: `${SITE_URL}/en${path}`,
@@ -31,6 +32,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       })
     }
+  }
+
+  for (const page of enOnlyPages) {
+    entries.push({
+      url: `${SITE_URL}/en${page}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          'x-default': `${SITE_URL}/en${page}`,
+          en: `${SITE_URL}/en${page}`,
+        },
+      },
+    })
   }
 
   // Blog detail pages

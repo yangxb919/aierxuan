@@ -32,6 +32,10 @@ export const redesignImages = {
   blogHero: '/images/redesign/blog-hero.webp',
   faqHero: '/images/redesign/faq-hero.webp',
   contactHero: '/images/redesign/contact-hero.webp',
+  miniPcLpHero: '/images/lp/en-mini-pc-hero-EN01-16x9.webp',
+  oemAssemblyLine: '/images/lp/oem-assembly-line.webp',
+  oemQcLab: '/images/lp/oem-qc-inspection-lab.webp',
+  oemPackagingExport: '/images/lp/oem-packaging-export-logistics.webp',
   business: '/images/redesign/product-business.webp',
   gaming: '/images/redesign/product-gaming.webp',
   miniPc: '/images/redesign/product-mini-pc.webp',
@@ -240,8 +244,10 @@ export function TechHero({
   title,
   subtitle,
   primaryLabel = 'Request Quote',
+  primaryHref,
   secondaryLabel = 'View Products',
   secondaryHref,
+  proofLine,
   widgets,
   stats = defaultHeroStats,
   liveLabel = 'Live',
@@ -252,8 +258,10 @@ export function TechHero({
   title: string
   subtitle: string
   primaryLabel?: string
+  primaryHref?: string
   secondaryLabel?: string
   secondaryHref?: string
+  proofLine?: string
   widgets: Array<{ title: string; rows: Array<{ label: string; value: string; status?: 'live' | 'ok' | 'warn' }> }>
   stats?: typeof defaultHeroStats
   liveLabel?: string
@@ -288,11 +296,16 @@ export function TechHero({
               {subtitle}
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <GlowButton href={`/${lang}/contact`}>{primaryLabel}</GlowButton>
+              <GlowButton href={primaryHref ?? `/${lang}/contact`}>{primaryLabel}</GlowButton>
               <GlowButton href={secondaryHref ?? `/${lang}/products`} variant="secondary">
                 {secondaryLabel}
               </GlowButton>
             </div>
+            {proofLine && (
+              <p className="mt-5 max-w-3xl text-sm font-semibold uppercase tracking-[0.16em] text-cyan-100/85">
+                {proofLine}
+              </p>
+            )}
             <HeroStatBar stats={stats} />
           </div>
 
