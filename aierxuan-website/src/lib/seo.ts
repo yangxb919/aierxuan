@@ -18,7 +18,14 @@ export function buildOgTwitter({
 }): Pick<Metadata, 'openGraph' | 'twitter'> {
   const url = `${SITE_URL}/${lang}${path}`
   const imageUrl = image.startsWith('http') ? image : `${SITE_URL}${image}`
-  const locale = lang === 'ru' ? 'ru_RU' : 'en_US'
+  const ogLocaleMap: Record<string, string> = {
+    en: 'en_US',
+    ru: 'ru_RU',
+    ja: 'ja_JP',
+    fr: 'fr_FR',
+    pt: 'pt_BR',
+  }
+  const locale = ogLocaleMap[lang] ?? 'en_US'
 
   return {
     openGraph: {
