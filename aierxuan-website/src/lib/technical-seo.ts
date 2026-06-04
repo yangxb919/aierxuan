@@ -219,14 +219,34 @@ export function buildProductJsonLd({
         },
       ],
     } : {}),
-    ...(price ? {
-      offers: {
-        '@type': 'Offer',
-        priceCurrency: 'USD',
-        price,
-        availability: 'https://schema.org/InStock',
-      },
-    } : {}),
+    offers: price
+      ? {
+          '@type': 'Offer',
+          priceCurrency: 'USD',
+          price,
+          availability: 'https://schema.org/InStock',
+          url: `${SITE_URL}/${lang}/products/${slug}`,
+          seller: { '@type': 'Organization', name: 'AIERXUAN' },
+        }
+      : {
+          // B2B quote-based pricing: no public price, but emit a valid Offer so
+          // search engines and AI can extract availability / seller / MOQ.
+          '@type': 'Offer',
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+          url: `${SITE_URL}/${lang}/products/${slug}`,
+          seller: { '@type': 'Organization', name: 'AIERXUAN' },
+          ...(moq
+            ? {
+                eligibleQuantity: {
+                  '@type': 'QuantitativeValue',
+                  minValue: Number(moq),
+                  unitCode: 'C62',
+                },
+              }
+            : {}),
+        },
   }
 }
 

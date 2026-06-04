@@ -186,6 +186,48 @@ const checks = [
       assert(!about.includes("lang === 'ru' ? 'ru' : 'en'"))
     },
   ],
+  [
+    'llms.txt is served as a static root file and bypasses the i18n proxy',
+    () => {
+      assert(fs.existsSync(path.join(root, 'public/llms.txt')))
+      const llms = read('public/llms.txt')
+      assert(llms.includes('# AIERXUAN'))
+      // must not be routed through [lang] (would 404). proxy matcher must skip it.
+      const proxy = read('src/proxy.ts')
+      assert(proxy.includes('llms.txt'), 'proxy matcher must exclude llms.txt')
+    },
+  ],
+  [
+    'SSR <html lang> reflects the active locale via middleware header (not en-only)',
+    () => {
+      const rootLayout = read('src/app/layout.tsx')
+      const proxy = read('src/proxy.ts')
+      // root layout reads the locale header and renders lang={lang}
+      assert(rootLayout.includes("get('x-locale')"))
+      assert(rootLayout.includes('lang={lang}'))
+      assert(!rootLayout.includes('<html lang="en"'))
+      // middleware injects x-locale for localized pages + root rewrite
+      assert(proxy.includes("set('x-locale'"))
+    },
+  ],
+  [
+    'product Product schema always emits an Offer (quote-based for B2B, no fake price)',
+    () => {
+      const technicalSeo = read('src/lib/technical-seo.ts')
+      assert(technicalSeo.includes('businessFunction'))
+      assert(technicalSeo.includes('eligibleQuantity'))
+    },
+  ],
+  [
+    'og:locale is emitted per-locale, not hardcoded en_US/ru only',
+    () => {
+      const seo = read('src/lib/seo.ts')
+      for (const ogLocale of ['en_US', 'ru_RU', 'ja_JP', 'fr_FR', 'pt_BR']) {
+        assert(seo.includes(ogLocale), `og:locale ${ogLocale} missing`)
+      }
+      assert(!seo.includes("lang === 'ru' ? 'ru_RU' : 'en_US'"))
+    },
+  ],
 ]
 
 let failed = 0

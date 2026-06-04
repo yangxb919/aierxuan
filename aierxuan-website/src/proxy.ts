@@ -88,20 +88,32 @@ export async function proxy(request: NextRequest) {
         // Use rewrite for root path "/" so search engine verification bots
         // see a 200 response (not a 307 redirect) with meta tags intact
         if (pathname === '/') {
-            return NextResponse.rewrite(newUrl)
+            const requestHeaders = new Headers(request.headers)
+            requestHeaders.set('x-locale', locale)
+            return NextResponse.rewrite(newUrl, { request: { headers: requestHeaders } })
         }
 
         // For all other paths, redirect as before
         return NextResponse.redirect(newUrl)
     }
 
-    // Let public localized pages continue without emitting a middleware
-    // response, so CDN cache keys are not polluted by Set-Cookie/private
-    // headers from middleware.
+    // Public localized page: forward the active locale to the server render via
+    // a request header so the root layout can emit the correct SSR <html lang>.
+    // This only sets a REQUEST header (no Set-Cookie / private response header),
+    // so CDN cache keys stay clean.
+    const currentLocale = i18n.locales.find(
+        (loc) => pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)
+    )
+    if (currentLocale) {
+        const requestHeaders = new Headers(request.headers)
+        requestHeaders.set('x-locale', currentLocale)
+        return NextResponse.next({ request: { headers: requestHeaders } })
+    }
+
     return
 }
 
 export const config = {
     // Matcher ignoring `/_next/`, `/api/`, static files, sitemap, robots, etc.
-    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|yandex_[^/]+\\.html|google[^/]+\\.html).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|images|uploads|favicon.ico|icon.svg|apple-touch-icon.png|sitemap.xml|robots.txt|llms.txt|yandex_[^/]+\\.html|google[^/]+\\.html).*)'],
 }
