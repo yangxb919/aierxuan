@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from './Button'
 import { useLanguage, useAppStore } from '@/store/useAppStore'
-import { contactFormContent, type ContactFormContent } from '@/content/contact-form'
+import { contactFormContent } from '@/content/contact-form'
 import { trackLeadFormSubmit } from '@/lib/ads-tracking'
 
 export function ContactModal() {
@@ -71,16 +71,21 @@ export function ContactModal() {
     setSubmitStatus('idle')
 
     try {
-      // Send email notification
-      await fetch('/api/send-rfq-email', {
+      const response = await fetch('/api/send-rfq-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          productInterest: 'General Inquiry',
           formType: 'contact',
-          pageUrl: window.location.href
+          languageCode: language,
+          pageUrl: window.location.href,
+          referrer: document.referrer || undefined,
+          website: '',
         })
       })
+
+      if (!response.ok) throw new Error('Contact submission failed')
 
       setSubmitStatus('success')
       trackLeadFormSubmit({

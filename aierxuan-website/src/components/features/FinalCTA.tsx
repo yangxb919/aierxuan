@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/components/ui'
-import { createSupabaseClient } from '@/lib/supabase'
 import { type Dictionary } from '@/get-dictionary'
 
 import { type Locale } from '@/i18n-config'
@@ -16,8 +15,6 @@ interface FinalCTAProps {
 export function FinalCTA({ lang, texts }: FinalCTAProps) {
   const t = texts
   const router = useRouter()
-  const supabase = createSupabaseClient()
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,24 +47,7 @@ export function FinalCTA({ lang, texts }: FinalCTAProps) {
     setSubmitting(true)
 
     try {
-      // Important: use returning: 'minimal' so anon insert doesn't require SELECT permission
-      const { error } = await supabase.from('rfqs').insert([
-        {
-          name: formData.name || null,
-          email: formData.email,
-          country: formData.country || null,
-          product_interest: formData.productInterest || null,
-          message: formData.message || null,
-          status: 'new',
-          source: 'website',
-          language_code: lang
-        } as any
-      ])
-
-      if (error) throw error
-
-      // Send email notification (non-blocking)
-      fetch('/api/send-rfq-email', {
+      const response = await fetch('/api/send-rfq-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -77,9 +57,14 @@ export function FinalCTA({ lang, texts }: FinalCTAProps) {
           productInterest: formData.productInterest,
           message: formData.message,
           formType: 'finalcta',
-          pageUrl: window.location.href
+          languageCode: lang,
+          pageUrl: window.location.href,
+          referrer: document.referrer || undefined,
+          website: '',
         })
-      }).catch(console.error)
+      })
+
+      if (!response.ok) throw new Error('RFQ submission failed')
 
       // Redirect to thank you page
       router.push(`/${lang}/thank-you`)

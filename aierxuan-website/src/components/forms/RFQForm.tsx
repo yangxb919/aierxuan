@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button, Input, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
-import { createSupabaseClient } from '@/lib/supabase'
 import { trackLeadFormSubmit } from '@/lib/ads-tracking'
 import type { LanguageCode } from '@/types'
 import type { Dictionary } from '@/get-dictionary'
@@ -68,7 +67,6 @@ export function RFQForm({
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const router = useRouter()
   const searchParams = useSearchParams()
-  const supabase = createSupabaseClient()
   const texts = dictionary
 
   const schema = createRFQSchema(texts)
@@ -111,47 +109,20 @@ export function RFQForm({
     setSubmitStatus('idle')
 
     try {
-      // Get client information
-      const clientInfo = {
-        ip_address: null, // Will be handled by server
-        user_agent: navigator.userAgent,
-        referrer: document.referrer || null,
-        language_code: lang
-      }
-
-      // Submit to Supabase
-      // Important: use returning: 'minimal' so anon insert doesn't require SELECT permission
-      const { error } = await supabase
-        .from('rfqs')
-        .insert({
-          name: data.name,
-          email: data.email,
-          company: data.company,
-          phone: data.phone,
-          product_interest: data.productInterest,
-          message: data.message,
-          quantity: data.quantity || null,
-          country: data.country,
-          industry: data.industry,
-          urgency: data.urgency,
-          budget_range: data.budgetRange,
-          ...clientInfo
-        }, { returning: 'minimal' } as any) // Cast to any to avoid type error with returning
-
-      if (error) {
-        throw error
-      }
-
-      // Send email notification (non-blocking)
-      fetch('/api/send-rfq-email', {
+      const response = await fetch('/api/send-rfq-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
           formType: 'rfq',
-          pageUrl: window.location.href
+          languageCode: lang,
+          pageUrl: window.location.href,
+          referrer: document.referrer || undefined,
+          website: '',
         })
-      }).catch(console.error)
+      })
+
+      if (!response.ok) throw new Error('RFQ submission failed')
 
       setSubmitStatus('success')
       trackLeadFormSubmit({

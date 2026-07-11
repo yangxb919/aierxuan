@@ -481,7 +481,7 @@ export interface Database {
           phone: string | null
           priority: string | null
           product_interest: string | null
-          quantity: string | null
+          quantity: number | null
           referrer: string | null
           source: string | null
           status: string | null
@@ -508,7 +508,7 @@ export interface Database {
           phone?: string | null
           priority?: string | null
           product_interest?: string | null
-          quantity?: string | null
+          quantity?: number | null
           referrer?: string | null
           source?: string | null
           status?: string | null
@@ -535,7 +535,7 @@ export interface Database {
           phone?: string | null
           priority?: string | null
           product_interest?: string | null
-          quantity?: string | null
+          quantity?: number | null
           referrer?: string | null
           source?: string | null
           status?: string | null
@@ -553,7 +553,7 @@ export interface Database {
           is_public: boolean | null
           key: string
           updated_at: string | null
-          value: string
+          value: Json | null
         }
         Insert: {
           created_at?: string | null
@@ -562,7 +562,7 @@ export interface Database {
           is_public?: boolean | null
           key: string
           updated_at?: string | null
-          value: string
+          value?: Json | null
         }
         Update: {
           created_at?: string | null
@@ -571,7 +571,7 @@ export interface Database {
           is_public?: boolean | null
           key?: string
           updated_at?: string | null
-          value?: string
+          value?: Json | null
         }
         Relationships: []
       }
